@@ -1,0 +1,9 @@
+---
+applications:
+- name: dev-pmp-idam
+  memory: 1000M
+  buildpacks:
+  - nodejs_buildpack
+  - ruby_buildpack
+  instances: 1
+  random-route: true
