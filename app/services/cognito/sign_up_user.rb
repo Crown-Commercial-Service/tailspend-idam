@@ -9,24 +9,20 @@ module Cognito
               presence: true,
               confirmation: { case_sensitive: true },
               length: { within: 8..200 }
-    validates :phone_number,
-              presence: true,
-              length: { within: 8..20 }
 
     validates_format_of :password, with: /(?=.*[A-Z])/, message: :invalid_no_capitals
     validates_format_of :password, with: /(?=.*\W)/, message: :invalid_no_symbol
-    validate :domain_in_whitelist
+    #validate :domain_in_whitelist
 
-    attr_reader :email, :password, :password_confirmation, :organisation, :phone_number
+    attr_reader :email, :password, :password_confirmation, :organisation
     attr_accessor :user, :not_on_whitelist
 
-    def initialize(email, password, password_confirmation, organisation, phone_number)
+    def initialize(email, password, password_confirmation, organisation)
       super()
       @email = email
       @password = password
       @password_confirmation = password_confirmation
       @organisation = organisation
-      @phone_number = phone_number
       @user = nil
       @not_on_whitelist = nil
     end
@@ -66,6 +62,10 @@ module Cognito
           {
             name: 'custom:Organisation',
             value: organisation
+          },
+          {
+            name: 'phone_number',
+            value: "+4408654876588"
           }
         ]
       )

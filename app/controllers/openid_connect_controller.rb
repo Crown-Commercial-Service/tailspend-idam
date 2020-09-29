@@ -49,7 +49,7 @@ class OpenidConnectController < ApplicationController
 
   def build_authorize_response(cognito_response, nonce)
     {
-      "access_token": cognito_response.token,
+      "access_token": cognito_response.access_token,
       "expires_in": cognito_response.expires_in,
       "token_type": cognito_response.token_type,
       "refresh_token": cognito_response.refresh_token,

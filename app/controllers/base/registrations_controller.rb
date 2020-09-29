@@ -13,7 +13,7 @@ module Base
     end
 
     def create
-      @result = Cognito::SignUpUser.call(params[:anything][:email], params[:anything][:password], params[:anything][:password_confirmation], params[:anything][:organisation], params[:anything][:phone_number])
+      @result = Cognito::SignUpUser.call(params[:anything][:email], params[:anything][:password], params[:anything][:password_confirmation], params[:anything][:organisation])
       if @result.success?
         # set_flash_message! :notice, :signed_up
         # respond_with resource, location: after_sign_up_path_for(resource)

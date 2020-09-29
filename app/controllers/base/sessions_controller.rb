@@ -71,7 +71,7 @@ module Base
       decoded_token[0]['nonce'] = params[:nonce]
       id_token = JWT.encode decoded_token[0], nil, 'none'
       @client_call = ClientCall.new
-      @client_call.token = cognito_response.access_token
+      @client_call.access_token = cognito_response.access_token
       @client_call.refresh_token = cognito_response.refresh_token
       @client_call.id_token = id_token
       @client_call.token_type = cognito_response.token_type
