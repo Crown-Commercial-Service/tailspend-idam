@@ -4,7 +4,6 @@ module Cognito
   class Client < BaseService
     include ActiveModel::Validations
     attr_reader :client_id
-    attr_accessor :error
 
     validates_presence_of :client_id
 
@@ -18,18 +17,18 @@ module Cognito
       describe_user_pool_client if valid?
     end
 
-    def cognito_user_response
-      @auth_response
+    def cognito_client_response
+      @client_response
     end
 
     def success?
-      @auth_response.present? && @error.nil?
+      @client_response.present? && @error.nil?
     end
 
     private
 
     def describe_user_pool_client
-      @auth_response = client.describe_user_pool_client(
+      @client_response = client.describe_user_pool_client(
         user_pool_id: ENV['COGNITO_USER_POOL_ID'],
         client_id: @client_id,
       )

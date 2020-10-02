@@ -7,18 +7,18 @@ module Base
     before_action :authorize_user, except: %i[new create destroy]
 
     def new
-      @result = Cognito::SignInUser.new(nil, nil, nil)
+      @result = Cognito::SignInUser.new(nil, nil, nil, nil)
     end
 
     # rubocop:disable Metrics/AbcSize
     def create
-      @result = Cognito::SignInUser.new(params[:anything][:email], params[:anything][:password], request.cookies.blank?)
+      @result = Cognito::SignInUser.new(params[:anything][:email], params[:anything][:password], params[:client_id], request.cookies.blank?)
       @result.call
       if @result.success?
         result = add_nonce(@result.cognito_user_response.authentication_result, params[:nonce])
         if result
           code = result
-          cookies[:user] = { value: code, expires: Time.zone.now + 3600 }
+          cookies.permanent[:remember_token] = code
           redirect_to("#{params[:redirect_uri]}?code=#{code}&state=#{params[:state]}")
         end
       else

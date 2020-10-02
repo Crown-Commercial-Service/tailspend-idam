@@ -201,4 +201,9 @@ en:
               blank: Enter your organisation
             phone_number:
               blank: Enter your Phone number
-         
+  api:
+    v1:
+      openid:
+        errors:
+          error_encountered: An error was encountered with the requested page.
+          client_id: Client ID not recognized.

@@ -42,6 +42,7 @@ group :development, :test do
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'rubocop-rspec' # or gem 'rubocop-minitest'
+  gem 'brakeman'
 end
 
 group :development do

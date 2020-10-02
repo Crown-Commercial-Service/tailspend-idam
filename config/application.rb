@@ -25,7 +25,7 @@ module PmpIdam
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
-    #config.web_console.whitelisted_ips = '90.197.50.233'
+    # config.web_console.whitelisted_ips = ''
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

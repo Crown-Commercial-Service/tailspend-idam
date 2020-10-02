@@ -47,3 +47,4 @@ yarn-debug.log*
 .vscode/settings.json
 *.crt
 local-ssl-cert/localhost.key
+report.html

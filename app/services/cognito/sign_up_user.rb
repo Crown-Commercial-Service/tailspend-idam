@@ -12,8 +12,7 @@ module Cognito
 
     validates_format_of :password, with: /(?=.*[A-Z])/, message: :invalid_no_capitals
     validates_format_of :password, with: /(?=.*\W)/, message: :invalid_no_symbol
-    #validate :domain_in_whitelist
-
+    # validate :domain_in_whitelist
     attr_reader :email, :password, :password_confirmation, :organisation
     attr_accessor :user, :not_on_whitelist
 
@@ -60,12 +59,12 @@ module Cognito
             value: 'PMP'
           },
           {
-            name: 'custom:Organisation',
+            name: 'custom:organisation_name',
             value: organisation
           },
           {
             name: 'phone_number',
-            value: "+4408654876588"
+            value: '+4408654876588'
           }
         ]
       )
