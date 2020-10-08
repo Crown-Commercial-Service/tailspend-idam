@@ -1,1 +1,1 @@
-web: bundle exec rake cf:on_first_instance db:create && bundle exec rake cf:on_first_instance db:migrate && rails s -p $PORT
+web: bundle exec rake db:create && bundle exec rake cf:on_first_instance db:migrate && rails s -p $PORT
