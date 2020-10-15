@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_22_090115) do
+ActiveRecord::Schema.define(version: 2020_10_10_021040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -19,19 +19,27 @@ ActiveRecord::Schema.define(version: 2020_09_22_090115) do
 
   create_table "client_calls", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "access_token"
-    t.text "nonce"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.string "refresh_token"
     t.string "id_token"
     t.string "token_type"
-    t.string "expires_in"
+    t.text "expires_in"
     t.string "sub"
     t.string "client_id"
+    t.text "nonce"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "domain_white_list", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "domains_white_lists", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "url"
+    t.boolean "active", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "organisations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "supllier_name"
+    t.boolean "active", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

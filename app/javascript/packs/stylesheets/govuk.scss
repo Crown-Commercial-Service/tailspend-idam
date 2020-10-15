@@ -1,6 +1,13 @@
 $govuk-assets-path: "~govuk-frontend/govuk/assets/";
 @import "govuk-frontend/govuk/all";
-
+@import "accessible-autocomplete";
+body, h1, h2, h3, h4, h5, a, .govuk-footer, 
+.govuk-heading-xl, .govuk-label--m, 
+.govuk-label--s, .govuk-label--xl, 
+.govuk-hint, .govuk-error-summary__title,
+.govuk-header__navigation-item a {
+  font-family: "Source Sans Pro","HelveticaNeue","Helvetica Neue","Arial","Helvetica",sans-serif
+}
 .govuk-header {
   background-color: #9B1A47;
 }
@@ -70,4 +77,24 @@ $govuk-assets-path: "~govuk-frontend/govuk/assets/";
 
 abbr[title] {
     text-decoration: none;
+}
+
+.pmp-logo svg {
+  width: 150px;
+  height: 150px;
+}
+
+.govuk-header__content {
+  display: block;
+  text-align: right;
+  margin-top: 2rem;
+}
+
+.govuk-header__link--service-name {
+  font-weight: 300;
+  font-size: 1.5rem;
+}
+
+.govuk-header__navigation-item a {
+  font-weight: 400;
 }

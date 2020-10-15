@@ -29,7 +29,6 @@
 <body class="govuk-template__body app-body-class" data-test="My value" data-other="report:details">
   <script>
     document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
-
   </script>
 
   <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
@@ -39,32 +38,19 @@
     <div class="govuk-header__container govuk-width-container">
       <%= render partial: '/layouts/header-banner', locals: {end_of_journey: false} %>
     </div>
-    <%= render partial: '/layouts/beta-banner', locals: {end_of_journey: false} %>
   </header>
 
   <div class="govuk-width-container app-width-container--wide">
-    <div class="govuk-phase-banner">
-      <p class="govuk-phase-banner__content">
-        <strong class="govuk-tag govuk-phase-banner__content__tag">
-      alpha
-    </strong>
-        <span class="govuk-phase-banner__text">
-          This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
-        </span>
-      </p>
-    </div>
-  
+   <%= render partial: '/layouts/beta-banner', locals: {end_of_journey: false} %>
     <!--a href="<%# base_new_user_session_path %>" class="govuk-back-link">Back</a -->
-   
-
     <main class="govuk-main-wrapper app-main-class" id="main-content" role="main">
       <%= yield %>
     </main>
   </div>
 
-      <footer id="main-footer" class="govuk-footer" role="contentinfo">
-        <%= render partial: '/layouts/footer' %>
-      </footer>
+  <footer id="main-footer" class="govuk-footer" role="contentinfo">
+    <%= render partial: '/layouts/footer' %>
+  </footer>
   <%= javascript_pack_tag 'govuk', 'data-turbolinks-track': 'reload' %>
 </body>
 

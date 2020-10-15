@@ -4,13 +4,13 @@
     </h1>
 
     <p class="govuk-body-l">
-      <%= t('.lead_start') %> <span class="ccs-email-example"><%= params[:email] %></span> <%= t('.lead_end') %>
+      <%= t('.lead_start') %> <span class="ccs-email-example"><%= params[:email].nil? ? t('.lead_mid'):params[:email] %></span> <%= t('.lead_end') %>
     </p>
 
     <%= form_tag base_users_confirm_path, class: 'ccs-form', id: 'cop_confirmation_code', method: :post do %>
 
       <div class="govuk-form-group govuk-!-margin-bottom-7  <%= 'govuk-form-group--error' if @result.errors[:confirmation_code].any? %>">
-        <label class="govuk-label govuk-label--m govuk-!-margin-bottom-0" for="confirmation">
+        <label class="govuk-label govuk-!-margin-bottom-0" for="confirmation">
           <%= t('.confirmation_code') %>
         </label>
 
@@ -25,6 +25,7 @@
         <%= text_field_tag :confirmation_code, nil, class: "govuk-input govuk-!-width-one-third", id: 'confirmation', type: 'number' %>
       </div>
 
+      <% if params['email'].nil? %>
 
         <div class="govuk-form-group <%= 'govuk-form-group--error' if @result.errors[:email].any? %>">
           <label class="govuk-label" for="email">
@@ -37,7 +38,7 @@
           <%= display_error(@result, :email) %>
           <%= text_field_tag :email, nil, autofocus: true, autocomplete: "off", class:"govuk-input govuk-!-width-three-quarters", id: "email", spellcheck: false, aria: {describedby: "email-hint"} %>
         </div>
-
+      <% end %>
 
       <%= submit_tag t('common.continue'), id: "submit", class: "govuk-button govuk-!-padding-left-7 govuk-!-padding-right-7", 'aria-label': "#{t('common.continue')}" %>
 
