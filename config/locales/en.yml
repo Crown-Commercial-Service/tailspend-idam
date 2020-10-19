@@ -76,9 +76,9 @@ en:
         phone_number_hint: Enter your phone number
         organisation: Organisation name
         organisation_hint: Add your organisation we need to verify this please type in your correct organisation name
-        first_name: First Name
+        first_name: First name
         first_name_hint: Add your first name here.
-        last_name: Last ame
+        last_name: Last name
         last_name_hint: Add your last name here.
         heading_html: Create a <abbr title="Print Marketplace">Print Marketplace</abbr> account
         lead: You must be employed by, or represent, a public sector organisation.

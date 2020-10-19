@@ -64,7 +64,7 @@ module Cognito
           },
           {
             name: 'family_name',
-            value: first_name
+            value: last_name
           },
           {
             name: 'custom:organisation_name',
