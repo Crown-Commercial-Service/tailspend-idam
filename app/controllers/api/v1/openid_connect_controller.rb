@@ -8,11 +8,14 @@ module Api
       skip_before_action :verify_authenticity_token, only: %i[authorize token user_info]
 
       def authorize
+        
         authorize = Cognito::Authorize.new(params['client_id'], params['response_type'], params['redirect_uri'])
         redirect_to(base_new_user_session_path(request.parameters)) if authorize.valid? && signed_in_user == false
       end
 
       def token
+        puts ENV['AUTH_USER_API_TOKEN']
+        # puts Rails.application.credentials.config.inspect
         result = ClientCall.find(params[:code].squish)
         data = build_authorize_response(result, result.nonce)
         render json: data

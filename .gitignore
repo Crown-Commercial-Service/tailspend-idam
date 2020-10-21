@@ -29,6 +29,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+config/credentials.yml.enc
 
 /public/packs
 /public/packs-test
@@ -48,3 +49,8 @@ yarn-debug.log*
 *.crt
 local-ssl-cert/localhost.key
 report.html
+
+/config/credentials/development.key
+
+/config/credentials/staging.key
+

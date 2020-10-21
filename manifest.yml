@@ -1,9 +1,11 @@
 ---
 applications:
-- name: dev-pmp-idam
+- name: ccs-pmp-idam-test
   memory: 1000M
   buildpacks:
   - nodejs_buildpack
   - ruby_buildpack
   instances: 1
   random-route: true
+  services:
+    - ccs-pmp-idam-pg-service-test
