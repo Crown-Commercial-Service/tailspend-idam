@@ -115,9 +115,6 @@ module Api
           render json: ['Authentication failure']
         end
       end
-
-
-
     end
   end
 end

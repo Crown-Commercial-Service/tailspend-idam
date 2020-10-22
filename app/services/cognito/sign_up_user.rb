@@ -10,14 +10,14 @@ module Cognito
               confirmation: { case_sensitive: true },
               length: { within: 8..200 }
     validates :first_name, 
-              length: { minimum: 4 }
+              length: { minimum: 3 }
     validates :last_name, 
-              length: { minimum: 4 }
+              length: { minimum: 3 }
     validates_format_of :password, with: /(?=.*[A-Z])/, message: :invalid_no_capitals
     validates_format_of :password, with: /(?=.*\W)/, message: :invalid_no_symbol
 
     validate :domain_in_whitelist
-    attr_reader :email, :password, :password_confirmation, :organisation, :first_name, :last_name
+    attr_reader :email, :first_name, :last_name, :organisation, :password, :password_confirmation
     attr_accessor :user, :not_on_whitelist
 
     def initialize(email, password, password_confirmation, organisation, first_name, last_name)

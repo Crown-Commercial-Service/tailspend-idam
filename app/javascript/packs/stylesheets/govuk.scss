@@ -1,24 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700');
 $govuk-assets-path: "~govuk-frontend/govuk/assets/";
 @import "govuk-frontend/govuk/all";
 @import "accessible-autocomplete";
+
 body, h1, h2, h3, h4, h5, a, .govuk-footer, 
 .govuk-heading-xl, .govuk-label--m, 
 .govuk-label--s, .govuk-label--xl, 
 .govuk-hint, .govuk-error-summary__title,
-.govuk-header__navigation-item a {
-  font-family: "Source Sans Pro","HelveticaNeue","Helvetica Neue","Arial","Helvetica",sans-serif
+.govuk-error-message, .govuk-header__navigation-item a,
+.govuk-input, .govuk-heading-l, .govuk-body-m, .govuk-body,
+.govuk-heading-m, .govuk-button, .govuk-link, govuk-heading-m,
+.govuk-header__link--service-name, .govuk-list,
+.govuk-header__link--homepage, .govuk-header, .govuk-body-s {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif
 }
 .govuk-header {
   background-color: #9B1A47;
 }
 .govuk-footer {
+  padding-top: 0px;
   background-color: #2F2F31;
     a {
       color: #ffffff;
     }  
 }
+
+#main-footer .footer-feedback {
+    background-color: #eeeeee;
+    margin-top: -5px;
+}
+
+.govuk-footer__container {
+  padding: 30px 0px;
+}
 .govuk-header__logotype-crown {
   color: #ffffff;
+  height: 113px;
+  width: 140px;
 }
 .govuk-button {
   border-radius: 3px;
@@ -91,10 +109,81 @@ abbr[title] {
 }
 
 .govuk-header__link--service-name {
-  font-weight: 300;
+  font-weight: 600;
   font-size: 1.5rem;
 }
 
 .govuk-header__navigation-item a {
   font-weight: 400;
+}
+
+.govuk-heading-xl, .govuk-heading-l {
+  font-weight: 300;
+  margin-bottom: 36px;
+  line-height: 1.15;
+  color: #0b0c0c;
+}
+
+.govuk-label {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 1.25;
+  color: #0b0c0c;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.govuk-hint {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+  display: block;
+  margin-bottom: 15px;
+  color: #6f777b;
+}
+
+.govuk-body-l, .govuk-body-lead {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+}
+
+.govuk-header__container {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding: 20px 0 10px 0;
+}
+
+.govuk-label--m {
+  line-height: 2;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+.govuk-error-summary__list a {
+  font-weight: 600;
+
+}
+
+.govuk-error-summary__list a:active, .govuk-error-summary__list a:hover, .govuk-error-summary__list a:link, .govuk-error-summary__list a:visited {
+  color: #d4351c;
+}
+.pm-font-weight-semi-bold {
+  font-weight: 600;
+}
+
+.govuk-header__navigation-item a {
+  font-size: 19px;
+}
+
+.ccs-remove {
+  display: block;
+  position: absolute;
+  left: -3000px;
+  top: -3000px;
 }

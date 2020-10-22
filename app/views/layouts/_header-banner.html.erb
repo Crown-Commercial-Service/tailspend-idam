@@ -1,17 +1,13 @@
 <%= render 'layouts/logo' %>
 <div class="govuk-header__content">
   <span class="govuk-header__link--service-name">Sign in to the Print Marketplace</span>
-  <nav role="navigation" aria-label="Top Level Navigation">
-    <!--ul id="navigation" class="govuk-header__navigation ">
-      <li class="govuk-header__navigation-item ">
-        <a class="govuk-header__link" id="back_to_register_link" href="<%= home_path %>">Home</a>
-      </li>
-      <li class="govuk-header__navigation-item ">
-        <a class="govuk-header__link" id="back_to_register_link" href="<%= base_new_user_registration_path %>">Register</a>
-      </li>
-      <li class="govuk-header__navigation-item ">
-        <a class="govuk-header__link" id="back_to_forgot_password_link" href="<%= base_new_user_password_path %>">Forgoten password</a>
-      </li>
-    </ul-->
-  </nav>
+  <% unless current_page?('/')  %>
+    <nav role="navigation" aria-label="Top Level Navigation">
+      <ul id="navigation" class="govuk-header__navigation ">
+        <li class="govuk-header__navigation-item ">
+          <a class="govuk-header__link" id="back_to_register_link" href="<%= home_path %>">Back to start</a>
+        </li>
+      </ul>
+    </nav>
+  <% end %>
 </div>
