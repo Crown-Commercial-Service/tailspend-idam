@@ -10,5 +10,5 @@ deploy:
   space: $SPACE_TYPE
   on:
     repo: Crown-Commercial-Service/pmp-idam
-    branch: develop
+    branch: test
   skip_cleanup: 'true'
