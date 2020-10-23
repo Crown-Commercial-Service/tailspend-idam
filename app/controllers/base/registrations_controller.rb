@@ -12,6 +12,7 @@ module Base
       @result.errors.add(:base, flash[:alert]) if flash[:alert]
     end
 
+    # rubocop:disable Metrics/AbcSize
     def create
       @result = Cognito::SignUpUser.call(params[:anything][:email], params[:anything][:password], params[:anything][:password_confirmation], params[:anything][:organisation], params[:anything][:first_name], params[:anything][:last_name])
       if @result.success?
@@ -23,6 +24,7 @@ module Base
         fail_create(@result)
       end
     end
+    # rubocop:enable Metrics/AbcSize
 
     def domain_not_on_whitelist; end
 

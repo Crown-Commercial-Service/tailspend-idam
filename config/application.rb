@@ -40,15 +40,15 @@ module PmpIdam
         ENV['CCS_DEFAULT_DB_NAME'] = vcap_services['postgres'][0]['credentials']['name'].to_s
         ENV['CCS_DEFAULT_DB_USER'] = vcap_services['postgres'][0]['credentials']['username'].to_s
         ENV['CCS_DEFAULT_DB_PASSWORD'] = vcap_services['postgres'][0]['credentials']['password'].to_s
-      rescue => exception
-        puts  'Application is running on development'
+      rescue StandardError
+        # Rails.logger.debug e
       end
 
-      Rails.application.credentials.config.each do | key, value|
-        unless key.to_s != ENV['SERVER_ENV_NAME'].to_s
-          value.each do |env_key, env_value| 
-            ENV[env_key.to_s] = env_value.to_s
-          end
+      Rails.application.credentials.config.each do |key, value|
+        next if key.to_s != ENV['SERVER_ENV_NAME'].to_s
+
+        value.each do |env_key, env_value|
+          ENV[env_key.to_s] = env_value.to_s
         end
       end
     end

@@ -54,3 +54,4 @@ report.html
 /config/credentials/staging.key
 
 config/credentials.yml.enc
+config/credentials.yml.enc
