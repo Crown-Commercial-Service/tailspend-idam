@@ -10,5 +10,5 @@ deploy:
   organization: $ORG_NAME
   on:
     repo: Crown-Commercial-Service/pmp-idam
-    branch: test
+    branch: staging
   skip_cleanup: 'true'
