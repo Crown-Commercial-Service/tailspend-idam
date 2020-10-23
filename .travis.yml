@@ -2,14 +2,12 @@ language: ruby
 rvm:
  — 2.7.1
 deploy:
-  
-  provider: ${APP_PROVIDER_TYPE}
-  api: ${API_URI}
-  username: ${USERNAME}
-  password: ${PASSWORD}
-  organization: ${ORG_NAME}
-  space: ${SPACE_TYPE_TEST}
+  provider: cloudfoundry
+  api: $API_URI
+  username: $USERNAME
+  password: $PASSWORD
+  organization: $ORG_NAME
+  space: $SPACE_TYPE_TEST
   on:
     repo: Crown-Commercial-Service/pmp-idam
     branch: test
-  skip_cleanup: 'true'
