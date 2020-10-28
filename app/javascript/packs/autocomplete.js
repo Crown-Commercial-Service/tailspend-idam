@@ -3,7 +3,7 @@ import accessibleAutocomplete from 'accessible-autocomplete';
 var pmp_auto_complete = {
   query: function(query, populateResults) {
     console.log(query);
-    if (query.length > 3) {
+    if (query.length > 1) {
       jQuery.ajax({
         url: '/api/v1/organisation-search',
         type: 'post',
@@ -27,7 +27,7 @@ var pmp_auto_complete = {
       id: 'my-autocomplete',
       source: pmp_auto_complete.query,
       name: 'anything[organisation_auto_complete]',
-      minLength: 3,
+      minLength: 2,
       defaultValue: organisation_input.attr('value'),
       tNoResults: function() {
        return  "No results found";
