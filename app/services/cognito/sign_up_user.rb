@@ -8,10 +8,10 @@ module Cognito
     validates :password,
               presence: true,
               confirmation: { case_sensitive: true },
-              length: { within: 8..200 }
-    validates :first_name, 
+              length: { within: 10..200 }
+    validates :first_name,
               length: { minimum: 3 }
-    validates :last_name, 
+    validates :last_name,
               length: { minimum: 3 }
     validates_format_of :password, with: /(?=.*[A-Z])/, message: :invalid_no_capitals
     validates_format_of :password, with: /(?=.*\W)/, message: :invalid_no_symbol

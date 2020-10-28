@@ -13,7 +13,7 @@ module Base
 
     # rubocop:disable Metrics/AbcSize
     def create
-      @result = Cognito::SignInUser.new(params[:anything][:email], params[:anything][:password], params[:client_id], request.cookies.blank?)
+      @result = Cognito::SignInUser.new(request.POST[:anything][:email], request.POST[:anything][:password], params[:client_id], request.cookies.blank?)
       @result.call
       if @result.success?
         result = add_nonce(@result.cognito_user_response.authentication_result, params[:nonce])
@@ -74,8 +74,7 @@ module Base
     def add_nonce(cognito_response, client_nonce)
       decoded_token = JWT.decode cognito_response.id_token, nil, false
       decoded_token[0]['nonce'] = params[:nonce]
-      # decoded_token[0]['first_name'] = decoded_token[0]['family_name'] if decoded_token[0]['family_name'].present?
-      
+
       id_token = JWT.encode decoded_token[0], nil, 'none'
       @client_call = ClientCall.new
       @client_call.access_token = cognito_response.access_token

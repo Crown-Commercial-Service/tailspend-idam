@@ -1,5 +1,5 @@
 function cReg(){
-    return new RegExp ("^.{8,}");
+    return new RegExp ("^.{10,}");
 }
 function pReg(){
     return new RegExp("^(?=.*?[#?!@£$%^&*-])");
