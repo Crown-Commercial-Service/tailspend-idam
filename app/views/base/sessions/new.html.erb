@@ -5,6 +5,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <%= render partial: 'shared/error_summary', locals: { errors: @result.errors } %>
+
     <%= form_for :anything, url: base_user_session_path(request.parameters), method: :post, html: { specialvalidation: true, novalidate: true, class: 'ccs-form', id: 'cop_sign_in_form'} do |f| %>
       <div class="govuk-form-group govuk-!-margin-bottom-4 <%= 'govuk-form-group--error' if @result.errors[:email].any? %>">
         <label class="govuk-label govuk-label--m govuk-!-margin-bottom-0" for="email">

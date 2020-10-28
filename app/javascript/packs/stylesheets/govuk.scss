@@ -187,3 +187,18 @@ abbr[title] {
   left: -3000px;
   top: -3000px;
 }
+
+.govuk-button:hover {
+  background-color: #006771;
+}
+
+.clear-selected {
+  background-color: #f3f2f1;
+  padding: 5px;
+  text-decoration: none;
+  color: #0b0c0c;
+  font-weight: 700;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  border: 0px;
+}

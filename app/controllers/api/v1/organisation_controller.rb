@@ -6,7 +6,7 @@ module Api
       protect_from_forgery with: :exception
 
       def search
-        result = Organisation.where(['supllier_name LIKE ?', "%#{params[:search]}%"]).pluck(:supllier_name)
+        result = Organisation.where(['lower(supllier_name) LIKE ?', "%#{params[:search].downcase}%"]).pluck(:supllier_name)
         render json: result
       end
     end

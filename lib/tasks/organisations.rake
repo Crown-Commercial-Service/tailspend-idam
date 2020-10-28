@@ -2,19 +2,12 @@
 namespace :organisations do
   desc "Import organisations into database"
   task :import => :environment do
-    xlsx = Roo::Excelx.new('data/suppliers.xlsx')
-    # row_length = xlsx.last_row(sheet = 0)
-    # divide_rows = row_length / 5
-    
-    # puts row_length
-    # puts divide_rows
+    xlsx = Roo::Excelx.new('data/Customers.xlsx')
     insert_data = []
-    xlsx.each_row_streaming(pad_cells: true, offset: 1) do |row|
-      puts "#{row.length} -- #{row[1].value} -- #{row[10].value}" # Array of Excelx::Cell objects
-
+    xlsx.sheet(1).each_row_streaming(pad_cells: true, offset: 1) do |row|
       list = { 
         'supllier_name': row[1].value,
-        'active': row[10].value == 'Active'? true:false,
+        'active': row[11].value != 'Active'? false:true, 
         'created_at': DateTime.current,
         'updated_at': DateTime.current
       }
@@ -22,6 +15,15 @@ namespace :organisations do
     end
     Organisation.delete_all
     Organisation.insert_all(insert_data)
+  end
+
+  task :remove_duplicates => :environment do
+    delete = 'DELETE FROM
+                organisations a
+                  USING organisations b
+              WHERE
+                a.id < b.id
+              AND a.supllier_name = b.supllier_name;'
   end
 end
 # rubocop:enable all

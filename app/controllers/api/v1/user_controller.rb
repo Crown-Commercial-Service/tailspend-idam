@@ -15,7 +15,7 @@ module Api
           response = resp
         rescue StandardError => e
           Rails.logger.debug e
-          response = [e]
+          response = ['There was an error']
         end
 
         render json: response
@@ -34,7 +34,7 @@ module Api
           response = resp
         rescue StandardError => e
           Rails.logger.debug e
-          response = [e]
+          response = ['There was an error']
         end
 
         render json: response
@@ -51,7 +51,7 @@ module Api
           response = resp
         rescue StandardError => e
           Rails.logger.debug e
-          response = [e]
+          response = ['There was an error']
         end
 
         render json: response
@@ -100,7 +100,7 @@ module Api
           response = resp
         rescue StandardError => e
           Rails.logger.debug e
-          response = [e]
+          response = ['There was an error']
         end
 
         render json: response

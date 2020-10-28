@@ -36,7 +36,7 @@ module Base
     def resend_confirmation_email
       result = Cognito::ResendConfirmationCode.call(params[:email])
 
-      redirect_to base_users_confirm_path_path, error: result.error
+      redirect_to base_users_confirm_path_path(email: params[:email]), error: result.error
     end
 
     private

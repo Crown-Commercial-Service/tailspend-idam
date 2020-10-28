@@ -2,12 +2,12 @@ language: ruby
 rvm:
  — 2.7.1
 deploy:
-  space: $SPACE_TYPE
-  provider: $PROVIDER_TYPE
+  provider: cloudfoundry
   api: $API_URI
   username: $USERNAME
   password: $PASSWORD
   organization: $ORG_NAME
+  space: $SPACE_TYPE_STAGING
   on:
     repo: Crown-Commercial-Service/pmp-idam
     branch: staging

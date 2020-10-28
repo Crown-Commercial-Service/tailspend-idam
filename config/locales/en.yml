@@ -13,7 +13,7 @@ en:
     feedback: feedback
     next: Next
     passcap: at least one capital letter
-    passeight: at least 8 characters
+    passeight: at least 10 characters
     passnum: at least one number
     passsymbol_html: at least one symbol (eg ?, !, &pound;, &percnt;)
     reset_password: Reset password
@@ -53,7 +53,7 @@ en:
         text02_html: <a href="mailto:support@crowncommercial.gov.uk">support@crowncommercial.gov.uk</a>
       new:
         email: Email address
-        email_hint_html: This is the email address you used to set up the <abbr title="Crown Commercial Service">CCS</abbr> account.
+        email_hint_html: This is the email address you used to set up the Print Marketplace account.
         heading: Reset password
         lead: Enter your email address and we’ll send you a verification code so you can reset your password. Password reset verification codes are only valid for 24 hours.
       password_reset_success:
@@ -80,9 +80,9 @@ en:
         first_name_hint: Add your first name here.
         last_name: Last name
         last_name_hint: Add your last name here.
-        heading_html: Create a <abbr title="Print Marketplace">Print Marketplace</abbr> account
+        heading_html: Create a Print Marketplace account
         lead: You must be employed by, or represent, a public sector organisation.
-        password_must_be: Password must be 8 characters or more
+        password_must_be: Password must be 10 characters or more
         passwords_dont_match: Passwords don't match
         passwords_stronger: Password must include a special character
         passwords_upper: Password must include a capital letter
@@ -119,7 +119,7 @@ en:
           attributes:
             confirm_new_password: Enter your new password
             enter_a_new_password: Enter a new password
-            password_must_be: Password must be 8 characters or more
+            password_must_be: Password must be 10 characters or more
             password_must_match: Passwords don't match
             passwords_dont_match: Passwords don't match
             passwords_stronger: Password must include a special character
@@ -132,7 +132,7 @@ en:
             enter_last_name: Enter your last name
             enter_org_name: Enter your organisation name
             enter_your_password: Enter your password
-            password_must_be: Password must be 8 characters or more
+            password_must_be: Password must be 10 characters or more
             passwords_dont_match: Passwords don't match
             passwords_stronger: Password must include a special character
             passwords_upper: Password must include a capital letter
@@ -155,7 +155,7 @@ en:
           attributes:
             enter_a_password: Enter a password
             enter_your_password: Enter your password
-            password_must_be: Password must be 8 characters or more
+            password_must_be: Password must be 10 characters or more
             password_must_match: Passwords don't match
             passwords_dont_match: Passwords don't match
             passwords_stronger: Password must include a special character
@@ -169,9 +169,9 @@ en:
               invalid_no_capitals: Password must include a capital letter
               invalid_no_number: Password must include a number
               invalid_no_symbol: Password must include a special character
-              too_short: Password must be 8 characters or more
+              too_short: Password must be 10 characters or more
             password_confirmation:
-              blank: Enter your password
+              blank: Enter your confirm password
               confirmation: Passwords don't match
           user_not_found: Please check the information you have entered
         cognito/confirm_sign_up:
@@ -190,9 +190,9 @@ en:
               blank: Enter a password
               invalid_no_capitals: Password must include a capital letter
               invalid_no_symbol: Password must include a special character
-              too_short: Password must be 8 characters or more
+              too_short: Password must be 10 characters or more
             new_password_confirmation:
-              blank: Enter your password
+              blank: Enter your confirm password
               confirmation: Passwords don't match
         cognito/sign_in_user:
           attributes:
@@ -218,9 +218,9 @@ en:
               blank: Enter a password
               invalid_no_capitals: Password must include a capital letter
               invalid_no_symbol: Password must include a special character
-              too_short: Password must be 8 characters or more
+              too_short: Password must be 10 characters or more
             password_confirmation:
-              blank: Enter your password
+              blank: Enter your confirm password
               confirmation: Passwords don't match
             organisation:
               blank: Enter your organisation
