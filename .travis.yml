@@ -2,13 +2,15 @@ language: ruby
 rvm:
  — 2.7.1
 deploy:
+  edge: true
   provider: cloudfoundry
   api: $API_URI
-  username: $USERNAME
-  password: $PASSWORD
+  username: $USERNAME_STAGE
+  password: $PASSWORD_STAGE
   organization: $ORG_NAME
   space: $SPACE_TYPE_STAGING
   on:
     repo: Crown-Commercial-Service/pmp-idam
     branch: staging
   skip_cleanup: 'true'
+    

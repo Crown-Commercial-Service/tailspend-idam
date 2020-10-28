@@ -1,6 +1,6 @@
 ---
 applications:
-- name: ccs-pmp-idam-test
+- name: ccs-pmp-idam-preprod
   memory: 1000M
   buildpacks:
   - nodejs_buildpack
@@ -8,6 +8,7 @@ applications:
   instances: 1
   random-route: true
   services:
-    - ccs-pmp-idam-pg-service-test
+    - ccs-pmp-idam-pg-service-preprod
+    - ccs-pmp-idam-preprod-s3
   env:
-    SERVER_ENV_NAME: test
+    SERVER_ENV_NAME: preprod

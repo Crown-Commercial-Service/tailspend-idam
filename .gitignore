@@ -54,3 +54,4 @@ report.html
 /config/credentials/staging.key
 
 config/credentials.yml.enc
+.dev-env.local-copy
