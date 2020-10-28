@@ -35,7 +35,7 @@ var pmp_auto_complete = {
       onConfirm: function (query) {
         organisation_input.attr('value', query);
         jQuery('#selected-autocomplete-option p span').text(query);
-        jQuery('.clear-selected').show();
+        //jQuery('.clear-selected').show();
       },
     });
   },
