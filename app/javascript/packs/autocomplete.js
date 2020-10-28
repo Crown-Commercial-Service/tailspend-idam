@@ -30,7 +30,7 @@ var pmp_auto_complete = {
       minLength: 3,
       defaultValue: organisation_input.attr('value'),
       tNoResults: function() {
-       return  "too many results";
+       return  "No results found";
       },
       onConfirm: function (query) {
         organisation_input.attr('value', query);
