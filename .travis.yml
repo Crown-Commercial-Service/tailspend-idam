@@ -7,7 +7,7 @@ deploy:
   username: $USERNAME_DEPLOY
   password: $PASSWORD_DEPLOY
   organization: $ORG_NAME
-  space: $SPACE_TYPE_TEST
+  space: $SPACE_TYPE_DEVELOPMENT
   on:
     repo: Crown-Commercial-Service/pmp-idam
-    branch: test
+    branch: develop
