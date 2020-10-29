@@ -1,0 +1,2 @@
+class DomainsWhiteList < ApplicationRecord
+end

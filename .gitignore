@@ -48,3 +48,9 @@ yarn-debug.log*
 *.crt
 local-ssl-cert/localhost.key
 report.html
+
+/config/credentials/development.key
+
+/config/credentials/staging.key
+
+config/credentials.yml.enc

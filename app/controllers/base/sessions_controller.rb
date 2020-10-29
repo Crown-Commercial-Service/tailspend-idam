@@ -5,6 +5,7 @@ module Base
     skip_forgery_protection
     before_action :authenticate_user!, except: %i[new create destroy]
     before_action :authorize_user, except: %i[new create destroy]
+    before_action :validate_filter
 
     def new
       @result = Cognito::SignInUser.new(nil, nil, nil, nil)
@@ -12,7 +13,7 @@ module Base
 
     # rubocop:disable Metrics/AbcSize
     def create
-      @result = Cognito::SignInUser.new(params[:anything][:email], params[:anything][:password], params[:client_id], request.cookies.blank?)
+      @result = Cognito::SignInUser.new(request.POST[:anything][:email], request.POST[:anything][:password], params[:client_id], request.cookies.blank?)
       @result.call
       if @result.success?
         result = add_nonce(@result.cognito_user_response.authentication_result, params[:nonce])
@@ -35,6 +36,10 @@ module Base
     end
 
     protected
+
+    def validate_filter
+      redirect_to home_path if !params.key?(:client_id) || !params.key?(:state)
+    end
 
     def after_sign_in_path_for(resource)
       stored_location_for(resource) || gateway_url
@@ -69,6 +74,7 @@ module Base
     def add_nonce(cognito_response, client_nonce)
       decoded_token = JWT.decode cognito_response.id_token, nil, false
       decoded_token[0]['nonce'] = params[:nonce]
+
       id_token = JWT.encode decoded_token[0], nil, 'none'
       @client_call = ClientCall.new
       @client_call.access_token = cognito_response.access_token

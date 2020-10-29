@@ -27,5 +27,11 @@ module Cognito
                                access_token: token,
                              })
     end
+
+    def self.bearer_token(request)
+      pattern = /^Bearer /
+      header  = request.headers['Authorization']
+      header.gsub(pattern, '') if header&.match(pattern)
+    end
   end
 end

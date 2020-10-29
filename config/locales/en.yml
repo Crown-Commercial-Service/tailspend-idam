@@ -13,7 +13,7 @@ en:
     feedback: feedback
     next: Next
     passcap: at least one capital letter
-    passeight: at least 8 characters
+    passeight: at least 10 characters
     passnum: at least one number
     passsymbol_html: at least one symbol (eg ?, !, &pound;, &percnt;)
     reset_password: Reset password
@@ -21,6 +21,12 @@ en:
     sign_in: Sign in
     start_now: Start now
     submit: Continue
+  home:
+    index:
+      heading: Print Marketplace
+      heading_2: Before you start
+      lead_1: Use this service to sign into Print Marketplace 
+      lead_2: To use this service you need to be a recognised public sector body listed in the
   base:
     sessions:
       new:
@@ -47,13 +53,20 @@ en:
         text02_html: <a href="mailto:support@crowncommercial.gov.uk">support@crowncommercial.gov.uk</a>
       new:
         email: Email address
-        email_hint_html: This is the email address you used to set up the <abbr title="Crown Commercial Service">CCS</abbr> account.
+        email_hint_html: This is the email address you used to set up the Print Marketplace account.
         heading: Reset password
         lead: Enter your email address and we’ll send you a verification code so you can reset your password. Password reset verification codes are only valid for 24 hours.
       password_reset_success:
         heading: You have successfully changed your password
         lead: You can now sign in to your Crown Commercial Service account
     registrations:
+      domain_not_on_whitelist:
+        heading: You must use a public sector email address
+        lead_html: You must be employed by, or represent, a public sector organisation to create a <abbr title="Crown Commercial Service">CCS</abbr> account.
+        line_01: The email you used doesn't belong to a recognised public sector domain.
+        line_02_html: Create an account using a different email address or email <a href="mailto:info@crowncommercial.gov.uk">info@crowncommercial.gov.uk</a> if
+        list_01: you think your domain should be recognised
+        list_02: you still can't create an account
       new:
         confirm_password: Confirm your password
         create_password: Create a password you’ll remember
@@ -63,9 +76,13 @@ en:
         phone_number_hint: Enter your phone number
         organisation: Organisation name
         organisation_hint: Add your organisation we need to verify this please type in your correct organisation name
-        heading_html: Create a <abbr title="PMP IDAM">PMP IDAM</abbr> account
+        first_name: First name
+        first_name_hint: Add your first name here.
+        last_name: Last name
+        last_name_hint: Add your last name here.
+        heading_html: Create a Print Marketplace account
         lead: You must be employed by, or represent, a public sector organisation.
-        password_must_be: Password must be 8 characters or more
+        password_must_be: Password must be 10 characters or more
         passwords_dont_match: Passwords don't match
         passwords_stronger: Password must include a special character
         passwords_upper: Password must include a capital letter
@@ -75,6 +92,7 @@ en:
         confirmation_code: Verification code
         email: Email address
         heading: Activate your account
+        lead_mid: you
         lead_end: containing your verification code.
         lead_start: An email has been sent to
         resend_the_confirmation_email_html: <a href="%{link}" class="govuk-link">Resend the email</a>
@@ -101,7 +119,7 @@ en:
           attributes:
             confirm_new_password: Enter your new password
             enter_a_new_password: Enter a new password
-            password_must_be: Password must be 8 characters or more
+            password_must_be: Password must be 10 characters or more
             password_must_match: Passwords don't match
             passwords_dont_match: Passwords don't match
             passwords_stronger: Password must include a special character
@@ -114,13 +132,14 @@ en:
             enter_last_name: Enter your last name
             enter_org_name: Enter your organisation name
             enter_your_password: Enter your password
-            password_must_be: Password must be 8 characters or more
+            password_must_be: Password must be 10 characters or more
             passwords_dont_match: Passwords don't match
             passwords_stronger: Password must include a special character
             passwords_upper: Password must include a capital letter
             organisation_format: You need to provide organisation name so we can verify this
             phone_number_format: You need to provide a UK phone number
-            
+            first_name_format: First name must be moe than 3 characters
+            last_name_format: Last name must be moe than 3 characters
         ccs_patterns/home/cog_register_enter_confirmation_code:
           attributes:
             enter_confirmation_code: Enter the confirmation code
@@ -136,7 +155,7 @@ en:
           attributes:
             enter_a_password: Enter a password
             enter_your_password: Enter your password
-            password_must_be: Password must be 8 characters or more
+            password_must_be: Password must be 10 characters or more
             password_must_match: Passwords don't match
             passwords_dont_match: Passwords don't match
             passwords_stronger: Password must include a special character
@@ -150,9 +169,9 @@ en:
               invalid_no_capitals: Password must include a capital letter
               invalid_no_number: Password must include a number
               invalid_no_symbol: Password must include a special character
-              too_short: Password must be 8 characters or more
+              too_short: Password must be 10 characters or more
             password_confirmation:
-              blank: Enter your password
+              blank: Enter your confirm password
               confirmation: Passwords don't match
           user_not_found: Please check the information you have entered
         cognito/confirm_sign_up:
@@ -171,9 +190,9 @@ en:
               blank: Enter a password
               invalid_no_capitals: Password must include a capital letter
               invalid_no_symbol: Password must include a special character
-              too_short: Password must be 8 characters or more
+              too_short: Password must be 10 characters or more
             new_password_confirmation:
-              blank: Enter your password
+              blank: Enter your confirm password
               confirmation: Passwords don't match
         cognito/sign_in_user:
           attributes:
@@ -186,6 +205,12 @@ en:
               blank: You must provide your password
         cognito/sign_up_user:
           attributes:
+            first_name:
+              blank: Enter your first name
+              too_short: First name must be 3 characters or more
+            last_name:
+              blank: Enter your last name
+              too_short: Last name must be 3 characters or more 
             email:
               blank: Enter an email address in the correct format, like name@example.com
               not_on_whitelist: You must use a public sector email
@@ -193,9 +218,9 @@ en:
               blank: Enter a password
               invalid_no_capitals: Password must include a capital letter
               invalid_no_symbol: Password must include a special character
-              too_short: Password must be 8 characters or more
+              too_short: Password must be 10 characters or more
             password_confirmation:
-              blank: Enter your password
+              blank: Enter your confirm password
               confirmation: Passwords don't match
             organisation:
               blank: Enter your organisation

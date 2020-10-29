@@ -68,7 +68,7 @@ module Cognito
       cognito_common = Cognito::Common.new
       client_creds = cognito_common.get_client_credentials(client_id)
 
-      if client_creds.user_pool_client.explicit_auth_flows.include? 'ALLOW_USER_PASSWORD_AUTH'
+      if client_creds.user_pool_client.explicit_auth_flows.include? 'USER_PASSWORD_AUTH'
         login_user_cognito(client_creds.user_pool_client.client_id, client_creds.user_pool_client.client_secret)
       else
         @error = I18n.t('base.users.sign_in_error')

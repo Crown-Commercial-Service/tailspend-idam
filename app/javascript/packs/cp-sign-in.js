@@ -1,5 +1,5 @@
 function cReg(){
-    return new RegExp ("^.{8,}");
+    return new RegExp ("^.{10,}");
 }
 function pReg(){
     return new RegExp("^(?=.*?[#?!@£$%^&*-])");
@@ -44,7 +44,6 @@ jQuery(document).ready(function(){
     var f = $('#main-content').find('form.ccs-form');
 
     if(f.length){
-        console.log('found form');
       var formIDs = ['cop_sign_in_form','cop_change_password_form','cop_register','cop_confirmation_code','cog_forgot_password_request_form','cog_forgot_password_reset_form'];
 
       $.each(formIDs, function(i, val){

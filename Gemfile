@@ -21,6 +21,8 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 # for cognito
 gem 'aws-sdk-cognitoidentityprovider', '~> 1.23.0'
+# importing creds
+gem 'aws-sdk-s3', '~> 1'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -31,6 +33,7 @@ gem 'pg', '~> 0.18.4'
 gem 'jwt'
 gem 'rest-client', '~> 2.1'
 gem 'rollbar'
+gem 'roo', '~> 2.8.0'
 # remove if not option two taken in project
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -52,6 +55,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rspec'
 end
 
 group :test do
@@ -63,4 +67,4 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+# gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

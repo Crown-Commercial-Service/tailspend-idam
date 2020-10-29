@@ -3,11 +3,13 @@
 
 
 
-
+   <% if @result.errors.any? %>
     <div id="ccs-error-sum" class="govuk-error-summary <%= 'govuk-visually-hidden' unless @result.errors.any? %> ccs-e-msg" aria-labelledby="error-summary-title" role="alert" data-module="error-summary">
-      <h2 class="govuk-error-summary__title" id="error-summary-title">
-        <%= t('common.error_summary_title') if @result.errors.any?%>
-      </h2>
+     
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          <%= t('common.error_summary_title') %>
+        </h2>
+      
       <div class="govuk-error-summary__body">
         <ul id="ccs-error-sum-list" class="govuk-list govuk-error-summary__list">
           <% @result.errors.keys.each do |attribute| %>
@@ -19,20 +21,22 @@
       </div>
     </div>
 
+<% end %>
 
 
-
-
-    <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
-      <%= t('.heading_html') %>
-    </h1>
-
-    <p class="govuk-body-l govuk-!-margin-bottom-8">
-      <%= t('.lead') %>
-    </p>
     <%= form_for :anything, url: base_user_registration_path, html: {specialvalidation: true, novalidate: true, class: 'ccs-form', id: 'cop_register'}, method: :post do |f| %>
       <!-- organisation details start -->
       <fieldset class="govuk-fieldset govuk-!-margin-bottom-6">
+
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
+              <%= t('.heading_html') %>
+            </h1>
+
+            <p class="govuk-body-l govuk-!-margin-bottom-8">
+              <%= t('.lead') %>
+            </p>
+        </legend>
 
         <div class="govuk-form-group <%= 'govuk-form-group--error' if @result.errors[:email].any? %>">
           <label class="govuk-label" for="email">
@@ -47,11 +51,52 @@
                         <%= t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.email_format') %>
                     </span>
           <%= display_error(@result, :email) %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "off", class:"govuk-input govuk-!-width-three-quarters", id: "email", spellcheck: false, required: true, aria: {describedby: "email-hint"} %>
+          <% email_val = params[:anything].present? ? params[:anything][:email]:'' %>
+          <%= f.email_field :email, value:email_val, autofocus: true, autocomplete: "off", class:"govuk-input govuk-!-width-three-quarters", id: "email", spellcheck: false, required: true, aria: {describedby: "email-hint"} %>
         </div>
 
+        
+
+
+        
+        <div class="govuk-form-group <%= 'govuk-form-group--error' if @result.errors[:first_name].any? %>">
+          <label class="govuk-label" for="first_name">
+            <%= t('.first_name') %>
+          </label>
+
+          <span id="first_name-hint" class="govuk-hint govuk-!-width-three-quarters">
+                        <%= t('.first_name_hint') %>
+                    </span>
+
+          <span id="first_name-error" class="govuk-error-message govuk-visually-hidden ccs-e-msg">
+                        <%= t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.first_name_format') %>
+                    </span>
+          <%= display_error(@result, :first_name) %>
+          <% first_name_val = params[:anything].present? ? params[:anything][:first_name]:'' %>
+          <%= f.text_field :first_name, value:first_name_val,  autofocus: true, autocomplete: "off", class:"govuk-input govuk-!-width-three-quarters", id: "first_name", spellcheck: false, required: true, aria: {describedby: "first_name-hint"} %>
+        </div>
+
+
+        <div class="govuk-form-group <%= 'govuk-form-group--error' if @result.errors[:last_name].any? %>">
+          <label class="govuk-label" for="last_name">
+            <%= t('.last_name') %>
+          </label>
+
+          <span id="last_name-hint" class="govuk-hint govuk-!-width-three-quarters">
+                        <%= t('.last_name_hint') %>
+                    </span>
+
+          <span id="last_name-error" class="govuk-error-message govuk-visually-hidden ccs-e-msg">
+                        <%= t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.last_name_format') %>
+                    </span>
+          <%= display_error(@result, :last_name) %>
+          <% last_name_val = params[:anything].present? ? params[:anything][:last_name]:'' %>
+          <%= f.text_field :last_name, value:last_name_val,  autofocus: true, autocomplete: "off", class:"govuk-input govuk-!-width-three-quarters", id: "last_name", spellcheck: false, required: true, aria: {describedby: "last_name-hint"} %>
+        </div>
+
+
         <div class="govuk-form-group <%= 'govuk-form-group--error' if @result.errors[:organisation].any? %>">
-          <label class="govuk-label" for="organisation">
+          <label class="govuk-label" for="my-autocomplete">
             <%= t('.organisation') %>
           </label>
 
@@ -63,14 +108,20 @@
                         <%= t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.organisation_format') %>
                     </span>
           <%= display_error(@result, :organisation) %>
-          <%= f.email_field :organisation, autofocus: true, autocomplete: "off", class:"govuk-input govuk-!-width-three-quarters", id: "organisation", spellcheck: false, required: true, aria: {describedby: "organisation-hint"} %>
+          <% organisation_val = params[:anything].present? ? params[:anything][:organisation]:'' %>
+          <div id="selected-autocomplete-option" class="govuk-!-width-three-quarters">
+            <p class="govuk-body govuk-!-font-weight-regular govuk-tag govuk-tag--green"><strong>Selected option: </strong><span><%= organisation_val %></span></p> 
+            <button href="#" class="clear-selected" >Clear selected organisation</button>
+          </div>
+          <div id="my-autocomplete-container" class="govuk-!-width-three-quarters"></div>
+          
+          <%= f.text_field :organisation, value:organisation_val, autofocus: true, autocomplete: "off", class:"govuk-input govuk-!-width-three-quarters", id: "organisation", spellcheck: false, required: true, aria: {describedby: "organisation-hint"} %>
+          
         </div>      
-      </fieldset>
+
       <!-- organisation details end -->
 
       <!-- password start -->
-      <fieldset class="govuk-fieldset govuk-!-margin-bottom-4">
-
 
         <label class="govuk-label govuk-label--m" for="password01">
           <%= t('.create_password') %>
@@ -98,7 +149,8 @@
                         <%= t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.passwords_upper') %>
                     </span>
           <%= display_error(@result, :password) %>
-          <%= f.password_field :password, autocomplete: "off", id: "password01", class: "govuk-input govuk-!-width-three-quarters"  %>
+          <% password_val = params[:anything].present? ? params[:anything][:password]:'' %>
+          <%= f.password_field :password, value:password_val, autocomplete: "off", id: "password01", class: "govuk-input govuk-!-width-three-quarters"  %>
         </div>
 
         <div class="govuk-form-group  <%= 'govuk-form-group--error' if @result.errors[:password_confirmation].any? %>">
@@ -114,7 +166,8 @@
                         <%= t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.passwords_dont_match') %>
                     </span>
           <%= display_error(@result, :password_confirmation) %>
-          <%= f.password_field :password_confirmation, autocomplete: "off", id: "password02", class: "govuk-input govuk-!-width-three-quarters"  %>
+          <% password_confirmation_val = params[:anything].present? ? params[:anything][:password_confirmation]:'' %>
+          <%= f.password_field :password_confirmation, value:password_confirmation_val, autocomplete: "off", id: "password02", class: "govuk-input govuk-!-width-three-quarters"  %>
         </div>
 
       </fieldset>

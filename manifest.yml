@@ -1,6 +1,6 @@
 ---
 applications:
-- name: dev-pmp-idam
+- name: ccs-pmp-idam-test
   memory: 1000M
   buildpacks:
   - nodejs_buildpack

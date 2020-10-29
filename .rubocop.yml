@@ -123,7 +123,8 @@ RSpec/ContextWording:
       - with
       - without
       - and
-
+Metrics/ParameterLists:
+  Max: 6
 Metrics/ModuleLength:
     Exclude:
         - 'spec/models/**/*'

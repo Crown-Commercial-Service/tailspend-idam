@@ -7,13 +7,14 @@ module Base
     before_action :authorize_user, except: %i[new create domain_not_on_whitelist]
 
     def new
-      @result = Cognito::SignUpUser.new(nil, nil, nil, nil)
+      @result = Cognito::SignUpUser.new(nil, nil, nil, nil, nil, nil)
       @result.errors.add(:base, flash[:error]) if flash[:error]
       @result.errors.add(:base, flash[:alert]) if flash[:alert]
     end
 
+    # rubocop:disable Metrics/AbcSize
     def create
-      @result = Cognito::SignUpUser.call(params[:anything][:email], params[:anything][:password], params[:anything][:password_confirmation], params[:anything][:organisation])
+      @result = Cognito::SignUpUser.call(params[:anything][:email], params[:anything][:password], params[:anything][:password_confirmation], params[:anything][:organisation], params[:anything][:first_name], params[:anything][:last_name])
       if @result.success?
         # set_flash_message! :notice, :signed_up
         # respond_with resource, location: after_sign_up_path_for(resource)
@@ -23,6 +24,7 @@ module Base
         fail_create(@result)
       end
     end
+    # rubocop:enable Metrics/AbcSize
 
     def domain_not_on_whitelist; end
 
