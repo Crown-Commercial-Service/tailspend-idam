@@ -74,9 +74,9 @@ module Cognito
         @error = I18n.t('base.users.sign_in_error')
         errors.add(:base, @error)
       end
-    rescue StandardError
-      @error = I18n.t('base.users.sign_in_error')
-      errors.add(:base, @error)
+    # rescue StandardError
+    #   @error = I18n.t('base.users.sign_in_error')
+    #   errors.add(:base, @error)
     end
 
     def login_user_cognito(client_id, client_secret)

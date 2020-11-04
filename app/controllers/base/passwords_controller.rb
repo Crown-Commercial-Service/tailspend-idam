@@ -28,7 +28,7 @@ module Base
 
       @response = Cognito::ConfirmPasswordReset.call(email, params[:password], params[:password_confirmation], params[:confirmation_code])
       if @response.success?
-        redirect_to base_password_reset_success_path
+        redirect_to home_path
       else
         render :edit, erorr: @response.error
       end

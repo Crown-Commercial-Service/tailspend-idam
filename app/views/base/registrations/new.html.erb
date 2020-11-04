@@ -149,8 +149,8 @@
                         <%= t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.passwords_upper') %>
                     </span>
           <%= display_error(@result, :password) %>
-          <% password_val = params[:anything].present? ? params[:anything][:password]:'' %>
-          <%= f.password_field :password, value:password_val, autocomplete: "off", id: "password01", class: "govuk-input govuk-!-width-three-quarters"  %>
+          
+          <%= f.password_field :password, autocomplete: "off", id: "password01", class: "govuk-input govuk-!-width-three-quarters"  %>
         </div>
 
         <div class="govuk-form-group  <%= 'govuk-form-group--error' if @result.errors[:password_confirmation].any? %>">
@@ -166,8 +166,8 @@
                         <%= t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.passwords_dont_match') %>
                     </span>
           <%= display_error(@result, :password_confirmation) %>
-          <% password_confirmation_val = params[:anything].present? ? params[:anything][:password_confirmation]:'' %>
-          <%= f.password_field :password_confirmation, value:password_confirmation_val, autocomplete: "off", id: "password02", class: "govuk-input govuk-!-width-three-quarters"  %>
+        
+          <%= f.password_field :password_confirmation, autocomplete: "off", id: "password02", class: "govuk-input govuk-!-width-three-quarters"  %>
         </div>
 
       </fieldset>

@@ -23,7 +23,8 @@ en:
     submit: Continue
   home:
     index:
-      heading: Print Marketplace
+      heading: Welcome to the Print Marketplace
+      heading_lead_2: Print Marketplace
       heading_2: Before you start
       lead_1: Use this service to sign into Print Marketplace 
       lead_2: To use this service you need to be a recognised public sector body listed in the
@@ -149,7 +150,7 @@ en:
           problems_signing_in: Problems signing in
           attributes:
             cog_sign_in:
-              enter_your_password: You must provide your password
+              enter_your_password: You must enter your password
               please_enter_a_valid_email_address: You must provide your email address in the correct format, like name@example.com
         ccs_patterns/home/cog_sign_in_password_prompt_change:
           attributes:
@@ -199,10 +200,10 @@ en:
             base:
               cookies_disabled: Your browser must have cookies enabled
             email:
-              blank: You must provide your email address in the correct format, like name@example.com
-              invalid: You must provide your email address in the correct format, like name@example.com
+              blank: You must enter your email address in the correct format, like name@example.com
+              invalid: You must enter your email address in the correct format, like name@example.com
             password:
-              blank: You must provide your password
+              blank: You must enter your password
         cognito/sign_up_user:
           attributes:
             first_name:

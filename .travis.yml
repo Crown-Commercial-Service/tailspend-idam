@@ -4,8 +4,8 @@ rvm:
 deploy:
   provider: cloudfoundry
   api: $API_URI
-  username: $USERNAME_DEPLOY
-  password: $PASSWORD_DEPLOY
+  username: $USERNAME
+  password: $PASSWORD
   organization: $ORG_NAME
   space: $SPACE_TYPE_DEVELOPMENT
   on:
