@@ -1,8 +1,8 @@
 import accessibleAutocomplete from 'accessible-autocomplete';
 
 var pmp_auto_complete = {
+  autocomplete_int: [],
   query: function(query, populateResults) {
-    console.log(query);
     if (query.length > 2) {
       jQuery.ajax({
         url: '/api/v1/organisation-search',
@@ -20,22 +20,25 @@ var pmp_auto_complete = {
 
   initiante_auto_complete: function() {
     var organisation_input = jQuery('#organisation');
-    jQuery('.clear-selected').hide();
+    if(organisation_input.attr('value').length == 0) {
+      jQuery('#selected-autocomplete-option').hide();
+    }
     organisation_input.attr('type', 'hidden');
-    var autoComplete = accessibleAutocomplete({
+    pmp_auto_complete.autocomplete_int = accessibleAutocomplete({
       element: document.querySelector('#my-autocomplete-container'),
       id: 'my-autocomplete',
       source: pmp_auto_complete.query,
       name: 'anything[organisation_auto_complete]',
       minLength: 2,
       defaultValue: organisation_input.attr('value'),
+      showNoOptionsFound: true,
       tNoResults: function() {
        return  "No results found";
       },
       onConfirm: function (query) {
         organisation_input.attr('value', query);
+        jQuery('#selected-autocomplete-option').show();
         jQuery('#selected-autocomplete-option p span').text(query);
-        //jQuery('.clear-selected').show();
       },
     });
   },
@@ -53,6 +56,5 @@ var pmp_auto_complete = {
 window.onload = function () {
   if($('#my-autocomplete-container').length > 0) {
     pmp_auto_complete.initiante_auto_complete();
-    pmp_auto_complete.clear_selected();
   }
 }
