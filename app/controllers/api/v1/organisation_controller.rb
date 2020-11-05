@@ -7,7 +7,12 @@ module Api
 
       def search
         result = Organisation.where(['lower(supllier_name) LIKE ?', "%#{params[:search].downcase}%"]).pluck(:supllier_name)
-        render json: result
+        Rails.logger.debug result.length
+        if result.length < 100
+          render json: result
+        else
+          render json: []
+        end
       end
     end
   end

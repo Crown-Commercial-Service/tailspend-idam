@@ -110,8 +110,7 @@
           <%= display_error(@result, :organisation) %>
           <% organisation_val = params[:anything].present? ? params[:anything][:organisation]:'' %>
           <div id="selected-autocomplete-option" class="govuk-!-width-three-quarters">
-            <p class="govuk-body govuk-!-font-weight-regular govuk-tag govuk-tag--green"><strong>Selected option: </strong><span><%= organisation_val %></span></p> 
-            <button href="#" class="clear-selected" >Clear selected organisation</button>
+            <p class="govuk-body govuk-!-font-weight-regular govuk-tag govuk-tag--green"><strong>Selected option: </strong><span><%= organisation_val %></span></p>
           </div>
           <div id="my-autocomplete-container" class="govuk-!-width-three-quarters"></div>
           

@@ -56,9 +56,9 @@ module Base
     def result_unsuccessful_path
       # sign_out
       if @result.needs_password_reset
-        redirect_to base_confirm_forgot_password_path(email:request.POST[:anything][:email])
+        redirect_to base_confirm_forgot_password_path(email: request.POST[:anything][:email])
       elsif @result.needs_confirmation
-        redirect_to base_users_confirm_path(email:request.POST[:anything][:email])
+        redirect_to base_users_confirm_path(email: request.POST[:anything][:email])
       else
         render :new
       end
