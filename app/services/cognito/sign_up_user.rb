@@ -10,9 +10,9 @@ module Cognito
               confirmation: { case_sensitive: true },
               length: { within: 10..200 }
     validates :first_name,
-              length: { minimum: 3 }
+              length: { minimum: 2 }
     validates :last_name,
-              length: { minimum: 3 }
+              length: { minimum: 2 }
     validates_format_of :password, with: /(?=.*[A-Z])/, message: :invalid_no_capitals
     validates_format_of :password, with: /(?=.*\W)/, message: :invalid_no_symbol
 
