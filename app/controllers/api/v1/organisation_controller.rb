@@ -8,7 +8,7 @@ module Api
       def search
         result = Organisation.where(['lower(supllier_name) LIKE ?', "%#{params[:search].downcase}%"]).pluck(:supllier_name)
         Rails.logger.debug result.length
-        if result.length < 100
+        if result.length < 200
           render json: result
         else
           render json: []

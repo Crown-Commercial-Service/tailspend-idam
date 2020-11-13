@@ -12,7 +12,7 @@ module Api
                                             user_pool_id: ENV['COGNITO_USER_POOL_ID'], # required
                                             username: params[:email], # required
                                           })
-          response = resp
+          response = ['User deleted']
         rescue StandardError => e
           Rails.logger.debug e
           response = ['There was an error']
@@ -31,7 +31,7 @@ module Api
                                                   password: params[:password], # required
                                                   permanent: true,
                                                 })
-          response = resp
+          response = ['Password updated']
         rescue StandardError => e
           Rails.logger.debug e
           response = ['There was an error']
@@ -48,7 +48,7 @@ module Api
                                                 user_pool_id: ENV['COGNITO_USER_POOL_ID'], # required
                                                 username: params[:email], # required
                                               })
-          response = resp
+          response = ['User confirmed']
         rescue StandardError => e
           Rails.logger.debug e
           response = ['There was an error']
@@ -97,7 +97,7 @@ module Api
                                             force_alias_creation: false,
                                             message_action: 'SUPPRESS',
                                           })
-          response = resp
+          response = ['User created']
         rescue StandardError => e
           Rails.logger.debug e
           response = ['There was an error']
