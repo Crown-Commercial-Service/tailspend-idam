@@ -33,7 +33,7 @@ var pmp_auto_complete = {
       defaultValue: organisation_input.attr('value'),
       showNoOptionsFound: true,
       tNoResults: function() {
-       return  "No results found";
+       return  "search for more specific term";
       },
       onConfirm: function (query) {
         organisation_input.attr('value', query);
