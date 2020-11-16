@@ -1,4 +1,4 @@
-<%= content_for :page_title, t(".heading") %>
+<%= content_for :page_title, t("base.passwords.edit.heading") %>
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
@@ -23,15 +23,15 @@
     </h1>
 
     <p class="govuk-body-l">
-      <%= t('base.passwords.edit..heading1') %>
+      <%= t('base.passwords.edit.heading1') %>
     </p>
 
     <p class="govuk-body-l">
-      <%= t('base.passwords.edit..lead1') %>
+      <%= t('base.passwords.edit.lead1') %>
     </p>
 
     <p class="govuk-body govuk-!-margin-bottom-7">
-      <%= t('base.passwords.edit..text_html') %>
+      <%= t('base.passwords.edit.text_html') %>
     </p>
 
     <p class="govuk-body-l">
@@ -44,7 +44,7 @@
 
         <div class="govuk-form-group <%= 'govuk-form-group--error' if @response.errors[:password].any? %>">
 
-          <p class="govuk-body govuk-!-margin-bottom-1"><%= t('.password') %>:</p>
+          <p class="govuk-body govuk-!-margin-bottom-1"><%= t('base.passwords.edit.password') %>:</p>
 
           <%= render '/layouts/password-strength', text: 'password01' %>
 
