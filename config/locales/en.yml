@@ -105,8 +105,10 @@ en:
             base:
               cookies_disabled: Your browser must have cookies enabled
             email:
-              blank: Enter an email address in the correct format, like name@example.com
-              invalid: Enter an email address in the correct format, like name@example.com
+              blank: You must enter your email address in the correct format, like
+                name@example.com
+              invalid: You must enter your email address in the correct format, like
+                name@example.com
             password:
               blank: You must enter your password
         cognito/sign_up_user:
