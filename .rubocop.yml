@@ -123,6 +123,10 @@ RSpec/ContextWording:
       - with
       - without
       - and
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
 Metrics/ParameterLists:
   Max: 6
 Metrics/ModuleLength:
