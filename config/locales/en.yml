@@ -105,8 +105,10 @@ en:
             base:
               cookies_disabled: Your browser must have cookies enabled
             email:
-              blank: Enter an email address in the correct format, like name@example.com
-              invalid: Enter an email address in the correct format, like name@example.com
+              blank: You must enter your email address in the correct format, like
+                name@example.com
+              invalid: You must enter your email address in the correct format, like
+                name@example.com
             password:
               blank: You must enter your password
         cognito/sign_up_user:
@@ -265,6 +267,14 @@ en:
       lead_1: Use this service to sign into Print Marketplace
       lead_2: To use this service you need to be a recognised public sector body listed
         in the
+  layouts:
+    footer:
+      crown_commercial_service_logo: The Crown Commercial Service logo
+      email: info@crowncommercial.gov.uk
+      email_aria_label: Email us for support with this service
+      email_or_call_html: Email %{email} or call %{phone} for support.
+      having_problems_with_this_service: Having problems with this service?
+      telephone: 0345 410 2222
   shared:
     error_summary:
       there_is_a_problem: There is a problem
