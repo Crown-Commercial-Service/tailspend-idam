@@ -84,6 +84,8 @@ en:
               blank: Enter your verification code
               invalid_format: Confirmation code must contain numeric characters only
               invalid_length: Confirmation code must be 6 characters
+            email:
+              blank: You must enter your email address in the correct format, like name@example.com
         cognito/respond_to_challenge:
           attributes:
             access_code:
