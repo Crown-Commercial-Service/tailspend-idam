@@ -8,10 +8,10 @@ module Api
         client = Aws::CognitoIdentityProvider::Client.new(region: ENV['COGNITO_AWS_REGION'])
         response = []
         begin
-          resp = client.admin_delete_user({
-                                            user_pool_id: ENV['COGNITO_USER_POOL_ID'], # required
-                                            username: params[:email], # required
-                                          })
+          client.admin_delete_user({
+                                     user_pool_id: ENV['COGNITO_USER_POOL_ID'], # required
+                                     username: params[:email], # required
+                                   })
           response = ['User deleted']
         rescue StandardError => e
           Rails.logger.debug e
@@ -25,12 +25,12 @@ module Api
         client = Aws::CognitoIdentityProvider::Client.new(region: ENV['COGNITO_AWS_REGION'])
         response = []
         begin
-          resp = client.admin_set_user_password({
-                                                  user_pool_id: ENV['COGNITO_USER_POOL_ID'], # required
-                                                  username: params[:email], # required
-                                                  password: params[:password], # required
-                                                  permanent: true,
-                                                })
+          client.admin_set_user_password({
+                                           user_pool_id: ENV['COGNITO_USER_POOL_ID'], # required
+                                           username: params[:email], # required
+                                           password: params[:password], # required
+                                           permanent: true,
+                                         })
           response = ['Password updated']
         rescue StandardError => e
           Rails.logger.debug e
@@ -44,10 +44,10 @@ module Api
         client = Aws::CognitoIdentityProvider::Client.new(region: ENV['COGNITO_AWS_REGION'])
         response = []
         begin
-          resp = client.admin_confirm_sign_up({
-                                                user_pool_id: ENV['COGNITO_USER_POOL_ID'], # required
-                                                username: params[:email], # required
-                                              })
+          client.admin_confirm_sign_up({
+                                         user_pool_id: ENV['COGNITO_USER_POOL_ID'], # required
+                                         username: params[:email], # required
+                                       })
           response = ['User confirmed']
         rescue StandardError => e
           Rails.logger.debug e
@@ -61,42 +61,42 @@ module Api
         client = Aws::CognitoIdentityProvider::Client.new(region: ENV['COGNITO_AWS_REGION'])
         response = []
         begin
-          resp = client.admin_create_user({
-                                            user_pool_id: ENV['COGNITO_USER_POOL_ID'], # required
-                                            username: params[:email], # required
-                                            user_attributes: [
-                                              {
-                                                name: 'email',
-                                                value: params[:email]
-                                              },
-                                              {
-                                                name: 'name',
-                                                value: params[:first_name]
-                                              },
-                                              {
-                                                name: 'family_name',
-                                                value: params[:last_name]
-                                              },
-                                              {
-                                                name: 'custom:organisation_name',
-                                                value: params[:organisation]
-                                              },
-                                              # Some user do not have phone number so we add a dummy number
-                                              # just so cognito can have a number cognito limitaions.
-                                              {
-                                                name: 'phone_number',
-                                                value: '+4408654876588'
-                                              },
-                                              {
-                                                name: 'email_verified',
-                                                value: params[:email_verified]
-                                              }
-                                            ],
+          client.admin_create_user({
+                                     user_pool_id: ENV['COGNITO_USER_POOL_ID'], # required
+                                     username: params[:email], # required
+                                     user_attributes: [
+                                       {
+                                         name: 'email',
+                                         value: params[:email]
+                                       },
+                                       {
+                                         name: 'name',
+                                         value: params[:first_name]
+                                       },
+                                       {
+                                         name: 'family_name',
+                                         value: params[:last_name]
+                                       },
+                                       {
+                                         name: 'custom:organisation_name',
+                                         value: params[:organisation]
+                                       },
+                                       # Some user do not have phone number so we add a dummy number
+                                       # just so cognito can have a number cognito limitaions.
+                                       {
+                                         name: 'phone_number',
+                                         value: '+4408654876588'
+                                       },
+                                       {
+                                         name: 'email_verified',
+                                         value: params[:email_verified]
+                                       }
+                                     ],
 
-                                            temporary_password: params[:password],
-                                            force_alias_creation: false,
-                                            message_action: 'SUPPRESS',
-                                          })
+                                     temporary_password: params[:password],
+                                     force_alias_creation: false,
+                                     message_action: 'SUPPRESS',
+                                   })
           response = ['User created']
         rescue StandardError => e
           Rails.logger.debug e
