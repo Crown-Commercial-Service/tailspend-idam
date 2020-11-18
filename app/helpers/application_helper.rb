@@ -35,4 +35,12 @@ module ApplicationHelper
 
     errors.details[attribute].first[:error].to_sym unless ERROR_TYPES.key?(errors.details[attribute].first[:error])
   end
+
+  def page_title
+    title = %i[page_title].map do |title_bit|
+      content_for(title_bit)
+    end
+    title += [t('layouts.application.title')]
+    title.reject(&:blank?).map(&:strip).join(': ')
+  end
 end
