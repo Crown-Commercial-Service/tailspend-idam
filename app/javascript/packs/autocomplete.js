@@ -26,7 +26,7 @@ var pmp_auto_complete = {
     organisation_input.attr('type', 'hidden');
     pmp_auto_complete.autocomplete_int = accessibleAutocomplete({
       element: document.querySelector('#my-autocomplete-container'),
-      id: 'my-autocomplete',
+      id: 'organisation',
       source: pmp_auto_complete.query,
       name: 'anything[organisation_auto_complete]',
       minLength: 2,
