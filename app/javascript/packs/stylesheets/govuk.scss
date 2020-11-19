@@ -195,3 +195,11 @@ abbr[title] {
 .ga-support-mailto {
   color: #007194 !important;
 }
+
+.govuk-header__navigation .govuk-header__navigation-item {
+  border-bottom: none;
+}
+
+.js-enabled .govuk-header__navigation {
+  display: inline-block;
+}

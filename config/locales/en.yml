@@ -270,6 +270,8 @@ en:
       lead_2: To use this service you need to be a recognised public sector body listed
         in the
   layouts:
+    application:
+      title: Crown Commercial Services PMP IDAM solution.
     footer:
       crown_commercial_service_logo: The Crown Commercial Service logo
       email: info@crowncommercial.gov.uk
