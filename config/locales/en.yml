@@ -85,7 +85,8 @@ en:
               invalid_format: Confirmation code must contain numeric characters only
               invalid_length: Confirmation code must be 6 characters
             email:
-              blank: You must enter your email address in the correct format, like name@example.com
+              blank: You must enter your email address in the correct format, like
+                name@example.com
         cognito/respond_to_challenge:
           attributes:
             access_code:
@@ -120,15 +121,16 @@ en:
               not_on_whitelist: You must use a public sector email
             first_name:
               blank: Enter your first name
-              too_short: First name must be 3 characters or more
+              too_short: First name must be 2 characters or more
             last_name:
               blank: Enter your last name
-              too_short: Last name must be 3 characters or more
+              too_short: Last name must be 2 characters or more
             organisation:
               blank: Enter your organisation
             password:
               blank: Enter a password
               invalid_no_capitals: Password must include a capital letter
+              invalid_no_number: Password must include a number
               invalid_no_symbol: Password must include a symbol (for example ? ! £
                 %)
               too_short: The password you entered is not long enough, it needs to
