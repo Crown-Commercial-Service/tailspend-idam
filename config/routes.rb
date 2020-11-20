@@ -39,4 +39,8 @@ Rails.application.routes.draw do
     get '/users/challenge', to: 'users#challenge_new'
     post '/users/challenge', to: 'users#challenge'
   end
+
+  get '/404', to: 'errors#not_found'
+  get '/422', to: 'errors#unacceptable'
+  get '/500', to: 'errors#internal_error'
 end

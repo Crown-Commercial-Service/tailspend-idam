@@ -51,6 +51,8 @@ module PmpIdam
           ENV[env_key.to_s] = env_value.to_s
         end
       end
+
+      config.exceptions_app = routes
     end
   end
 end

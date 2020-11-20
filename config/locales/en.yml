@@ -256,6 +256,18 @@ en:
     sign_in: Sign in
     start_now: Start now
     submit: Continue
+  errors:
+    internal_error:
+      there_is_a_problem: Sorry, there is a problem with the service
+      try_again_later: Try again later.
+    not_found:
+      check_pasted_address: If you pasted the web address, check you copied the entire
+        address.
+      check_web_address: If you typed the web address, check it is correct.
+      page_not_found: Page not found
+    unacceptable:
+      changes_rejected: Sorry, the change you wanted was rejected
+      explanation: Maybe you tried to change something you didn’t have access to.
   home:
     index:
       heading: Welcome to the Print Marketplace
