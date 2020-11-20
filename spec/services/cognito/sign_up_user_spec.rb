@@ -167,7 +167,7 @@ RSpec.describe Cognito::SignUpUser do
 
         it 'has the correct error message' do
           sign_up_user.valid?
-          expect(sign_up_user.errors[:password].first).to eq 'Password must include a symbol (for example ? ! £ %)'
+          expect(sign_up_user.errors[:password].first).to eq 'Password must include a symbol (for example ? ! & %)'
         end
       end
 

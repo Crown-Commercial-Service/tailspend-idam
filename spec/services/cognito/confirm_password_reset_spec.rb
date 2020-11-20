@@ -62,7 +62,7 @@ RSpec.describe Cognito::ConfirmPasswordReset do
 
         it 'has the correct error message' do
           confirm_password_reset.valid?
-          expect(confirm_password_reset.errors[:password].first).to eq 'Password must include a symbol (for example ? ! £ %)'
+          expect(confirm_password_reset.errors[:password].first).to eq 'Password must include a symbol (for example ? ! & %)'
         end
       end
 

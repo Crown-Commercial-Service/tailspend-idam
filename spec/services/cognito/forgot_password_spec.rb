@@ -22,7 +22,7 @@ RSpec.describe Cognito::ForgotPassword do
         end
 
         it 'has the correct error message' do
-          expect(forgot_password.error).to eq 'Enter your email address in the correct format, like name@example.com'
+          expect(forgot_password.error).to eq 'You must enter your email address in the correct format, like name@example.com'
         end
       end
 
@@ -34,7 +34,7 @@ RSpec.describe Cognito::ForgotPassword do
         end
 
         it 'has the correct error message' do
-          expect(forgot_password.error).to eq 'Enter your email address in the correct format, like name@example.com'
+          expect(forgot_password.error).to eq 'You must enter your email address in the correct format, like name@example.com'
         end
       end
     end
