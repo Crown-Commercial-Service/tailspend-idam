@@ -14,7 +14,7 @@ module Cognito
     validates :last_name,
               length: { minimum: 2 }
     validates_format_of :password, with: /(?=.*[A-Z])/, message: :invalid_no_capitals
-    validates_format_of :password, with: /(?=.*\W)/, message: :invalid_no_symbol
+    validates_format_of :password, with: /([&?!%])/, message: :invalid_no_symbol
 
     validate :domain_in_whitelist
     attr_reader :email, :first_name, :last_name, :organisation, :password, :password_confirmation
