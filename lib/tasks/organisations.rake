@@ -2,34 +2,62 @@
 namespace :organisations do
   desc "Import organisations into database"
   task :import => :environment do
-    spreadsheet_path = if Rails.env.test?
-                         'data/test_organisations.xlsx'
-                       else
-                         'data/Customers.xlsx'
-                       end
-
-    xlsx = Roo::Excelx.new(spreadsheet_path)
-    insert_data = []
-    xlsx.sheet(1).each_row_streaming(pad_cells: true, offset: 1) do |row|
-      list = { 
-        'supllier_name': row[1].value,
-        'active': row[11].value != 'Active'? false:true, 
-        'created_at': DateTime.current,
-        'updated_at': DateTime.current
-      }
-      insert_data.push(list)
-    end
-    Organisation.delete_all
-    Organisation.insert_all(insert_data)
+    p 'Importing organisations from Salesforce'
+    import_organisations
+    p 'Removing duplicate Organisations from database'
+    remove_duplicates
   end
 
-  task :remove_duplicates => :environment do
-    delete = 'DELETE FROM
-                organisations a
-                  USING organisations b
-              WHERE
-                a.id < b.id
-              AND a.supllier_name = b.supllier_name;'
+  def import_organisations
+    csv = Roo::CSV.new(spreadsheet_path, { csv_options: { liberal_parsing: true } })
+    insert_data = []
+  
+    csv.column(1)[1..-1].each do |supplier_name|
+      insert_data << { 
+                        'supplier_name': format_supplier_name(supplier_name),
+                        'active': !supplier_inactive?(supplier_name),
+                        'created_at': DateTime.current,
+                        'updated_at': DateTime.current
+                      }
+    end
+
+    Organisation.delete_all
+    Organisation.insert_all(insert_data)
+  rescue StandardError => e
+    Rails.logger.debug e
+    Rollbar.log('error', e)
+  end
+
+  def remove_duplicates
+    query = <<-SQL
+      DELETE FROM
+        organisations a
+          USING organisations b
+      WHERE
+        a.id < b.id
+        AND a.supplier_name = b.supplier_name;
+    SQL
+
+    ActiveRecord::Base.connection.execute(query)
+  rescue StandardError => e
+    Rails.logger.debug e
+    Rollbar.log('error', e)
+  end
+
+  def spreadsheet_path
+    if Rails.env.test?
+      Rails.root.join('data', 'test_organisations.csv')
+    else
+      URI.open(ENV['ORGANISATIONS_CSV_BLOB'])
+    end
+  end
+
+  def format_supplier_name(supplier_name)
+    supplier_name.force_encoding('UTF-8').squish
+  end
+
+  def supplier_inactive?(supplier_name)
+    supplier_name.downcase.starts_with?('(closed)') || supplier_name == '*REDACTED*'
   end
 end
 # rubocop:enable all
