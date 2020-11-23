@@ -2,7 +2,13 @@
 namespace :organisations do
   desc "Import organisations into database"
   task :import => :environment do
-    xlsx = Roo::Excelx.new('data/Customers.xlsx')
+    spreadsheet_path = if Rails.env.test?
+                         'data/test_organisations.xlsx'
+                       else
+                         'data/Customers.xlsx'
+                       end
+
+    xlsx = Roo::Excelx.new(spreadsheet_path)
     insert_data = []
     xlsx.sheet(1).each_row_streaming(pad_cells: true, offset: 1) do |row|
       list = { 
