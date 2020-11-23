@@ -8,10 +8,10 @@ deploy:
   username: $USERNAME
   password: $PASSWORD
   organization: $ORG_NAME
-  space: $SPACE_TYPE_DEVELOPMENT
+  space: $SPACE_TYPE_PRODUCTION
   on:
     repo: Crown-Commercial-Service/pmp-idam
-    branch: develop
+    branch: main
 env:
   global:
     - RAILS_ENV=test
