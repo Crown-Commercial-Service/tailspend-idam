@@ -22,29 +22,26 @@
           </label>
 
           <span id="email-hint" class="govuk-hint govuk-!-width-three-quarters">
-                        <%= t('.email_hint') %>
-                    </span>
+            <%= t('.email_hint') %>
+          </span>
 
           <span id="email-error" class="govuk-error-message govuk-visually-hidden ccs-e-msg">
                         <%= t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.email_format') %>
                     </span>
           <%= display_error(@result, :email) %>
-          <% email_val = params[:anything].present? ? params[:anything][:email]:'' %>
-          <%= f.email_field :email, value:email_val, autofocus: true, autocomplete: "off", class:"govuk-input govuk-!-width-three-quarters", id: "email", spellcheck: false, required: true, aria: {describedby: "email-hint"} %>
+          <% email_val = params[:anything].present? ? params[:anything][:email] : '' %>
+          <%= f.email_field :email, value: email_val, autofocus: true, autocomplete: "off", class:"govuk-input govuk-!-width-three-quarters", id: "email", spellcheck: false, required: true, aria: {describedby: "email-hint"} %>
         </div>
 
-        
 
-
-        
         <div class="govuk-form-group <%= 'govuk-form-group--error' if @result.errors[:first_name].any? %>">
           <label class="govuk-label" for="first_name">
             <%= t('.first_name') %>
           </label>
 
           <span id="first_name-hint" class="govuk-hint govuk-!-width-three-quarters">
-                        <%= t('.first_name_hint') %>
-                    </span>
+            <%= t('.first_name_hint') %>
+          </span>
 
           <span id="first_name-error" class="govuk-error-message govuk-visually-hidden ccs-e-msg">
                         <%= t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.first_name_format') %>
@@ -61,39 +58,33 @@
           </label>
 
           <span id="last_name-hint" class="govuk-hint govuk-!-width-three-quarters">
-                        <%= t('.last_name_hint') %>
-                    </span>
+            <%= t('.last_name_hint') %>
+          </span>
 
           <span id="last_name-error" class="govuk-error-message govuk-visually-hidden ccs-e-msg">
                         <%= t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.last_name_format') %>
                     </span>
           <%= display_error(@result, :last_name) %>
-          <% last_name_val = params[:anything].present? ? params[:anything][:last_name]:'' %>
-          <%= f.text_field :last_name, value:last_name_val, class:"govuk-input govuk-!-width-three-quarters", id: "last_name", spellcheck: false, required: true, aria: {describedby: "last_name-hint"} %>
+          <% last_name_val = params[:anything].present? ? params[:anything][:last_name] : '' %>
+          <%= f.text_field :last_name, value: last_name_val, class:"govuk-input govuk-!-width-three-quarters", id: "last_name", spellcheck: false, required: true, aria: {describedby: "last_name-hint"} %>
         </div>
 
 
         <div class="govuk-form-group <%= 'govuk-form-group--error' if @result.errors[:organisation].any? %>">
-          <label class="govuk-label" for="organisation">
-            <%= t('.organisation') %>
-          </label>
-
+          <%= f.label :organisation, t('.organisation'), class: 'govuk-label', for: 'organisation-input'%>
           <span id="organisation-hint" class="govuk-hint govuk-!-width-three-quarters">
-                        <%= t('.organisation_hint') %>
-                    </span>
+            <%= t('.organisation_hint') %>
+          </span>
 
-          <span id="organisation-error" class="govuk-error-message govuk-visually-hidden ccs-e-msg">
-                        <%= t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.organisation_format') %>
-                    </span>
           <%= display_error(@result, :organisation) %>
-          <% organisation_val = params[:anything].present? ? params[:anything][:organisation]:'' %>
-          <div id="selected-autocomplete-option" class="govuk-!-width-three-quarters">
+          <% organisation_val = params[:anything].present? ? params[:anything][:organisation] : '' %>
+          <%= f.hidden_field :organisation, value: organisation_val, id: 'organisation'%>
+
+          <div id="selected-autocomplete-option" class="govuk-!-width-three-quarters" <%= "hidden" unless organisation_val.present? %>>
             <p class="govuk-body govuk-!-font-weight-regular govuk-tag govuk-tag--green"><strong>Selected option: </strong><span><%= organisation_val %></span></p>
           </div>
-          <div id="my-autocomplete-container" class="govuk-!-width-three-quarters"></div>
-          
-          <%= f.text_field :organisation, value:organisation_val, class:"govuk-input govuk-!-width-three-quarters", id: "organisation", spellcheck: false, required: true, aria: {describedby: "organisation-hint"} %>
-          
+          <div id="my-autocomplete-container" class="govuk-!-width-three-quarters">
+          </div>
         </div>      
 
       <!-- organisation details end -->
@@ -106,7 +97,7 @@
 
         <div class="govuk-form-group <%= 'govuk-form-group--error' if @result.errors[:password].any? %>">
 
-          <p class="govuk-body govuk-!-margin-bottom-1">Your password must have:</p>
+          <p class="govuk-body govuk-!-margin-bottom-1"><%= t('.password') %></p>
 
           <%= render '/layouts/password-strength', text: 'password01' %>
 

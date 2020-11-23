@@ -7,7 +7,8 @@ en:
           attributes:
             please_enter_a_user_not_found_email_address: If the email exists you will
               recieve and email.
-            please_enter_a_valid_email_address: You must enter your email address in the correct format, like name@example.com
+            please_enter_a_valid_email_address: You must enter your email address
+              in the correct format, like name@example.com
         ccs_patterns/home/cog_forgot_password_reset:
           attributes:
             confirm_new_password: Enter your new password
@@ -16,7 +17,8 @@ en:
               to be at least 10 characters long
             password_must_match: Passwords don't match
             passwords_dont_match: Passwords don't match
-            passwords_stronger: Password must include a symbol (for example ? ! & %)
+            passwords_stronger: Password must include a symbol (for example ? ! &
+              %)
             passwords_upper: Password must include a capital letter
         ccs_patterns/home/cog_register:
           attributes:
@@ -33,7 +35,8 @@ en:
             password_must_be: The password you entered is not long enough, it needs
               to be at least 10 characters long
             passwords_dont_match: Passwords don't match
-            passwords_stronger: Password must include a symbol (for example ? ! & %)
+            passwords_stronger: Password must include a symbol (for example ? ! &
+              %)
             passwords_upper: Password must include a capital letter
             phone_number_format: You need to provide a UK phone number
         ccs_patterns/home/cog_register_enter_confirmation_code:
@@ -56,7 +59,8 @@ en:
               to be at least 10 characters long
             password_must_match: Passwords don't match
             passwords_dont_match: Passwords don't match
-            passwords_stronger: Password must include a symbol (for example ? ! & %)
+            passwords_stronger: Password must include a symbol (for example ? ! &
+              %)
             passwords_uppper: Password must include a capital letter
         cognito/confirm_password_reset:
           attributes:
@@ -66,7 +70,8 @@ en:
               blank: Enter a password
               invalid_no_capitals: Password must include a capital letter
               invalid_no_number: Password must include a number
-              invalid_no_symbol: Password must include a symbol (for example ? ! & %)
+              invalid_no_symbol: Password must include a symbol (for example ? ! &
+                %)
               too_short: The password you entered is not long enough, it needs to
                 be at least 10 characters long
             password_confirmation:
@@ -91,7 +96,8 @@ en:
             new_password:
               blank: Enter a password
               invalid_no_capitals: Password must include a capital letter
-              invalid_no_symbol: Password must include a symbol (for example ? ! & %)
+              invalid_no_symbol: Password must include a symbol (for example ? ! &
+                %)
               too_short: The password you entered is not long enough, it needs to
                 be at least 10 characters long
             new_password_confirmation:
@@ -124,8 +130,9 @@ en:
             password:
               blank: Enter a password
               invalid_no_capitals: Password must include a capital letter
-              invalid_no_symbol: Password must include a symbol (for example ? ! & %)
               invalid_no_number: Password must include a number
+              invalid_no_symbol: Password must include a symbol (for example ? ! &
+                %)
               too_short: The password you entered is not long enough, it needs to
                 be at least 10 characters long
             password_confirmation:
@@ -196,6 +203,7 @@ en:
           this
         organisation_hint: Enter your organisation's full name. We will verify your
           organisation name to confirm you can use this service.
+        password: 'Your password must have:'
         password_must_be: The password you entered is not long enough, it needs to
           be at least 10 characters long
         passwords_dont_match: Passwords don't match
