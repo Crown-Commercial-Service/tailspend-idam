@@ -5,8 +5,8 @@ en:
       models:
         ccs_patterns/home/cog_forgot_password_request:
           attributes:
-            please_enter_a_user_not_found_email_address: If the email exists you will
-              recieve and email.
+            please_enter_a_user_not_found_email_address: You must enter your email
+              address in the correct format, like name@example.com
             please_enter_a_valid_email_address: You must enter your email address
               in the correct format, like name@example.com
         ccs_patterns/home/cog_forgot_password_reset:
