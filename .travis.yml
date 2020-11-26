@@ -6,8 +6,8 @@ deploy:
   edge: true
   provider: cloudfoundry
   api: $API_URI
-  username: $USERNAME_STAGE
-  password: $PASSWORD_STAGE
+  username: $USERNAME
+  password: $PASSWORD
   organization: $ORG_NAME
   space: $SPACE_TYPE_STAGING
   on:
