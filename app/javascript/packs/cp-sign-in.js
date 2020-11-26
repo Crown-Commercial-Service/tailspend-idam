@@ -2,7 +2,7 @@ function cReg(){
     return new RegExp ("^.{10,}");
 }
 function pReg(){
-    return new RegExp("^(?=.*?[#?!@£$%^&*-])");
+    return new RegExp("^(?=.*?[#?!@&$%^&*-])");
 }
 function uReg(){
     return new RegExp("^(?=.*?[A-Z])");

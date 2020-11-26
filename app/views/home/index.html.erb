@@ -1,8 +1,12 @@
+<%= content_for :page_title, t('.heading') %>
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">
       <%= t('.heading') %>
     </h1>
+    <h2 class="govuk-heading-l">
+      <%= t('.heading_lead_2') %>
+    </h2>
     <p class="govuk-body">
       <%= t('.lead_1') %>
     </p>
@@ -12,7 +16,7 @@
     <p class="govuk-body">
       <%= t('.lead_2') %> <a href="https://assets.crowncommercial.gov.uk/wp-content/uploads/RM3788-Contract-Notice-Authorised-Customer-List.docx" title="authrized customers list in .docx format">authorised customer list</a>
     </p>
-    <a href="https://my-uat.print-marketplace.co.uk/?idp_hint=ccs" titile="Login to print market place" class="govuk-button govuk-!-padding-left-7 govuk-!-padding-right-7 govuk-!-margin-bottom-8">Sign in to Print Marketplace</a>
+    <a href="<%= ENV['PRINT_MARKET_PLACE_KEYCLOAK_URL'] %>" title="Login to print market place" class="govuk-button govuk-!-padding-left-7 govuk-!-padding-right-7 govuk-!-margin-bottom-8">Sign in to Print Marketplace</a>
     <!--div class="govuk-grid-column-two-thirds pmp-logo">
       <a href="#" title="Login to Print market place">
         <svg id="Layer_1" data-name="Layer 1"

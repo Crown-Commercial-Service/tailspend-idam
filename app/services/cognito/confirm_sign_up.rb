@@ -6,11 +6,11 @@ module Cognito
     attr_reader :email, :confirmation_code
     attr_accessor :user
 
-    validates_presence_of :email, :confirmation_code
     validates :confirmation_code,
               presence: true,
               format: { with: /\A\d+\z/, message: :invalid_format },
               length: { is: 6, message: :invalid_length }
+    validates_presence_of :email, :confirmation_code
 
     def initialize(email, confirmation_code)
       super()

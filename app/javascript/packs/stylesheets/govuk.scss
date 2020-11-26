@@ -192,13 +192,25 @@ abbr[title] {
   background-color: #006771;
 }
 
-.clear-selected {
-  background-color: #f3f2f1;
-  padding: 5px;
-  text-decoration: none;
-  color: #0b0c0c;
-  font-weight: 700;
-  margin-bottom: 10px;
-  margin-top: 5px;
-  border: 0px;
+.ga-support-mailto {
+  color: #007194 !important;
+}
+
+.govuk-header__navigation .govuk-header__navigation-item {
+  border-bottom: none;
+}
+
+.js-enabled .govuk-header__navigation {
+  display: inline-block;
+}
+
+.error-box {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.error-content {
+  flex: 1 0 auto;
+  /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
 }

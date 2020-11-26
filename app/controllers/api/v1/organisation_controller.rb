@@ -6,8 +6,13 @@ module Api
       protect_from_forgery with: :exception
 
       def search
-        result = Organisation.where(['lower(supllier_name) LIKE ?', "%#{params[:search].downcase}%"]).pluck(:supllier_name)
-        render json: result
+        result = Organisation.find_organisation(params[:search])
+        Rails.logger.debug result.length
+        if result.length < 200
+          render json: { supplier_names: result, no_results: result.length.zero? }
+        else
+          render json: { supplier_names: [], no_results: false }
+        end
       end
     end
   end

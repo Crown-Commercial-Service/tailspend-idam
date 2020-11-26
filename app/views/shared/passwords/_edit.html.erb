@@ -1,37 +1,23 @@
-<%= content_for :page_title, t(".heading") %>
+<%= content_for :page_title, t("base.passwords.edit.heading") %>
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <div id="ccs-error-sum" class="govuk-error-summary  <%= 'govuk-visually-hidden' unless @response.errors.any? %>  ccs-e-msg" aria-labelledby="error-summary-title" role="alert" data-module="error-summary">
-      <h2 class="govuk-error-summary__title" id="error-summary-title">
-        <%= t('common.error_summary_title') %>
-      </h2>
-      <div class="govuk-error-summary__body">
-        <ul id="ccs-error-sum-list" class="govuk-list govuk-error-summary__list">
-          <% @response.errors.keys.each do |attribute| %>
-            <li>
-              <%= link_to @response.errors[attribute].first, "##{error_id(attribute)}" %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-
+    <%= render partial: 'shared/error_summary', locals: { errors: @response.errors } %>
 
     <h1 class="govuk-heading-xl">
       <%= t('base.passwords.edit.heading') %>
     </h1>
 
     <p class="govuk-body-l">
-      <%= t('base.passwords.edit..heading1') %>
+      <%= t('base.passwords.edit.heading1') %>
     </p>
 
     <p class="govuk-body-l">
-      <%= t('base.passwords.edit..lead1') %>
+      <%= t('base.passwords.edit.lead1') %>
     </p>
 
     <p class="govuk-body govuk-!-margin-bottom-7">
-      <%= t('base.passwords.edit..text_html') %>
+      <%= t('base.passwords.edit.text_html') %>
     </p>
 
     <p class="govuk-body-l">
@@ -44,7 +30,7 @@
 
         <div class="govuk-form-group <%= 'govuk-form-group--error' if @response.errors[:password].any? %>">
 
-          <p class="govuk-body govuk-!-margin-bottom-1"><%= t('.password') %>:</p>
+          <p class="govuk-body govuk-!-margin-bottom-1"><%= t('base.passwords.edit.password') %>:</p>
 
           <%= render '/layouts/password-strength', text: 'password01' %>
 
@@ -89,7 +75,7 @@
         </div>
 
         <div class="govuk-form-group <%= 'govuk-form-group--error' if @response.errors[:confirmation_code].any? %>">
-          <label class="govuk-label" for="password02">
+          <label class="govuk-label" for="confirmation-code">
             <%= t('base.passwords.edit.verify_code') %>
           </label>
 
