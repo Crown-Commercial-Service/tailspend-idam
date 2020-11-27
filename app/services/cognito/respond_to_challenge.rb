@@ -6,14 +6,13 @@ module Cognito
     attr_reader :challenge_name, :username, :session, :new_password, :new_password_confirmation, :access_code, :roles
 
     # new password validations
-    validates :new_password,
-              presence: true,
-              confirmation: { case_sensitive: true },
-              length: { within: 8..200 },
-              if: :new_password_challenge?
-    validates_presence_of :new_password_confirmation, if: :new_password_challenge?
-    validates_format_of :new_password, with: /(?=.*[A-Z])/, message: :invalid_no_capitals, if: :new_password_challenge?
-    validates_format_of :new_password, with: /(?=.*\W)/, message: :invalid_no_symbol, if: :new_password_challenge?
+    validates :new_password, presence: true, length: { within: 10..200 }, if: :new_password_challenge?
+    validates :new_password_confirmation, presence: true, if: :new_password_challenge?
+    validates :new_password, confirmation: { case_sensitive: true }, if: :new_password_challenge?
+
+    validates :new_password, format: { with: /(?=.*[A-Z])/, message: :invalid_no_capitals }, if: :new_password_challenge?
+    validates :new_password, format: { with: /(?=.*[0-9])/, message: :invalid_no_number }, if: :new_password_challenge?
+    validate :validate_symbols, if: :new_password_challenge?
 
     # sms mfa validations
     validates :access_code,
@@ -67,6 +66,14 @@ module Cognito
 
     def sms_mfa_challenge?
       challenge_name == 'SMS_MFA'
+    end
+
+    def validate_symbols
+      password_symbols = new_password.delete('0-9a-zA-Z')
+
+      return if password_symbols.blank?
+
+      errors.add(:new_password, :invalid_symbol) unless password_symbols.match?(PasswordValidator::VALID_SYMBOLS)
     end
 
     def respond_to_challenge

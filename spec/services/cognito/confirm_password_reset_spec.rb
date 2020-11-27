@@ -6,6 +6,8 @@ RSpec.describe Cognito::ConfirmPasswordReset do
     let(:password) { 'Password123!' }
     let(:password_confirmation) { password }
     let(:confirmation_code) { '123456' }
+    let(:valid_symbols_sample) { '=+-^$*.[]{}()?"!@#%&/\\,><\':;|_~`'.split('').sample(5).join }
+    let(:invalid_symbols_sample) { '£èöíäü'.split('').sample(2).join }
 
     context 'when all attributes are valid' do
       it 'is valid' do
@@ -56,13 +58,42 @@ RSpec.describe Cognito::ConfirmPasswordReset do
       context 'and it does not contain a symbol' do
         let(:password) { 'Password1234' }
 
+        it 'is valid' do
+          expect(confirm_password_reset.valid?).to be true
+        end
+      end
+
+      context 'and it cointains valid symbols' do
+        let(:password) { ("Password1234#{valid_symbols_sample}").split('').shuffle.join }
+
+        it 'is valid' do
+          expect(confirm_password_reset.valid?).to be true
+        end
+      end
+
+      context 'and it contains 1 invalid symbol' do
+        let(:password) { ("Password1234#{valid_symbols_sample}#{invalid_symbols_sample[0]}").split('').shuffle.join }
+
         it 'is not valid' do
           expect(confirm_password_reset.valid?).to be false
         end
 
         it 'has the correct error message' do
           confirm_password_reset.valid?
-          expect(confirm_password_reset.errors[:password].first).to eq 'Password must include a symbol (for example ? ! & %)'
+          expect(confirm_password_reset.errors[:password].first).to eq 'Your password includes invalid symbols'
+        end
+      end
+
+      context 'and it contains multiple invalid symbols' do
+        let(:password) { ("Password1234#{valid_symbols_sample}#{invalid_symbols_sample}").split('').shuffle.join }
+
+        it 'is not valid' do
+          expect(confirm_password_reset.valid?).to be false
+        end
+
+        it 'has the correct error message' do
+          confirm_password_reset.valid?
+          expect(confirm_password_reset.errors[:password].first).to eq 'Your password includes invalid symbols'
         end
       end
 
@@ -91,7 +122,7 @@ RSpec.describe Cognito::ConfirmPasswordReset do
 
         it 'has the correct error message' do
           confirm_password_reset.valid?
-          expect(confirm_password_reset.errors[:password_confirmation].first).to eq 'Enter your confirm password'
+          expect(confirm_password_reset.errors[:password_confirmation].first).to eq 'Enter your confirmation password'
         end
       end
 
@@ -104,7 +135,7 @@ RSpec.describe Cognito::ConfirmPasswordReset do
 
         it 'has the correct error message' do
           confirm_password_reset.valid?
-          expect(confirm_password_reset.errors[:password_confirmation].first).to eq 'Passwords don\'t match'
+          expect(confirm_password_reset.errors[:password_confirmation].first).to eq 'Enter your confirmation password'
         end
       end
 
