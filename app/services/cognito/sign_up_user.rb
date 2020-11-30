@@ -18,7 +18,7 @@ module Cognito
 
     def initialize(email, password, password_confirmation, organisation, first_name, last_name)
       super()
-      @email = email
+      @email = email.try(:downcase)
       @password = password
       @password_confirmation = password_confirmation
       @organisation = organisation
