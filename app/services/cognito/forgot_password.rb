@@ -8,7 +8,7 @@ module Cognito
     validates :email, format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i }
 
     def initialize(email)
-      @email = email
+      @email = email.try(:downcase)
       @error = nil
       super()
     end
