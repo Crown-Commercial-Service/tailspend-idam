@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   get '/', to: 'home#index', as: :home
+  get '/accessibility-statement', to: 'home#accessibility_statement'
 
   # API endpoints here
   namespace :api do
