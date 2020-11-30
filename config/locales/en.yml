@@ -70,12 +70,11 @@ en:
               blank: Enter a password
               invalid_no_capitals: Password must include a capital letter
               invalid_no_number: Password must include a number
-              invalid_no_symbol: Password must include a symbol (for example ? ! &
-                %)
+              invalid_symbol: Your password includes invalid symbols
               too_short: The password you entered is not long enough, it needs to
                 be at least 10 characters long
             password_confirmation:
-              blank: Enter your confirm password
+              blank: Enter your confirmation password
               confirmation: Passwords don't match
           user_not_found: Please check the information you have entered
         cognito/confirm_sign_up:
@@ -96,12 +95,12 @@ en:
             new_password:
               blank: Enter a password
               invalid_no_capitals: Password must include a capital letter
-              invalid_no_symbol: Password must include a symbol (for example ? ! &
-                %)
+              invalid_no_number: Password must include a number
+              invalid_symbol: Your password includes invalid symbols
               too_short: The password you entered is not long enough, it needs to
                 be at least 10 characters long
             new_password_confirmation:
-              blank: Enter your confirm password
+              blank: Enter your confirmation password
               confirmation: Passwords don't match
         cognito/sign_in_user:
           attributes:
@@ -131,12 +130,11 @@ en:
               blank: Enter a password
               invalid_no_capitals: Password must include a capital letter
               invalid_no_number: Password must include a number
-              invalid_no_symbol: Password must include a symbol (for example ? ! &
-                %)
+              invalid_symbol: Your password includes invalid symbols
               too_short: The password you entered is not long enough, it needs to
                 be at least 10 characters long
             password_confirmation:
-              blank: Enter your confirm password
+              blank: Enter your confirmation password
               confirmation: Passwords don't match
             phone_number:
               blank: Enter your Phone number
