@@ -17,6 +17,13 @@
         <%= render partial: '/layouts/logotype', locals: { alt_tex: t('.crown_commercial_service_logo') } %>
       </span>
     </div>
+
+    <nav class="govuk-grid-column-two-thirds" aria-label="Footer navigation">
+      <div class="govuk-footer__meta">
+        <div class="govuk-footer__meta-item">
+          <%= link_to t(".accessibility_statement_link"), accessibility_statement_path, class: "ccs-footer__links ccs-no-print", aria: { label: t('.accessibility_statement_link_aria_label') } %>
+        </div>
+      </div>
+    </nav>
   </div>
 </div>
-

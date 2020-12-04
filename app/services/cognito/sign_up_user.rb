@@ -3,19 +3,14 @@
 module Cognito
   class SignUpUser < BaseService
     include ActiveModel::Validations
-    validates_presence_of :email, :first_name, :last_name, :organisation, :password, :password_confirmation
+    validates_presence_of :email, :first_name, :last_name, :organisation
 
-    validates :password,
-              presence: true,
-              confirmation: { case_sensitive: true },
-              length: { within: 10..200 }
     validates :first_name,
               length: { minimum: 2 }
     validates :last_name,
               length: { minimum: 2 }
-    validates_format_of :password, with: /(?=.*[A-Z])/, message: :invalid_no_capitals
-    validates_format_of :password, with: /(?=.*\W)/, message: :invalid_no_symbol
-    validates_format_of :password, with: /(?=.*[0-9])/, message: :invalid_no_number
+
+    include PasswordValidator
 
     validate :domain_in_whitelist
     attr_reader :email, :first_name, :last_name, :organisation, :password, :password_confirmation
@@ -23,7 +18,7 @@ module Cognito
 
     def initialize(email, password, password_confirmation, organisation, first_name, last_name)
       super()
-      @email = email
+      @email = email.try(:downcase)
       @password = password
       @password_confirmation = password_confirmation
       @organisation = organisation

@@ -55,4 +55,16 @@ RSpec.describe Cognito::SignInUser do
       end
     end
   end
+
+  describe 'initialisation of email' do
+    let(:sign_in_user) { described_class.new(email, '', nil, false) }
+
+    context 'when the email contains capital letters' do
+      let(:email) { 'Test@TeST.com' }
+
+      it 'will become downcased when the object is initialised' do
+        expect(sign_in_user.email).to eq 'test@test.com'
+      end
+    end
+  end
 end

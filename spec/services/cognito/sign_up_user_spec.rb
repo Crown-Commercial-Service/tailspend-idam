@@ -10,6 +10,8 @@ RSpec.describe Cognito::SignUpUser do
     let(:first_name) { 'John' }
     let(:last_name) { 'Smith' }
     let(:domain) { 'test.com' }
+    let(:valid_symbols_sample) { '=+-^$*.[]{}()?"!@#%&/\\,><\':;|_~`'.split('').sample(7).join }
+    let(:invalid_symbols_sample) { 'èÿüíōæß'.split('').sample(3).join }
 
     before { DomainsWhiteList.create(url: domain, active: true) }
 
@@ -161,13 +163,42 @@ RSpec.describe Cognito::SignUpUser do
       context 'and it does not contain a symbol' do
         let(:password) { 'Password1234' }
 
+        it 'is valid' do
+          expect(sign_up_user.valid?).to be true
+        end
+      end
+
+      context 'and it cointains valid symbols' do
+        let(:password) { ("Password1234#{valid_symbols_sample}").split('').shuffle.join }
+
+        it 'is valid' do
+          expect(sign_up_user.valid?).to be true
+        end
+      end
+
+      context 'and it contains 1 invalid symbol' do
+        let(:password) { ("Password1234#{valid_symbols_sample}#{invalid_symbols_sample[0]}").split('').shuffle.join }
+
         it 'is not valid' do
           expect(sign_up_user.valid?).to be false
         end
 
         it 'has the correct error message' do
           sign_up_user.valid?
-          expect(sign_up_user.errors[:password].first).to eq 'Password must include a symbol (for example ? ! & %)'
+          expect(sign_up_user.errors[:password].first).to eq 'Your password includes invalid symbols'
+        end
+      end
+
+      context 'and it contains multiple invalid symbols' do
+        let(:password) { ("Password1234#{valid_symbols_sample}#{invalid_symbols_sample}").split('').shuffle.join }
+
+        it 'is not valid' do
+          expect(sign_up_user.valid?).to be false
+        end
+
+        it 'has the correct error message' do
+          sign_up_user.valid?
+          expect(sign_up_user.errors[:password].first).to eq 'Your password includes invalid symbols'
         end
       end
 
@@ -195,7 +226,7 @@ RSpec.describe Cognito::SignUpUser do
 
         it 'has the correct error message' do
           sign_up_user.valid?
-          expect(sign_up_user.errors[:password_confirmation].first).to eq 'Enter your confirm password'
+          expect(sign_up_user.errors[:password_confirmation].first).to eq 'Enter your confirmation password'
         end
       end
 
@@ -210,6 +241,18 @@ RSpec.describe Cognito::SignUpUser do
           sign_up_user.valid?
           expect(sign_up_user.errors[:password_confirmation].first).to eq 'Passwords don\'t match'
         end
+      end
+    end
+  end
+
+  describe 'initialisation of email' do
+    let(:sign_up_user) { described_class.new(email, '', '', '', '', '') }
+
+    context 'when the email contains capital letters' do
+      let(:email) { 'Test@TeST.com' }
+
+      it 'will become downcased when the object is initialised' do
+        expect(sign_up_user.email).to eq 'test@test.com'
       end
     end
   end
