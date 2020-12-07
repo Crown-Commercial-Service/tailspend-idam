@@ -2,4 +2,6 @@
 
 class HomeController < ApplicationController
   def index; end
+
+  def accessibility_statement; end
 end

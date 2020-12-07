@@ -39,4 +39,16 @@ RSpec.describe Cognito::ForgotPassword do
       end
     end
   end
+
+  describe 'initialisation of email' do
+    let(:forgot_password) { described_class.new(email) }
+
+    context 'when the email contains capital letters' do
+      let(:email) { 'Test@TeST.com' }
+
+      it 'will become downcased when the object is initialised' do
+        expect(forgot_password.email).to eq 'test@test.com'
+      end
+    end
+  end
 end

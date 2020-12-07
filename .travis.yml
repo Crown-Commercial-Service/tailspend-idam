@@ -3,6 +3,7 @@ language: ruby
 rvm:
  — 2.7.1
 deploy:
+  edge: true
   provider: cloudfoundry
   api: $API_URI
   username: $USERNAME

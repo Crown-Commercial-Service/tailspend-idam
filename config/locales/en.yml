@@ -5,20 +5,16 @@ en:
       models:
         ccs_patterns/home/cog_forgot_password_request:
           attributes:
-            please_enter_a_user_not_found_email_address: If the email exists you will
-              recieve and email.
-            please_enter_a_valid_email_address: You must enter your email address
-              in the correct format, like name@example.com
+            please_enter_a_user_not_found_email_address: You must enter your email address in the correct format, like name@example.com
+            please_enter_a_valid_email_address: You must enter your email address in the correct format, like name@example.com
         ccs_patterns/home/cog_forgot_password_reset:
           attributes:
             confirm_new_password: Enter your new password
             enter_a_new_password: Enter a new password
-            password_must_be: The password you entered is not long enough, it needs
-              to be at least 10 characters long
+            password_must_be: The password you entered is not long enough, it needs to be at least 10 characters long
             password_must_match: Passwords don't match
             passwords_dont_match: Passwords don't match
-            passwords_stronger: Password must include a symbol (for example ? ! &
-              %)
+            passwords_stronger: Password must include a symbol (for example ? ! & %)
             passwords_upper: Password must include a capital letter
         ccs_patterns/home/cog_register:
           attributes:
@@ -30,13 +26,10 @@ en:
             enter_your_password: Enter your password
             first_name_format: First name must be more than 3 characters
             last_name_format: Last name must be more than 3 characters
-            organisation_format: Enter your organisation name so we can confirm you
-              can use this service.
-            password_must_be: The password you entered is not long enough, it needs
-              to be at least 10 characters long
+            organisation_format: Enter your organisation name so we can confirm you can use this service.
+            password_must_be: The password you entered is not long enough, it needs to be at least 10 characters long
             passwords_dont_match: Passwords don't match
-            passwords_stronger: Password must include a symbol (for example ? ! &
-              %)
+            passwords_stronger: Password must include a symbol (for example ? ! & %)
             passwords_upper: Password must include a capital letter
             phone_number_format: You need to provide a UK phone number
         ccs_patterns/home/cog_register_enter_confirmation_code:
@@ -47,20 +40,17 @@ en:
           attributes:
             cog_sign_in:
               enter_your_password: You must enter your password
-              please_enter_a_valid_email_address: Enter an email address in the correct
-                format, like name@example.com
+              please_enter_a_valid_email_address: Enter an email address in the correct format, like name@example.com
           create_account_html: Create your account
           problems_signing_in: Problems signing in
         ccs_patterns/home/cog_sign_in_password_prompt_change:
           attributes:
             enter_a_password: Enter a password
             enter_your_password: Enter your password
-            password_must_be: The password you entered is not long enough, it needs
-              to be at least 10 characters long
+            password_must_be: The password you entered is not long enough, it needs to be at least 10 characters long
             password_must_match: Passwords don't match
             passwords_dont_match: Passwords don't match
-            passwords_stronger: Password must include a symbol (for example ? ! &
-              %)
+            passwords_stronger: Password must include a symbol (for example ? ! & %)
             passwords_uppper: Password must include a capital letter
         cognito/confirm_password_reset:
           attributes:
@@ -70,12 +60,10 @@ en:
               blank: Enter a password
               invalid_no_capitals: Password must include a capital letter
               invalid_no_number: Password must include a number
-              invalid_no_symbol: Password must include a symbol (for example ? ! &
-                %)
-              too_short: The password you entered is not long enough, it needs to
-                be at least 10 characters long
+              invalid_symbol: Your password includes invalid symbols
+              too_short: The password you entered is not long enough, it needs to be at least 10 characters long
             password_confirmation:
-              blank: Enter your confirm password
+              blank: Enter your confirmation password
               confirmation: Passwords don't match
           user_not_found: Please check the information you have entered
         cognito/confirm_sign_up:
@@ -85,8 +73,7 @@ en:
               invalid_format: Confirmation code must contain numeric characters only
               invalid_length: Confirmation code must be 6 characters
             email:
-              blank: You must enter your email address in the correct format, like
-                name@example.com
+              blank: You must enter your email address in the correct format, like name@example.com
         cognito/respond_to_challenge:
           attributes:
             access_code:
@@ -96,22 +83,19 @@ en:
             new_password:
               blank: Enter a password
               invalid_no_capitals: Password must include a capital letter
-              invalid_no_symbol: Password must include a symbol (for example ? ! &
-                %)
-              too_short: The password you entered is not long enough, it needs to
-                be at least 10 characters long
+              invalid_no_number: Password must include a number
+              invalid_symbol: Your password includes invalid symbols
+              too_short: The password you entered is not long enough, it needs to be at least 10 characters long
             new_password_confirmation:
-              blank: Enter your confirm password
+              blank: Enter your confirmation password
               confirmation: Passwords don't match
         cognito/sign_in_user:
           attributes:
             base:
               cookies_disabled: Your browser must have cookies enabled
             email:
-              blank: You must enter your email address in the correct format, like
-                name@example.com
-              invalid: You must enter your email address in the correct format, like
-                name@example.com
+              blank: You must enter your email address in the correct format, like name@example.com
+              invalid: You must enter your email address in the correct format, like name@example.com
             password:
               blank: You must enter your password
         cognito/sign_up_user:
@@ -131,12 +115,10 @@ en:
               blank: Enter a password
               invalid_no_capitals: Password must include a capital letter
               invalid_no_number: Password must include a number
-              invalid_no_symbol: Password must include a symbol (for example ? ! &
-                %)
-              too_short: The password you entered is not long enough, it needs to
-                be at least 10 characters long
+              invalid_symbol: Your password includes invalid symbols
+              too_short: The password you entered is not long enough, it needs to be at least 10 characters long
             password_confirmation:
-              blank: Enter your confirm password
+              blank: Enter your confirmation password
               confirmation: Passwords don't match
             phone_number:
               blank: Enter your Phone number
@@ -153,38 +135,30 @@ en:
         heading: Reset your password
         heading1: A reset email has been sent.
         lead: Reset password for
-        lead1: If the email address you’ve entered belongs to a registered organisation,
-          we’ll send instructions to reset the password.
+        lead1: If the email address you’ve entered belongs to a registered organisation, we’ll send instructions to reset the password.
         new_password: New password
         password: Your password must have
         text_html: If you don’t receive this, email <a href="mailto:support@crowncommercial.gov.uk">support@crowncommercial.gov.uk</a>
         verify_code: Verification code
       forgot_password_confirmation:
         heading: A reset email has been sent.
-        lead: If the email address you’ve entered belongs to a registered organisation,
-          we’ll send a link to reset the password.
+        lead: If the email address you’ve entered belongs to a registered organisation, we’ll send a link to reset the password.
         text01: If you don’t receive this, email
         text02_html: <a href="mailto:support@crowncommercial.gov.uk">support@crowncommercial.gov.uk</a>
       new:
         email: Email address
-        email_hint_html: This is the email address you used to set up the Print Marketplace
-          account.
+        email_hint_html: This is the email address you used to set up the Print Marketplace account.
         heading: Reset password
-        lead: Enter your email address and we’ll send you a verification code so you
-          can reset your password. Password reset verification codes are only valid
-          for 24 hours.
+        lead: Enter your email address and we’ll send you a verification code so you can reset your password. Password reset verification codes are only valid for 24 hours.
       password_reset_success:
         heading: You have successfully changed your password
         lead: You can now sign in to your Crown Commercial Service account
     registrations:
       domain_not_on_whitelist:
         heading: You must use a public sector email address
-        lead_html: You must be employed by, or represent, a public sector organisation
-          to create a <abbr title="Crown Commercial Service">CCS</abbr> account.
+        lead_html: You must be employed by, or represent, a public sector organisation to create a <abbr title="Crown Commercial Service">CCS</abbr> account.
         line_01: The email you used doesn't belong to a recognised public sector domain.
-        line_02_html: Create an account using a different email address or email <a
-          href="mailto:info@crowncommercial.gov.uk">info@crowncommercial.gov.uk</a>
-          if
+        line_02_html: Create an account using a different email address or email <a href="mailto:info@crowncommercial.gov.uk">info@crowncommercial.gov.uk</a> if
         list_01: you think your domain should be recognised
         list_02: you still can't create an account
       new:
@@ -199,18 +173,8 @@ en:
         last_name_hint: Add your last name here.
         lead: You must be employed by, or represent, a public sector organisation.
         organisation: Organisation name
-        organisation_format: You need to provide organisation name so we can verify
-          this
-        organisation_hint: Enter your organisation's full name. We will verify your
-          organisation name to confirm you can use this service.
+        organisation_hint: Enter your organisation's full name. We will verify your organisation name to confirm you can use this service.
         password: 'Your password must have:'
-        password_must_be: The password you entered is not long enough, it needs to
-          be at least 10 characters long
-        passwords_dont_match: Passwords don't match
-        passwords_stronger: Password must include a symbol (for example ? ! & %)
-        passwords_upper: Password must include a capital letter
-        phone_number: Phone number
-        phone_number_hint: Enter your phone number
     sessions:
       new:
         email_address: Email address
@@ -227,67 +191,101 @@ en:
         lead_end: containing your verification code.
         lead_mid: you
         lead_start: An email has been sent to
-        resend_the_confirmation_email_html: <a href="%{link}" class="govuk-link">Resend
-          the email</a>
+        resend_the_confirmation_email_html: <a href="%{link}" class="govuk-link">Resend the email</a>
       new_password_required:
         confirm_your_password: Confirm your password
         create_your_password: Create a password you’ll remember
         heading: Change your password
-        intro: This is the first time you’ve signed in to your account. You need to
-          reset your password.
+        intro: This is the first time you’ve signed in to your account. You need to reset your password.
       sign_in_error: You must provide a correct username or password
       sms_mfa:
         access_code: Access code
         content: It may take a few minutes to arrive.
         heading: Enter your access code
         lead: 'We just sent a 6 digit access code by text to:'
-        resend_the_confirmation_code_html: To receive a new access code, <a href="%{link}">
-          sign in</a> again.
+        resend_the_confirmation_code_html: To receive a new access code, <a href="%{link}"> sign in</a> again.
   common:
-    apply_filters: Apply filters
-    back_to_start: Back to start
-    ccs_contact_url: https://www.crowncommercial.gov.uk/contact
     change_password_and_sign_in: Change password and sign in
-    complete: Complete
-    confirm_and_continue: Confirm and continue
     continue: Continue
     create_account: Create account
     error_summary_title: There is a problem
-    feedback: feedback
-    next: Next
     passcap: at least one capital letter
     passeight: at least 10 characters
     passnum: at least one number
-    passsymbol_html: at least one symbol (eg ?, !, &, &percnt;)
     reset_password: Reset password
     send_reset_email: Send reset email
     sign_in: Sign in
-    start_now: Start now
-    submit: Continue
   errors:
     internal_error:
       there_is_a_problem: Sorry, there is a problem with the service
       try_again_later: Try again later.
     not_found:
-      check_pasted_address: If you pasted the web address, check you copied the entire
-        address.
+      check_pasted_address: If you pasted the web address, check you copied the entire address.
       check_web_address: If you typed the web address, check it is correct.
       page_not_found: Page not found
     unacceptable:
       changes_rejected: Sorry, the change you wanted was rejected
       explanation: Maybe you tried to change something you didn’t have access to.
   home:
+    accessibility_statement:
+      CCS_is_committed: Crown Commercial Service is committed to making its website accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.
+      ability_net: AbilityNet
+      ability_net_link: https://mcmw.abilitynet.org.uk/
+      accessibility_guidelines_link: https://www.w3.org/TR/WCAG21/
+      accessibility_guidelines_link_text: Web Content Accessibility Guidelines version 2.1 AA standard
+      autocomplete_heading: Autocomplete is not enabled for user sign in fields
+      autocomplete_issue: A user must manually input their first name, last name and email address when registering to use the service for the first time. This is in place to ensure no erroneous or malicious registration can take place.
+      call: call 0345 410 2222
+      core_pmp: Core Print Marketplace product
+      email: email
+      email_link: info@crowncommercial.gov.uk
+      equality: The Equality and Human Rights Commission (EHRC) is responsible for enforcing the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018 (the ‘accessibility regulations’). If you’re not happy with how we respond to your complaint,
+      equality_link: https://www.equalityadvisoryservice.com/
+      equality_link_text: contact the Equality Advisory and Support Service (EASS)
+      heading: Print Marketplace (PMP) Accessibility statement
+      heading_content_not_in_scope: Content that’s not within the scope of the accessibility regulations
+      heading_enforcement: Enforcement procedure
+      heading_how_accessible: How accessible this website is
+      heading_how_we_tested: How we tested this website
+      heading_non_accessible: Non accessible content
+      heading_non_compliance: Non compliance with the accessibility regulations
+      heading_preparation: Preparation of this accessibility statement
+      heading_reporting: Reporting accessibility problems with this website
+      heading_technical_information: Technical information about this website’s accessibility
+      heading_what_to_do: What to do if you cannot access parts of this website
+      if_you_need: 'If you need information on this website in a different format like accessible PDF, large print, easy read, audio recording or braille:'
+      list_1_change_colours: change colours, contrast levels and fonts
+      list_1_navigate_keyboard: navigate most of the website using just a keyboard
+      list_1_navigate_listen: listen to most of the website using a screen reader (including the most recent versions of JAWS, NVDA and VoiceOver)
+      list_1_navigate_speach: navigate most of the website using speech recognition software
+      list_2_decorative: non-decorative content is used in the CCS sign-in pages, which may make it in accessible to users navigating the site with screen readers.
+      list_2_email: the email field on the homepage lacks an autocomplete attribute, so its purpose cannot be determined programmatically
+      market_place_link: https://printmarketplace.crowncommercial.gov.uk/
+      several_aspects: Several aspects of the print marketplace user journey do not meet the WCAG 2.1 AA success criteria. The accessibility statement on the core Print Marketplace product details these.
+      the_complete_journey: The complete Print Marketplace journey was tested, this included every page a buyer or supplier would progress through in-order to complete the procurement activity. The administration screens used for the maintenance of the digital service were also tested for accessibility, this area of functionality is only used by a small selection of CCS staff.
+      the_content: The content listed below is non-accessible for the following reasons.
+      this_statement: 'This accessibility statement applies to the sign in pages of the Print Marketplace digital service which can be found at the following URL:'
+      this_statement_date: This statement was prepared on 25th November 2020. It will be reviewed and updated as required.
+      this_website: 'This website is run by Crown Commercial Service (CCS). We want as many people as possible to be able to use this website. For example, that means you should be able to:'
+      this_website_partially_1: This website is partially compliant with the
+      this_website_partially_2: due to the non-compliances listed below.
+      we_are_always_looking_html: 'We’re always looking to improve the accessibility of this website. If you find any problems not listed on this page or think we’re not meeting accessibility requirements, contact: %{email}.'
+      we_know: 'We know some parts of this website are not fully accessible:'
+      website_last_tested: This website was last tested on Friday 20 November 2020. The test was carried out by Zoonou Ltd.
+      website_text_simple: We’ve also made the website text as simple as possible to understand.
+      well_consider: We’ll consider your request and get back to you in five working days.
     index:
       heading: Welcome to the Print Marketplace
       heading_2: Before you start
       heading_lead_2: Print Marketplace
       lead_1: Use this service to sign into Print Marketplace
-      lead_2: To use this service you need to be a recognised public sector body listed
-        in the
+      lead_2: To use this service you need to be a recognised public sector body listed in the
   layouts:
     application:
       title: Crown Commercial Services
     footer:
+      accessibility_statement_link: Accessibility statement
+      accessibility_statement_link_aria_label: View our accessibility statement
       crown_commercial_service_logo: The Crown Commercial Service logo
       email: info@crowncommercial.gov.uk
       email_aria_label: Email us for support with this service

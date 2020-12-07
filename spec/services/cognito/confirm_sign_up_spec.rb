@@ -68,4 +68,16 @@ RSpec.describe Cognito::ConfirmSignUp do
       end
     end
   end
+
+  describe 'initialisation of email' do
+    let(:confirm_sign_up) { described_class.new(email, '') }
+
+    context 'when the email contains capital letters' do
+      let(:email) { 'Test@TeST.com' }
+
+      it 'will become downcased when the object is initialised' do
+        expect(confirm_sign_up.email).to eq 'test@test.com'
+      end
+    end
+  end
 end

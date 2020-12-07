@@ -7,7 +7,7 @@ module Cognito
 
     def initialize(email)
       super()
-      @email = email
+      @email = email.try(:downcase)
       @error = nil
     end
 
