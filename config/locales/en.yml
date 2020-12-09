@@ -281,12 +281,12 @@ en:
       authorised_customer_list_title: authrized customers list in .docx format
       before_you_start: Before you start
       heading: Print Marketplace
-      here: here
-      no_account_html: Not got an account? Register for one %{registration_link}
+      no_account_html: Not got an account? You can %{registration_link}.
+      register_for_one_here: register for one here
       sign_in: Sign in to Print Marketplace
       sign_in_title: Login to print market place
       subheading: Print Marketplace is a UK-wide digital tool for purchasing printed material, including brochures, flyers, leaflets, business cards, letterheads and other transactional print.
-      to_use_this_service_html: To use this service you need to be a recognised public sector body listed in the %{authorised_customer_list}
+      to_use_this_service_html: To use this service you need to be a recognised public sector body listed in the %{authorised_customer_list}.
   layouts:
     application:
       title: Crown Commercial Services
