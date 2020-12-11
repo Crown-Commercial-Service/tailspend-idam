@@ -231,6 +231,7 @@ en:
       CCS_is_committed: Crown Commercial Service is committed to making its website accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.
       ability_net: AbilityNet
       ability_net_link: https://mcmw.abilitynet.org.uk/
+      ability_net_text_html: "%{ability_link} has advice on making your device easier to use if you have a disability."
       accessibility_guidelines_link: https://www.w3.org/TR/WCAG21/
       accessibility_guidelines_link_text: Web Content Accessibility Guidelines version 2.1 AA standard
       autocomplete_heading: Autocomplete is not enabled for user sign in fields
@@ -275,11 +276,17 @@ en:
       website_text_simple: We’ve also made the website text as simple as possible to understand.
       well_consider: We’ll consider your request and get back to you in five working days.
     index:
-      heading: Welcome to the Print Marketplace
-      heading_2: Before you start
-      heading_lead_2: Print Marketplace
-      lead_1: Use this service to sign into Print Marketplace
-      lead_2: To use this service you need to be a recognised public sector body listed in the
+      authorised_customer_list: authorised customer list
+      authorised_customer_list_link: https://assets.crowncommercial.gov.uk/wp-content/uploads/RM3788-Contract-Notice-Authorised-Customer-List.docx
+      authorised_customer_list_title: authrized customers list in .docx format
+      before_you_start: Before you start
+      heading: Print Marketplace
+      no_account_html: Not got an account? You can %{registration_link}.
+      register_for_one_here: register for one here
+      sign_in: Sign in to Print Marketplace
+      sign_in_title: Login to print market place
+      subheading: Print Marketplace is a UK-wide digital tool for purchasing printed material, including brochures, flyers, leaflets, business cards, letterheads and other transactional print.
+      to_use_this_service_html: To use this service you need to be a recognised public sector body listed in the %{authorised_customer_list}.
   layouts:
     application:
       title: Crown Commercial Services
