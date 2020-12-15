@@ -13,7 +13,7 @@ RSpec.describe Cognito::SignUpUser do
     let(:valid_symbols_sample) { '=+-^$*.[]{}()?"!@#%&/\\,><\':;|_~`'.split('').sample(7).join }
     let(:invalid_symbols_sample) { 'èÿüíōæß'.split('').sample(3).join }
 
-    before { DomainsWhiteList.create(url: domain, active: true) }
+    before { AllowedEmailDomain.create(url: domain, active: true) }
 
     context 'when all attributes are valid' do
       it 'is valid' do
@@ -35,7 +35,7 @@ RSpec.describe Cognito::SignUpUser do
         end
       end
 
-      context 'and it is not on the domain whitelist' do
+      context 'and it is not on the allow list' do
         let(:domain) { 'toast.com' }
 
         it 'is not valid' do

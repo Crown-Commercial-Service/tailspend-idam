@@ -1,0 +1,2 @@
+class AllowedEmailDomain < ApplicationRecord
+end

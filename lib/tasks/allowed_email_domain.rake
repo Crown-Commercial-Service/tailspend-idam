@@ -1,5 +1,5 @@
 # rubocop:disable all
-namespace :whitelist_domain_list do
+namespace :allowed_email_domain do
   desc "Insert whitlist domains into database"
   task :import => :environment do
     domian_list = File.readlines("data/buyer-email-domains.txt")
@@ -13,7 +13,7 @@ namespace :whitelist_domain_list do
       }
       url_data.push(list)
     }
-    DomainsWhiteList.insert_all(url_data)
+    AllowedEmailDomain.insert_all(url_data)
   end
 end
 # rubocop:enable all
