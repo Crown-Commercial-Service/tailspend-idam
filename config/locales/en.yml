@@ -294,10 +294,14 @@ en:
       accessibility_statement_link: Accessibility statement
       accessibility_statement_link_aria_label: View our accessibility statement
       crown_commercial_service_logo: The Crown Commercial Service logo
+      crown_copyright: "© Crown copyright"
       email: info@crowncommercial.gov.uk
       email_aria_label: Email us for support with this service
       email_or_call_html: Email %{email} or call %{phone} for support.
       having_problems_with_this_service: Having problems with this service?
+      privacy_link: https://www.gov.uk/government/publications/crown-commercial-service-privacy-notice/crown-commercial-service-privacy-notice
+      privacy_link_aria_label: View our privacy policy
+      privacy_link_text: Privacy policy
       telephone: 0345 410 2222
   shared:
     error_summary:
