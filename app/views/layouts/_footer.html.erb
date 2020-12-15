@@ -21,7 +21,13 @@
     <nav class="govuk-grid-column-two-thirds" aria-label="Footer navigation">
       <div class="govuk-footer__meta">
         <div class="govuk-footer__meta-item">
-          <%= link_to t(".accessibility_statement_link"), accessibility_statement_path, class: "ccs-footer__links ccs-no-print", aria: { label: t('.accessibility_statement_link_aria_label') } %>
+          <%= link_to t('.privacy_link_text'), t('.privacy_link'), class: 'ccs-footer__links ccs-no-print', aria: { label: t('.privacy_link_aria_label') }, target: '_blank' %>
+        </div>
+        <div class="govuk-footer__meta-item">
+          <%= link_to t('.accessibility_statement_link'), accessibility_statement_path, class: 'ccs-footer__links ccs-no-print', aria: { label: t('.accessibility_statement_link_aria_label') } %>
+        </div>
+        <div class="govuk-footer__meta-item">
+          <%= t('.crown_copyright') %>
         </div>
       </div>
     </nav>
