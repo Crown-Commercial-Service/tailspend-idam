@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Cognito::RespondToChallenge do
-  let(:respond_to_challenge) { described_class.new(challeng_name, '123456', 1, options) }
+  let(:respond_to_challenge) { described_class.new(challeng_name, '123456', 1, **options) }
 
   describe '.valid? for new passowrd required' do
     let(:challeng_name) { 'NEW_PASSWORD_REQUIRED' }
