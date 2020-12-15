@@ -60,7 +60,7 @@ bundle exec rake db:setup
 
 As much of the project uses external APIs you will need a .env.local file to access these APIs. If there is an existing developer on the project then you can ask them for it. If not you should still add a .env.local and add the relevant variables as you go along.
 
-There is no data that can be initialised but you will need to add your email domain to the `DomainsWhiteList` model and some suppliers to the Organisation. You can either create files and use the rake tasks found in `lib/tasks/whitelist_domain_list.rake` and `lib/tasks/organisations.rake` or add the data manually though the console.
+There is no data that can be initialised but you will need to add your email domain to the `AllowedEmailDomain` model and some suppliers to the Organisation. You can either create files and use the rake tasks found in `lib/tasks/allow_email_domain.rake` and `lib/tasks/organisations.rake` or add the data manually though the console.
 
 
 ## Environemnt variables
