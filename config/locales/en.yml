@@ -102,7 +102,7 @@ en:
           attributes:
             email:
               blank: Enter an email address in the correct format, like name@example.com
-              not_on_whitelist: You must use a public sector email
+              not_on_allow_list: You must use a public sector email
             first_name:
               blank: Enter your first name
               too_short: First name must be 2 characters or more
@@ -154,7 +154,7 @@ en:
         heading: You have successfully changed your password
         lead: You can now sign in to your Crown Commercial Service account
     registrations:
-      domain_not_on_whitelist:
+      domain_not_on_allow_list:
         heading: You must use a public sector email address
         lead_html: You must be employed by, or represent, a public sector organisation to create a <abbr title="Crown Commercial Service">CCS</abbr> account.
         line_01: The email you used doesn't belong to a recognised public sector domain.

@@ -10,12 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_09_150728) do
+ActiveRecord::Schema.define(version: 2020_12_15_113841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
   enable_extension "postgis"
+
+  create_table "allowed_email_domains", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "url"
+    t.boolean "active", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "arask_jobs", force: :cascade do |t|
     t.string "job"
@@ -24,7 +31,7 @@ ActiveRecord::Schema.define(version: 2020_12_09_150728) do
     t.index ["execute_at"], name: "index_arask_jobs_on_execute_at"
   end
 
-  create_table "client_calls", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "client_calls", id: :uuid, default: nil, force: :cascade do |t|
     t.string "access_token"
     t.string "refresh_token"
     t.string "id_token"
@@ -33,13 +40,6 @@ ActiveRecord::Schema.define(version: 2020_12_09_150728) do
     t.string "sub"
     t.string "client_id"
     t.text "nonce"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "domains_white_lists", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "url"
-    t.boolean "active", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
