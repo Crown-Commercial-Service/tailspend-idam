@@ -4,7 +4,7 @@ RSpec.describe Organisation do
   describe 'find_organisation' do
     let(:result) { described_class.find_organisation(search) }
 
-    before { described_class.create(supllier_name: search, active: active) }
+    before { described_class.create(supplier_name: search, active: active) }
 
     context 'when an active organisation is searched' do
       let(:search) { 'AN ACTIVE SUPPLIER' }
