@@ -1,23 +1,32 @@
 module Organisations
-  # rubocop:disable Rails/SkipsModelValidations
-  def self.import_organisations
-    csv = Roo::CSV.new(spreadsheet_path, { csv_options: { liberal_parsing: true } })
-    insert_data = []
-
-    csv.column(1)[1..].each do |supplier_name|
-      insert_data << {
-        'supplier_name': format_supplier_name(supplier_name),
-        'active': !supplier_inactive?(supplier_name),
-        'created_at': DateTime.current,
-        'updated_at': DateTime.current
-      }
-    end
-
-    Organisation.delete_all
-    Organisation.insert_all(insert_data)
+  def self.complete_tasks
+    p 'Importing organisations from Salesforce'
+    import_organisations
+    p 'Removing duplicate Organisations from database'
+    remove_duplicates
+    p 'Organisations import complete'
   rescue StandardError => e
+    p "ORGANISATIONS IMPORT FAILED: #{e.message}"
+    ActiveRecord::Base.logger.level = Logger::DEBUG
+
     Rails.logger.debug e
     Rollbar.log('error', e)
+  end
+
+  # rubocop:disable Rails/SkipsModelValidations
+  def self.import_organisations
+    csv = Roo::CSV.new(csv_path, { csv_options: { liberal_parsing: true } })
+
+    insert_data = csv.column(1)[1..].map { |supplier_name| get_supplier_row(supplier_name) }
+
+    ActiveRecord::Base.logger.level = Logger::INFO
+
+    ActiveRecord::Base.transaction do
+      Organisation.delete_all
+      Organisation.insert_all(insert_data)
+    end
+
+    ActiveRecord::Base.logger.level = Logger::DEBUG
   end
   # rubocop:enable Rails/SkipsModelValidations
 
@@ -32,17 +41,23 @@ module Organisations
     SQL
 
     ActiveRecord::Base.connection.execute(query)
-  rescue StandardError => e
-    Rails.logger.debug e
-    Rollbar.log('error', e)
   end
 
-  def self.spreadsheet_path
+  def self.csv_path
     if Rails.env.test?
       Rails.root.join('data/test_organisations.csv')
     else
       URI.open(ENV['ORGANISATIONS_CSV_BLOB'])
     end
+  end
+
+  def self.get_supplier_row(supplier_name)
+    {
+      'supplier_name': format_supplier_name(supplier_name),
+      'active': !supplier_inactive?(supplier_name),
+      'created_at': DateTime.current,
+      'updated_at': DateTime.current
+    }
   end
 
   def self.format_supplier_name(supplier_name)
@@ -57,10 +72,6 @@ end
 namespace :organisations do
   desc 'Import organisations into database'
   task import: :environment do
-    p 'Importing organisations from Salesforce'
-    Organisations.import_organisations
-    p 'Removing duplicate Organisations from database'
-    Organisations.remove_duplicates
-    p 'Organisations import complete'
+    Organisations.complete_tasks
   end
 end
