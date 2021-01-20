@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::OrganisationController do
-  describe 'POST search' do
+  describe 'GET search' do
     let(:result) { JSON.parse(response.body) }
 
-    before { post :search, params: { search: search } }
+    before { get :search, params: { search: search } }
 
     context 'when an active organisation is searched' do
       let(:search) { 'Active Supplier 200' }
