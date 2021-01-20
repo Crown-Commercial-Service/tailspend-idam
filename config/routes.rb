@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       get '/oauth2/authorize', to: 'openid_connect#authorize'
       post '/oauth2/token', to: 'openid_connect#token'
       get '/oauth2/userInfo', to: 'openid_connect#user_info'
-      post '/organisation-search', to: 'organisation#search'
+      get '/organisation-search', to: 'organisation#search'
       post '/user/confirm', to: 'user#confirm_user'
       post '/user/create', to: 'user#create_user'
       post '/user/delete', to: 'user#delete_user'
