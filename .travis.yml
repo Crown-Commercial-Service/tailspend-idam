@@ -9,6 +9,7 @@ deploy:
   password: $PASSWORD
   organization: $ORG_NAME
   space: $SPACE_TYPE_DEVELOPMENT
+  deployment_strategy: rolling
   on:
     repo: Crown-Commercial-Service/pmp-idam
     branch: develop
