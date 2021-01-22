@@ -55,4 +55,8 @@ module PmpIdam
       config.exceptions_app = routes
     end
   end
+
+  def self.google_analytics_id
+    @google_analytics_id ||= ENV['GOOGLE_ANALYTICS_ID']
+  end
 end

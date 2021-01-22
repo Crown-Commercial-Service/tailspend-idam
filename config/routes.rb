@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/BlockLength
 Rails.application.routes.draw do
   get '/', to: 'home#index', as: :home
   get '/accessibility-statement', to: 'home#accessibility_statement'
+  get '/cookie-settings', to: 'home#cookie_settings'
+  get '/cookie-policy', to: 'home#cookie_policy'
 
   # API endpoints here
   namespace :api do
@@ -45,3 +48,4 @@ Rails.application.routes.draw do
   get '/422', to: 'errors#unacceptable'
   get '/500', to: 'errors#internal_error'
 end
+# rubocop:enable Metrics/BlockLength
