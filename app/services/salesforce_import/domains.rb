@@ -3,6 +3,8 @@ module SalesforceImport
     def self.complete_tasks
       Rails.logger.info 'Importing email domains from Salesforce'
       import_domains
+      Rails.logger.info 'Adding additional email domains'
+      add_additional_domains
       Rails.logger.info 'Removing duplicate email domains from database'
       remove_duplicates
       Rails.logger.info 'Email domains import complete'
@@ -21,7 +23,10 @@ module SalesforceImport
 
       ActiveRecord::Base.logger.level = Logger::INFO
 
-      AllowedEmailDomain.insert_all(insert_data)
+      ActiveRecord::Base.transaction do
+        AllowedEmailDomain.delete_all
+        AllowedEmailDomain.insert_all(insert_data)
+      end
 
       ActiveRecord::Base.logger.level = Logger::DEBUG
     end
@@ -38,6 +43,16 @@ module SalesforceImport
       SQL
 
       ActiveRecord::Base.connection.execute(query)
+    end
+
+    def self.add_additional_domains
+      return unless ENV['ADDITIONAL_EMAILS_REQUIRED'] == 'TRUE'
+
+      email_list = ENV['ADDITIONAL_EMAILS'].split(',')
+
+      email_list.each do |email_domain|
+        AllowedEmailDomain.create(url: email_domain, active: true)
+      end
     end
 
     def self.csv_path
