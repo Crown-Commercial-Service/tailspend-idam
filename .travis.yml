@@ -9,11 +9,12 @@ deploy:
   username: $USERNAME
   password: $PASSWORD
   organization: $ORG_NAME
-  space: $SPACE_TYPE_DEVELOPMENT
   deployment_strategy: rolling
+  space: $SPACE_NAME
   on:
     repo: Crown-Commercial-Service/pmp-idam
-    branch: main
+    all_branches: true
+    condition: $DEPLOY_BRANCH = TRUE
 env:
   global:
     - RAILS_ENV=test
@@ -21,7 +22,6 @@ services:
   - postgresql
 addons:
   postgresql: '11'
-sudo: true
 before_script:
   - sudo apt-get -qq update
   - sudo apt-get install -y postgresql-11-postgis-2.5
