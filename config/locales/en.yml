@@ -275,6 +275,62 @@ en:
       website_last_tested: This website was last tested on Friday 20 November 2020. The test was carried out by Zoonou Ltd.
       website_text_simple: We’ve also made the website text as simple as possible to understand.
       well_consider: We’ll consider your request and get back to you in five working days.
+    cookie_policy:
+      change_settings_html: You can %{change_settings_link}.
+      change_settings_link_text: change which cookies you’re happy for us to use
+      change_your_settings: Change your settings
+      cookie_message_1:
+        expires: 1 year
+        name: pmp_google_analytics_enabled
+        purpose: Saves your cookie consent settings for Google Analytics
+      cookie_message_2:
+        expires: 1 year
+        name: pmp_cookie_settings_viewed
+        purpose: Lets us know that you’ve viewed your cookie consent settings
+      cookies_message: Cookies message
+      ga_cookies_1:
+        expires: 2 years
+        name: _ga
+        purpose: This cookie allows Google to track unique users via a client identifier that is randomly generated
+      ga_cookies_2:
+        expires: 10 minutes
+        name: _gat
+        purpose: This cookie is used to monitor and track visitors’ behaviour on the site anonymously
+      ga_cookies_3:
+        expires: 24 hours
+        name: _gid
+        purpose: This cookie is used to group the user behaviour
+      ga_sets_following_cookies: Google Analytics sets the following cookies.
+      heading: Details about cookies on Print Marketplace
+      last_updated: Last updated 26 January 2021
+      we_do_not_let: We do not allow Google to use or share the data about how you use this site.
+      what_are_cookies: Print Marketplace puts small files (known as ‘cookies’) onto your computer to collect information about how you browse the site. Find out more about the cookies we use, what they’re for and when they expire.
+      you_may_see_a_banner: You may see a banner when you visit Print Marketplace inviting you to accept cookies or review your settings. We’ll set cookies so that your computer knows you’ve seen it and not to show it again, and also to store your settings.
+    cookie_settings:
+      always_need_to_be_on: They always need to be on.
+      cookie_settings: Cookie settings
+      cookies_saved: Your cookie settings were saved
+      cookies_saved_description: Other areas of the Print Marketplace service may set additional cookies and, if so, will have their own cookie policy and banner.
+      dont_use_cookies: Do not use cookies that measure my website use
+      essential_cookies: These essential cookies do things like remember remember the notifications you have seen so we do not show them to you again.
+      find_out_more: Find out more about cookies on Print Marketplace
+      heading: Cookies on Print Marketplace
+      save_changes: Save changes
+      the_number_we_use: We use 2 types of cookie. You can choose which cookies you're happy for us to use.
+      use_cookies: Use cookies that measure my website use
+      what_are_cookies: Cookies are files saved on your phone, tablet or computer when you visit a website.
+      why_we_use_them: We use cookies to store information about how you use the Print Marketplace website, such as the pages you visit.
+    cookies:
+      expires: Expires
+      ga_list: 'Google Analytics sets cookies that store anonymised information about:'
+      ga_list_1: how you got to the site
+      ga_list_2: the pages you visit on Print Marketplace, and how long you spend on each page
+      ga_list_3: what you click on while you're visiting the site
+      measure_website_use: Cookies that measure website use
+      name: Name
+      purpose: Purpose
+      strictly_necessary_cookies: Strictly necessary cookies
+      we_use_ga: We use Google Analytics to measure how you use the website so we can improve it based on user needs. We do not allow Google to use or share the data about how you use this site.
     index:
       authorised_customer_list: authorised customer list
       authorised_customer_list_link: https://assets.crowncommercial.gov.uk/wp-content/uploads/RM3788-Contract-Notice-Authorised-Customer-List.docx
@@ -290,9 +346,19 @@ en:
   layouts:
     application:
       title: Crown Commercial Services
+    cookie-banner:
+      accept_all_cookies: Accept all cookies
+      cookies_acepted_html: You’ve accepted all cookies. You can %{cookies_acepted_link} at any time.
+      cookies_acepted_link_text: change your cookie settings
+      set_cookie_preferences: Set cookie preferences
+      why_we_use_cookies: We use cookies to collect information about how you use printmarketplace.crowncommercial.gov.uk. We use this information to make the website work as well as possible and improve government services.
     footer:
       accessibility_statement_link: Accessibility statement
       accessibility_statement_link_aria_label: View our accessibility statement
+      cookie_policy_link: Cookie policy
+      cookie_policy_link_aria_label: View our cookie policy
+      cookie_settings_link: Cookie settings
+      cookie_settings_link_aria_label: View and change your cookie settings
       crown_commercial_service_logo: The Crown Commercial Service logo
       crown_copyright: "© Crown copyright"
       email: info@crowncommercial.gov.uk
