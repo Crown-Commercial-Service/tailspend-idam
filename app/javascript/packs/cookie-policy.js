@@ -7,13 +7,10 @@ const removeGACookies = () => {
   for (let i = 0; i < cookieList.length; i++) {
     const cookieName = cookieList[i];
 
-    if (cookieName.startsWith('_ga')
-        || cookieName.startsWith('_gi')
-        || cookieName.startsWith(' _ga')
-        || cookieName.startsWith(' _gi')) gaCookieList.push(cookieName);
+    if (cookieName.startsWith('_ga') || cookieName.startsWith('_gi')) gaCookieList.push(cookieName);
   }
 
-  gaCookieList.forEach((cookieName) => Cookies.remove(cookieName));
+  gaCookieList.forEach((cookieName) => Cookies.remove(cookieName, { path: '/', domain: '.crowncommercial.gov.uk'}));
 };
 
 document.addEventListener('DOMContentLoaded', () => {
