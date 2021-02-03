@@ -66,11 +66,11 @@
       <div class="govuk-radios">
         <div class="govuk-radios__item">
           <%= radio_button_tag :ga_cookie_usage, true, cookies[:pmp_google_analytics_enabled] == 'true', class: 'govuk-radios__input' %>
-          <%= label_tag :ga_cookie_usage, t('.use_cookies'), value: true, class: 'govuk-label govuk-radios__label' %>
+          <%= label_tag :ga_cookie_usage, t('.use_cookies'), for: :ga_cookie_usage_true, class: 'govuk-label govuk-radios__label' %>
         </div>
         <div class="govuk-radios__item">
           <%= radio_button_tag :ga_cookie_usage, false, cookies[:pmp_google_analytics_enabled] != 'true', class: 'govuk-radios__input' %>
-          <%= label_tag :ga_cookie_usage, t('.dont_use_cookies'), value: true, class: 'govuk-label govuk-radios__label' %>
+          <%= label_tag :ga_cookie_usage, t('.dont_use_cookies'), for: :ga_cookie_usage_false, class: 'govuk-label govuk-radios__label' %>
         </div>
       </div>
     </fieldset>
