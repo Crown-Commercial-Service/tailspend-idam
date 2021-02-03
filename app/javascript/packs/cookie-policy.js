@@ -29,6 +29,8 @@ $(() => {
   });
 
   $('#save-cookie-settings-button').on('click', () => {
+    Cookies.set('pmp_cookie_settings_viewed', 'true', { expires: 365 });
+
     if ($('input[name=ga_cookie_usage]:checked').val() === 'true') {
       Cookies.set('pmp_google_analytics_enabled', 'true', { expires: 365 });
     } else {
