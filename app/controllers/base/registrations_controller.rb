@@ -3,8 +3,8 @@
 module Base
   class RegistrationsController < ApplicationController
     protect_from_forgery
-    before_action :authenticate_user!, except: %i[new create domain_not_on_whitelist]
-    before_action :authorize_user, except: %i[new create domain_not_on_whitelist]
+    before_action :authenticate_user!, except: %i[new create domain_not_on_allow_list]
+    before_action :authorize_user, except: %i[new create domain_not_on_allow_list]
 
     def new
       @result = Cognito::SignUpUser.new(nil, nil, nil, nil, nil, nil)
@@ -26,13 +26,13 @@ module Base
     end
     # rubocop:enable Metrics/AbcSize
 
-    def domain_not_on_whitelist; end
+    def domain_not_on_allow_list; end
 
     private
 
     def fail_create(result)
-      if result.not_on_whitelist
-        redirect_to base_domain_not_on_whitelist_path
+      if result.not_on_allow_list
+        redirect_to base_domain_not_on_allow_list_path
       else
         render :new, erorr: result.error
       end

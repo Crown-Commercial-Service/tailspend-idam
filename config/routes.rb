@@ -3,6 +3,8 @@
 Rails.application.routes.draw do
   get '/', to: 'home#index', as: :home
   get '/accessibility-statement', to: 'home#accessibility_statement'
+  get '/cookie-settings', to: 'home#cookie_settings'
+  get '/cookie-policy', to: 'home#cookie_policy'
 
   # API endpoints here
   namespace :api do
@@ -10,7 +12,7 @@ Rails.application.routes.draw do
       get '/oauth2/authorize', to: 'openid_connect#authorize'
       post '/oauth2/token', to: 'openid_connect#token'
       get '/oauth2/userInfo', to: 'openid_connect#user_info'
-      post '/organisation-search', to: 'organisation#search'
+      get '/organisation-search', to: 'organisation#search'
     end
     namespace :v2 do
       get '/oauth2/authorize', to: 'auth_authorize#authorize'
@@ -20,7 +22,7 @@ Rails.application.routes.draw do
   namespace 'base', path: 'auth' do
     get '/sign-up', to: 'registrations#new', as: :new_user_registration
     post '/sign-up', to: 'registrations#create', as: :user_registration
-    get '/domain-not-on-whitelist', to: 'registrations#domain_not_on_whitelist', as: :domain_not_on_whitelist
+    get '/domain-not-on-allow-list', to: 'registrations#domain_not_on_allow_list', as: :domain_not_on_allow_list
     get '/users/confirm', to: 'users#confirm_new', as: :users_confirm_path
     post '/users/confirm', to: 'users#confirm'
     get '/resend_confirmation_email', to: 'users#resend_confirmation_email', as: :resend_confirmation_email

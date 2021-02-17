@@ -12,9 +12,9 @@ module Cognito
 
     include PasswordValidator
 
-    validate :domain_in_whitelist
+    validate :domain_in_allow_list
     attr_reader :email, :first_name, :last_name, :organisation, :password, :password_confirmation
-    attr_accessor :user, :not_on_whitelist
+    attr_accessor :user, :not_on_allow_list
 
     def initialize(email, password, password_confirmation, organisation, first_name, last_name)
       super()
@@ -24,7 +24,7 @@ module Cognito
       @organisation = organisation
       @first_name = first_name
       @last_name = last_name
-      @not_on_whitelist = nil
+      @not_on_allow_list = nil
     end
 
     def call
@@ -85,10 +85,10 @@ module Cognito
     end
 
     # rubocop:disable Style/GuardClause
-    def domain_in_whitelist
-      unless DomainsWhiteList.exists?(url: domain_name)
-        errors.add(:email, :not_on_whitelist)
-        @not_on_whitelist = true
+    def domain_in_allow_list
+      unless AllowedEmailDomain.exists?(url: domain_name)
+        errors.add(:email, :not_on_allow_list)
+        @not_on_allow_list = true
       end
     end
     # rubocop:enable Style/GuardClause

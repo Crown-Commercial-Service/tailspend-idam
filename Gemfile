@@ -26,6 +26,9 @@ gem 'aws-sdk-s3', '~> 1'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+# For scheduling tasks
+gem 'arask'
+
 # for postgresql
 gem 'activerecord-postgis-adapter'
 gem 'pg', '~> 0.18.4'
@@ -65,6 +68,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

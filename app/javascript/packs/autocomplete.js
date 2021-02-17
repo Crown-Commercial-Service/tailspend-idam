@@ -9,7 +9,7 @@ var pmp_auto_complete = {
     if (query.length > 2) {
       $.ajax({
         url: '/api/v1/organisation-search',
-        type: 'post',
+        type: 'get',
         data: {
           search: query,
         },

@@ -1,7 +1,20 @@
-<div id="cookie_banner" class="ccs-phase-banner-wrapper" style="background-color: #ffffff">
-  <div class="govuk-phase-banner govuk-width-container ccs-no-print">
-      <p class="govuk-phase-banner__content">
-        Crown Marketplace uses cookies to make the site simpler. Read <%= link_to 'more about cookies' %>
+<div class="cookie-message" id="cookie-consent-container" aria-label="Cookie Policy" aria-live="polite">
+  <div class="cookie-message__inner govuk-width-container" id="cookie-options-container">
+    <div class="govuk-body">
+      <p>
+        <%= t('.why_we_use_cookies') %>
       </p>
+    </div>
+    <div class="cookie-message__actions">
+      <%= button_tag t('.accept_all_cookies'), class: 'govuk-button govuk-!-margin-right-4', id: 'accept-all-cookies' %>
+      <%= link_to t('.set_cookie_preferences'), cookie_settings_path, class: 'govuk-button' %>
+    </div>
+  </div>
+  <div class="cookie-accepted-message__inner govuk-width-container" id="cookies-accepted-container" hidden>
+    <div class="govuk-body">
+      <p>
+        <%= t('.cookies_acepted_html', cookies_acepted_link: link_to(t('.cookies_acepted_link_text'), cookie_settings_path, class: 'govuk-link--no-visited-state'))%>
+      </p>
+    </div>
   </div>
 </div>

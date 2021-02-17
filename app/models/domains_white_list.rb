@@ -1,2 +1,0 @@
-class DomainsWhiteList < ApplicationRecord
-end

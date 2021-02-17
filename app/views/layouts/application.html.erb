@@ -24,6 +24,8 @@
   <%= javascript_pack_tag 'application' %>
 
   <meta property="og:image" content="<%= asset_pack_url('media/images/govuk-opengraph-image.png') %>">
+
+  <%= render partial: '/layouts/google_analytics' if cookies[:pmp_google_analytics_enabled] == 'true' && PmpIdam.google_analytics_id.present? %>
 </head>
 
 <body class="govuk-template__body app-body-class" data-test="My value" data-other="report:details">
@@ -34,14 +36,13 @@
   <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
 
   <header id="main-header" class="govuk-header" role="banner" data-module="header">
-    <%# render partial: '/layouts/cookie-banner' %>
+    <%= render partial: '/layouts/cookie-banner' unless cookies[:pmp_cookie_settings_viewed] == 'true' || request.path == '/cookie-settings' %>
     <div class="govuk-header__container govuk-width-container">
       <%= render partial: '/layouts/header-banner', locals: {end_of_journey: false} %>
     </div>
   </header>
 
   <div class="govuk-width-container app-width-container--wide">
-    <!--a href="<%# base_new_user_session_path %>" class="govuk-back-link">Back</a -->
     <main class="govuk-main-wrapper app-main-class" id="main-content" role="main">
       <%= yield %>
     </main>
