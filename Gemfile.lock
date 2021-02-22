@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/jumph4x/canonical-rails.git
+  revision: bfad93850127ab3049776d8ab78902150d5476cf
+  specs:
+    canonical-rails (0.2.11)
+      rails (>= 4.1, < 6.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -333,6 +340,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   brakeman
   byebug
+  canonical-rails!
   capybara (>= 2.15)
   dotenv-rails (>= 2.7.5)
   i18n-tasks (>= 0.9.31)
