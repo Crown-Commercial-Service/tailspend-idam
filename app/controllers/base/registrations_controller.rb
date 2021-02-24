@@ -18,10 +18,11 @@ module Base
       if @result.success?
         # set_flash_message! :notice, :signed_up
         # respond_with resource, location: after_sign_up_path_for(resource)
+        Rails.logger.info 'SIGN UP SUCCESSFUL'
         redirect_to base_users_confirm_path(email: params[:anything][:email])
 
       else
-        fail_create(@result)
+        fail_create
       end
     end
     # rubocop:enable Metrics/AbcSize
@@ -30,11 +31,13 @@ module Base
 
     private
 
-    def fail_create(result)
-      if result.not_on_allow_list
+    def fail_create
+      if @result.not_on_allow_list
+        Rails.logger.info 'SIGN UP FAILED: Email domain not on allow list'
         redirect_to base_domain_not_on_allow_list_path
       else
-        render :new, erorr: result.error
+        Rails.logger.info "SIGN UP FAILED: #{get_error_list(@result.errors)}"
+        render :new, erorr: @result.error
       end
     end
   end
