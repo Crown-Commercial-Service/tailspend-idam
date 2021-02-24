@@ -14,4 +14,10 @@ class ApplicationController < ActionController::Base
       redirect_to base_new_user_password_path
     end
   end
+
+  def get_error_list(errors_object)
+    errors_object.details.transform_values { |errors| errors.pluck(:error) }
+  rescue StandardError
+    errors_object.details
+  end
 end
