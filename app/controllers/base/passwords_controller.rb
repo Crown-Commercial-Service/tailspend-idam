@@ -12,8 +12,12 @@ module Base
     def create
       @response = Cognito::ForgotPassword.call(params[:email])
       if @response.success?
+        Rails.logger.info 'FORGOT PASSWORD EMAIL SENT'
+
         redirect_to base_edit_user_password_path(email: params[:email])
       else
+        Rails.logger.info "FORGOT PASSWORD FAILED: #{get_error_list(@response.errors)}"
+
         flash[:error] = @response.error
         redirect_to base_new_user_password_path
       end
@@ -28,8 +32,12 @@ module Base
 
       @response = Cognito::ConfirmPasswordReset.call(email, params[:password], params[:password_confirmation], params[:confirmation_code])
       if @response.success?
+        Rails.logger.info 'PASSWORD RESET SUCCESS'
+
         redirect_to home_path
       else
+        Rails.logger.info "PASSWORD RESET FAILED: #{get_error_list(@response.errors)}"
+
         render :edit, erorr: @response.error
       end
     end
