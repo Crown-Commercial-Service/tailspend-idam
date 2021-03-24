@@ -20,6 +20,8 @@ module Base
         if result
           code = result
           cookies.permanent[:remember_token] = code
+          Rails.logger.info 'SIGN IN ATTEMPT SUCCESSFUL'
+
           redirect_to("#{params[:redirect_uri]}?code=#{code}&state=#{params[:state]}")
         end
       else
@@ -56,10 +58,13 @@ module Base
     def result_unsuccessful_path
       # sign_out
       if @result.needs_password_reset
+        Rails.logger.info 'SIGN IN ATTEMPT FAILED: Password reset required'
         redirect_to base_confirm_forgot_password_path(email: request.POST[:anything][:email])
       elsif @result.needs_confirmation
+        Rails.logger.info 'SIGN IN ATTEMPT FAILED: Password confirmation required'
         redirect_to base_users_confirm_path(email: request.POST[:anything][:email])
       else
+        Rails.logger.info "SIGN IN ATTEMPT FAILED: #{get_error_list(@result.errors)}"
         render :new
       end
     end

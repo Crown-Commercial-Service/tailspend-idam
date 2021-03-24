@@ -13,8 +13,10 @@ module Base
     def confirm
       @result = Cognito::ConfirmSignUp.call(params[:email], params[:confirmation_code])
       if @result.success?
+        Rails.logger.info 'ACCOUNT ACTIVATION SUCCESSFUL'
         sign_in_user(@result.user)
       else
+        Rails.logger.info "ACCOUNT ACTIVATION FAILED: #{get_error_list(@result.errors)}"
         render :confirm_new
       end
     end
@@ -35,6 +37,7 @@ module Base
 
     def resend_confirmation_email
       result = Cognito::ResendConfirmationCode.call(params[:email])
+      Rails.logger.info 'ACCOUNT ACTIVATION EMAIL RESENT'
 
       redirect_to base_users_confirm_path_path(email: params[:email]), error: result.error
     end
