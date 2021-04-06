@@ -6,7 +6,7 @@
     "@rails/webpacker": "4.2.2",
     "accessible-autocomplete": "^2.0.3",
     "govuk-frontend": "^3.11.0",
-    "jquery": "^3.5.1",
+    "jquery": "^3.6.0",
     "js-cookie": "^2.2.1",
     "selfsigned": "^1.10.7"
   },
