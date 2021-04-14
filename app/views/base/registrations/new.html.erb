@@ -25,9 +25,6 @@
             <%= t('.email_hint') %>
           </span>
 
-          <span id="email-error" class="govuk-error-message govuk-visually-hidden ccs-e-msg">
-                        <%= t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.email_format') %>
-                    </span>
           <%= display_error(@result, :email) %>
           <% email_val = params[:anything].present? ? params[:anything][:email] : '' %>
           <%= f.email_field :email, value: email_val, autofocus: true, autocomplete: "off", class:"govuk-input govuk-!-width-three-quarters", id: "email", spellcheck: false, required: true, aria: {describedby: "email-hint"} %>
@@ -43,9 +40,6 @@
             <%= t('.first_name_hint') %>
           </span>
 
-          <span id="first_name-error" class="govuk-error-message govuk-visually-hidden ccs-e-msg">
-                        <%= t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.first_name_format') %>
-                    </span>
           <%= display_error(@result, :first_name) %>
           <% first_name_val = params[:anything].present? ? params[:anything][:first_name]:'' %>
           <%= f.text_field :first_name, value:first_name_val, class:"govuk-input govuk-!-width-three-quarters", id: "first_name", spellcheck: false, required: true, aria: {describedby: "first_name-hint"} %>
@@ -61,9 +55,6 @@
             <%= t('.last_name_hint') %>
           </span>
 
-          <span id="last_name-error" class="govuk-error-message govuk-visually-hidden ccs-e-msg">
-                        <%= t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.last_name_format') %>
-                    </span>
           <%= display_error(@result, :last_name) %>
           <% last_name_val = params[:anything].present? ? params[:anything][:last_name] : '' %>
           <%= f.text_field :last_name, value: last_name_val, class:"govuk-input govuk-!-width-three-quarters", id: "last_name", spellcheck: false, required: true, aria: {describedby: "last_name-hint"} %>
@@ -97,28 +88,13 @@
 
         <div class="govuk-form-group <%= 'govuk-form-group--error' if @result.errors[:password].any? %>">
 
-          <p class="govuk-body govuk-!-margin-bottom-1"><%= t('.password') %></p>
+          <p class="govuk-body govuk-!-margin-bottom-1" id="password-strength"><%= t('.password') %></p>
 
           <%= render '/layouts/password-strength', text: 'password01' %>
 
-          <span id="password01-error" class="govuk-error-message govuk-visually-hidden ccs-e-msg">
-                        <%= t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.enter_a_password') %>
-                    </span>
-
-          <span id="password01-eighterror" class="govuk-error-message govuk-visually-hidden ccs-e-msg">
-                        <%= t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.password_must_be') %>
-                    </span>
-
-          <span id="password01-Serror" class="govuk-error-message govuk-visually-hidden ccs-e-msg">
-                        <%= t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.passwords_stronger') %>
-                    </span>
-
-          <span id="password01-uppererror" class="govuk-error-message govuk-visually-hidden ccs-e-msg">
-                        <%= t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.passwords_upper') %>
-                    </span>
           <%= display_error(@result, :password) %>
           
-          <%= f.password_field :password, autocomplete: "off", id: "password01", class: "govuk-input govuk-!-width-three-quarters"  %>
+          <%= f.password_field :password, autocomplete: "off", id: "password01", class: "govuk-input govuk-!-width-three-quarters", aria: { describedby: 'password-strength passeight passcap passnum' }   %>
         </div>
 
         <div class="govuk-form-group  <%= 'govuk-form-group--error' if @result.errors[:password_confirmation].any? %>">
@@ -126,13 +102,6 @@
             <%= t('.confirm_password') %>
           </label>
 
-          <span id="password02-error" class="govuk-error-message govuk-visually-hidden ccs-e-msg">
-                        <%= t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.enter_your_password') %>
-                    </span>
-
-          <span id="password02-matcherror" class="govuk-error-message govuk-visually-hidden ccs-e-msg">
-                        <%= t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.passwords_dont_match') %>
-                    </span>
           <%= display_error(@result, :password_confirmation) %>
         
           <%= f.password_field :password_confirmation, autocomplete: "off", id: "password02", class: "govuk-input govuk-!-width-three-quarters"  %>

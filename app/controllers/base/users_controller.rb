@@ -4,7 +4,7 @@ module Base
   class UsersController < ApplicationController
     before_action :authenticate_user!, except: %i[confirm_new confirm challenge_new challenge resend_confirmation_email]
     before_action :authorize_user, except: %i[confirm_new confirm challenge_new challenge resend_confirmation_email]
-    before_action :set_user_phone, only: %i[challenge_new challenge]
+    before_action :set_user_phone, only: %i[challenge_new challenge], if: -> { params[:challenge_name] == 'SMS_MFA' }
 
     def confirm_new
       @result = Cognito::ConfirmSignUp.new(nil, nil)
