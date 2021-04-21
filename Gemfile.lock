@@ -307,6 +307,8 @@ GEM
       unf_ext
     unf_ext (0.0.7.7)
     unicode-display_width (1.7.0)
+    vault (0.16.0)
+      aws-sigv4
     web-console (4.0.4)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -363,6 +365,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)
+  vault
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
