@@ -42,16 +42,19 @@ gem 'roo', '~> 2.8.0'
 # For canonical urls
 gem 'canonical-rails', github: 'jumph4x/canonical-rails'
 
+# For environment variables
+gem 'vault'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails', '>= 2.7.5'
   gem 'i18n-tasks', '>= 0.9.31'
   gem 'rspec-rails', '>= 3.9.0'
-  gem 'rubocop'
-  gem 'rubocop-performance'
-  gem 'rubocop-rails'
-  gem 'rubocop-rspec' # or gem 'rubocop-minitest'
+  gem 'rubocop', '>= 0.91.1'
+  gem 'rubocop-performance', '>= 1.8.1'
+  gem 'rubocop-rails', '>= 2.8.1'
+  gem 'rubocop-rspec', '>= 1.43.2' # or gem 'rubocop-minitest'
   gem 'brakeman'
   gem 'pry-rails'
 end

@@ -307,6 +307,8 @@ GEM
       unf_ext
     unf_ext (0.0.7.7)
     unicode-display_width (1.7.0)
+    vault (0.16.0)
+      aws-sigv4
     web-console (4.0.4)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -355,14 +357,15 @@ DEPENDENCIES
   roo (~> 2.8.0)
   rspec
   rspec-rails (>= 3.9.0)
-  rubocop
-  rubocop-performance
-  rubocop-rails
-  rubocop-rspec
+  rubocop (>= 0.91.1)
+  rubocop-performance (>= 1.8.1)
+  rubocop-rails (>= 2.8.1)
+  rubocop-rspec (>= 1.43.2)
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)
+  vault
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
