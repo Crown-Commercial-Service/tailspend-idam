@@ -341,7 +341,7 @@ DEPENDENCIES
   brakeman
   byebug
   canonical-rails!
-  capybara (>= 2.15)
+  capybara (>= 3.33.0)
   dotenv-rails (>= 2.7.6)
   i18n-tasks (>= 0.9.31)
   jbuilder (~> 2.7)
@@ -354,7 +354,7 @@ DEPENDENCIES
   rails-controller-testing (>= 1.0.5)
   rest-client (~> 2.1)
   rollbar
-  roo (~> 2.8.0)
+  roo (~> 2.8.3)
   rspec
   rspec-rails (>= 4.0.1)
   rubocop (>= 0.91.1)
@@ -367,7 +367,7 @@ DEPENDENCIES
   sqlite3 (~> 1.4)
   vault
   web-console (>= 4.0.4)
-  webdrivers
+  webdrivers (>= 4.4.1)
   webpacker (~> 4.3, >= 4.3.0)
 
 RUBY VERSION
