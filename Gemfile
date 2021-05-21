@@ -36,7 +36,7 @@ gem 'pg', '~> 0.18.4'
 gem 'jwt'
 gem 'rest-client', '~> 2.1'
 gem 'rollbar'
-gem 'roo', '~> 2.8.0'
+gem 'roo', '~> 2.8.3'
 # remove if not option two taken in project
 
 # For canonical urls
@@ -71,10 +71,10 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
+  gem 'capybara', '>= 3.33.0'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
+  gem 'webdrivers', '>= 4.4.1'
   gem 'rails-controller-testing', '>= 1.0.5'
 end
 
