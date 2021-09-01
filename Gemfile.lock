@@ -68,7 +68,7 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
-    arask (1.2.5)
+    arask (1.2.3)
       fugit (~> 1.1)
       rails (>= 5.0)
     ast (2.4.1)
@@ -334,7 +334,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-postgis-adapter
-  arask (>= 1.2.3)
+  arask (= 1.2.3)
   aws-sdk-cognitoidentityprovider (~> 1.23.0)
   aws-sdk-s3 (~> 1)
   bootsnap (>= 1.4.2)
