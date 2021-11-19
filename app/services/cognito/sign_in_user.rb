@@ -46,20 +46,12 @@ module Cognito
       @auth_response.present? && @error.nil?
     end
 
-    def challenge?
-      @auth_response.challenge_name.present?
-    end
-
     def cognito_uuid
       @auth_response.challenge_parameters['USER_ID_FOR_SRP']
     end
 
     def session
       @auth_response.session
-    end
-
-    def challenge_name
-      @auth_response.challenge_name
     end
 
     private

@@ -1,1 +1,56 @@
-<%= render partial: "shared/passwords/edit", locals: {local_edit_path: base_edit_user_password_path} %>
+<%= content_for :page_title, t(".heading") %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <%= render partial: 'shared/error_summary', locals: { errors: @response.errors } %>
+
+    <h1 class="govuk-heading-xl">
+      <%= t('.heading') %>
+    </h1>
+
+    <p class="govuk-body-l">
+      <%= t('.heading1') %>
+    </p>
+
+    <p class="govuk-body-l">
+      <%= t('.lead1') %>
+    </p>
+
+    <p class="govuk-body govuk-!-margin-bottom-7">
+      <%= t('.text_html') %>
+    </p>
+
+    <p class="govuk-body-l">
+      <%= t('.lead') %> <span class="ccs-email-example"><%= @response.email %></span>
+    </p>
+
+    <%= form_with model: @response, url: base_edit_user_password_path,  html: { novalidate: true }, local: true, method: :put do |f| %>
+      <%= f.hidden_field :email, value: @response.email %>
+
+      <p class="govuk-body govuk-!-margin-bottom-1" id="password-strength"><%= t('.password') %></p>
+
+      <%= render '/layouts/password-strength', password_id: "#{f.object_name}_password" %>
+
+      <%= form_group_with_error(f.object, :password) do |displayed_error, any_errors| %>
+        <%= f.label :password, t('.new_password'), class: 'govuk-label' %>
+        <%= displayed_error %>
+        <%= f.password_field :password, autocomplete: "off", class: "govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", aria: { describedby: 'password-strength passeight passcap passnum' } %>
+      <% end %>
+
+      <%= form_group_with_error(f.object, :password_confirmation) do |displayed_error, any_errors| %>
+        <%= f.label :password_confirmation, t('.confirm_new_password'), class: 'govuk-label' %>
+        <%= displayed_error %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}"  %>
+      <% end %>
+
+      <%= form_group_with_error(f.object, :confirmation_code) do |displayed_error, any_errors| %>
+        <%= f.label :confirmation_code, t('.verify_code'), class: 'govuk-label' %>
+        <%= displayed_error %>
+        <%= f.text_field :confirmation_code, autocomplete: "off", class: "govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", maxlength: 6  %>
+      <% end %>
+
+      <%= f.submit t('common.reset_password'), class: "govuk-button govuk-!-padding-left-7 govuk-!-padding-right-7", 'aria-label': t('common.reset_password') %>
+    <% end %>
+  </div>
+</div>

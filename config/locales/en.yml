@@ -74,12 +74,6 @@ en:
               invalid_length: Confirmation code must be 6 characters
             email:
               blank: You must enter your email address in the correct format, like name@example.com
-        cognito/respond_to_challenge:
-          attributes:
-            access_code:
-              blank: Enter the access code
-              invalid_format: Access code must contain numeric characters only
-              invalid_length: Access code must be 6 characters
             new_password:
               blank: Enter a password
               invalid_no_capitals: Password must include a capital letter
@@ -89,6 +83,10 @@ en:
             new_password_confirmation:
               blank: Enter your confirmation password
               confirmation: Passwords don't match
+        cognito/forgot_password:
+          attributes:
+            email:
+              invalid: You must enter your email address in the correct format, like name@example.com
         cognito/sign_in_user:
           attributes:
             base:
@@ -130,6 +128,11 @@ en:
           error_encountered: An error was encountered with the requested page.
   base:
     passwords:
+      confirm_new:
+        heading: A reset email has been sent.
+        lead: If the email address you’ve entered belongs to a registered organisation, we’ll send a link to reset the password.
+        text01: If you don’t receive this, email
+        text02_html: <a href="mailto:support@crowncommercial.gov.uk">support@crowncommercial.gov.uk</a>
       edit:
         confirm_new_password: Confirm new password
         heading: Reset your password
@@ -140,11 +143,6 @@ en:
         password: Your password must have
         text_html: If you don’t receive this, email <a href="mailto:support@crowncommercial.gov.uk">support@crowncommercial.gov.uk</a>
         verify_code: Verification code
-      forgot_password_confirmation:
-        heading: A reset email has been sent.
-        lead: If the email address you’ve entered belongs to a registered organisation, we’ll send a link to reset the password.
-        text01: If you don’t receive this, email
-        text02_html: <a href="mailto:support@crowncommercial.gov.uk">support@crowncommercial.gov.uk</a>
       new:
         email: Email address
         email_hint_html: This is the email address you used to set up the Print Marketplace account.
@@ -155,6 +153,7 @@ en:
         lead: You can now sign in to your Crown Commercial Service account
     registrations:
       domain_not_on_allow_list:
+        back_to_create: Back to create a account
         heading: You must use a public sector email address
         lead_html: You must be employed by, or represent, a public sector organisation to create a <abbr title="Crown Commercial Service">CCS</abbr> account.
         line_01: The email you used doesn't belong to a recognised public sector domain.
@@ -174,7 +173,8 @@ en:
         lead: You must be employed by, or represent, a public sector organisation.
         organisation: Organisation name
         organisation_hint: Enter your organisation's full name. We will verify your organisation name to confirm you can use this service.
-        password: 'Your password must have:'
+        password: Password
+        password_must_have: 'Your password must have:'
     sessions:
       new:
         email_address: Email address
@@ -188,27 +188,13 @@ en:
         confirmation_code: Verification code
         email: Email address
         heading: Activate your account
-        lead_end: containing your verification code.
-        lead_mid: you
-        lead_start: An email has been sent to
+        lead: An email has been sent to %{location} containing your verification code.
         resend_the_confirmation_email_html: <a href="%{link}" class="govuk-link">Resend the email</a>
-      new_password_required:
-        confirm_your_password: Confirm your password
-        create_your_password: Create a password you’ll remember
-        heading: Change your password
-        intro: This is the first time you’ve signed in to your account. You need to reset your password.
+        you: you
       sign_in_error: You must provide a correct username or password
-      sms_mfa:
-        access_code: Access code
-        content: It may take a few minutes to arrive.
-        heading: Enter your access code
-        lead: 'We just sent a 6 digit access code by text to:'
-        resend_the_confirmation_code_html: To receive a new access code, <a href="%{link}"> sign in</a> again.
   common:
-    change_password_and_sign_in: Change password and sign in
     continue: Continue
     create_account: Create account
-    error_summary_title: There is a problem
     passcap: at least one capital letter
     passeight: at least 10 characters
     passnum: at least one number
@@ -263,7 +249,7 @@ en:
       list_2_email: the email field on the homepage lacks an autocomplete attribute, so its purpose cannot be determined programmatically
       market_place_link: https://printmarketplace.crowncommercial.gov.uk/
       several_aspects: Several aspects of the print marketplace user journey do not meet the WCAG 2.1 AA success criteria. The accessibility statement on the core Print Marketplace product details these.
-      the_complete_journey: The complete Print Marketplace journey was tested, this included every page a buyer or supplier would progress through in-order to complete the procurement activity. The administration screens used for the maintenance of the digital service were also tested for accessibility, this area of functionality is only used by a small selection of CCS staff.
+      the_complete_journey: The complete Print Marketplace journey was tested, this included every page a buyer would progress through in-order to complete the sign up activity.
       the_content: The content listed below is non-accessible for the following reasons.
       this_statement: 'This accessibility statement applies to the sign in pages of the Print Marketplace digital service which can be found at the following URL:'
       this_statement_date: This statement was prepared on 25th November 2020. It will be reviewed and updated as required.
