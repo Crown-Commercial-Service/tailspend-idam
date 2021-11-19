@@ -1,11 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe Cognito::ConfirmPasswordReset do
+  let(:confirm_password_reset) { described_class.new(params) }
+
+  let(:params) do
+    {
+      email: email,
+      password: password,
+      password_confirmation: password_confirmation,
+      confirmation_code: confirmation_code
+    }
+  end
+
+  let(:email) { 'test@test.com' }
+  let(:password) { 'Password123!' }
+  let(:password_confirmation) { password }
+  let(:confirmation_code) { '123456' }
+
   describe '.valid?' do
-    let(:confirm_password_reset) { described_class.new('test@test.com', password, password_confirmation, confirmation_code) }
-    let(:password) { 'Password123!' }
-    let(:password_confirmation) { password }
-    let(:confirmation_code) { '123456' }
     let(:valid_symbols_sample) { '=+-^$*.[]{}()?"!@#%&/\\,><\':;|_~`'.split('').sample(5).join }
     let(:invalid_symbols_sample) { '£èöíäü'.split('').sample(2).join }
 
@@ -170,8 +182,6 @@ RSpec.describe Cognito::ConfirmPasswordReset do
   end
 
   describe 'initialisation of email' do
-    let(:confirm_password_reset) { described_class.new(email, '', '', '') }
-
     context 'when the email contains capital letters' do
       let(:email) { 'Test@TeST.com' }
 

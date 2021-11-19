@@ -21,4 +21,14 @@ module ApplicationHelper
     title += [t('layouts.application.title')]
     title.reject(&:blank?).map(&:strip).join(': ')
   end
+
+  def form_group_with_error(model, attribute)
+    css_classes = ['govuk-form-group']
+    any_errors = model.errors.include? attribute
+    css_classes += ['govuk-form-group--error'] if any_errors
+
+    tag.div(class: css_classes, id: "#{attribute}-form-group") do
+      yield(display_error(model, attribute), any_errors)
+    end
+  end
 end

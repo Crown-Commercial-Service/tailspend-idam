@@ -28,15 +28,12 @@ Rails.application.routes.draw do
     get '/resend_confirmation_email', to: 'users#resend_confirmation_email', as: :resend_confirmation_email
     get '/sign-in', to: 'sessions#new', as: :new_user_session
     post '/sign-in', to: 'sessions#create', as: :user_session
-    delete '/sign-out', to: 'sessions#destroy', as: :destroy_user_session
     get '/users/forgot-password', to: 'passwords#new', as: :new_user_password
     post '/users/password', to: 'passwords#create'
     get '/users/forgot-password-confirmation', to: 'passwords#confirm_new', as: :confirm_new_user_password
     get '/users/password', to: 'passwords#edit', as: :edit_user_password
     put '/users/password', to: 'passwords#update'
     get '/users/password-reset-success', to: 'passwords#password_reset_success', as: :password_reset_success
-    get '/users/challenge', to: 'users#challenge_new'
-    post '/users/challenge', to: 'users#challenge'
   end
 
   get '/404', to: 'errors#not_found'

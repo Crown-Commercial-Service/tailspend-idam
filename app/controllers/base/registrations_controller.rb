@@ -7,25 +7,18 @@ module Base
     before_action :authorize_user, except: %i[new create domain_not_on_allow_list]
 
     def new
-      @result = Cognito::SignUpUser.new(nil, nil, nil, nil, nil, nil)
-      @result.errors.add(:base, flash[:error]) if flash[:error]
-      @result.errors.add(:base, flash[:alert]) if flash[:alert]
+      @result = Cognito::SignUpUser.new
     end
 
-    # rubocop:disable Metrics/AbcSize
     def create
-      @result = Cognito::SignUpUser.call(params[:anything][:email], params[:anything][:password], params[:anything][:password_confirmation], params[:anything][:organisation], params[:anything][:first_name], params[:anything][:last_name])
+      @result = Cognito::SignUpUser.call(sign_up_params)
       if @result.success?
-        # set_flash_message! :notice, :signed_up
-        # respond_with resource, location: after_sign_up_path_for(resource)
         Rails.logger.info 'SIGN UP ATTEMPT SUCCESSFUL'
-        redirect_to base_users_confirm_path(email: params[:anything][:email])
-
+        redirect_to base_users_confirm_path(email: sign_up_params[:email])
       else
         fail_create
       end
     end
-    # rubocop:enable Metrics/AbcSize
 
     def domain_not_on_allow_list; end
 
@@ -39,6 +32,17 @@ module Base
         Rails.logger.info "SIGN UP ATTEMPT FAILED: #{get_error_list(@result.errors)}"
         render :new, erorr: @result.error
       end
+    end
+
+    def sign_up_params
+      params.require(:cognito_sign_up_user).permit(
+        :email,
+        :first_name,
+        :last_name,
+        :organisation,
+        :password,
+        :password_confirmation
+      )
     end
   end
 end

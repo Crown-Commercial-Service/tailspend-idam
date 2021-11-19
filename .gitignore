@@ -44,7 +44,7 @@ yarn-debug.log*
 .idea/misc.xml
 *.xml
 .generators
-.idea/pmp-idam.iml
+.idea/tailspend-idam.iml
 .vscode/settings.json
 *.crt
 local-ssl-cert/localhost.key
@@ -55,4 +55,6 @@ report.html
 /config/credentials/staging.key
 
 config/credentials.yml.enc
-.dev-env.local-copy
+
+# Simplecov
+/coverage/*

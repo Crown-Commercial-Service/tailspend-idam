@@ -1,1 +1,28 @@
-<%= render partial: "shared/passwords/new", locals: {local_new_path: base_users_password_path} %>
+<%= content_for :page_title, t(".heading") %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= render partial: 'shared/error_summary', locals: { errors: @response.errors } %>
+
+    <h1 class="govuk-heading-xl">
+      <%= t('.heading') %>
+    </h1>
+
+    <p class="govuk-body-l">
+      <%= t('.lead') %>
+    </p>
+
+    <%= form_with model: @response, url: base_users_password_path,  html: { novalidate: true }, local: true, method: :post do |f| %>
+      <%= form_group_with_error(f.object, :email) do |displayed_error, any_errors| %>
+        <%= f.label :email, t('.email'), class: 'govuk-label govuk-label--m govuk-!-margin-bottom-0' %>
+        <span id="email-hint" class="govuk-hint govuk-!-width-three-quarters">
+          <%= t('.email_hint_html') %>
+        </span>
+        <%= displayed_error %>
+        <%= f.email_field :email, autocomplete: "off", class:"govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", spellcheck: false, required: true, aria: { describedby: "email-hint" } %>
+      <% end %>
+
+      <%= f.submit t('common.send_reset_email'), class: 'govuk-button govuk-!-padding-left-7 govuk-!-padding-right-7', 'aria-label': t('common.send_reset_email') %>
+    <% end %>
+  </div>
+</div>

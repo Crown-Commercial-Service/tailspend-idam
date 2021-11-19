@@ -17,7 +17,7 @@ module SalesforceImport
     def self.import_organisations
       csv = Roo::CSV.new(csv_path, { csv_options: { liberal_parsing: true } })
 
-      insert_data = csv.column(1)[1..].map { |supplier_name| get_supplier_row(supplier_name) }
+      insert_data = csv.column(1)[1..].map { |organisation_name| get_organisation_row(organisation_name) }
 
       ActiveRecord::Base.logger.level = Logger::INFO
 
@@ -37,7 +37,7 @@ module SalesforceImport
           USING organisations b
       WHERE
         a.id < b.id
-        AND a.supplier_name = b.supplier_name;
+        AND a.organisation_name = b.organisation_name;
       SQL
 
       ActiveRecord::Base.connection.execute(query)
@@ -51,21 +51,21 @@ module SalesforceImport
       end
     end
 
-    def self.get_supplier_row(supplier_name)
+    def self.get_organisation_row(organisation_name)
       {
-        'supplier_name': format_supplier_name(supplier_name),
-        'active': !supplier_inactive?(supplier_name),
+        'organisation_name': format_organisation_name(organisation_name),
+        'active': !organisation_inactive?(organisation_name),
         'created_at': DateTime.current,
         'updated_at': DateTime.current
       }
     end
 
-    def self.format_supplier_name(supplier_name)
-      supplier_name.force_encoding('UTF-8').squish
+    def self.format_organisation_name(organisation_name)
+      organisation_name.force_encoding('UTF-8').squish
     end
 
-    def self.supplier_inactive?(supplier_name)
-      supplier_name.downcase.starts_with?('(closed)') || supplier_name == '*REDACTED*'
+    def self.organisation_inactive?(organisation_name)
+      organisation_name.downcase.starts_with?('(closed)') || organisation_name == '*REDACTED*'
     end
   end
 end

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ApplicationController do
   describe '.get_error_list' do
-    let(:object) { Cognito::SignUpUser.new(nil, nil, nil, nil, nil, nil) }
+    let(:object) { Cognito::SignUpUser.new }
     let(:errors_object) { object.errors }
 
     context 'when the object has one attribute with one error' do

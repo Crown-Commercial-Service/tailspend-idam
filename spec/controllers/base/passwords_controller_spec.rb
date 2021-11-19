@@ -14,14 +14,14 @@ RSpec.describe Base::PasswordsController do
       # rubocop:disable RSpec/AnyInstance
       allow_any_instance_of(Cognito::ForgotPassword).to receive(:forgot_password).and_return(true)
       # rubocop:enable RSpec/AnyInstance
-      post :create, params: { email: email }
+      post :create, params: { cognito_forgot_password: { email: email } }
     end
 
     context 'when the email is invalid' do
       let(:email) { 'testtest.com' }
 
-      it 'redirects to the new page' do
-        expect(response).to redirect_to base_new_user_password_path
+      it 'render to the new page' do
+        expect(response).to render_template(:new)
       end
     end
 
@@ -48,7 +48,7 @@ RSpec.describe Base::PasswordsController do
       allow_any_instance_of(Cognito::ConfirmPasswordReset).to receive(:create_user_if_needed).and_return(true)
       allow_any_instance_of(Cognito::ConfirmPasswordReset).to receive(:confirm_forgot_password).and_return(true)
       # rubocop:enable RSpec/AnyInstance
-      put :update, params: { user_email_reset_by_themself: 'test@test.com', password: password, password_confirmation: password, confirmation_code: '123456' }
+      put :update, params: { cognito_confirm_password_reset: { email: 'test@test.com', password: password, password_confirmation: password, confirmation_code: '123456' } }
     end
 
     context 'when the reset password is invalid' do
