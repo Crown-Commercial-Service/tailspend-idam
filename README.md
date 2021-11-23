@@ -1,6 +1,8 @@
-# README
+# Print Marketplace IDAM
 
-This README is a work in progress but the guide below should show how to get the application up and running locally
+[![Build Status](https://app.travis-ci.com/Crown-Commercial-Service/pmp-idam.svg?branch=develop)](https://app.travis-ci.com/Crown-Commercial-Service/pmp-idam)
+[![Maintainability](https://api.codeclimate.com/v1/badges/0cd357c324b2731fb1bc/maintainability)](https://codeclimate.com/github/Crown-Commercial-Service/pmp-idam/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/0cd357c324b2731fb1bc/test_coverage)](https://codeclimate.com/github/Crown-Commercial-Service/pmp-idam/test_coverage)
 
 ## Prerequisites
 
@@ -60,7 +62,7 @@ bundle exec rake db:setup
 
 As much of the project uses external APIs you will need a .env.local file to access these APIs. If there is an existing developer on the project then you can ask them for it. If not you should still add a .env.local and add the relevant variables as you go along.
 
-There is no data that can be initialised but you will need to add your email domain to the `AllowedEmailDomain` model and some suppliers to the Organisation. You can either create files and use the rake tasks found in `lib/tasks/allow_email_domain.rake` and `lib/tasks/organisations.rake` or add the data manually though the console.
+There is no data that can be initialised but you will need to add your email domain to the `AllowedEmailDomain` model and some organisations to the Organisation. You can either create files and use the rake tasks found in `lib/tasks/allow_email_domain.rake` and `lib/tasks/organisations.rake` or add the data manually though the console.
 
 
 ## Environemnt variables

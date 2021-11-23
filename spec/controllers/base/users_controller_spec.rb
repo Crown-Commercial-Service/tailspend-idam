@@ -14,7 +14,7 @@ RSpec.describe Base::UsersController do
       # rubocop:disable RSpec/AnyInstance
       allow_any_instance_of(Cognito::ConfirmSignUp).to receive(:confirm_sign_up).and_return(true)
       # rubocop:enable RSpec/AnyInstance
-      post :confirm, params: { email: 'test@testemail.com', confirmation_code: confirmation_code }
+      post :confirm, params: { cognito_confirm_sign_up: { email: 'test@testemail.com', confirmation_code: confirmation_code } }
     end
 
     context 'when the information is invalid' do

@@ -12,18 +12,18 @@ module Cognito
 
     include PasswordValidator
 
-    validate :domain_in_allow_list
+    validate :domain_in_allow_list, unless: -> { errors[:email].any? }
     attr_reader :email, :first_name, :last_name, :organisation, :password, :password_confirmation
     attr_accessor :user, :not_on_allow_list
 
-    def initialize(email, password, password_confirmation, organisation, first_name, last_name)
+    def initialize(params = {})
       super()
-      @email = email.try(:downcase)
-      @password = password
-      @password_confirmation = password_confirmation
-      @organisation = organisation
-      @first_name = first_name
-      @last_name = last_name
+      @email = params[:email].try(:downcase)
+      @password = params[:password]
+      @password_confirmation = params[:password_confirmation]
+      @organisation = params[:organisation]
+      @first_name = params[:first_name]
+      @last_name = params[:last_name]
       @not_on_allow_list = nil
     end
 

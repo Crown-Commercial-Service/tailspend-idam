@@ -1,11 +1,11 @@
 import accessibleAutocomplete from 'accessible-autocomplete';
 
-var no_results = false;
+let noResults = false;
 
-var pmp_auto_complete = {
+const pmpAutoComplete = {
   autocomplete_int: [],
 
-  query: function(query, populateResults) {
+  query(query, populateResults) {
     if (query.length > 2) {
       $.ajax({
         url: '/api/v1/organisation-search',
@@ -13,52 +13,51 @@ var pmp_auto_complete = {
         data: {
           search: query,
         },
-        success: function (response) {
-          populateResults(response['supplier_names']);
-          no_results = response['no_results'];
+        success(response) {
+          populateResults(response.organisation_names);
+          noResults = response.noResults;
         },
-        error: function (xhr) {},
+        error() {},
       });
     }
   },
 
-  initiante_auto_complete: function() {
-    pmp_auto_complete.autocomplete_int = accessibleAutocomplete({
+  init_auto_complete() {
+    pmpAutoComplete.autocomplete_int = accessibleAutocomplete({
       element: document.querySelector('#my-autocomplete-container'),
       id: 'organisation-input',
-      source: pmp_auto_complete.query,
+      source: pmpAutoComplete.query,
       name: 'anything[organisation-input]',
       minLength: 3,
-      defaultValue: $('#organisation').val(),
+      defaultValue: $('#cognito_sign_up_user_organisation').val(),
       showNoOptionsFound: true,
-      tNoResults: function() {
-        if (no_results) {
-          return "No results found"
-        } else {
-          return  "Search for a more specific term";
+      tNoResults() {
+        if (noResults) {
+          return 'No results found';
         }
+        return 'Search for a more specific term';
       },
-      onConfirm: function (query) {
+      onConfirm(query) {
         if (query !== undefined) {
-          $('#organisation').val(query)
+          $('#cognito_sign_up_user_organisation').val(query);
           $('#selected-autocomplete-option').show();
           $('#selected-autocomplete-option p span').text(query);
         }
       },
     });
 
-    $('#organisation-input').on('keyup', function(e) {
+    $('#organisation-input').on('keyup', (e) => {
       if ($(e.target).val() !== $('#selected-autocomplete-option p span').text()) {
-        $('#organisation').val('')
+        $('#cognito_sign_up_user_organisation').val('');
         $('#selected-autocomplete-option').hide();
         $('#selected-autocomplete-option p span').text('');
       }
     });
-  }
-}
+  },
+};
 
-window.onload = function () {
-  if($('#my-autocomplete-container').length > 0) {
-    pmp_auto_complete.initiante_auto_complete();
+$(() => {
+  if ($('#my-autocomplete-container').length > 0) {
+    pmpAutoComplete.init_auto_complete();
   }
-}
+});

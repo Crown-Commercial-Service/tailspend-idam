@@ -1,11 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe Cognito::ConfirmSignUp do
-  describe '.valid?' do
-    let(:confirm_sign_up) { described_class.new(email, confirmation_code) }
-    let(:email) { 'test@test.com' }
-    let(:confirmation_code) { '123456' }
+  let(:confirm_sign_up) { described_class.new(params) }
 
+  let(:params) do
+    {
+      email: email,
+      confirmation_code: confirmation_code
+    }
+  end
+
+  let(:email) { 'test@test.com' }
+  let(:confirmation_code) { '123456' }
+
+  describe '.valid?' do
     context 'when all attributes are valid' do
       it 'is valid' do
         expect(confirm_sign_up.valid?).to be true
@@ -70,8 +78,6 @@ RSpec.describe Cognito::ConfirmSignUp do
   end
 
   describe 'initialisation of email' do
-    let(:confirm_sign_up) { described_class.new(email, '') }
-
     context 'when the email contains capital letters' do
       let(:email) { 'Test@TeST.com' }
 

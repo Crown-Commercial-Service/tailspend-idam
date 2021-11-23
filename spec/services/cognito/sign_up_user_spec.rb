@@ -1,15 +1,26 @@
 require 'rails_helper'
 
 RSpec.describe Cognito::SignUpUser do
+  let(:sign_up_user) { described_class.new(params) }
+
+  let(:params) do
+    { email: email,
+      password: password,
+      password_confirmation: password_confirmation,
+      organisation: organisation,
+      first_name: first_name,
+      last_name: last_name }
+  end
+
+  let(:email) { 'test@test.com' }
+  let(:password) { 'Password123!' }
+  let(:password_confirmation) { password }
+  let(:organisation) { 'Crown Commercial Serice' }
+  let(:first_name) { 'John' }
+  let(:last_name) { 'Smith' }
+  let(:domain) { 'test.com' }
+
   describe '.valid?' do
-    let(:sign_up_user) { described_class.new(email, password, password_confirmation, organisation, first_name, last_name) }
-    let(:email) { 'test@test.com' }
-    let(:password) { 'Password123!' }
-    let(:password_confirmation) { password }
-    let(:organisation) { 'Crown Commercial Serice' }
-    let(:first_name) { 'John' }
-    let(:last_name) { 'Smith' }
-    let(:domain) { 'test.com' }
     let(:valid_symbols_sample) { '=+-^$*.[]{}()?"!@#%&/\\,><\':;|_~`'.split('').sample(7).join }
     let(:invalid_symbols_sample) { 'èÿüíōæß'.split('').sample(3).join }
 
@@ -246,8 +257,6 @@ RSpec.describe Cognito::SignUpUser do
   end
 
   describe 'initialisation of email' do
-    let(:sign_up_user) { described_class.new(email, '', '', '', '', '') }
-
     context 'when the email contains capital letters' do
       let(:email) { 'Test@TeST.com' }
 

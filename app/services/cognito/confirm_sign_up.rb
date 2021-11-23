@@ -12,10 +12,10 @@ module Cognito
               length: { is: 6, message: :invalid_length }
     validates_presence_of :email, :confirmation_code
 
-    def initialize(email, confirmation_code)
+    def initialize(params = {})
       super()
-      @email = email.try(:downcase)
-      @confirmation_code = confirmation_code
+      @email = params[:email].try(:downcase)
+      @confirmation_code = params[:confirmation_code]
       @error = nil
     end
 
@@ -42,10 +42,5 @@ module Cognito
         confirmation_code: confirmation_code
       )
     end
-
-    # def confirm_user
-    #   @user = User.find_for_authentication(email: email)
-    #   @user.update(confirmed_at: Time.zone.now)
-    # end
   end
 end
