@@ -13,11 +13,15 @@ module SalesforceImport
       Rollbar.log('error', e)
     end
 
+    HEADERS = ['CustomerName', 'UniqueReferenceNumber', 'Address', 'City', 'Postcode'].freeze
+
     # rubocop:disable Rails/SkipsModelValidations
     def self.import_organisations
-      csv = Roo::CSV.new(csv_path, { csv_options: { liberal_parsing: true } })
+      insert_data = []
 
-      insert_data = csv.column(1)[1..].map { |organisation_name| get_organisation_row(organisation_name) }
+      CSV.foreach(csv_path, liberal_parsing: true, encoding: 'bom|utf-8', headers: true) do |row|
+        insert_data << get_organisation_row(transform_row_to_hash(row))
+      end
 
       ActiveRecord::Base.logger.level = Logger::INFO
 
@@ -37,7 +41,7 @@ module SalesforceImport
           USING organisations b
       WHERE
         a.id < b.id
-        AND a.organisation_name = b.organisation_name;
+        AND a.summary_line = b.summary_line;
       SQL
 
       ActiveRecord::Base.connection.execute(query)
@@ -51,21 +55,39 @@ module SalesforceImport
       end
     end
 
-    def self.get_organisation_row(organisation_name)
+    def self.get_organisation_row(row)
       {
-        'organisation_name': format_organisation_name(organisation_name),
-        'active': !organisation_inactive?(organisation_name),
+        'organisation_name': row['CustomerName'],
+        'active': !organisation_inactive?(row['CustomerName']),
         'created_at': DateTime.current,
-        'updated_at': DateTime.current
+        'updated_at': DateTime.current,
+        'urn': row['UniqueReferenceNumber'].to_i,
+        'summary_line': get_summary_line(row)
       }
     end
 
-    def self.format_organisation_name(organisation_name)
-      organisation_name.force_encoding('UTF-8').squish
+    def self.get_summary_line(row)
+      if row['Address'].nil? && row['City'].nil? && row['Postcode'].nil?
+        row['CustomerName']
+      else
+        "#{row['CustomerName']} (#{[row['Address'], row['City'], row['Postcode']].reject(&:nil?).join(', ')})"
+      end
+    end
+
+    def self.transform_row_to_hash(row)
+      row.to_h.slice(*HEADERS).transform_values { |value| convert_to_nil(format_string(value)) }
+    end
+
+    def self.format_string(string)
+      string&.force_encoding('UTF-8')&.squish
     end
 
     def self.organisation_inactive?(organisation_name)
       organisation_name.downcase.starts_with?('(closed)') || organisation_name == '*REDACTED*'
+    end
+
+    def self.convert_to_nil(string)
+      string == 'NULL' || string&.empty? ? nil : string
     end
   end
 end
