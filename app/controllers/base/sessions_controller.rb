@@ -52,10 +52,10 @@ module Base
       # sign_out
       if @result.needs_password_reset
         Rails.logger.info 'SIGN IN ATTEMPT FAILED: Password reset required'
-        redirect_to base_confirm_forgot_password_path(email: request.POST[:anything][:email])
+        redirect_to base_confirm_forgot_password_path(email: sign_in_params[:email])
       elsif @result.needs_confirmation
         Rails.logger.info 'SIGN IN ATTEMPT FAILED: Password confirmation required'
-        redirect_to base_users_confirm_path(email: request.POST[:anything][:email])
+        redirect_to base_users_confirm_path(email: sign_in_params[:email])
       else
         Rails.logger.info "SIGN IN ATTEMPT FAILED: #{get_error_list(@result.errors)}"
         render :new

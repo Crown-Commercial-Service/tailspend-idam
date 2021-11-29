@@ -41,15 +41,15 @@
           <%= f.text_field :last_name, class:"govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", spellcheck: false, required: true, aria: { describedby: "last_name-hint" } %>
         <% end %>
 
-        <%= form_group_with_error(f.object, :organisation) do |displayed_error| %>
-          <%= f.hidden_field :organisation %>
+        <%= form_group_with_error(f.object, :summary_line) do |displayed_error| %>
+          <%= f.hidden_field :summary_line %>
           <%= f.label :organisation, t('.organisation'), class: 'govuk-label' %>
           <span id="organisation-hint" class="govuk-hint govuk-!-width-three-quarters">
             <%= t('.organisation_hint') %>
           </span>
           <%= displayed_error %>
-          <div id="selected-autocomplete-option" class="govuk-!-width-three-quarters" <%= "hidden" unless f.object.organisation.present? %>>
-            <p class="govuk-body govuk-!-font-weight-regular govuk-tag govuk-tag--green"><strong>Selected option: </strong><span><%= f.object.organisation %></span></p>
+          <div id="selected-autocomplete-option" class="govuk-!-width-three-quarters" <%= "hidden" unless f.object.summary_line.present? %>>
+            <p class="govuk-body govuk-!-font-weight-regular govuk-tag govuk-tag--green"><strong>Selected option: </strong><span><%= f.object.summary_line %></span></p>
           </div>
           <div id="my-autocomplete-container" class="govuk-!-width-three-quarters">
           </div>
