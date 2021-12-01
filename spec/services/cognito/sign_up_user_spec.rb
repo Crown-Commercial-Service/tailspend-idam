@@ -20,11 +20,11 @@ RSpec.describe Cognito::SignUpUser do
   let(:last_name) { 'Smith' }
   let(:domain) { 'test.com' }
 
+  before { AllowedEmailDomain.create(url: domain, active: true) }
+
   describe '.valid?' do
     let(:valid_symbols_sample) { '=+-^$*.[]{}()?"!@#%&/\\,><\':;|_~`'.split('').sample(7).join }
     let(:invalid_symbols_sample) { 'èÿüíōæß'.split('').sample(3).join }
-
-    before { AllowedEmailDomain.create(url: domain, active: true) }
 
     context 'when all attributes are valid' do
       it 'is valid' do
@@ -281,6 +281,67 @@ RSpec.describe Cognito::SignUpUser do
 
       it 'will become downcased when the object is initialised' do
         expect(sign_up_user.email).to eq 'test@test.com'
+      end
+    end
+  end
+
+  describe '.call' do
+    let(:client) { instance_double(Aws::CognitoIdentityProvider::Client) }
+
+    before do
+      stub_const('ENV', { 'COGNITO_AWS_REGION' => 'supersecretregion', 'COGNITO_CLIENT_SECRET' => 'supersecretkey1', 'COGNITO_CLIENT_ID' => 'supersecretkey2' })
+      allow(Aws::CognitoIdentityProvider::Client).to receive(:new).with(region: 'supersecretregion').and_return(client)
+    end
+
+    context 'when it is valid' do
+      let(:response) { double }
+
+      before do
+        allow(client).to receive(:sign_up).and_return(response)
+        allow(response).to receive(:[]).with('user_sub').and_return('123456')
+        sign_up_user.call
+      end
+
+      it 'calls sign_up on client' do
+        expect(client).to have_received(:sign_up).with(client_id: 'supersecretkey2',
+                                                       secret_hash: 'QGGa3OLislakJW63OXujsIzjOxqYgSxptyRHAuyobd8=',
+                                                       username: email,
+                                                       password: password,
+                                                       user_attributes: [{ name: 'email', value: email },
+                                                                         { name: 'name', value: first_name },
+                                                                         { name: 'family_name', value: last_name },
+                                                                         { name: 'custom:organisation_name', value: 'Active Organisation 69' },
+                                                                         { name: 'phone_number', value: '+4408654876588' }])
+      end
+    end
+
+    context 'when an error is raised' do
+      before do
+        allow(client).to receive(:sign_up).and_raise(Aws::CognitoIdentityProvider::Errors::ServiceError.new('Some context', 'Some message'))
+        sign_up_user.call
+      end
+
+      it 'sets the error and success will be false' do
+        expect(sign_up_user.errors[:base].first).to eq 'Some message'
+        expect(sign_up_user.success?).to be false
+      end
+    end
+  end
+
+  describe '.success?' do
+    before { sign_up_user.valid? }
+
+    context 'when there are no errors' do
+      it 'returns true' do
+        expect(sign_up_user.success?).to be true
+      end
+    end
+
+    context 'when there are errors' do
+      let(:password_confirmation) { '' }
+
+      it 'returns false' do
+        expect(sign_up_user.success?).to be false
       end
     end
   end

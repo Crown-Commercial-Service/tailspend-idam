@@ -20,16 +20,13 @@ module Cognito
     end
 
     def call
-      if valid?
-        confirm_sign_up
-        # confirm_user
-      end
+      confirm_sign_up if valid?
     rescue Aws::CognitoIdentityProvider::Errors::ServiceError => e
       errors.add(:confirmation_code, e.message)
     end
 
     def success?
-      errors.empty?
+      errors.none?
     end
 
     private

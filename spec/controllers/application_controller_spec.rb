@@ -36,5 +36,13 @@ RSpec.describe ApplicationController do
         expect(controller.get_error_list(errors_object)).to eq({ password: %i[invalid_no_capitals invalid_symbol], first_name: %i[too_short], email: %i[blank] })
       end
     end
+
+    context 'when the errors object is not propperly formed' do
+      before { allow(errors_object).to receive(:details).and_return('The last Metroid is in captivity... the galaxy is at peace.') }
+
+      it 'returns the error details' do
+        expect(controller.get_error_list(errors_object)).to eq('The last Metroid is in captivity... the galaxy is at peace.')
+      end
+    end
   end
 end

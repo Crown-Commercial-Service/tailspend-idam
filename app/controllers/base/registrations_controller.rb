@@ -3,8 +3,6 @@
 module Base
   class RegistrationsController < ApplicationController
     protect_from_forgery
-    before_action :authenticate_user!, except: %i[new create domain_not_on_allow_list]
-    before_action :authorize_user, except: %i[new create domain_not_on_allow_list]
 
     def new
       @result = Cognito::SignUpUser.new
