@@ -19,10 +19,6 @@ module Cognito
       @error = e.message
     end
 
-    def success?
-      @error.nil?
-    end
-
     private
 
     def cognito_attribute(attr)

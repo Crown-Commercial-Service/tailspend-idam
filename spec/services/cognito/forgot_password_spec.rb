@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Cognito::ForgotPassword do
-  describe 'validating the email' do
-    let(:forgot_password) { described_class.new(email) }
-    let(:email) { 'test@test.com' }
+  let(:forgot_password) { described_class.new(email) }
+  let(:email) { 'test@test.com' }
 
+  describe 'validating the email' do
     context 'when the email is valid' do
       it 'is valid' do
         expect(forgot_password.valid?).to be true
@@ -22,7 +22,7 @@ RSpec.describe Cognito::ForgotPassword do
         end
 
         it 'has the correct error message' do
-          expect(forgot_password.error).to eq 'You must enter your email address in the correct format, like name@example.com'
+          expect(forgot_password.errors[:email].first).to eq 'You must enter your email address in the correct format, like name@example.com'
         end
       end
 
@@ -34,7 +34,7 @@ RSpec.describe Cognito::ForgotPassword do
         end
 
         it 'has the correct error message' do
-          expect(forgot_password.error).to eq 'You must enter your email address in the correct format, like name@example.com'
+          expect(forgot_password.errors[:email].first).to eq 'You must enter your email address in the correct format, like name@example.com'
         end
       end
     end
@@ -48,6 +48,60 @@ RSpec.describe Cognito::ForgotPassword do
 
       it 'will become downcased when the object is initialised' do
         expect(forgot_password.email).to eq 'test@test.com'
+      end
+    end
+  end
+
+  describe 'call' do
+    let(:client) { instance_double(Aws::CognitoIdentityProvider::Client) }
+
+    before do
+      stub_const('ENV', { 'COGNITO_AWS_REGION' => 'supersecretregion', 'COGNITO_CLIENT_SECRET' => 'supersecretkey1', 'COGNITO_CLIENT_ID' => 'supersecretkey2' })
+      allow(Aws::CognitoIdentityProvider::Client).to receive(:new).with(region: 'supersecretregion').and_return(client)
+    end
+
+    context 'when everything is valid' do
+      before do
+        allow(client).to receive(:forgot_password)
+        forgot_password.call
+      end
+
+      it 'calls forgot_password on client' do
+        expect(client).to have_received(:forgot_password).with(client_id: 'supersecretkey2', secret_hash: 'QGGa3OLislakJW63OXujsIzjOxqYgSxptyRHAuyobd8=', username: email)
+      end
+    end
+
+    context 'when an error occurs' do
+      before do
+        allow(client).to receive(:forgot_password).and_raise(error.new('Some context', 'Some message'))
+        forgot_password.call
+      end
+
+      context 'and the error is UserNotFoundException' do
+        let(:error) { Aws::CognitoIdentityProvider::Errors::UserNotFoundException }
+
+        it 'sets the error and success will be false' do
+          expect(forgot_password.errors[:base].first).to eq 'Please check the information you have entered'
+          expect(forgot_password.success?).to be false
+        end
+      end
+
+      context 'and the error is InvalidParameterException' do
+        let(:error) { Aws::CognitoIdentityProvider::Errors::InvalidParameterException }
+
+        it 'sets the error and success will be false' do
+          expect(forgot_password.errors[:base].first).to eq 'Please check the information you have entered'
+          expect(forgot_password.success?).to be false
+        end
+      end
+
+      context 'and the error is ServiceError' do
+        let(:error) { Aws::CognitoIdentityProvider::Errors::ServiceError }
+
+        it 'sets the error and success will be false' do
+          expect(forgot_password.errors[:base].first).to eq 'Some message'
+          expect(forgot_password.success?).to be false
+        end
       end
     end
   end

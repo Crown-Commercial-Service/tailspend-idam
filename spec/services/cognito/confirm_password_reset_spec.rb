@@ -190,4 +190,102 @@ RSpec.describe Cognito::ConfirmPasswordReset do
       end
     end
   end
+
+  describe '.call' do
+    let(:client) { instance_double(Aws::CognitoIdentityProvider::Client) }
+    let(:cognito_user) { double }
+    let(:attribute_type) { double }
+
+    before do
+      stub_const('ENV', { 'COGNITO_AWS_REGION' => 'supersecretregion', 'COGNITO_CLIENT_SECRET' => 'supersecretkey1', 'COGNITO_CLIENT_ID' => 'supersecretkey2' })
+      allow(Aws::CognitoIdentityProvider::Client).to receive(:new).with(region: 'supersecretregion').and_return(client)
+      allow(client).to receive(:admin_get_user).and_return(cognito_user)
+      allow(cognito_user).to receive(:user_attributes).and_return([attribute_type])
+      allow(attribute_type).to receive(:name).and_return('sub')
+      allow(attribute_type).to receive(:value).and_return('my-cognito-id')
+      allow(client).to receive(:admin_list_groups_for_user)
+    end
+
+    context 'when everything is valid' do
+      context 'and confirm_forgot_password does not raise an error' do
+        before do
+          allow(client).to receive(:confirm_forgot_password)
+          confirm_password_reset.call
+        end
+
+        it 'calls confirm_forgot_password' do
+          expect(client).to have_received(:confirm_forgot_password).with(client_id: 'supersecretkey2', secret_hash: 'QGGa3OLislakJW63OXujsIzjOxqYgSxptyRHAuyobd8=', username: email, password: password, confirmation_code: confirmation_code)
+        end
+      end
+
+      context 'and confirm_forgot_password rasies CodeMismatchException' do
+        before do
+          allow(client).to receive(:confirm_forgot_password).and_raise(Aws::CognitoIdentityProvider::Errors::CodeMismatchException.new('Some context', 'Some message'))
+          confirm_password_reset.call
+        end
+
+        it 'adds the error' do
+          expect(confirm_password_reset.errors[:confirmation_code].first).to eq 'Some message'
+        end
+      end
+
+      context 'and confirm_forgot_password rasies ServiceError' do
+        before do
+          allow(client).to receive(:confirm_forgot_password).and_raise(Aws::CognitoIdentityProvider::Errors::ServiceError.new('Some context', 'Some message'))
+          confirm_password_reset.call
+        end
+
+        it 'adds the error' do
+          expect(confirm_password_reset.errors[:base].first).to eq 'Some message'
+        end
+      end
+
+      context 'when the user can not be found' do
+        let(:resp) { instance_double(Cognito::CreateUserFromCognito) }
+
+        before do
+          allow(client).to receive(:confirm_forgot_password)
+          allow(Cognito::CreateUserFromCognito).to receive(:call).with(email).and_return(resp)
+          allow(resp).to receive(:success?).and_return(false)
+          confirm_password_reset.call
+        end
+
+        it 'adds the user can not be found error' do
+          expect(confirm_password_reset.errors[:base].first).to eq 'Please check the information you have entered'
+        end
+      end
+    end
+
+    context 'when somthing is not valid' do
+      let(:password_confirmation) { 'Samus' }
+
+      before do
+        allow(confirm_password_reset).to receive(:confirm_forgot_password)
+        allow(confirm_password_reset).to receive(:create_user_if_needed)
+      end
+
+      it 'does not call confirm_forgot_password or create_user_if_needed' do
+        expect(confirm_password_reset).not_to have_received(:confirm_forgot_password)
+        expect(confirm_password_reset).not_to have_received(:create_user_if_needed)
+      end
+    end
+  end
+
+  describe '.success?' do
+    before { confirm_password_reset.valid? }
+
+    context 'when there are no errors' do
+      it 'returns true' do
+        expect(confirm_password_reset.success?).to be true
+      end
+    end
+
+    context 'when there are errors' do
+      let(:confirmation_code) { '' }
+
+      it 'returns false' do
+        expect(confirm_password_reset.success?).to be false
+      end
+    end
+  end
 end

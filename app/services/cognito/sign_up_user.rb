@@ -33,14 +33,13 @@ module Cognito
       if valid?
         resp = create_cognito_user
         @cognito_uuid = resp['user_sub']
-        # add_user_to_groups
       end
     rescue Aws::CognitoIdentityProvider::Errors::ServiceError => e
       errors.add(:base, e.message)
     end
 
     def success?
-      errors.empty?
+      errors.none?
     end
 
     private
@@ -75,14 +74,6 @@ module Cognito
             value: '+4408654876588'
           }
         ]
-      )
-    end
-
-    def add_user_to_groups
-      client.admin_add_user_to_group(
-        user_pool_id: ENV['COGNITO_USER_POOL_ID'],
-        username: @cognito_uuid,
-        group_name: 'customer'
       )
     end
 

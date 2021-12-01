@@ -16,15 +16,5 @@ module Cognito
     rescue Aws::CognitoIdentityProvider::Errors::ServiceError => e
       @error = e.message
     end
-
-    def success?
-      @error.nil?
-    end
-
-    private
-
-    def username
-      User.find_for_authentication(email: email).cognito_uuid
-    end
   end
 end

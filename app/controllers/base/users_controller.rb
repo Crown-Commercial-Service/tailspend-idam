@@ -2,9 +2,6 @@
 
 module Base
   class UsersController < ApplicationController
-    before_action :authenticate_user!, except: %i[confirm_new confirm resend_confirmation_email]
-    before_action :authorize_user, except: %i[confirm_new confirm resend_confirmation_email]
-
     def confirm_new
       @result = Cognito::ConfirmSignUp.new
     end
