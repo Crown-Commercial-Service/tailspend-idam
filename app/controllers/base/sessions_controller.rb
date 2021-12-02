@@ -3,8 +3,6 @@
 module Base
   class SessionsController < ApplicationController
     skip_forgery_protection
-    before_action :authenticate_user!, except: %i[new create]
-    before_action :authorize_user, except: %i[new create]
     before_action :validate_filter
 
     def new
@@ -42,10 +40,6 @@ module Base
 
     def after_sign_out_path_for(_resource)
       gateway_url
-    end
-
-    def authorize_user
-      authorize! :read, SupplyTeachers
     end
 
     def result_unsuccessful_path

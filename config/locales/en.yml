@@ -85,6 +85,8 @@ en:
               confirmation: Passwords don't match
         cognito/forgot_password:
           attributes:
+            base:
+              user_not_found: Please check the information you have entered
             email:
               invalid: You must enter your email address in the correct format, like name@example.com
         cognito/sign_in_user:

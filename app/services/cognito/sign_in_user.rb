@@ -46,14 +46,6 @@ module Cognito
       @auth_response.present? && @error.nil?
     end
 
-    def cognito_uuid
-      @auth_response.challenge_parameters['USER_ID_FOR_SRP']
-    end
-
-    def session
-      @auth_response.session
-    end
-
     private
 
     def initiate_auth

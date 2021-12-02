@@ -2,9 +2,6 @@
 
 module Base
   class PasswordsController < ApplicationController
-    before_action :authenticate_user!, except: %i[new create confirm_new edit update password_reset_success]
-    before_action :authorize_user, except: %i[new create confirm_new edit update password_reset_success]
-
     def new
       @response = Cognito::ForgotPassword.new(nil)
     end

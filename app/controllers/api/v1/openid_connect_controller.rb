@@ -9,7 +9,7 @@ module Api
 
       def authorize
         authorize = Cognito::Authorize.new(params['client_id'], params['response_type'], params['redirect_uri'])
-        redirect_to(base_new_user_session_path(request.parameters)) if authorize.valid? && signed_in_user == false
+        redirect_to(base_new_user_session_path(request.parameters)) if authorize.valid?
       end
 
       def token
@@ -35,16 +35,6 @@ module Api
       def code_expired
         error = 'Code has expired'
         render json: error
-      end
-
-      def signed_in_user
-        false
-        # puts cookies[:user]
-        # if cookies[:user]
-        #   return true
-        # else
-        #   return false
-        # end
       end
 
       def build_authorize_response(cognito_response, nonce)

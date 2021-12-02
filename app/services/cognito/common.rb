@@ -3,9 +3,7 @@
 module Cognito
   class Common < BaseService
     def self.build_secret_hash(email)
-      key = ENV['COGNITO_CLIENT_SECRET']
-      data = email + ENV['COGNITO_CLIENT_ID']
-      Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), key, data)).strip
+      build_client_secret_hash(email, ENV['COGNITO_CLIENT_ID'], ENV['COGNITO_CLIENT_SECRET'])
     end
 
     # if client has a secret we need to use that to build thier secret for cognito
@@ -20,12 +18,6 @@ module Cognito
         user_pool_id: ENV['COGNITO_USER_POOL_ID'],
         client_id: client_id,
       )
-    end
-
-    def sign_out_user(token)
-      client.global_sign_out({
-                               access_token: token,
-                             })
     end
 
     def self.bearer_token(request)

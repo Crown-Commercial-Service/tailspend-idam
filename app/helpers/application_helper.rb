@@ -5,11 +5,11 @@ module ApplicationHelper
     "#{attribute}-error"
   end
 
-  def display_error(journey, attribute, margin: true, id_prefix: '')
-    error = journey.errors[attribute].first
+  def display_error(model, attribute)
+    error = model.errors[attribute].first
     return if error.blank?
 
-    tag.span(id: "#{id_prefix}#{error_id(attribute)}", class: "govuk-error-message #{'govuk-!-margin-top-3' if margin}") do
+    tag.span(id: error_id(attribute), class: 'govuk-error-message govuk-!-margin-top-3') do
       error.to_s
     end
   end
