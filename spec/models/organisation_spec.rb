@@ -1,17 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Organisation do
-  describe 'find_organisation' do
-    let(:result) { described_class.find_organisation(search) }
+  describe 'search_organisations' do
+    let(:result) { described_class.search_organisations(search) }
 
     before { described_class.create(organisation_name: search, active: active) }
 
     context 'when an active organisation is searched' do
-      let(:search) { 'AN ACTIVE ORGANISATION' }
+      let(:search) { 'ACTIVE ORGANISATION 45' }
       let(:active) { true }
 
       it 'returns the organisation' do
-        expect(result).to eq [search]
+        expect(result).to eq ['Active Organisation 45 (45 Test Road, Liverpool, AB1 2CD)']
       end
     end
 

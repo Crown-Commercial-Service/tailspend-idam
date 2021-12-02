@@ -1,26 +1,19 @@
-$(function () {
-  var error_summary = $('.govuk-error-summary__list')
+const getInputElement = (errorID) => $(errorID).parent('.govuk-form-group').find('input[type="text"],input[type="email"],input[type="password"]');
 
-  if(error_summary.length) {
-    var error_links = error_summary.find('li > a')
-    error_links.each( function() {
-      addFocusEvent(this);
-    });
-  }
+const addFocusEvent = (error) => {
+  $(error).on('click', (e) => {
+    getInputElement(error.hash).trigger('focus');
 
-  function addFocusEvent(error) {
-    $(error).on('click', function (e) {
-      $('html, body').animate({ scrollTop: $(error.hash).offset().top }, 0);
-      getInputElement(error.hash).trigger('focus');
-      e.preventDefault();
-    });
-  }
+    e.preventDefault();
+  });
+};
 
-  function getInputElement(error_hash) {
-    if (error_hash === "#organisation-error") {
-      return $('#organisation')
-    } else {
-      return $(error_hash).nextAll('input').first()
-    }
+$(() => {
+  const errorSummary = $('.govuk-error-summary__list');
+
+  if (errorSummary.length) {
+    const errorLinks = $('.govuk-error-summary__list > li > a');
+
+    errorLinks.each((_, element) => addFocusEvent(element));
   }
 });

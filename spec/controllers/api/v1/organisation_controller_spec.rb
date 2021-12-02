@@ -9,8 +9,8 @@ RSpec.describe Api::V1::OrganisationController do
     context 'when an active organisation is searched' do
       let(:search) { 'Active Organisation 200' }
 
-      it 'returns the organisation' do
-        expect(result['organisation_names']).to eq [search]
+      it 'returns the organisation summary line' do
+        expect(result['summary_lines']).to eq ['Active Organisation 200 (200 Test Road, Liverpool, MN7 8OP)']
       end
 
       it 'returns no_results as false' do
@@ -22,7 +22,7 @@ RSpec.describe Api::V1::OrganisationController do
       let(:search) { 'Inactive Organisation' }
 
       it 'returns no organisations' do
-        expect(result['organisation_names']).to eq []
+        expect(result['summary_lines']).to eq []
       end
 
       it 'returns no_results as true' do
@@ -34,7 +34,7 @@ RSpec.describe Api::V1::OrganisationController do
       let(:search) { 'Active Organisation' }
 
       it 'returns the organisation' do
-        expect(result['organisation_names']).to eq []
+        expect(result['summary_lines']).to eq []
       end
 
       it 'returns no_results as false' do
@@ -42,11 +42,11 @@ RSpec.describe Api::V1::OrganisationController do
       end
     end
 
-    context 'when a non existentorganisation is searched' do
+    context 'when a non existent organisation is searched' do
       let(:search) { 'CCS' }
 
       it 'returns no organisations' do
-        expect(result['organisation_names']).to eq []
+        expect(result['summary_lines']).to eq []
       end
 
       it 'returns no_results as true' do

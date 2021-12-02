@@ -3,7 +3,7 @@
 module Cognito
   class SignUpUser < BaseService
     include ActiveModel::Validations
-    validates_presence_of :email, :first_name, :last_name, :organisation
+    validates_presence_of :email, :first_name, :last_name, :summary_line
 
     validates :first_name,
               length: { minimum: 2 }
@@ -13,7 +13,8 @@ module Cognito
     include PasswordValidator
 
     validate :domain_in_allow_list, unless: -> { errors[:email].any? }
-    attr_reader :email, :first_name, :last_name, :organisation, :password, :password_confirmation
+    validate :organisation_present
+    attr_reader :email, :first_name, :last_name, :summary_line, :password, :password_confirmation, :organisation
     attr_accessor :user, :not_on_allow_list
 
     def initialize(params = {})
@@ -21,7 +22,8 @@ module Cognito
       @email = params[:email].try(:downcase)
       @password = params[:password]
       @password_confirmation = params[:password_confirmation]
-      @organisation = params[:organisation]
+      @summary_line = params[:summary_line]
+      @organisation = Organisation.find_organisation(@summary_line)
       @first_name = params[:first_name]
       @last_name = params[:last_name]
       @not_on_allow_list = nil
@@ -64,7 +66,7 @@ module Cognito
           },
           {
             name: 'custom:organisation_name',
-            value: organisation
+            value: organisation.organisation_name
           },
           # Some user do not have phone number so we add adummy number
           # just so cognito can have a number cognito limitaions.
@@ -95,6 +97,13 @@ module Cognito
 
     def domain_name
       email.squish!.split('@').last
+    end
+
+    def organisation_present
+      return if errors.include?(:summary_line) || organisation.present?
+
+      errors.add(:summary_line, :not_found)
+      @summary_line = nil
     end
   end
 end

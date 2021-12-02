@@ -7,7 +7,7 @@ RSpec.describe Cognito::SignUpUser do
     { email: email,
       password: password,
       password_confirmation: password_confirmation,
-      organisation: organisation,
+      summary_line: summary_line,
       first_name: first_name,
       last_name: last_name }
   end
@@ -15,7 +15,7 @@ RSpec.describe Cognito::SignUpUser do
   let(:email) { 'test@test.com' }
   let(:password) { 'Password123!' }
   let(:password_confirmation) { password }
-  let(:organisation) { 'Crown Commercial Serice' }
+  let(:summary_line) { 'Active Organisation 69 (69 Test Road, Norwich, AB1 2CD)' }
   let(:first_name) { 'John' }
   let(:last_name) { 'Smith' }
   let(:domain) { 'test.com' }
@@ -60,17 +60,36 @@ RSpec.describe Cognito::SignUpUser do
       end
     end
 
-    context 'when considering the organisation' do
+    context 'when considering the summary_line' do
       context 'and it is blank' do
-        let(:organisation) { '' }
+        let(:summary_line) { '' }
+
+        before { sign_up_user.valid? }
 
         it 'is not valid' do
           expect(sign_up_user.valid?).to be false
         end
 
         it 'has the correct error message' do
-          sign_up_user.valid?
-          expect(sign_up_user.errors[:organisation].first).to eq 'Enter your organisation'
+          expect(sign_up_user.errors[:summary_line].first).to eq 'Enter your organisation'
+        end
+
+        it 'does not add an error of type not_found' do
+          expect(sign_up_user.errors.of_kind?(:summary_line, :not_found)).to be false
+        end
+      end
+
+      context 'and it belongs to an organisation that does not exist' do
+        let(:summary_line) { 'My Fake Organisation' }
+
+        before { sign_up_user.valid? }
+
+        it 'has the correct error message' do
+          expect(sign_up_user.errors[:summary_line].first).to eq 'A public sector organisation with the name you entered could not be found'
+        end
+
+        it 'does add an error of type not_found' do
+          expect(sign_up_user.errors.of_kind?(:summary_line, :not_found)).to be true
         end
       end
     end

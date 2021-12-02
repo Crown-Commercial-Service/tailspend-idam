@@ -39,7 +39,7 @@ module Base
         :email,
         :first_name,
         :last_name,
-        :organisation,
+        :summary_line,
         :password,
         :password_confirmation
       )
