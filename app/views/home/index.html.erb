@@ -12,6 +12,7 @@
     <p>
       <%= t('.subheading') %>
     </p>
+    <p><%= t('.subheading2') %></p>
     <p>
       <%= t('.no_account_html', registration_link: link_to(t('.register_for_one_here'), base_new_user_registration_path, class: 'govuk-link govuk-link--no-visited-state')) %>
     </p>
@@ -26,6 +27,7 @@
     <p class="govuk-body">
       <%= t('.to_use_this_service_html', authorised_customer_list: link_to(t('.authorised_customer_list'), t('.authorised_customer_list_link'), title: t('.authorised_customer_list_title'), class: 'govuk-link govuk-link--no-visited-state')) %>    
     </p>
-    <%= link_to t('.sign_in'), ENV['PRINT_MARKET_PLACE_KEYCLOAK_URL'], title: t('.sign_in_title'), class: 'govuk-button'%>
+    <%= link_to t('.sign_in_office_team'), ENV['PRINT_MARKET_PLACE_KEYCLOAK_URL'], title: t('.sign_in_title_office_team'), class: 'govuk-button'%>
+    <%= link_to t('.sign_in_mercateo'), ENV['PRINT_MARKET_PLACE_KEYCLOAK_URL'], title: t('.sign_in_title_mercateo'), class: 'govuk-button'%>
   </div>
 </div>

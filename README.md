@@ -1,4 +1,4 @@
-# Print Marketplace IDAM
+# Tail Spend Solution IDAM
 
 [![Build Status](https://app.travis-ci.com/Crown-Commercial-Service/pmp-idam.svg?branch=develop)](https://app.travis-ci.com/Crown-Commercial-Service/pmp-idam)
 [![Maintainability](https://api.codeclimate.com/v1/badges/0cd357c324b2731fb1bc/maintainability)](https://codeclimate.com/github/Crown-Commercial-Service/pmp-idam/maintainability)
@@ -86,7 +86,7 @@ This will then run the rails server on localhost:3000 but you will need to do so
 
 ## Using the application in the development environment
 ### Running Keycloak in the Docker container
-This application is an interim IDAM solution to allow users to log into the Print Marketplace service. This service is being hosted and maintained externally but it is using an application called Keycloak for its single-sign-on. Therefore you will need to run a local version of the application in a Docker container for development purposes. You may find this [document](https://www.keycloak.org/getting-started/getting-started-docker) helpful if this README is not sufficient.
+This application is an interim IDAM solution to allow users to log into the Tail Spend Solution service. This service is being hosted and maintained externally but it is using an application called Keycloak for its single-sign-on. Therefore you will need to run a local version of the application in a Docker container for development purposes. You may find this [document](https://www.keycloak.org/getting-started/getting-started-docker) helpful if this README is not sufficient.
 
 To download and run the container, use the following command:
 ```
