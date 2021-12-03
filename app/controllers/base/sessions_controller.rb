@@ -76,6 +76,7 @@ module Base
       @client_call.expires_in = cognito_response.expires_in
       @client_call.sub = decoded_token[0]['sub']
       @client_call.nonce = client_nonce
+      @client_call.id = SecureRandom.uuid
       @client_call.save!
       get_saved_client(id_token)
     end
