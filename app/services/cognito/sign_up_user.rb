@@ -3,7 +3,11 @@
 module Cognito
   class SignUpUser < BaseService
     include ActiveModel::Validations
+<<<<<<< HEAD
     validates_presence_of :email, :first_name, :last_name, :summary_line
+=======
+    validates_presence_of :email, :first_name, :last_name, :organisation
+>>>>>>> e04eda5 (Added organisation back in, also set up manifest.yml for dev deployment)
 
     validates :first_name,
               length: { minimum: 2 }
@@ -13,8 +17,12 @@ module Cognito
     include PasswordValidator
 
     validate :domain_in_allow_list, unless: -> { errors[:email].any? }
+<<<<<<< HEAD
     validate :organisation_present
     attr_reader :email, :first_name, :last_name, :summary_line, :password, :password_confirmation, :organisation
+=======
+    attr_reader :email, :first_name, :last_name, :organisation, :password, :password_confirmation
+>>>>>>> e04eda5 (Added organisation back in, also set up manifest.yml for dev deployment)
     attr_accessor :user, :not_on_allow_list
 
     def initialize(params = {})
@@ -22,8 +30,12 @@ module Cognito
       @email = params[:email].try(:downcase)
       @password = params[:password]
       @password_confirmation = params[:password_confirmation]
+<<<<<<< HEAD
       @summary_line = params[:summary_line]
       @organisation = Organisation.find_organisation(@summary_line)
+=======
+      @organisation = params[:organisation]
+>>>>>>> e04eda5 (Added organisation back in, also set up manifest.yml for dev deployment)
       @first_name = params[:first_name]
       @last_name = params[:last_name]
       @not_on_allow_list = nil
@@ -65,7 +77,11 @@ module Cognito
           },
           {
             name: 'custom:organisation_name',
+<<<<<<< HEAD
             value: organisation.organisation_name
+=======
+            value: organisation
+>>>>>>> e04eda5 (Added organisation back in, also set up manifest.yml for dev deployment)
           },
           # Some user do not have phone number so we add adummy number
           # just so cognito can have a number cognito limitaions.
