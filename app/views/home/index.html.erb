@@ -27,7 +27,7 @@
     <p class="govuk-body">
       <%= t('.to_use_this_service_html', authorised_customer_list: link_to(t('.authorised_customer_list'), t('.authorised_customer_list_link'), title: t('.authorised_customer_list_title'), class: 'govuk-link govuk-link--no-visited-state')) %>    
     </p>
-    <%= link_to t('.sign_in_office_team'), ENV['PRINT_MARKET_PLACE_KEYCLOAK_URL'], title: t('.sign_in_title_office_team'), class: 'govuk-button'%>
-    <%= link_to t('.sign_in_mercateo'), ENV['PRINT_MARKET_PLACE_KEYCLOAK_URL'], title: t('.sign_in_title_mercateo'), class: 'govuk-button'%>
+    <%= link_to t('.sign_in_office_team'), ENV['OFFICE_TEAM_GET_URL'], title: t('.sign_in_title_office_team'), class: 'govuk-button'%>
+    <%= link_to t('.sign_in_mercateo'), ENV['MERCATEO_GET_URL'], title: t('.sign_in_title_mercateo'), class: 'govuk-button'%>
   </div>
 </div>
