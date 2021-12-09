@@ -250,7 +250,7 @@ en:
       list_1_navigate_speach: navigate most of the website using speech recognition software
       list_2_decorative: non-decorative content is used in the CCS sign-in pages, which may make it in accessible to users navigating the site with screen readers.
       list_2_email: the email field on the homepage lacks an autocomplete attribute, so its purpose cannot be determined programmatically
-      market_place_link: https://printmarketplace.crowncommercial.gov.uk/
+      market_place_link: https://tailspend.crowncommercial.gov.uk/
       several_aspects: Several aspects of the Tail Spend Solution user journey do not meet the WCAG 2.1 AA success criteria. The accessibility statement on the core Tail Spend Solution product details these.
       the_complete_journey: The complete Tail Spend Solution journey was tested, this included every page a buyer would progress through in-order to complete the sign up activity.
       the_content: The content listed below is non-accessible for the following reasons.
@@ -343,7 +343,7 @@ en:
       cookies_acepted_html: You’ve accepted all cookies. You can %{cookies_acepted_link} at any time.
       cookies_acepted_link_text: change your cookie settings
       set_cookie_preferences: Set cookie preferences
-      why_we_use_cookies: We use cookies to collect information about how you use printmarketplace.crowncommercial.gov.uk. We use this information to make the website work as well as possible and improve government services.
+      why_we_use_cookies: We use cookies to collect information about how you use tailspend.crowncommercial.gov.uk. We use this information to make the website work as well as possible and improve government services.
     footer:
       accessibility_statement_link: Accessibility statement
       accessibility_statement_link_aria_label: View our accessibility statement
