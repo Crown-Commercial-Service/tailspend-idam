@@ -18,10 +18,7 @@ module Cognito
     end
 
     def call
-      if valid?
-        create_user_if_needed
-        confirm_forgot_password
-      end
+      confirm_forgot_password if valid?
     rescue Aws::CognitoIdentityProvider::Errors::CodeMismatchException => e
       errors.add(:confirmation_code, e.message)
     rescue Aws::CognitoIdentityProvider::Errors::ServiceError => e
@@ -42,15 +39,6 @@ module Cognito
         password: password,
         confirmation_code: confirmation_code
       )
-    end
-
-    def create_user_if_needed
-      resp = CreateUserFromCognito.call(email)
-      if resp.success?
-        resp.user
-      else
-        errors.add(:base, I18n.t('activemodel.errors.models.cognito/confirm_password_reset.user_not_found'))
-      end
     end
   end
 end
