@@ -41,7 +41,7 @@ en:
             cog_sign_in:
               enter_your_password: You must enter your password
               please_enter_a_valid_email_address: Enter an email address in the correct format, like name@example.com
-          create_account_html: Create your account
+          create_account_html: Create a buyer account
           problems_signing_in: Problems signing in
         ccs_patterns/home/cog_sign_in_password_prompt_change:
           attributes:
@@ -170,12 +170,12 @@ en:
         email_hint: We will send a confirmation code to this address.
         first_name: First name
         first_name_hint: Add your first name here.
-        heading_html: Create a Print Marketplace account
+        heading_html: Create a Print Marketplace buyer account
         last_name: Last name
         last_name_hint: Add your last name here.
         lead: You must be employed by, or represent, a public sector organisation.
         organisation: Organisation name
-        organisation_hint: Enter your organisation's full name. We will verify your organisation name to confirm you can use this service.
+        organisation_hint: Enter your organisation's full name. We will verify your organisation name to confirm you can use this service. If your organisation is not listed please contact CCS.
         password: Password
         password_must_have: 'Your password must have:'
     sessions:
