@@ -1,5 +1,5 @@
 {
-  "name": "pmp_idam",
+  "name": "tailspend_idam",
   "private": true,
   "dependencies": {
     "@rails/ujs": "^6.1.4",
