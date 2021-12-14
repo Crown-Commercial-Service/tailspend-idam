@@ -75,7 +75,7 @@ RSpec.describe Cognito::ConfirmPasswordReset do
         end
       end
 
-      context 'and it cointains valid symbols' do
+      context 'and it contains valid symbols' do
         let(:password) { ("Password1234#{valid_symbols_sample}").split('').shuffle.join }
 
         it 'is valid' do
@@ -248,10 +248,6 @@ RSpec.describe Cognito::ConfirmPasswordReset do
           allow(Cognito::CreateUserFromCognito).to receive(:call).with(email).and_return(resp)
           allow(resp).to receive(:success?).and_return(false)
           confirm_password_reset.call
-        end
-
-        it 'adds the user can not be found error' do
-          expect(confirm_password_reset.errors[:base].first).to eq 'Please check the information you have entered'
         end
       end
     end

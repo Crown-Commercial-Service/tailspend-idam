@@ -328,10 +328,10 @@ en:
       heading: Tail Spend Solution
       no_account_html: Not got an account? You can %{registration_link}.
       register_for_one_here: register for one here
-      sign_in_office_team: Sign in to Office Team
       sign_in_mercateo: Sign in to Mercateo
-      sign_in_title_office_team: Login to Office Team
+      sign_in_office_team: Sign in to Office Team
       sign_in_title_mercateo: Login to Mercateo
+      sign_in_title_office_team: Login to Office Team
       subheading: The Tail Spend Solution will provide customers the choice of two digital solutions to browse a broad product range classified as 'Tail spend'. Tail spend is described as ad-hoc low volume and usually low value.
       subheading2: Please note a Framework call off needs to have been conducted by the customer organisation prior to registration.
       to_use_this_service_html: To use this service you need to be a recognised public sector body listed in the %{authorised_customer_list}.
