@@ -148,7 +148,7 @@ en:
         verify_code: Verification code
       new:
         email: Email address
-        email_hint_html: This is the email address you used to set up the Print Marketplace account.
+        email_hint_html: This is the email address you used to set up the Tail Spend Solution account.
         heading: Reset password
         lead: Enter your email address and we’ll send you a verification code so you can reset your password. Password reset verification codes are only valid for 24 hours.
       password_reset_success:
@@ -170,7 +170,7 @@ en:
         email_hint: We will send a confirmation code to this address.
         first_name: First name
         first_name_hint: Add your first name here.
-        heading_html: Create a Print Marketplace buyer account
+        heading_html: Create a Tail Spend Solution account
         last_name: Last name
         last_name_hint: Add your last name here.
         lead: You must be employed by, or represent, a public sector organisation.
@@ -226,13 +226,13 @@ en:
       autocomplete_heading: Autocomplete is not enabled for user sign in fields
       autocomplete_issue: A user must manually input their first name, last name and email address when registering to use the service for the first time. This is in place to ensure no erroneous or malicious registration can take place.
       call: call 0345 410 2222
-      core_pmp: Core Print Marketplace product
+      core_tailspend: Core Tail Spend Solution product
       email: email
       email_link: info@crowncommercial.gov.uk
       equality: The Equality and Human Rights Commission (EHRC) is responsible for enforcing the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018 (the ‘accessibility regulations’). If you’re not happy with how we respond to your complaint,
       equality_link: https://www.equalityadvisoryservice.com/
       equality_link_text: contact the Equality Advisory and Support Service (EASS)
-      heading: Print Marketplace (PMP) Accessibility statement
+      heading: Tail Spend Solution (TSS) Accessibility statement
       heading_content_not_in_scope: Content that’s not within the scope of the accessibility regulations
       heading_enforcement: Enforcement procedure
       heading_how_accessible: How accessible this website is
@@ -250,11 +250,11 @@ en:
       list_1_navigate_speach: navigate most of the website using speech recognition software
       list_2_decorative: non-decorative content is used in the CCS sign-in pages, which may make it in accessible to users navigating the site with screen readers.
       list_2_email: the email field on the homepage lacks an autocomplete attribute, so its purpose cannot be determined programmatically
-      market_place_link: https://printmarketplace.crowncommercial.gov.uk/
-      several_aspects: Several aspects of the print marketplace user journey do not meet the WCAG 2.1 AA success criteria. The accessibility statement on the core Print Marketplace product details these.
-      the_complete_journey: The complete Print Marketplace journey was tested, this included every page a buyer would progress through in-order to complete the sign up activity.
+      market_place_link: https://tailspend.crowncommercial.gov.uk/
+      several_aspects: Several aspects of the Tail Spend Solution user journey do not meet the WCAG 2.1 AA success criteria. The accessibility statement on the core Tail Spend Solution product details these.
+      the_complete_journey: The complete Tail Spend Solution journey was tested, this included every page a buyer would progress through in-order to complete the sign up activity.
       the_content: The content listed below is non-accessible for the following reasons.
-      this_statement: 'This accessibility statement applies to the sign in pages of the Print Marketplace digital service which can be found at the following URL:'
+      this_statement: 'This accessibility statement applies to the sign in pages of the Tail Spend Solution digital service which can be found at the following URL:'
       this_statement_date: This statement was prepared on 25th November 2020. It will be reviewed and updated as required.
       this_website: 'This website is run by Crown Commercial Service (CCS). We want as many people as possible to be able to use this website. For example, that means you should be able to:'
       this_website_partially_1: This website is partially compliant with the
@@ -270,11 +270,11 @@ en:
       change_your_settings: Change your settings
       cookie_message_1:
         expires: 1 year
-        name: pmp_google_analytics_enabled
+        name: tailspend_google_analytics_enabled
         purpose: Saves your cookie consent settings for Google Analytics
       cookie_message_2:
         expires: 1 year
-        name: pmp_cookie_settings_viewed
+        name: tailspend_cookie_settings_viewed
         purpose: Lets us know that you’ve viewed your cookie consent settings
       cookies_message: Cookies message
       ga_cookies_1:
@@ -290,30 +290,30 @@ en:
         name: _gid
         purpose: This cookie is used to group the user behaviour
       ga_sets_following_cookies: Google Analytics sets the following cookies.
-      heading: Details about cookies on Print Marketplace
+      heading: Details about cookies on Tail Spend Solution
       last_updated: Last updated 26 January 2021
       we_do_not_let: We do not allow Google to use or share the data about how you use this site.
-      what_are_cookies: Print Marketplace puts small files (known as ‘cookies’) onto your computer to collect information about how you browse the site. Find out more about the cookies we use, what they’re for and when they expire.
-      you_may_see_a_banner: You may see a banner when you visit Print Marketplace inviting you to accept cookies or review your settings. We’ll set cookies so that your computer knows you’ve seen it and not to show it again, and also to store your settings.
+      what_are_cookies: Tail Spend Solution puts small files (known as ‘cookies’) onto your computer to collect information about how you browse the site. Find out more about the cookies we use, what they’re for and when they expire.
+      you_may_see_a_banner: You may see a banner when you visit Tail Spend Solution inviting you to accept cookies or review your settings. We’ll set cookies so that your computer knows you’ve seen it and not to show it again, and also to store your settings.
     cookie_settings:
       always_need_to_be_on: They always need to be on.
       cookie_settings: Cookie settings
       cookies_saved: Your cookie settings were saved
-      cookies_saved_description: Other areas of the Print Marketplace service may set additional cookies and, if so, will have their own cookie policy and banner.
+      cookies_saved_description: Other areas of the Tail Spend Solution service may set additional cookies and, if so, will have their own cookie policy and banner.
       dont_use_cookies: Do not use cookies that measure my website use
       essential_cookies: These essential cookies do things like remember the notifications you have seen so we do not show them to you again.
-      find_out_more: Find out more about cookies on Print Marketplace
-      heading: Cookies on Print Marketplace
+      find_out_more: Find out more about cookies on Tail Spend Solution
+      heading: Cookies on Tail Spend Solution
       save_changes: Save changes
       the_number_we_use: We use 2 types of cookie. You can choose which cookies you're happy for us to use.
       use_cookies: Use cookies that measure my website use
       what_are_cookies: Cookies are files saved on your phone, tablet or computer when you visit a website.
-      why_we_use_them: We use cookies to store information about how you use the Print Marketplace website, such as the pages you visit.
+      why_we_use_them: We use cookies to store information about how you use the Tail Spend Solution website, such as the pages you visit.
     cookies:
       expires: Expires
       ga_list: 'Google Analytics sets cookies that store anonymised information about:'
       ga_list_1: how you got to the site
-      ga_list_2: the pages you visit on Print Marketplace, and how long you spend on each page
+      ga_list_2: the pages you visit on Tail Spend Solution, and how long you spend on each page
       ga_list_3: what you click on while you're visiting the site
       measure_website_use: Cookies that measure website use
       name: Name
@@ -325,12 +325,15 @@ en:
       authorised_customer_list_link: https://assets.crowncommercial.gov.uk/wp-content/uploads/RM3788-Contract-Notice-Authorised-Customer-List.docx
       authorised_customer_list_title: authrized customers list in .docx format
       before_you_start: Before you start
-      heading: Print Marketplace
+      heading: Tail Spend Solution
       no_account_html: Not got an account? You can %{registration_link}.
       register_for_one_here: register for one here
-      sign_in: Sign in to Print Marketplace
-      sign_in_title: Login to print market place
-      subheading: Print Marketplace is a UK-wide digital tool for purchasing printed material, including brochures, flyers, leaflets, business cards, letterheads and other transactional print.
+      sign_in_mercateo: Sign in to Mercateo
+      sign_in_office_team: Sign in to Office Team
+      sign_in_title_mercateo: Login to Mercateo
+      sign_in_title_office_team: Login to Office Team
+      subheading: The Tail Spend Solution will provide customers the choice of two digital solutions to browse a broad product range classified as 'Tail spend'. Tail spend is described as ad-hoc low volume and usually low value.
+      subheading2: Please note a Framework call off needs to have been conducted by the customer organisation prior to registration.
       to_use_this_service_html: To use this service you need to be a recognised public sector body listed in the %{authorised_customer_list}.
   layouts:
     application:
@@ -340,7 +343,7 @@ en:
       cookies_acepted_html: You’ve accepted all cookies. You can %{cookies_acepted_link} at any time.
       cookies_acepted_link_text: change your cookie settings
       set_cookie_preferences: Set cookie preferences
-      why_we_use_cookies: We use cookies to collect information about how you use printmarketplace.crowncommercial.gov.uk. We use this information to make the website work as well as possible and improve government services.
+      why_we_use_cookies: We use cookies to collect information about how you use tailspend.crowncommercial.gov.uk. We use this information to make the website work as well as possible and improve government services.
     footer:
       accessibility_statement_link: Accessibility statement
       accessibility_statement_link_aria_label: View our accessibility statement

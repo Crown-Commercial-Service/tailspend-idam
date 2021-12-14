@@ -12,7 +12,7 @@ deploy:
   deployment_strategy: rolling
   space: $SPACE_NAME
   on:
-    repo: Crown-Commercial-Service/pmp-idam
+    repo: Crown-Commercial-Service/tailspend-idam
     all_branches: true
     condition: $DEPLOY_BRANCH = TRUE
 env:
@@ -26,8 +26,8 @@ addons:
 before_script:
   - sudo apt-get -qq update
   - sudo apt-get install -y postgresql-11-postgis-2.5
-  - psql -U postgres -c 'create database pmp_idam_test'
-  - psql -U postgres -d pmp_idam_test -c 'create extension postgis'
+  - psql -U postgres -c 'create database tailspend_idam_test'
+  - psql -U postgres -d tailspend_idam_test -c 'create extension postgis'
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
