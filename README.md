@@ -74,7 +74,8 @@ This project uses environment variables which you will need to add to your .env.
 - **AWS_ACCESS_KEY** - The access key for the AWS environment
 - **AWS_SECRET_KEY** - The secret key for the AWS environment
 - **AUTH_USER_API_TOKEN** - The token for the authentication of a user when signing in
-- **PRINT_MARKET_PLACE_KEYCLOAK_URL** - `http://localhost:8080`
+- **OFFICE_TEAM_GET_URL** - `http://localhost:8080`
+- **MERCATEO_GET_URL** - `http://localhost:8080`
 
 ## Running the application
 To run the application use:
@@ -90,7 +91,11 @@ This application is an interim IDAM solution to allow users to log into the Tail
 
 To download and run the container, use the following command:
 ```
-docker run -p 8080:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin quay.io/keycloak/keycloak:11.0.2
+docker run --rm -p 8080:8080 \
+  -e KEYCLOAK_USER=admin \
+  -e KEYCLOAK_PASSWORD=admin \
+  -e DB_VENDOR=h2 \
+  quay.io/keycloak/keycloak:11.0.2
 ```
 This will get the Keycloak container running on localhost port 8080.
 
