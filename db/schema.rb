@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2021_11_25_165513) do
     t.index ["execute_at"], name: "index_arask_jobs_on_execute_at"
   end
 
-  create_table "client_calls", id: :uuid, default: nil, force: :cascade do |t|
+  create_table "client_calls", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "access_token"
     t.string "refresh_token"
     t.string "id_token"
