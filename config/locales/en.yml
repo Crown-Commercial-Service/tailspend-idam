@@ -226,7 +226,7 @@ en:
       autocomplete_heading: Autocomplete is not enabled for user sign in fields
       autocomplete_issue: A user must manually input their first name, last name and email address when registering to use the service for the first time. This is in place to ensure no erroneous or malicious registration can take place.
       call: call 0345 410 2222
-      core_pmp: Core Tail Spend Solution product
+      core_tailspend: Core Tail Spend Solution product
       email: email
       email_link: info@crowncommercial.gov.uk
       equality: The Equality and Human Rights Commission (EHRC) is responsible for enforcing the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018 (the ‘accessibility regulations’). If you’re not happy with how we respond to your complaint,
@@ -270,11 +270,11 @@ en:
       change_your_settings: Change your settings
       cookie_message_1:
         expires: 1 year
-        name: pmp_google_analytics_enabled
+        name: tailspend_google_analytics_enabled
         purpose: Saves your cookie consent settings for Google Analytics
       cookie_message_2:
         expires: 1 year
-        name: pmp_cookie_settings_viewed
+        name: tailspend_cookie_settings_viewed
         purpose: Lets us know that you’ve viewed your cookie consent settings
       cookies_message: Cookies message
       ga_cookies_1:
