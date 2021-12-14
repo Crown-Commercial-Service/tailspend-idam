@@ -25,7 +25,7 @@
 
   <meta property="og:image" content="<%= asset_pack_url('media/images/govuk-opengraph-image.png') %>">
 
-  <%= render partial: '/layouts/google_analytics' if cookies[:tailspend_google_analytics_enabled] == 'true' && PmpIdam.google_analytics_id.present? %>
+  <%= render partial: '/layouts/google_analytics' if cookies[:tailspend_google_analytics_enabled] == 'true' && TailspendIdam.google_analytics_id.present? %>
   <%= canonical_tag %>
 </head>
 
