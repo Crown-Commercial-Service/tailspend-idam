@@ -1,8 +1,8 @@
 # Tail Spend Solution IDAM
 
-[![Build Status](https://app.travis-ci.com/Crown-Commercial-Service/pmp-idam.svg?branch=develop)](https://app.travis-ci.com/Crown-Commercial-Service/pmp-idam)
-[![Maintainability](https://api.codeclimate.com/v1/badges/0cd357c324b2731fb1bc/maintainability)](https://codeclimate.com/github/Crown-Commercial-Service/pmp-idam/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/0cd357c324b2731fb1bc/test_coverage)](https://codeclimate.com/github/Crown-Commercial-Service/pmp-idam/test_coverage)
+[![Build Status](https://app.travis-ci.com/Crown-Commercial-Service/pmp-idam.svg?branch=develop)](https://app.travis-ci.com/Crown-Commercial-Service/tailspend-idam)
+[![Maintainability](https://api.codeclimate.com/v1/badges/0cd357c324b2731fb1bc/maintainability)](https://codeclimate.com/github/Crown-Commercial-Service/tailspend-idam/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/0cd357c324b2731fb1bc/test_coverage)](https://codeclimate.com/github/Crown-Commercial-Service/tailspend-idam/test_coverage)
 
 ## Prerequisites
 

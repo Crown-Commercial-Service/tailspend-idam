@@ -12,7 +12,7 @@ deploy:
   deployment_strategy: rolling
   space: $SPACE_NAME
   on:
-    repo: Crown-Commercial-Service/pmp-idam
+    repo: Crown-Commercial-Service/tailspend-idam
     all_branches: true
     condition: $DEPLOY_BRANCH = TRUE
 env:

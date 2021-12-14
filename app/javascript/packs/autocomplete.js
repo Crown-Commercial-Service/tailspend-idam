@@ -2,7 +2,7 @@ import accessibleAutocomplete from 'accessible-autocomplete';
 
 let noResults = false;
 
-const pmpAutoComplete = {
+const tailspendAutoComplete = {
   autocomplete: [],
 
   query(query, populateResults) {
@@ -23,10 +23,10 @@ const pmpAutoComplete = {
   },
 
   initAutoComplete() {
-    pmpAutoComplete.autocomplete = accessibleAutocomplete({
+    tailspendAutoComplete.autocomplete = accessibleAutocomplete({
       element: document.querySelector('#my-autocomplete-container'),
       id: 'cognito_sign_up_user_organisation',
-      source: pmpAutoComplete.query,
+      source: tailspendAutoComplete.query,
       name: 'cognito_sign_up_user[organisation_name]',
       minLength: 3,
       defaultValue: $('#cognito_sign_up_user_summary_line').val(),
@@ -58,6 +58,6 @@ const pmpAutoComplete = {
 
 $(() => {
   if ($('#my-autocomplete-container').length > 0) {
-    pmpAutoComplete.initAutoComplete();
+    tailspendAutoComplete.initAutoComplete();
   }
 });
