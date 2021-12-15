@@ -1,6 +1,6 @@
 ---
 applications:
-- name: ccs-tailspend-idam-dev
+- name: ccs-tailspend-idam-preprod
   memory: 1000M
   buildpacks:
   - nodejs_buildpack
@@ -8,6 +8,6 @@ applications:
   instances: 1
   random-route: true
   services:
-    - ccs-tailspend-idam-dev-pg-service
+    - ccs-tailspend-idam-preprod-pg-service
   env:
     SERVER_ENV_NAME: develop
