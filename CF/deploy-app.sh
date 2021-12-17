@@ -58,6 +58,8 @@ if [[ -z "$USERNAME" || -z "$PASSWORD" || -z "$ORG_NAME" || -z "$SPACE_NAME" || 
   usage
 fi
 
+travis setup cloudfoundry
+
 if [ ! -z ${TRAVIS_BRANCH+x} ]
 then
  git checkout $TRAVIS_BRANCH
