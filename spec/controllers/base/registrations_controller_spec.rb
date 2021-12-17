@@ -21,7 +21,7 @@ RSpec.describe Base::RegistrationsController do
       post :create, params: { cognito_sign_up_user: { email: email, first_name: first_name, last_name: 'Smith', password: 'Password890!', password_confirmation: 'Password890!', summary_line: 'Active Organisation 1 (1 Test Road, London, AB1 2CD)' } }
     end
 
-    context 'when the emaildomain is not on the allow list' do
+    context 'when the email domain is not on the allow list' do
       let(:email) { 'test@fake-testemail.com' }
 
       it 'redirects to base_domain_not_on_allow_list_path' do
