@@ -20,7 +20,7 @@ SCRIPT_PATH="$( cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 
 API_URI="https://api.london.cloud.service.gov.uk"
 
-while getopts "a:u:p:o:s:h:f" opt; do
+while getopts "a:u:p:o:s:n:h:f" opt; do
   case $opt in
     u)
       USERNAME=$OPTARG
@@ -33,6 +33,9 @@ while getopts "a:u:p:o:s:h:f" opt; do
       ;;
     s)
       SPACE_NAME=$OPTARG
+      ;;
+    n)
+      SPACE_APP_NAME=$OPTARG
       ;;
     a)
       API_URI=$OPTARG
@@ -50,7 +53,7 @@ while getopts "a:u:p:o:s:h:f" opt; do
 done
 
 # if required arguments are not passed exit with usage
-if [[ -z "$USERNAME" || -z "$PASSWORD" || -z "$ORG_NAME" || -z "$SPACE_NAME" ]]; then
+if [[ -z "$USERNAME" || -z "$PASSWORD" || -z "$ORG_NAME" || -z "$SPACE_NAME" || -z "$SPACE_APP_NAME" ]]; then
   echo "Some or all of the required parameters are empty";
   usage
 fi
@@ -67,7 +70,6 @@ then
 
   if [[ "$SPACE_NAME" == "sandbox" ]]
   then
-    $SPACE_APP_NAME = 'sandbox'
     if [[ ! "$BRANCH" == "sandbox" ]]
     then
       echo "We only deploy the 'sandbox' branch to $SPACE_NAME"
@@ -78,7 +80,6 @@ then
 
   if [[ "$SPACE_NAME" == "development" ]]
   then
-    $SPACE_APP_NAME = 'dev'
     if [[ ! "$BRANCH" == "develop" ]]
     then
       echo "We only deploy the 'develop' branch to $SPACE_NAME"
@@ -89,7 +90,6 @@ then
 
   if [[ "$SPACE_NAME" == "pre-production" ]]
   then
-    $SPACE_APP_NAME = 'preprod'
     if [[ ! "$BRANCH" == "preprod" ]]
     then
       echo "We only deploy 'release/*' branches to $SPACE_NAME"
@@ -100,7 +100,6 @@ then
   
   if [[ "$SPACE_NAME" == "production" ]]
   then
-    $SPACE_APP_NAME = 'prod'
     if [[ ! "$BRANCH" == "main" ]]
     then
       echo "We only deploy the 'main' branch to $SPACE_NAME"
@@ -120,9 +119,9 @@ cf login -u "$USERNAME" -p "$PASSWORD" -o "$ORG_NAME" -a "$API_URI" -s "$SPACE_N
 cf target -o "$ORG_NAME" -s "$SPACE_NAME"
 
 # generate manifest
-sed "s/SPACE_NAME/$SPACE_NAME/g" manifest.yml | sed "s/MEMORY_LIMIT/$MEMORY_LIMIT/g" > "$SPACE_NAME.manifest.yml"
+sed "s/SPACE_APP_NAME/$SPACE_APP_NAME/g" manifest.yml | sed "s/MEMORY_LIMIT/$MEMORY_LIMIT/g" > "$SPACE_APP_NAME.manifest.yml"
 
 cd .. || exit
 
 # deploy
-cf push "$SPACE_NAME"-ccs-conclave-document-get -f CF/"$SPACE_NAME".manifest.yml
+cf push ccs-tailspend-idam-"$SPACE_APP_NAME" -f CF/"$SPACE_APP_NAME".manifest.yml

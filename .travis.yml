@@ -5,7 +5,7 @@ rvm:
 deploy:
   edge: true
   provider: script
-  script: bash CF/deploy-app.sh -u $USERNAME -o $ORG_NAME -p $PASSWORD -s $SPACE_NAME
+  script: bash CF/deploy-app.sh -u $USERNAME -o $ORG_NAME -p $PASSWORD -s $SPACE_NAME -n $SPACE_APP_NAME
   api: $API_URI
   username: $USERNAME
   password: $PASSWORD
