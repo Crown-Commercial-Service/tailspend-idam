@@ -218,7 +218,7 @@ RSpec.describe Cognito::ConfirmPasswordReset do
         end
       end
 
-      context 'and confirm_forgot_password rasies CodeMismatchException' do
+      context 'and confirm_forgot_password raises CodeMismatchException' do
         before do
           allow(client).to receive(:confirm_forgot_password).and_raise(Aws::CognitoIdentityProvider::Errors::CodeMismatchException.new('Some context', 'Some message'))
           confirm_password_reset.call
