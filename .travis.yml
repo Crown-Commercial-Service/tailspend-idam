@@ -3,15 +3,8 @@ language: ruby
 rvm:
  — 2.7.4
 deploy:
-  edge: true
   provider: script
   script: bash CF/deploy-app.sh -a $API_URI -u $USERNAME -o $ORG_NAME -p $PASSWORD -s $SPACE_NAME -n $SPACE_APP_NAME
-  api: $API_URI
-  username: $USERNAME
-  password: $PASSWORD
-  organization: $ORG_NAME
-  deployment_strategy: rolling
-  space: $SPACE_NAME
   on:
     repo: Crown-Commercial-Service/tailspend-idam
     all_branches: true
