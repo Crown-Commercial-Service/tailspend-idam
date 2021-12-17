@@ -51,5 +51,4 @@ RSpec.describe Base::RegistrationsController do
       expect(response).to render_template(:domain_not_on_allow_list)
     end
   end
-  
 end
