@@ -4,7 +4,8 @@ rvm:
  — 2.7.4
 deploy:
   edge: true
-  provider: cloudfoundry
+  provider: script
+  script: bash CF/deploy-app.sh -u $USERNAME -o $ORG_NAME -p $PASSWORD -s $SPACE_NAME
   api: $API_URI
   username: $USERNAME
   password: $PASSWORD
@@ -15,8 +16,6 @@ deploy:
     repo: Crown-Commercial-Service/tailspend-idam
     all_branches: true
     condition: $DEPLOY_BRANCH = TRUE
-  - provider: script
-    script: bash CF/deploy-app.sh -u $USERNAME -o $ORG_NAME -p $PASSWORD -s $SPACE_NAME
 env:
   global:
     - RAILS_ENV=test
