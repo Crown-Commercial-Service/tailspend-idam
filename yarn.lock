@@ -3543,10 +3543,10 @@ globule@^1.0.0:
     lodash "~4.17.10"
     minimatch "~3.0.2"
 
-govuk-frontend@^3.11.0:
-  version "3.11.0"
-  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-3.11.0.tgz#5bc38629ec8b290220c2c389dcd664114a045db1"
-  integrity sha512-1hW/3etYBtKPM+PNdWVOijvWVI3mpYL8eb7WLTtlh/Qxf2mCp6LkCsZk9I034n4EJBYQ5jlUWsUlTOOIypftpg==
+govuk-frontend@^3.14.0:
+  version "3.14.0"
+  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-3.14.0.tgz#d3a9c54437c08f5188f87b1f4480ba60e95c8eb6"
+  integrity sha512-y7FTuihCSA8Hty+e9h0uPhCoNanCAN+CLioNFlPmlbeHXpbi09VMyxTcH+XfnMPY4Cp++7096v0rLwwdapTXnA==
 
 graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2:
   version "4.2.4"
