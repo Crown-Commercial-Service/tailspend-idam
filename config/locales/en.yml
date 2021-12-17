@@ -174,7 +174,7 @@ en:
         last_name: Last name
         last_name_hint: Add your last name here.
         lead: You must be employed by, or represent, a public sector organisation.
-        organisation: Organisation name
+        organisation: Organisation
         organisation_hint: Enter your organisation's full name. We will verify your organisation name to confirm you can use this service. If your organisation is not listed please contact CCS.
         password: Password
         password_must_have: 'Your password must have:'
