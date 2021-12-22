@@ -333,7 +333,7 @@ en:
       sign_in_title_unite: Login to Unite
       sign_in_unite: Sign in to Unite
       subheading: The Tail Spend Solution provides customers with the choice of two suppliers to choose from. Each supplier solution will provide the opportunity to browse and purchase from a broad range of products to address your Tail Spend needs. Tail Spend is traditionally described as ad-hoc, low volume and usually low value spend.
-      subheading2: Please note that a Framework Call Off Contract needs to have been completed, following a 'Direct Award' or 'Further Competition' prior to registration and use. For further information on how to complete this process please read the 'How To Buy' section on our <a class='govuk-link' href='https://www.crowncommercial.gov.uk/agreements/RM6202' target='_blank'>Home Page</a> or contact the category team at <a class='govuk-link' href='mailto:info@crowncommercial.gov.uk'>info@crowncommercial.gov.uk</a>
+      subheading2: Please note that a Framework Call Off Contract needs to have been completed, following a 'Direct Award' or 'Further Competition' prior to registration and use. For further information on how to complete this process please read the 'How To Buy' section on our <a class='govuk-link' href='https://www.crowncommercial.gov.uk/agreements/RM6202' target='_blank'>Home Page</a> or contact the category team at <a class='govuk-link' href='mailto:info@crowncommercial.gov.uk'>info@crowncommercial.gov.uk</a>.
       to_use_this_service_html: To use this service you need to be a recognised public sector body listed in the %{authorised_customer_list}.
   layouts:
     application:
