@@ -22,7 +22,7 @@ en:
             enter_a_password: Enter a password
             enter_first_name: Enter your first name
             enter_last_name: Enter your last name
-            enter_org_name: Enter your organisation name
+            enter_org_name: Select your organisation from the dropdown list
             enter_your_password: Enter your password
             first_name_format: First name must be more than 3 characters
             last_name_format: Last name must be more than 3 characters
@@ -121,7 +121,7 @@ en:
             phone_number:
               blank: Enter your Phone number
             summary_line:
-              blank: Enter your organisation
+              blank: Select your organisation from the dropdown list
               not_found: A public sector organisation with the name you entered could not be found
   api:
     v1:
