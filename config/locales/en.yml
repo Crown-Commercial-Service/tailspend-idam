@@ -200,6 +200,7 @@ en:
     continue: Continue
     create_account: Create account
     passcap: at least one capital letter
+    passchar: at least one character
     passeight: at least 10 characters
     passnum: at least one number
     reset_password: Reset password
