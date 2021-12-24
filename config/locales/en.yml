@@ -195,6 +195,7 @@ en:
         resend_the_confirmation_email_html: <a href="%{link}" class="govuk-link">Resend the email</a>
         you: you
       sign_in_error: You must provide a correct username or password
+      sign_in_error_cognito: Incorrect username or password.
   common:
     continue: Continue
     create_account: Create account
