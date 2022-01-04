@@ -71,7 +71,7 @@ RSpec.describe Cognito::SignUpUser do
         end
 
         it 'has the correct error message' do
-          expect(sign_up_user.errors[:summary_line].first).to eq 'Enter your organisation'
+          expect(sign_up_user.errors[:summary_line].first).to eq I18n.t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.enter_org_name')
         end
 
         it 'does not add an error of type not_found' do
