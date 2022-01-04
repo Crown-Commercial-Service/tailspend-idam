@@ -46,6 +46,45 @@ RSpec.describe Cognito::SignUpUser do
         end
       end
 
+      context 'and it is not in the right format' do
+        let(:email) { 'abc' }
+
+        it 'is not valid' do
+          expect(sign_up_user.valid?).to be false
+        end
+
+        it 'has the correct error message' do
+          sign_up_user.valid?
+          expect(sign_up_user.errors[:email].first).to eq I18n.t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.email_format')
+        end
+      end
+
+      context 'and it is still not in the right format' do
+        let(:email) { 'abc@' }
+
+        it 'is not valid' do
+          expect(sign_up_user.valid?).to be false
+        end
+
+        it 'has the correct error message' do
+          sign_up_user.valid?
+          expect(sign_up_user.errors[:email].first).to eq I18n.t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.email_format')
+        end
+      end
+
+      context 'and it is yet again not in the right format' do
+        let(:email) { 'abc@abc.' }
+
+        it 'is not valid' do
+          expect(sign_up_user.valid?).to be false
+        end
+
+        it 'has the correct error message' do
+          sign_up_user.valid?
+          expect(sign_up_user.errors[:email].first).to eq I18n.t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.email_format')
+        end
+      end
+
       context 'and it is not on the allow list' do
         let(:domain) { 'toast.com' }
 
