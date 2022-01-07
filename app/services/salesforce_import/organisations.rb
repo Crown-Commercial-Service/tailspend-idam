@@ -51,7 +51,7 @@ module SalesforceImport
       if Rails.env.test?
         Rails.root.join('data/test_organisations.csv')
       else
-        URI.open(ENV['ORGANISATIONS_CSV_BLOB'])
+        URI.parse(ENV['ORGANISATIONS_CSV_BLOB']).open
       end
     end
 
