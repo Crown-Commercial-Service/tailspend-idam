@@ -1,241 +1,241 @@
-﻿Supplier name
-Active Supplier 1
-Active Supplier 2
-Active Supplier 3
-Active Supplier 4
-Active Supplier 5
-Active Supplier 6
-Active Supplier 7
-Active Supplier 8
-Active Supplier 9
-Active Supplier 10
-Active Supplier 11
-Active Supplier 12
-Active Supplier 13
-Active Supplier 14
-Active Supplier 15
-Active Supplier 16
-Active Supplier 17
-Active Supplier 18
-Active Supplier 19
-Active Supplier 20
-Active Supplier 21
-Active Supplier 22
-Active Supplier 23
-Active Supplier 24
-Active Supplier 25
-Active Supplier 26
-Active Supplier 27
-Active Supplier 28
-Active Supplier 29
-Active Supplier 30
-Active Supplier 31
-Active Supplier 32
-Active Supplier 33
-Active Supplier 34
-Active Supplier 35
-Active Supplier 36
-Active Supplier 37
-Active Supplier 38
-Active Supplier 39
-Active Supplier 40
-Active Supplier 41
-Active Supplier 42
-Active Supplier 43
-Active Supplier 44
-Active Supplier 45
-Active Supplier 46
-Active Supplier 47
-Active Supplier 48
-Active Supplier 49
-Active Supplier 50
-Active Supplier 51
-Active Supplier 52
-Active Supplier 53
-Active Supplier 54
-Active Supplier 55
-Active Supplier 56
-Active Supplier 57
-Active Supplier 58
-Active Supplier 59
-Active Supplier 60
-Active Supplier 61
-Active Supplier 62
-Active Supplier 63
-Active Supplier 64
-Active Supplier 65
-Active Supplier 66
-Active Supplier 67
-Active Supplier 68
-Active Supplier 69
-Active Supplier 70
-Active Supplier 71
-Active Supplier 72
-Active Supplier 73
-Active Supplier 74
-Active Supplier 75
-Active Supplier 76
-Active Supplier 77
-Active Supplier 78
-Active Supplier 79
-Active Supplier 80
-Active Supplier 81
-Active Supplier 82
-Active Supplier 83
-Active Supplier 84
-Active Supplier 85
-Active Supplier 86
-Active Supplier 87
-Active Supplier 88
-Active Supplier 89
-Active Supplier 90
-Active Supplier 91
-Active Supplier 92
-Active Supplier 93
-Active Supplier 94
-Active Supplier 95
-Active Supplier 96
-Active Supplier 97
-Active Supplier 98
-Active Supplier 99
-Active Supplier 100
-Active Supplier 101
-Active Supplier 102
-Active Supplier 103
-Active Supplier 104
-Active Supplier 105
-Active Supplier 106
-Active Supplier 107
-Active Supplier 108
-Active Supplier 109
-Active Supplier 110
-Active Supplier 111
-Active Supplier 112
-Active Supplier 113
-Active Supplier 114
-Active Supplier 115
-Active Supplier 116
-Active Supplier 117
-Active Supplier 118
-Active Supplier 119
-Active Supplier 120
-Active Supplier 121
-Active Supplier 122
-Active Supplier 123
-Active Supplier 124
-Active Supplier 125
-Active Supplier 126
-Active Supplier 127
-Active Supplier 128
-Active Supplier 129
-Active Supplier 130
-Active Supplier 131
-Active Supplier 132
-Active Supplier 133
-Active Supplier 134
-Active Supplier 135
-Active Supplier 136
-Active Supplier 137
-Active Supplier 138
-Active Supplier 139
-Active Supplier 140
-Active Supplier 141
-Active Supplier 142
-Active Supplier 143
-Active Supplier 144
-Active Supplier 145
-Active Supplier 146
-Active Supplier 147
-Active Supplier 148
-Active Supplier 149
-Active Supplier 150
-Active Supplier 151
-Active Supplier 152
-Active Supplier 153
-Active Supplier 154
-Active Supplier 155
-Active Supplier 156
-Active Supplier 157
-Active Supplier 158
-Active Supplier 159
-Active Supplier 160
-Active Supplier 161
-Active Supplier 162
-Active Supplier 163
-Active Supplier 164
-Active Supplier 165
-Active Supplier 166
-Active Supplier 167
-Active Supplier 168
-Active Supplier 169
-Active Supplier 170
-Active Supplier 171
-Active Supplier 172
-Active Supplier 173
-Active Supplier 174
-Active Supplier 175
-Active Supplier 176
-Active Supplier 177
-Active Supplier 178
-Active Supplier 179
-Active Supplier 180
-Active Supplier 181
-Active Supplier 182
-Active Supplier 183
-Active Supplier 184
-Active Supplier 185
-Active Supplier 186
-Active Supplier 187
-Active Supplier 188
-Active Supplier 189
-Active Supplier 190
-Active Supplier 191
-Active Supplier 192
-Active Supplier 193
-Active Supplier 194
-Active Supplier 195
-Active Supplier 196
-Active Supplier 197
-Active Supplier 198
-Active Supplier 199
-Active Supplier 200
-Active Supplier 201
-Active Supplier 202
-Active Supplier 203
-Active Supplier 204
-Active Supplier 205
-Active Supplier 206
-Active Supplier 207
-Active Supplier 208
-Active Supplier 209
-Active Supplier 210
-Active Supplier 211
-Active Supplier 212
-Active Supplier 213
-Active Supplier 214
-Active Supplier 215
-Active Supplier 216
-Active Supplier 217
-Active Supplier 218
-Active Supplier 219
-Active Supplier 220
-(closed) Inactive Supplier 1
-(closed) Inactive Supplier 2
-(closed) Inactive Supplier 3
-(closed) Inactive Supplier 4
-(closed) Inactive Supplier 5
-(closed) Inactive Supplier 6
-(closed) Inactive Supplier 7
-(closed) Inactive Supplier 8
-(closed) Inactive Supplier 9
-(closed) Inactive Supplier 10
-(Closed) Inactive Supplier 11
-(Closed) Inactive Supplier 12
-(Closed) Inactive Supplier 13
-(Closed) Inactive Supplier 14
-(Closed) Inactive Supplier 15
-(Closed) Inactive Supplier 16
-(Closed) Inactive Supplier 17
-(Closed) Inactive Supplier 18
-(Closed) Inactive Supplier 19
-(Closed) Inactive Supplier 20
+﻿CustomerName,UniqueReferenceNumber,Address,City,Postcode,NUTS Region,NUTS Region 2,Sector,Group,PrimaryFunction,Detail
+Active Organisation 1,10000001,1 Test Road,London,AB1 2CD,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 2,10000002,2 Test Road,Birmingham,EF3 4GH,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 3,10000003,3 Test Road,Newport,IJ5 6KL,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 4,10000004,4 Test Road,Norwich,MN7 8OP,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 5,10000005,5 Test Road,Liverpool,AB1 2CD,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 6,10000006,6 Test Road,London,EF3 4GH,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 7,10000007,7 Test Road,Birmingham,IJ5 6KL,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 8,10000008,8 Test Road,Newport,MN7 8OP,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 9,10000009,9 Test Road,,NULL,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 10,10000010,,Liverpool,EF3 4GH,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 11,10000011,11 Test Road,London,IJ5 6KL,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 12,10000012,12 Test Road,Birmingham,MN7 8OP,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 13,10000013,13 Test Road,Newport,AB1 2CD,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 14,10000014,14 Test Road,Norwich,EF3 4GH,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 15,10000015,15 Test Road,Liverpool,,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 16,10000016,,London,,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 17,10000017,NULL,Birmingham,NULL,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 18,10000018,18 Test Road,Newport,NULL,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 19,10000019,19 Test Road,Norwich,IJ5 6KL,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 20,10000020,20 Test Road,Liverpool,MN7 8OP,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 21,10000021,21 Test Road,NULL,AB1 2CD,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 22,10000022,NULL,Birmingham,NULL,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 23,10000023,23 Test Road,Newport,,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 24,10000024,,NULL,NULL,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 25,10000025,25 Test Road,,NULL,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 26,10000026,26 Test Road,London,EF3 4GH,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 27,10000027,27 Test Road,Birmingham,IJ5 6KL,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 28,10000028,28 Test Road,Newport,MN7 8OP,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 29,10000029,29 Test Road,Norwich,AB1 2CD,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 30,10000030,,NULL,,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 31,10000031,,,NULL,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 32,10000032,32 Test Road,NULL,MN7 8OP,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 33,10000033,NULL,Newport,,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 34,10000034,34 Test Road,,EF3 4GH,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 35,10000035,35 Test Road,Liverpool,IJ5 6KL,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 36,10000036,36 Test Road,London,MN7 8OP,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 37,10000037,37 Test Road,Birmingham,AB1 2CD,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 38,10000038,38 Test Road,Newport,EF3 4GH,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 39,10000039,,Norwich,NULL,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 40,10000040,40 Test Road,Liverpool,MN7 8OP,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 41,10000041,,London,AB1 2CD,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 42,10000042,,Birmingham,EF3 4GH,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 43,10000043,43 Test Road,NULL,IJ5 6KL,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 44,10000044,44 Test Road,NULL,MN7 8OP,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 45,10000045,45 Test Road,Liverpool,AB1 2CD,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 46,10000046,46 Test Road,,EF3 4GH,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 47,10000047,47 Test Road,Birmingham,IJ5 6KL,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 48,10000048,48 Test Road,Newport,MN7 8OP,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 49,10000049,NULL,NULL,AB1 2CD,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 50,10000050,50 Test Road,Liverpool,EF3 4GH,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 51,10000051,51 Test Road,,IJ5 6KL,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 52,10000052,52 Test Road,Birmingham,MN7 8OP,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 53,10000053,53 Test Road,Newport,AB1 2CD,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 54,10000054,,Norwich,EF3 4GH,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 55,10000055,55 Test Road,Liverpool,IJ5 6KL,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 56,10000056,56 Test Road,London,MN7 8OP,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 57,10000057,57 Test Road,Birmingham,AB1 2CD,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 58,10000058,58 Test Road,Newport,EF3 4GH,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 59,10000059,59 Test Road,Norwich,IJ5 6KL,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 60,10000060,60 Test Road,,,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 61,10000061,61 Test Road,London,AB1 2CD,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 62,10000062,62 Test Road,Birmingham,EF3 4GH,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 63,10000063,63 Test Road,Newport,IJ5 6KL,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 64,10000064,64 Test Road,Norwich,NULL,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 65,10000065,65 Test Road,Liverpool,AB1 2CD,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 66,10000066,66 Test Road,,EF3 4GH,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 67,10000067,67 Test Road,Birmingham,IJ5 6KL,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 68,10000068,68 Test Road,Newport,MN7 8OP,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 69,10000069,69 Test Road,Norwich,AB1 2CD,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 70,10000070,70 Test Road,Liverpool,EF3 4GH,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 71,10000071,71 Test Road,,IJ5 6KL,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 72,10000072,72 Test Road,Birmingham,MN7 8OP,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 73,10000073,73 Test Road,Newport,AB1 2CD,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 74,10000074,,,EF3 4GH,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 75,10000075,,Liverpool,IJ5 6KL,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 76,10000076,NULL,London,MN7 8OP,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 77,10000077,77 Test Road,Birmingham,AB1 2CD,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 78,10000078,78 Test Road,Newport,EF3 4GH,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 79,10000079,,,,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 80,10000080,80 Test Road,Liverpool,MN7 8OP,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 81,10000081,81 Test Road,London,NULL,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 82,10000082,NULL,,EF3 4GH,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 83,10000083,83 Test Road,NULL,IJ5 6KL,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 84,10000084,84 Test Road,Norwich,MN7 8OP,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 85,10000085,85 Test Road,Liverpool,AB1 2CD,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 86,10000086,86 Test Road,London,EF3 4GH,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 87,10000087,NULL,,NULL,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 88,10000088,88 Test Road,Newport,MN7 8OP,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 89,10000089,89 Test Road,Norwich,AB1 2CD,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 90,10000090,90 Test Road,Liverpool,,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 91,10000091,91 Test Road,London,IJ5 6KL,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 92,10000092,92 Test Road,Birmingham,MN7 8OP,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 93,10000093,93 Test Road,,NULL,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 94,10000094,94 Test Road,Norwich,,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 95,10000095,95 Test Road,Liverpool,NULL,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 96,10000096,96 Test Road,London,MN7 8OP,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 97,10000097,97 Test Road,Birmingham,AB1 2CD,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 98,10000098,98 Test Road,Newport,NULL,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 99,10000099,99 Test Road,Norwich,IJ5 6KL,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 100,10000100,NULL,NULL,MN7 8OP,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 101,10000101,101 Test Road,London,AB1 2CD,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 102,10000102,102 Test Road,Birmingham,EF3 4GH,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 103,10000103,103 Test Road,Newport,IJ5 6KL,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 104,10000104,104 Test Road,Norwich,MN7 8OP,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 105,10000105,105 Test Road,Liverpool,NULL,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 106,10000106,106 Test Road,London,EF3 4GH,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 107,10000107,,Birmingham,IJ5 6KL,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 108,10000108,108 Test Road,Newport,MN7 8OP,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 109,10000109,109 Test Road,Norwich,AB1 2CD,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 110,10000110,110 Test Road,Liverpool,EF3 4GH,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 111,10000111,111 Test Road,NULL,IJ5 6KL,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 112,10000112,,Birmingham,MN7 8OP,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 113,10000113,113 Test Road,NULL,AB1 2CD,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 114,10000114,114 Test Road,Norwich,EF3 4GH,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 115,10000115,,Liverpool,IJ5 6KL,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 116,10000116,116 Test Road,,MN7 8OP,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 117,10000117,NULL,,,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 118,10000118,118 Test Road,Newport,EF3 4GH,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 119,10000119,NULL,Norwich,IJ5 6KL,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 120,10000120,120 Test Road,Liverpool,MN7 8OP,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 121,10000121,121 Test Road,,NULL,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 122,10000122,122 Test Road,Birmingham,,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 123,10000123,123 Test Road,Newport,IJ5 6KL,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 124,10000124,124 Test Road,NULL,MN7 8OP,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 125,10000125,125 Test Road,Liverpool,AB1 2CD,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 126,10000126,126 Test Road,London,EF3 4GH,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 127,10000127,127 Test Road,Birmingham,NULL,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 128,10000128,128 Test Road,Newport,MN7 8OP,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 129,10000129,NULL,Norwich,,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 130,10000130,130 Test Road,Liverpool,EF3 4GH,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 131,10000131,131 Test Road,London,IJ5 6KL,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 132,10000132,132 Test Road,Birmingham,MN7 8OP,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 133,10000133,133 Test Road,Newport,AB1 2CD,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 134,10000134,134 Test Road,Norwich,EF3 4GH,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 135,10000135,135 Test Road,,IJ5 6KL,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 136,10000136,136 Test Road,NULL,MN7 8OP,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 137,10000137,137 Test Road,Birmingham,AB1 2CD,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 138,10000138,138 Test Road,NULL,EF3 4GH,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 139,10000139,,Norwich,IJ5 6KL,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 140,10000140,140 Test Road,Liverpool,MN7 8OP,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 141,10000141,141 Test Road,London,AB1 2CD,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 142,10000142,,Birmingham,EF3 4GH,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 143,10000143,143 Test Road,,IJ5 6KL,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 144,10000144,144 Test Road,,MN7 8OP,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 145,10000145,145 Test Road,Liverpool,AB1 2CD,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 146,10000146,146 Test Road,London,EF3 4GH,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 147,10000147,147 Test Road,Birmingham,IJ5 6KL,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 148,10000148,148 Test Road,Newport,MN7 8OP,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 149,10000149,149 Test Road,Norwich,AB1 2CD,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 150,10000150,150 Test Road,Liverpool,EF3 4GH,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 151,10000151,151 Test Road,NULL,IJ5 6KL,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 152,10000152,152 Test Road,Birmingham,MN7 8OP,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 153,10000153,153 Test Road,Newport,AB1 2CD,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 154,10000154,154 Test Road,Norwich,EF3 4GH,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 155,10000155,155 Test Road,Liverpool,IJ5 6KL,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 156,10000156,,London,MN7 8OP,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 157,10000157,157 Test Road,NULL,AB1 2CD,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 158,10000158,158 Test Road,Newport,EF3 4GH,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 159,10000159,159 Test Road,Norwich,IJ5 6KL,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 160,10000160,160 Test Road,Liverpool,,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 161,10000161,161 Test Road,London,,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 162,10000162,,Birmingham,EF3 4GH,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 163,10000163,NULL,Newport,IJ5 6KL,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 164,10000164,164 Test Road,,MN7 8OP,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 165,10000165,,,AB1 2CD,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 166,10000166,166 Test Road,London,NULL,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 167,10000167,167 Test Road,Birmingham,IJ5 6KL,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 168,10000168,168 Test Road,Newport,MN7 8OP,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 169,10000169,169 Test Road,Norwich,NULL,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 170,10000170,170 Test Road,Liverpool,EF3 4GH,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 171,10000171,171 Test Road,London,IJ5 6KL,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 172,10000172,172 Test Road,Birmingham,MN7 8OP,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 173,10000173,173 Test Road,Newport,,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 174,10000174,174 Test Road,Norwich,EF3 4GH,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 175,10000175,NULL,Liverpool,IJ5 6KL,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 176,10000176,176 Test Road,,NULL,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 177,10000177,177 Test Road,,AB1 2CD,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 178,10000178,NULL,Newport,EF3 4GH,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 179,10000179,,Norwich,IJ5 6KL,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 180,10000180,180 Test Road,Liverpool,MN7 8OP,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 181,10000181,181 Test Road,London,AB1 2CD,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 182,10000182,182 Test Road,Birmingham,EF3 4GH,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 183,10000183,183 Test Road,Newport,IJ5 6KL,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 184,10000184,,Norwich,MN7 8OP,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 185,10000185,185 Test Road,Liverpool,AB1 2CD,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 186,10000186,,London,EF3 4GH,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 187,10000187,187 Test Road,,IJ5 6KL,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 188,10000188,188 Test Road,,MN7 8OP,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 189,10000189,189 Test Road,Norwich,NULL,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 190,10000190,,,EF3 4GH,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 191,10000191,191 Test Road,,IJ5 6KL,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 192,10000192,192 Test Road,NULL,MN7 8OP,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 193,10000193,193 Test Road,Newport,AB1 2CD,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 194,10000194,194 Test Road,Norwich,EF3 4GH,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 195,10000195,195 Test Road,Liverpool,IJ5 6KL,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 196,10000196,196 Test Road,London,MN7 8OP,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 197,10000197,197 Test Road,NULL,AB1 2CD,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 198,10000198,198 Test Road,Newport,EF3 4GH,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 199,10000199,,NULL,IJ5 6KL,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 200,10000200,200 Test Road,Liverpool,MN7 8OP,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 201,10000201,201 Test Road,London,,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 202,10000202,,Birmingham,EF3 4GH,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 203,10000203,NULL,Newport,IJ5 6KL,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 204,10000204,204 Test Road,,MN7 8OP,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 205,10000205,205 Test Road,,AB1 2CD,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 206,10000206,206 Test Road,London,EF3 4GH,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 207,10000207,207 Test Road,Birmingham,,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 208,10000208,208 Test Road,,MN7 8OP,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 209,10000209,209 Test Road,Norwich,AB1 2CD,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 210,10000210,210 Test Road,Liverpool,EF3 4GH,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 211,10000211,211 Test Road,NULL,NULL,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 212,10000212,212 Test Road,Birmingham,,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 213,10000213,213 Test Road,Newport,AB1 2CD,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 214,10000214,,Norwich,,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 215,10000215,215 Test Road,NULL,IJ5 6KL,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 216,10000216,216 Test Road,,MN7 8OP,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 217,10000217,217 Test Road,Birmingham,AB1 2CD,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 218,10000218,,Newport,EF3 4GH,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 219,10000219,219 Test Road,Norwich,NULL,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+Active Organisation 220,10000220,220 Test Road,Liverpool,MN7 8OP,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+(closed) Inactive Organisation 1,10000221,221 Test Road,,AB1 2CD,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+(closed) Inactive Organisation 2,10000222,222 Test Road,Birmingham,EF3 4GH,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+(closed) Inactive Organisation 3,10000223,223 Test Road,Newport,IJ5 6KL,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+(closed) Inactive Organisation 4,10000224,224 Test Road,,MN7 8OP,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+(closed) Inactive Organisation 5,10000225,225 Test Road,Liverpool,AB1 2CD,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+(closed) Inactive Organisation 6,10000226,226 Test Road,London,EF3 4GH,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+(closed) Inactive Organisation 7,10000227,227 Test Road,Birmingham,,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+(closed) Inactive Organisation 8,10000228,228 Test Road,Newport,MN7 8OP,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+(closed) Inactive Organisation 9,10000229,229 Test Road,Norwich,NULL,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+(closed) Inactive Organisation 10,10000230,230 Test Road,NULL,,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+(Closed) Inactive Organisation 11,10000231,,London,IJ5 6KL,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+(Closed) Inactive Organisation 12,10000232,232 Test Road,Birmingham,MN7 8OP,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+(Closed) Inactive Organisation 13,10000233,233 Test Road,Newport,AB1 2CD,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+(Closed) Inactive Organisation 14,10000234,234 Test Road,Norwich,,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+(Closed) Inactive Organisation 15,10000235,235 Test Road,,NULL,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other
+(Closed) Inactive Organisation 16,10000236,,London,,London,Inner London - West,Wider Public Sector,Not for Profit,Other,Other
+(Closed) Inactive Organisation 17,10000237,237 Test Road,Birmingham,AB1 2CD,West Midlands (England),West Midlands,Wider Public Sector,Not for Profit,Other,Other
+(Closed) Inactive Organisation 18,10000238,238 Test Road,Newport,EF3 4GH,East Wales,Monmouthshire and Newport,Wider Public Sector,Not for Profit,Other,Other
+(Closed) Inactive Organisation 19,10000239,239 Test Road,Norwich,IJ5 6KL,East Anglia,Norwich and East Norfolk (Broadland and Great Yarmouth),Wider Public Sector,Not for Profit,Other,Other
+(Closed) Inactive Organisation 20,10000240,240 Test Road,Liverpool,MN7 8OP,North West (England),Merseyside,Wider Public Sector,Not for Profit,Other,Other

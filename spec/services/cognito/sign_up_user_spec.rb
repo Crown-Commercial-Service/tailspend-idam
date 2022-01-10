@@ -1,19 +1,30 @@
 require 'rails_helper'
 
 RSpec.describe Cognito::SignUpUser do
+  let(:sign_up_user) { described_class.new(params) }
+
+  let(:params) do
+    { email: email,
+      password: password,
+      password_confirmation: password_confirmation,
+      summary_line: summary_line,
+      first_name: first_name,
+      last_name: last_name }
+  end
+
+  let(:email) { 'test@test.com' }
+  let(:password) { 'Password123!' }
+  let(:password_confirmation) { password }
+  let(:summary_line) { 'Active Organisation 69 (69 Test Road, Norwich, AB1 2CD)' }
+  let(:first_name) { 'John' }
+  let(:last_name) { 'Smith' }
+  let(:domain) { 'test.com' }
+
+  before { AllowedEmailDomain.create(url: domain, active: true) }
+
   describe '.valid?' do
-    let(:sign_up_user) { described_class.new(email, password, password_confirmation, organisation, first_name, last_name) }
-    let(:email) { 'test@test.com' }
-    let(:password) { 'Password123!' }
-    let(:password_confirmation) { password }
-    let(:organisation) { 'Crown Commercial Serice' }
-    let(:first_name) { 'John' }
-    let(:last_name) { 'Smith' }
-    let(:domain) { 'test.com' }
     let(:valid_symbols_sample) { '=+-^$*.[]{}()?"!@#%&/\\,><\':;|_~`'.split('').sample(7).join }
     let(:invalid_symbols_sample) { 'èÿüíōæß'.split('').sample(3).join }
-
-    before { AllowedEmailDomain.create(url: domain, active: true) }
 
     context 'when all attributes are valid' do
       it 'is valid' do
@@ -35,6 +46,45 @@ RSpec.describe Cognito::SignUpUser do
         end
       end
 
+      context 'and it is not in the right format' do
+        let(:email) { 'abc' }
+
+        it 'is not valid' do
+          expect(sign_up_user.valid?).to be false
+        end
+
+        it 'has the correct error message' do
+          sign_up_user.valid?
+          expect(sign_up_user.errors[:email].first).to eq I18n.t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.email_format')
+        end
+      end
+
+      context 'and it is still not in the right format' do
+        let(:email) { 'abc@' }
+
+        it 'is not valid' do
+          expect(sign_up_user.valid?).to be false
+        end
+
+        it 'has the correct error message' do
+          sign_up_user.valid?
+          expect(sign_up_user.errors[:email].first).to eq I18n.t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.email_format')
+        end
+      end
+
+      context 'and it is yet again not in the right format' do
+        let(:email) { 'abc@abc.' }
+
+        it 'is not valid' do
+          expect(sign_up_user.valid?).to be false
+        end
+
+        it 'has the correct error message' do
+          sign_up_user.valid?
+          expect(sign_up_user.errors[:email].first).to eq I18n.t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.email_format')
+        end
+      end
+
       context 'and it is not on the allow list' do
         let(:domain) { 'toast.com' }
 
@@ -49,17 +99,36 @@ RSpec.describe Cognito::SignUpUser do
       end
     end
 
-    context 'when considering the organisation' do
+    context 'when considering the summary_line' do
       context 'and it is blank' do
-        let(:organisation) { '' }
+        let(:summary_line) { '' }
+
+        before { sign_up_user.valid? }
 
         it 'is not valid' do
           expect(sign_up_user.valid?).to be false
         end
 
         it 'has the correct error message' do
-          sign_up_user.valid?
-          expect(sign_up_user.errors[:organisation].first).to eq 'Enter your organisation'
+          expect(sign_up_user.errors[:summary_line].first).to eq I18n.t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.enter_org_name')
+        end
+
+        it 'does not add an error of type not_found' do
+          expect(sign_up_user.errors.of_kind?(:summary_line, :not_found)).to be false
+        end
+      end
+
+      context 'and it belongs to an organisation that does not exist' do
+        let(:summary_line) { 'My Fake Organisation' }
+
+        before { sign_up_user.valid? }
+
+        it 'has the correct error message' do
+          expect(sign_up_user.errors[:summary_line].first).to eq 'A public sector organisation with the name you entered could not be found'
+        end
+
+        it 'does add an error of type not_found' do
+          expect(sign_up_user.errors.of_kind?(:summary_line, :not_found)).to be true
         end
       end
     end
@@ -246,13 +315,72 @@ RSpec.describe Cognito::SignUpUser do
   end
 
   describe 'initialisation of email' do
-    let(:sign_up_user) { described_class.new(email, '', '', '', '', '') }
-
     context 'when the email contains capital letters' do
       let(:email) { 'Test@TeST.com' }
 
       it 'will become downcased when the object is initialised' do
         expect(sign_up_user.email).to eq 'test@test.com'
+      end
+    end
+  end
+
+  describe '.call' do
+    let(:client) { instance_double(Aws::CognitoIdentityProvider::Client) }
+
+    before do
+      stub_const('ENV', { 'COGNITO_AWS_REGION' => 'supersecretregion', 'COGNITO_CLIENT_SECRET' => 'supersecretkey1', 'COGNITO_CLIENT_ID' => 'supersecretkey2' })
+      allow(Aws::CognitoIdentityProvider::Client).to receive(:new).with(region: 'supersecretregion').and_return(client)
+    end
+
+    context 'when it is valid' do
+      let(:response) { double }
+
+      before do
+        allow(client).to receive(:sign_up).and_return(response)
+        allow(response).to receive(:[]).with('user_sub').and_return('123456')
+        sign_up_user.call
+      end
+
+      it 'calls sign_up on client' do
+        expect(client).to have_received(:sign_up).with(client_id: 'supersecretkey2',
+                                                       secret_hash: 'QGGa3OLislakJW63OXujsIzjOxqYgSxptyRHAuyobd8=',
+                                                       username: email,
+                                                       password: password,
+                                                       user_attributes: [{ name: 'email', value: email },
+                                                                         { name: 'name', value: first_name },
+                                                                         { name: 'family_name', value: last_name },
+                                                                         { name: 'custom:organisation_name', value: 'Active Organisation 69' },
+                                                                         { name: 'phone_number', value: '+4408654876588' }])
+      end
+    end
+
+    context 'when an error is raised' do
+      before do
+        allow(client).to receive(:sign_up).and_raise(Aws::CognitoIdentityProvider::Errors::ServiceError.new('Some context', 'Some message'))
+        sign_up_user.call
+      end
+
+      it 'sets the error and success will be false' do
+        expect(sign_up_user.errors[:base].first).to eq 'Some message'
+        expect(sign_up_user.success?).to be false
+      end
+    end
+  end
+
+  describe '.success?' do
+    before { sign_up_user.valid? }
+
+    context 'when there are no errors' do
+      it 'returns true' do
+        expect(sign_up_user.success?).to be true
+      end
+    end
+
+    context 'when there are errors' do
+      let(:password_confirmation) { '' }
+
+      it 'returns false' do
+        expect(sign_up_user.success?).to be false
       end
     end
   end

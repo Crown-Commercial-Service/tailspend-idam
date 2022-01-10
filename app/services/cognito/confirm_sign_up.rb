@@ -12,24 +12,21 @@ module Cognito
               length: { is: 6, message: :invalid_length }
     validates_presence_of :email, :confirmation_code
 
-    def initialize(email, confirmation_code)
+    def initialize(params = {})
       super()
-      @email = email.try(:downcase)
-      @confirmation_code = confirmation_code
+      @email = params[:email].try(:downcase)
+      @confirmation_code = params[:confirmation_code]
       @error = nil
     end
 
     def call
-      if valid?
-        confirm_sign_up
-        # confirm_user
-      end
+      confirm_sign_up if valid?
     rescue Aws::CognitoIdentityProvider::Errors::ServiceError => e
       errors.add(:confirmation_code, e.message)
     end
 
     def success?
-      errors.empty?
+      errors.none?
     end
 
     private
@@ -42,10 +39,5 @@ module Cognito
         confirmation_code: confirmation_code
       )
     end
-
-    # def confirm_user
-    #   @user = User.find_for_authentication(email: email)
-    #   @user.update(confirmed_at: Time.zone.now)
-    # end
   end
 end

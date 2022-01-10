@@ -3,14 +3,14 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.3'
+ruby '2.7.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.3', '>= 6.0.3.7'
+gem 'rails', '~> 6.0.4', '>= 6.0.4.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 4.3'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.3', '>= 4.3.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -27,7 +27,7 @@ gem 'aws-sdk-s3', '~> 1'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 # For scheduling tasks
-gem 'arask', '>= 1.2.3'
+gem 'arask', '1.2.3'
 
 # for postgresql
 gem 'activerecord-postgis-adapter'
@@ -36,7 +36,7 @@ gem 'pg', '~> 0.18.4'
 gem 'jwt'
 gem 'rest-client', '~> 2.1'
 gem 'rollbar'
-gem 'roo', '~> 2.8.0'
+gem 'roo', '~> 2.8.3'
 # remove if not option two taken in project
 
 # For canonical urls
@@ -66,16 +66,11 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'rspec'
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
   gem 'rails-controller-testing', '>= 1.0.5'
+  gem 'simplecov', '>= 0.16.1', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

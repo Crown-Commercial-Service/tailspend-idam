@@ -23,4 +23,4 @@ def set_env(storage_path)
 end
 # rubocop:enable Naming/AccessorMethodName
 
-config_vault if ENV['SERVER_ENV_NAME'].present?
+# config_vault if ENV['SERVER_ENV_NAME'].present?

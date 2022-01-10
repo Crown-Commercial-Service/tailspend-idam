@@ -33,6 +33,9 @@ module Cognito
     rescue Aws::CognitoIdentityProvider::Errors::UserNotFoundException
       @error = I18n.t('base.users.sign_in_error')
       errors.add(:base, @error)
+    rescue Aws::CognitoIdentityProvider::Errors::NotAuthorizedException => e
+      @error = e.message == I18n.t('base.users.sign_in_error_cognito') ? I18n.t('base.users.sign_in_error') : e.message
+      errors.add(:base, @error)
     rescue Aws::CognitoIdentityProvider::Errors::ServiceError
       @error = I18n.t('base.users.sign_in_error')
       errors.add(:base, @error)
@@ -46,29 +49,12 @@ module Cognito
       @auth_response.present? && @error.nil?
     end
 
-    def challenge?
-      @auth_response.challenge_name.present?
-    end
-
-    def cognito_uuid
-      @auth_response.challenge_parameters['USER_ID_FOR_SRP']
-    end
-
-    def session
-      @auth_response.session
-    end
-
-    def challenge_name
-      @auth_response.challenge_name
-    end
-
     private
 
     def initiate_auth
       cognito_common = Cognito::Common.new
       client_creds = cognito_common.get_client_credentials(client_id)
-
-      if client_creds.user_pool_client.explicit_auth_flows.include? 'USER_PASSWORD_AUTH'
+      if (client_creds.user_pool_client.explicit_auth_flows & %w[USER_PASSWORD_AUTH ALLOW_USER_PASSWORD_AUTH]).any?
         login_user_cognito(client_creds.user_pool_client.client_id, client_creds.user_pool_client.client_secret)
       else
         @error = I18n.t('base.users.sign_in_error')

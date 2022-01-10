@@ -1,6 +1,8 @@
-# README
+# Tail Spend Solution IDAM
 
-This README is a work in progress but the guide below should show how to get the application up and running locally
+[![Build Status](https://app.travis-ci.com/Crown-Commercial-Service/pmp-idam.svg?branch=develop)](https://app.travis-ci.com/Crown-Commercial-Service/tailspend-idam)
+[![Maintainability](https://api.codeclimate.com/v1/badges/0cd357c324b2731fb1bc/maintainability)](https://codeclimate.com/github/Crown-Commercial-Service/tailspend-idam/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/0cd357c324b2731fb1bc/test_coverage)](https://codeclimate.com/github/Crown-Commercial-Service/tailspend-idam/test_coverage)
 
 ## Prerequisites
 
@@ -60,7 +62,7 @@ bundle exec rake db:setup
 
 As much of the project uses external APIs you will need a .env.local file to access these APIs. If there is an existing developer on the project then you can ask them for it. If not you should still add a .env.local and add the relevant variables as you go along.
 
-There is no data that can be initialised but you will need to add your email domain to the `AllowedEmailDomain` model and some suppliers to the Organisation. You can either create files and use the rake tasks found in `lib/tasks/allow_email_domain.rake` and `lib/tasks/organisations.rake` or add the data manually though the console.
+There is no data that can be initialised but you will need to add your email domain to the `AllowedEmailDomain` model and some organisations to the Organisation. You can either create files and use the rake tasks found in `lib/tasks/allow_email_domain.rake` and `lib/tasks/organisations.rake` or add the data manually though the console.
 
 
 ## Environemnt variables
@@ -72,7 +74,8 @@ This project uses environment variables which you will need to add to your .env.
 - **AWS_ACCESS_KEY** - The access key for the AWS environment
 - **AWS_SECRET_KEY** - The secret key for the AWS environment
 - **AUTH_USER_API_TOKEN** - The token for the authentication of a user when signing in
-- **PRINT_MARKET_PLACE_KEYCLOAK_URL** - `http://localhost:8080`
+- **OFFICE_TEAM_GET_URL** - `http://localhost:8080`
+- **MERCATEO_GET_URL** - `http://localhost:8080`
 
 ## Running the application
 To run the application use:
@@ -84,11 +87,15 @@ This will then run the rails server on localhost:3000 but you will need to do so
 
 ## Using the application in the development environment
 ### Running Keycloak in the Docker container
-This application is an interim IDAM solution to allow users to log into the Print Marketplace service. This service is being hosted and maintained externally but it is using an application called Keycloak for its single-sign-on. Therefore you will need to run a local version of the application in a Docker container for development purposes. You may find this [document](https://www.keycloak.org/getting-started/getting-started-docker) helpful if this README is not sufficient.
+This application is an interim IDAM solution to allow users to log into the Tail Spend Solution service. This service is being hosted and maintained externally but it is using an application called Keycloak for its single-sign-on. Therefore you will need to run a local version of the application in a Docker container for development purposes. You may find this [document](https://www.keycloak.org/getting-started/getting-started-docker) helpful if this README is not sufficient.
 
 To download and run the container, use the following command:
 ```
-docker run -p 8080:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin quay.io/keycloak/keycloak:11.0.2
+docker run --rm -p 8080:8080 \
+  -e KEYCLOAK_USER=admin \
+  -e KEYCLOAK_PASSWORD=admin \
+  -e DB_VENDOR=h2 \
+  quay.io/keycloak/keycloak:11.0.2
 ```
 This will get the Keycloak container running on localhost port 8080.
 

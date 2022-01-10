@@ -1,11 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe Cognito::ConfirmPasswordReset do
+  let(:confirm_password_reset) { described_class.new(params) }
+
+  let(:params) do
+    {
+      email: email,
+      password: password,
+      password_confirmation: password_confirmation,
+      confirmation_code: confirmation_code
+    }
+  end
+
+  let(:email) { 'test@test.com' }
+  let(:password) { 'Password123!' }
+  let(:password_confirmation) { password }
+  let(:confirmation_code) { '123456' }
+
   describe '.valid?' do
-    let(:confirm_password_reset) { described_class.new('test@test.com', password, password_confirmation, confirmation_code) }
-    let(:password) { 'Password123!' }
-    let(:password_confirmation) { password }
-    let(:confirmation_code) { '123456' }
     let(:valid_symbols_sample) { '=+-^$*.[]{}()?"!@#%&/\\,><\':;|_~`'.split('').sample(5).join }
     let(:invalid_symbols_sample) { '£èöíäü'.split('').sample(2).join }
 
@@ -63,7 +75,7 @@ RSpec.describe Cognito::ConfirmPasswordReset do
         end
       end
 
-      context 'and it cointains valid symbols' do
+      context 'and it contains valid symbols' do
         let(:password) { ("Password1234#{valid_symbols_sample}").split('').shuffle.join }
 
         it 'is valid' do
@@ -170,13 +182,94 @@ RSpec.describe Cognito::ConfirmPasswordReset do
   end
 
   describe 'initialisation of email' do
-    let(:confirm_password_reset) { described_class.new(email, '', '', '') }
-
     context 'when the email contains capital letters' do
       let(:email) { 'Test@TeST.com' }
 
       it 'will become downcased when the object is initialised' do
         expect(confirm_password_reset.email).to eq 'test@test.com'
+      end
+    end
+  end
+
+  describe '.call' do
+    let(:client) { instance_double(Aws::CognitoIdentityProvider::Client) }
+    let(:cognito_user) { double }
+    let(:attribute_type) { double }
+
+    before do
+      stub_const('ENV', { 'COGNITO_AWS_REGION' => 'supersecretregion', 'COGNITO_CLIENT_SECRET' => 'supersecretkey1', 'COGNITO_CLIENT_ID' => 'supersecretkey2' })
+      allow(Aws::CognitoIdentityProvider::Client).to receive(:new).with(region: 'supersecretregion').and_return(client)
+      allow(client).to receive(:admin_get_user).and_return(cognito_user)
+      allow(cognito_user).to receive(:user_attributes).and_return([attribute_type])
+      allow(attribute_type).to receive(:name).and_return('sub')
+      allow(attribute_type).to receive(:value).and_return('my-cognito-id')
+      allow(client).to receive(:admin_list_groups_for_user)
+    end
+
+    context 'when everything is valid' do
+      context 'and confirm_forgot_password does not raise an error' do
+        before do
+          allow(client).to receive(:confirm_forgot_password)
+          confirm_password_reset.call
+        end
+
+        it 'calls confirm_forgot_password' do
+          expect(client).to have_received(:confirm_forgot_password).with(client_id: 'supersecretkey2', secret_hash: 'QGGa3OLislakJW63OXujsIzjOxqYgSxptyRHAuyobd8=', username: email, password: password, confirmation_code: confirmation_code)
+        end
+      end
+
+      context 'and confirm_forgot_password rasies CodeMismatchException' do
+        before do
+          allow(client).to receive(:confirm_forgot_password).and_raise(Aws::CognitoIdentityProvider::Errors::CodeMismatchException.new('Some context', 'Some message'))
+          confirm_password_reset.call
+        end
+
+        it 'adds the error' do
+          expect(confirm_password_reset.errors[:confirmation_code].first).to eq 'Some message'
+        end
+      end
+
+      context 'and confirm_forgot_password raises ServiceError' do
+        before do
+          allow(client).to receive(:confirm_forgot_password).and_raise(Aws::CognitoIdentityProvider::Errors::ServiceError.new('Some context', 'Some message'))
+          confirm_password_reset.call
+        end
+
+        it 'adds the error' do
+          expect(confirm_password_reset.errors[:base].first).to eq 'Some message'
+        end
+      end
+    end
+
+    context 'when something is not valid' do
+      let(:password_confirmation) { 'Samus' }
+
+      before do
+        allow(confirm_password_reset).to receive(:confirm_forgot_password)
+        allow(confirm_password_reset).to receive(:create_user_if_needed)
+      end
+
+      it 'does not call confirm_forgot_password or create_user_if_needed' do
+        expect(confirm_password_reset).not_to have_received(:confirm_forgot_password)
+        expect(confirm_password_reset).not_to have_received(:create_user_if_needed)
+      end
+    end
+  end
+
+  describe '.success?' do
+    before { confirm_password_reset.valid? }
+
+    context 'when there are no errors' do
+      it 'returns true' do
+        expect(confirm_password_reset.success?).to be true
+      end
+    end
+
+    context 'when there are errors' do
+      let(:confirmation_code) { '' }
+
+      it 'returns false' do
+        expect(confirm_password_reset.success?).to be false
       end
     end
   end

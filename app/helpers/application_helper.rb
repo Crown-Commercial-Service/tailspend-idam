@@ -5,11 +5,11 @@ module ApplicationHelper
     "#{attribute}-error"
   end
 
-  def display_error(journey, attribute, margin: true, id_prefix: '')
-    error = journey.errors[attribute].first
+  def display_error(model, attribute)
+    error = model.errors[attribute].first
     return if error.blank?
 
-    tag.span(id: "#{id_prefix}#{error_id(attribute)}", class: "govuk-error-message #{'govuk-!-margin-top-3' if margin}") do
+    tag.span(id: error_id(attribute), class: 'govuk-error-message govuk-!-margin-top-3') do
       error.to_s
     end
   end
@@ -20,5 +20,15 @@ module ApplicationHelper
     end
     title += [t('layouts.application.title')]
     title.reject(&:blank?).map(&:strip).join(': ')
+  end
+
+  def form_group_with_error(model, attribute)
+    css_classes = ['govuk-form-group']
+    any_errors = model.errors.include? attribute
+    css_classes += ['govuk-form-group--error'] if any_errors
+
+    tag.div(class: css_classes, id: "#{attribute}-form-group") do
+      yield(display_error(model, attribute), any_errors)
+    end
   end
 end

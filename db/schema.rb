@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_15_113841) do
+ActiveRecord::Schema.define(version: 2021_11_25_165513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2020_12_15_113841) do
     t.index ["execute_at"], name: "index_arask_jobs_on_execute_at"
   end
 
-  create_table "client_calls", id: :uuid, default: nil, force: :cascade do |t|
+  create_table "client_calls", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "access_token"
     t.string "refresh_token"
     t.string "id_token"
@@ -45,10 +45,13 @@ ActiveRecord::Schema.define(version: 2020_12_15_113841) do
   end
 
   create_table "organisations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "supplier_name"
+    t.string "organisation_name"
     t.boolean "active", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "urn"
+    t.text "summary_line"
+    t.index ["summary_line"], name: "index_organisations_on_summary_line"
   end
 
 end

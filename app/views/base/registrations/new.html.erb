@@ -8,111 +8,77 @@
       <%= t('.heading_html') %>
     </h1>
 
-    <%= form_for :anything, url: base_user_registration_path, html: {specialvalidation: true, novalidate: true, class: 'ccs-form', id: 'cop_register'}, method: :post do |f| %>
-      <!-- organisation details start -->
-      <fieldset class="govuk-fieldset govuk-!-margin-bottom-6">
-
+    <%= form_with model: @result, url: base_user_registration_path,  html: { novalidate: true }, local: true, method: :post do |f| %>
+      <fieldset class="govuk-fieldset">
         <legend class="govuk-body-l govuk-!-margin-bottom-9 govuk-!-padding-left-0">
           <%= t('.lead') %>
         </legend>
 
-        <div class="govuk-form-group <%= 'govuk-form-group--error' if @result.errors[:email].any? %>">
-          <label class="govuk-label" for="email">
-            <%= t('.email') %>
-          </label>
-
+        <%= form_group_with_error(f.object, :email) do |displayed_error, any_errors| %>
+          <%= f.label :email, t('.email'), class: 'govuk-label' %>
           <span id="email-hint" class="govuk-hint govuk-!-width-three-quarters">
             <%= t('.email_hint') %>
           </span>
+          <%= displayed_error %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "off", class:"govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", spellcheck: false, required: true, aria: { describedby: "email-hint" } %>
+        <% end %>
 
-          <%= display_error(@result, :email) %>
-          <% email_val = params[:anything].present? ? params[:anything][:email] : '' %>
-          <%= f.email_field :email, value: email_val, autofocus: true, autocomplete: "off", class:"govuk-input govuk-!-width-three-quarters", id: "email", spellcheck: false, required: true, aria: {describedby: "email-hint"} %>
-        </div>
-
-
-        <div class="govuk-form-group <%= 'govuk-form-group--error' if @result.errors[:first_name].any? %>">
-          <label class="govuk-label" for="first_name">
-            <%= t('.first_name') %>
-          </label>
-
+        <%= form_group_with_error(f.object, :first_name) do |displayed_error, any_errors| %>
+          <%= f.label :first_name, t('.first_name'), class: 'govuk-label' %>
           <span id="first_name-hint" class="govuk-hint govuk-!-width-three-quarters">
             <%= t('.first_name_hint') %>
           </span>
+          <%= displayed_error %>
+          <%= f.text_field :first_name, class:"govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", spellcheck: false, required: true, aria: { describedby: "first_name-hint" } %>
+        <% end %>
 
-          <%= display_error(@result, :first_name) %>
-          <% first_name_val = params[:anything].present? ? params[:anything][:first_name]:'' %>
-          <%= f.text_field :first_name, value:first_name_val, class:"govuk-input govuk-!-width-three-quarters", id: "first_name", spellcheck: false, required: true, aria: {describedby: "first_name-hint"} %>
-        </div>
-
-
-        <div class="govuk-form-group <%= 'govuk-form-group--error' if @result.errors[:last_name].any? %>">
-          <label class="govuk-label" for="last_name">
-            <%= t('.last_name') %>
-          </label>
-
+        <%= form_group_with_error(f.object, :last_name) do |displayed_error, any_errors| %>
+          <%= f.label :last_name, t('.last_name'), class: 'govuk-label' %>
           <span id="last_name-hint" class="govuk-hint govuk-!-width-three-quarters">
             <%= t('.last_name_hint') %>
           </span>
+          <%= displayed_error %>
+          <%= f.text_field :last_name, class:"govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", spellcheck: false, required: true, aria: { describedby: "last_name-hint" } %>
+        <% end %>
 
-          <%= display_error(@result, :last_name) %>
-          <% last_name_val = params[:anything].present? ? params[:anything][:last_name] : '' %>
-          <%= f.text_field :last_name, value: last_name_val, class:"govuk-input govuk-!-width-three-quarters", id: "last_name", spellcheck: false, required: true, aria: {describedby: "last_name-hint"} %>
-        </div>
-
-
-        <div class="govuk-form-group <%= 'govuk-form-group--error' if @result.errors[:organisation].any? %>">
-          <%= f.label :organisation, t('.organisation'), class: 'govuk-label', for: 'organisation-input'%>
+        <%= form_group_with_error(f.object, :summary_line) do |displayed_error| %>
+          <%= f.hidden_field :summary_line %>
+          <%= f.label :organisation, t('.organisation'), class: 'govuk-label' %>
           <span id="organisation-hint" class="govuk-hint govuk-!-width-three-quarters">
             <%= t('.organisation_hint') %>
           </span>
-
-          <%= display_error(@result, :organisation) %>
-          <% organisation_val = params[:anything].present? ? params[:anything][:organisation] : '' %>
-          <%= f.hidden_field :organisation, value: organisation_val, id: 'organisation'%>
-
-          <div id="selected-autocomplete-option" class="govuk-!-width-three-quarters" <%= "hidden" unless organisation_val.present? %>>
-            <p class="govuk-body govuk-!-font-weight-regular govuk-tag govuk-tag--green"><strong>Selected option: </strong><span><%= organisation_val %></span></p>
+          <%= displayed_error %>
+          <div id="selected-autocomplete-option" class="govuk-!-width-three-quarters" <%= "hidden" unless f.object.summary_line.present? %>>
+            <p class="govuk-body govuk-!-font-weight-regular govuk-tag govuk-tag--green"><strong>Selected option: </strong><span><%= f.object.summary_line %></span></p>
           </div>
           <div id="my-autocomplete-container" class="govuk-!-width-three-quarters">
           </div>
-        </div>      
-
-      <!-- organisation details end -->
-
-      <!-- password start -->
-
-        <label class="govuk-label govuk-label--m" for="password01">
-          <%= t('.create_password') %>
-        </label>
-
-        <div class="govuk-form-group <%= 'govuk-form-group--error' if @result.errors[:password].any? %>">
-
-          <p class="govuk-body govuk-!-margin-bottom-1" id="password-strength"><%= t('.password') %></p>
-
-          <%= render '/layouts/password-strength', text: 'password01' %>
-
-          <%= display_error(@result, :password) %>
-          
-          <%= f.password_field :password, autocomplete: "off", id: "password01", class: "govuk-input govuk-!-width-three-quarters", aria: { describedby: 'password-strength passeight passcap passnum' }   %>
-        </div>
-
-        <div class="govuk-form-group  <%= 'govuk-form-group--error' if @result.errors[:password_confirmation].any? %>">
-          <label class="govuk-label" for="password02">
-            <%= t('.confirm_password') %>
-          </label>
-
-          <%= display_error(@result, :password_confirmation) %>
-        
-          <%= f.password_field :password_confirmation, autocomplete: "off", id: "password02", class: "govuk-input govuk-!-width-three-quarters"  %>
-        </div>
-
+        <% end %>
       </fieldset>
-      <!-- password end -->
+
+      <fieldset class="govuk-fieldset govuk-!-margin-bottom-6">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <%= t('.create_password') %>
+        </legend>
+
+        <p class="govuk-body govuk-!-margin-bottom-1" id="password-strength"><%= t('.password_must_have') %></p>
+
+        <%= render '/layouts/password-strength', password_id: "#{f.object_name}_password" %>
+
+        <%= form_group_with_error(f.object, :password) do |displayed_error, any_errors| %>
+          <%= f.label :password, t('.password'), class: 'govuk-label' %>
+          <%= displayed_error %>
+          <%= f.password_field :password, autocomplete: "off", class: "govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", aria: { describedby: 'password-strength passeight passchar passcap passnum' } %>
+        <% end %>
+
+        <%= form_group_with_error(f.object, :password_confirmation) do |displayed_error, any_errors| %>
+          <%= f.label :password_confirmation, t('.confirm_password'), class: 'govuk-label' %>
+          <%= displayed_error %>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}"  %>
+        <% end %>
+      </fieldset>
 
       <%= f.submit t('common.create_account'), id: "submit", class: "govuk-button govuk-!-padding-left-7 govuk-!-padding-right-7 govuk-!-margin-bottom-8", name: 'Create account' %>
-
     <% end %>
-
   </div>
 </div>

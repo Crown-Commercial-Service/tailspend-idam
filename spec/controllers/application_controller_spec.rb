@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ApplicationController do
   describe '.get_error_list' do
-    let(:object) { Cognito::SignUpUser.new(nil, nil, nil, nil, nil, nil) }
+    let(:object) { Cognito::SignUpUser.new }
     let(:errors_object) { object.errors }
 
     context 'when the object has one attribute with one error' do
@@ -34,6 +34,14 @@ RSpec.describe ApplicationController do
 
       it 'formats the errors correctly' do
         expect(controller.get_error_list(errors_object)).to eq({ password: %i[invalid_no_capitals invalid_symbol], first_name: %i[too_short], email: %i[blank] })
+      end
+    end
+
+    context 'when the errors object is not propperly formed' do
+      before { allow(errors_object).to receive(:details).and_return('The last Metroid is in captivity... the galaxy is at peace.') }
+
+      it 'returns the error details' do
+        expect(controller.get_error_list(errors_object)).to eq('The last Metroid is in captivity... the galaxy is at peace.')
       end
     end
   end

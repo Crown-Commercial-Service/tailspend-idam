@@ -14,21 +14,17 @@ module Cognito
     end
 
     def call
-      if valid?
-        forgot_password
-      else
-        @error = I18n.t('activemodel.errors.models.ccs_patterns/home/cog_forgot_password_request.attributes.please_enter_a_valid_email_address')
-      end
+      forgot_password if valid?
     rescue Aws::CognitoIdentityProvider::Errors::UserNotFoundException
-      @error = nil
+      errors.add(:base, :user_not_found)
     rescue Aws::CognitoIdentityProvider::Errors::InvalidParameterException
-      @error = I18n.t('activemodel.errors.models.ccs_patterns/home/cog_forgot_password_request.attributes.please_enter_a_user_not_found_email_address')
+      errors.add(:base, :user_not_found)
     rescue Aws::CognitoIdentityProvider::Errors::ServiceError => e
-      @error = e.message
+      errors.add(:base, e.message)
     end
 
     def success?
-      error.nil?
+      errors.none?
     end
 
     private

@@ -2,35 +2,30 @@
 
 module Base
   class PasswordsController < ApplicationController
-    before_action :authenticate_user!, except: %i[new create confirm_new edit update password_reset_success]
-    before_action :authorize_user, except: %i[new create confirm_new edit update password_reset_success]
-
     def new
-      @response = Cognito::ForgotPassword.new(params[:email])
+      @response = Cognito::ForgotPassword.new(nil)
     end
 
     def create
-      @response = Cognito::ForgotPassword.call(params[:email])
+      @response = Cognito::ForgotPassword.call(forgot_password_params[:email])
       if @response.success?
         Rails.logger.info 'FORGOT PASSWORD EMAIL SENT'
 
-        redirect_to base_edit_user_password_path(email: params[:email])
+        redirect_to base_edit_user_password_path(email: forgot_password_params[:email])
       else
         Rails.logger.info "FORGOT PASSWORD FAILED: #{get_error_list(@response.errors)}"
 
-        flash[:error] = @response.error
-        redirect_to base_new_user_password_path
+        render :new
       end
     end
 
     def edit
-      @response = Cognito::ConfirmPasswordReset.new(params[:email], params[:password], params[:password_confirmation], params[:confirmation_code])
+      @response = Cognito::ConfirmPasswordReset.new({ email: params[:email] })
     end
 
     def update
-      email = params[:user_email_reset_by_CSC].presence || params[:user_email_reset_by_themself]
+      @response = Cognito::ConfirmPasswordReset.call(confirm_password_params)
 
-      @response = Cognito::ConfirmPasswordReset.call(email, params[:password], params[:password_confirmation], params[:confirmation_code])
       if @response.success?
         Rails.logger.info 'PASSWORD RESET SUCCESS'
 
@@ -45,5 +40,20 @@ module Base
     def password_reset_success; end
 
     def confirm_new; end
+
+    private
+
+    def forgot_password_params
+      params.require(:cognito_forgot_password).permit(:email)
+    end
+
+    def confirm_password_params
+      params.require(:cognito_confirm_password_reset).permit(
+        :email,
+        :password,
+        :password_confirmation,
+        :confirmation_code,
+      )
+    end
   end
 end

@@ -1,11 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe Cognito::ConfirmSignUp do
-  describe '.valid?' do
-    let(:confirm_sign_up) { described_class.new(email, confirmation_code) }
-    let(:email) { 'test@test.com' }
-    let(:confirmation_code) { '123456' }
+  let(:confirm_sign_up) { described_class.new(params) }
 
+  let(:params) do
+    {
+      email: email,
+      confirmation_code: confirmation_code
+    }
+  end
+
+  let(:email) { 'test@test.com' }
+  let(:confirmation_code) { '123456' }
+
+  describe '.valid?' do
     context 'when all attributes are valid' do
       it 'is valid' do
         expect(confirm_sign_up.valid?).to be true
@@ -70,13 +78,61 @@ RSpec.describe Cognito::ConfirmSignUp do
   end
 
   describe 'initialisation of email' do
-    let(:confirm_sign_up) { described_class.new(email, '') }
-
     context 'when the email contains capital letters' do
       let(:email) { 'Test@TeST.com' }
 
       it 'will become downcased when the object is initialised' do
         expect(confirm_sign_up.email).to eq 'test@test.com'
+      end
+    end
+  end
+
+  describe '.call' do
+    let(:client) { instance_double(Aws::CognitoIdentityProvider::Client) }
+
+    before do
+      stub_const('ENV', { 'COGNITO_AWS_REGION' => 'supersecretregion', 'COGNITO_CLIENT_SECRET' => 'supersecretkey1', 'COGNITO_CLIENT_ID' => 'supersecretkey2' })
+      allow(Aws::CognitoIdentityProvider::Client).to receive(:new).with(region: 'supersecretregion').and_return(client)
+    end
+
+    context 'when there are no errors' do
+      before do
+        allow(client).to receive(:confirm_sign_up)
+        confirm_sign_up.call
+      end
+
+      it 'calls the method' do
+        expect(client).to have_received(:confirm_sign_up).with(client_id: 'supersecretkey2', secret_hash: 'QGGa3OLislakJW63OXujsIzjOxqYgSxptyRHAuyobd8=', username: email, confirmation_code: confirmation_code)
+      end
+    end
+
+    context 'when there are errors' do
+      before do
+        allow(client).to receive(:confirm_sign_up).and_raise(Aws::CognitoIdentityProvider::Errors::ServiceError.new('Some context', 'Some message'))
+        confirm_sign_up.call
+      end
+
+      it 'sets the error and success will be false' do
+        expect(confirm_sign_up.errors[:confirmation_code].first).to eq 'Some message'
+        expect(confirm_sign_up.success?).to be false
+      end
+    end
+  end
+
+  describe '.success?' do
+    before { confirm_sign_up.valid? }
+
+    context 'when there are no errors' do
+      it 'returns true' do
+        expect(confirm_sign_up.success?).to be true
+      end
+    end
+
+    context 'when there are errors' do
+      let(:confirmation_code) { '' }
+
+      it 'returns false' do
+        expect(confirm_sign_up.success?).to be false
       end
     end
   end

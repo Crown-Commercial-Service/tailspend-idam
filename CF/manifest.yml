@@ -1,0 +1,11 @@
+---
+applications:
+- name: ccs-tailspend-idam-SPACE_APP_NAME
+  memory: 1000M
+  buildpacks:
+  - nodejs_buildpack
+  - ruby_buildpack
+  instances: 1
+  random-route: true
+  services:
+    - ccs-tailspend-idam-SPACE_APP_NAME-pg-service

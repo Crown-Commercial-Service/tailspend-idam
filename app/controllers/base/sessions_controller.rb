@@ -3,8 +3,6 @@
 module Base
   class SessionsController < ApplicationController
     skip_forgery_protection
-    before_action :authenticate_user!, except: %i[new create destroy]
-    before_action :authorize_user, except: %i[new create destroy]
     before_action :validate_filter
 
     def new
@@ -13,7 +11,7 @@ module Base
 
     # rubocop:disable Metrics/AbcSize
     def create
-      @result = Cognito::SignInUser.new(request.POST[:anything][:email], request.POST[:anything][:password], params[:client_id], request.cookies.blank?)
+      @result = Cognito::SignInUser.new(sign_in_params[:email], sign_in_params[:password], params[:client_id], request.cookies.blank?)
       @result.call
       if @result.success?
         result = add_nonce(@result.cognito_user_response.authentication_result, params[:nonce])
@@ -30,13 +28,6 @@ module Base
     end
     # rubocop:enable Metrics/AbcSize
 
-    def destroy
-      # session.delete(current_user.id)
-      # current_user.invalidate_session!
-      # current_user.save!
-      # super
-    end
-
     protected
 
     def validate_filter
@@ -51,18 +42,14 @@ module Base
       gateway_url
     end
 
-    def authorize_user
-      authorize! :read, SupplyTeachers
-    end
-
     def result_unsuccessful_path
       # sign_out
       if @result.needs_password_reset
         Rails.logger.info 'SIGN IN ATTEMPT FAILED: Password reset required'
-        redirect_to base_confirm_forgot_password_path(email: request.POST[:anything][:email])
+        redirect_to base_confirm_forgot_password_path(email: sign_in_params[:email])
       elsif @result.needs_confirmation
         Rails.logger.info 'SIGN IN ATTEMPT FAILED: Password confirmation required'
-        redirect_to base_users_confirm_path(email: request.POST[:anything][:email])
+        redirect_to base_users_confirm_path(email: sign_in_params[:email])
       else
         Rails.logger.info "SIGN IN ATTEMPT FAILED: #{get_error_list(@result.errors)}"
         render :new
@@ -97,6 +84,13 @@ module Base
     def get_saved_client(token)
       result = ClientCall.find_by(id_token: token)
       result.id
+    end
+
+    def sign_in_params
+      params.require(:cognito_sign_in_user).permit(
+        :email,
+        :password
+      )
     end
   end
 end
