@@ -175,3 +175,4 @@ Most of the copy for the application is held within translation files. The follo
 i18n-tasks health
 ```
 If there are any issues that arise, you can follow the output to solve them. Another useful command is `i18n-tasks` as this will give you list of useful tasks that can be performed which may save you some work.
+
