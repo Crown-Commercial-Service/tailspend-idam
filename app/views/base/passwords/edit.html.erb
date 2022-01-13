@@ -35,7 +35,7 @@
       <%= form_group_with_error(f.object, :password) do |displayed_error, any_errors| %>
         <%= f.label :password, t('.new_password'), class: 'govuk-label' %>
         <%= displayed_error %>
-        <%= f.password_field :password, autocomplete: "off", class: "govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", aria: { describedby: 'password-strength passeight passcap passnum' } %>
+        <%= f.password_field :password, autocomplete: "off", class: "govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", aria: { describedby: 'password-strength passeight passcap passlower passnum' } %>
       <% end %>
 
       <%= form_group_with_error(f.object, :password_confirmation) do |displayed_error, any_errors| %>
