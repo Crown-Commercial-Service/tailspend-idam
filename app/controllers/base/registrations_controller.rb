@@ -12,7 +12,7 @@ module Base
       @result = Cognito::SignUpUser.call(sign_up_params)
       if @result.success?
         Rails.logger.info 'SIGN UP ATTEMPT SUCCESSFUL'
-        redirect_to base_users_confirm_path(email: sign_up_params[:email])
+        redirect_to base_users_confirm_path(e: TextEncryptor.encrypt(sign_up_params[:email]))
       else
         fail_create
       end

@@ -38,8 +38,8 @@ RSpec.describe Base::RegistrationsController do
     end
 
     context 'when all the information is valid' do
-      it 'redirects to base_users_confirm_path' do
-        expect(response).to redirect_to base_users_confirm_path(email: email)
+      it 'redirects to base_users_confirm_path with a param e' do
+        expect(response.location.split('=')[0]).to eq "#{base_users_confirm_url}?e"
       end
     end
   end
