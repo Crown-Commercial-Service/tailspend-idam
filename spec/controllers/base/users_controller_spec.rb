@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Base::UsersController do
   describe 'GET confirm_new' do
-    before { get :confirm_new }
+    before { get :confirm_new, params: { e: TextEncryptor.encrypt('test@email.com') } }
 
     it 'renders the confirm_new page' do
       expect(response).to render_template(:confirm_new)
@@ -39,11 +39,11 @@ RSpec.describe Base::UsersController do
 
     before do
       allow(Cognito::ResendConfirmationCode).to receive(:call).with(email).and_return(Cognito::ResendConfirmationCode.new(email))
-      get :resend_confirmation_email, params: { email: email }
+      get :resend_confirmation_email, params: { e: TextEncryptor.encrypt(email) }
     end
 
     it 'redirects to the confirm page' do
-      expect(response).to redirect_to base_users_confirm_path_path(email: email)
+      expect(response.location.split('=')[0]).to eq "#{base_users_confirm_url}?e"
     end
   end
 end
