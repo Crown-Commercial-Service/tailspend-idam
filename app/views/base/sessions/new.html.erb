@@ -6,7 +6,7 @@
   <div class="govuk-grid-column-two-thirds">
     <%= render partial: 'shared/error_summary', locals: { errors: @result.errors } %>
 
-    <%= form_with model: @result, url: base_user_session_path(request.parameters),  html: { novalidate: true }, local: true, method: :post do |f| %>
+    <%= form_with model: @result, url: base_user_session_path(parameters_without_user_details),  html: { novalidate: true }, local: true, method: :post do |f| %>
       <%= form_group_with_error(f.object, :email) do |displayed_error, any_errors| %>
         <%= f.label :email, t('.email_address'), class: 'govuk-label govuk-label--m govuk-!-margin-bottom-0' %>
         <span id="email-hint" class="govuk-hint govuk-!-width-three-quarters">
