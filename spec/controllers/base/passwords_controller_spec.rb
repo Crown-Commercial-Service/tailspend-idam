@@ -29,13 +29,13 @@ RSpec.describe Base::PasswordsController do
       let(:email) { 'test@test.com' }
 
       it 'redirects to the edit password page' do
-        expect(response).to redirect_to base_edit_user_password_path(email: email)
+        expect(response.location.split('=')[0]).to eq "#{base_edit_user_password_url}?e"
       end
     end
   end
 
   describe 'GET edit' do
-    before { get :edit }
+    before { get :edit, params: { e: TextEncryptor.encrypt('test@email.com') } }
 
     it 'renders the edit page' do
       expect(response).to render_template(:edit)
