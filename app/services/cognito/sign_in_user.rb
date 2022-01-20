@@ -33,6 +33,9 @@ module Cognito
     rescue Aws::CognitoIdentityProvider::Errors::UserNotFoundException
       @error = I18n.t('base.users.sign_in_error')
       errors.add(:base, @error)
+    rescue Aws::CognitoIdentityProvider::Errors::NotAuthorizedException => e
+      @error = e.message == I18n.t('base.users.sign_in_error_cognito') ? I18n.t('base.users.sign_in_error') : e.message
+      errors.add(:base, @error)
     rescue Aws::CognitoIdentityProvider::Errors::ServiceError
       @error = I18n.t('base.users.sign_in_error')
       errors.add(:base, @error)

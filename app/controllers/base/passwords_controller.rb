@@ -11,7 +11,7 @@ module Base
       if @response.success?
         Rails.logger.info 'FORGOT PASSWORD EMAIL SENT'
 
-        redirect_to base_edit_user_password_path(email: forgot_password_params[:email])
+        redirect_to base_edit_user_password_path(e: TextEncryptor.encrypt(forgot_password_params[:email]))
       else
         Rails.logger.info "FORGOT PASSWORD FAILED: #{get_error_list(@response.errors)}"
 
@@ -20,7 +20,7 @@ module Base
     end
 
     def edit
-      @response = Cognito::ConfirmPasswordReset.new({ email: params[:email] })
+      @response = Cognito::ConfirmPasswordReset.new({ email: TextEncryptor.decrypt(params[:e]) })
     end
 
     def update

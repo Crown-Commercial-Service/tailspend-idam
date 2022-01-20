@@ -125,8 +125,10 @@ RSpec.describe Cognito::SignInUser do
     end
 
     context 'when an error is raised' do
+      let(:message) { 'Some message' }
+
       before do
-        allow(client).to receive(:describe_user_pool_client).and_raise(error.new('Some context', 'Some message'))
+        allow(client).to receive(:describe_user_pool_client).and_raise(error.new('Some context', message))
         sign_in_user.call
       end
 
@@ -155,6 +157,26 @@ RSpec.describe Cognito::SignInUser do
 
         it 'sets the error and success will be false' do
           expect(sign_in_user.errors[:base].first).to eq 'You must provide a correct username or password'
+          expect(sign_in_user.success?).to be false
+        end
+      end
+
+      context 'and the error is NotAuthorizedException' do
+        let(:message) { 'Incorrect username or password.' }
+        let(:error) { Aws::CognitoIdentityProvider::Errors::NotAuthorizedException }
+
+        it 'sets the error and success will be false' do
+          expect(sign_in_user.errors[:base].first).to eq 'You must provide a correct username or password'
+          expect(sign_in_user.success?).to be false
+        end
+      end
+
+      context 'and the error is NotAuthorizedException with too many attempts exception' do
+        let(:message) { 'Password attempt limit exceeded.' }
+        let(:error) { Aws::CognitoIdentityProvider::Errors::NotAuthorizedException }
+
+        it 'sets the error and success will be false' do
+          expect(sign_in_user.errors[:base].first).to eq 'Password attempt limit exceeded.'
           expect(sign_in_user.success?).to be false
         end
       end
