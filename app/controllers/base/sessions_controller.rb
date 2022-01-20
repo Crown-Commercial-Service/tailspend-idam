@@ -6,12 +6,12 @@ module Base
     before_action :validate_filter
 
     def new
-      @result = Cognito::SignInUser.new(nil, nil, nil, nil)
+      @result = Cognito::SignInUser.new(nil, nil, nil, nil, nil)
     end
 
     # rubocop:disable Metrics/AbcSize
     def create
-      @result = Cognito::SignInUser.new(sign_in_params[:email], sign_in_params[:password], params[:client_id], request.cookies.blank?)
+      @result = Cognito::SignInUser.new(sign_in_params[:email], sign_in_params[:password], params[:client_id], request.cookies.blank?, params[:redirect_uri])
       @result.call
       if @result.success?
         result = add_nonce(@result.cognito_user_response.authentication_result, params[:nonce])
@@ -46,10 +46,10 @@ module Base
       # sign_out
       if @result.needs_password_reset
         Rails.logger.info 'SIGN IN ATTEMPT FAILED: Password reset required'
-        redirect_to base_confirm_forgot_password_path(email: sign_in_params[:email])
+        redirect_to base_confirm_forgot_password_path(e: TextEncryptor.encrypt(sign_in_params[:email]))
       elsif @result.needs_confirmation
         Rails.logger.info 'SIGN IN ATTEMPT FAILED: Password confirmation required'
-        redirect_to base_users_confirm_path(email: sign_in_params[:email])
+        redirect_to base_users_confirm_path(e: TextEncryptor.encrypt(sign_in_params[:email]))
       else
         Rails.logger.info "SIGN IN ATTEMPT FAILED: #{get_error_list(@result.errors)}"
         render :new

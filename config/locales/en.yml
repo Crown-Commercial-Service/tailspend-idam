@@ -93,6 +93,7 @@ en:
           attributes:
             base:
               cookies_disabled: Your browser must have cookies enabled
+              redirect_uri_mismatch: There is a problem
             email:
               blank: You must enter your email address in the correct format, like name@example.com
               invalid: You must enter your email address in the correct format, like name@example.com
