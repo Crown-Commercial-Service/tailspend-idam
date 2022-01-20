@@ -31,4 +31,8 @@ module ApplicationHelper
       yield(display_error(model, attribute), any_errors)
     end
   end
+
+  def parameters_without_user_details
+    request.parameters.except(:cognito_sign_in_user)
+  end
 end

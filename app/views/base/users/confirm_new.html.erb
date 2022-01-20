@@ -8,18 +8,18 @@
     </h1>
 
     <p class="govuk-body-l">
-      <%= t('.lead', location: params[:email].present? ? params[:email]: t('.you')) %>
+      <%= t('.lead', location: @email.present? ? @email: t('.you')) %>
     </p>
 
-    <%= form_with model: @result, url: base_users_confirm_path(email: params[:email]),  html: { novalidate: true }, local: true, method: :post do |f| %>
+    <%= form_with model: @result, url: base_users_confirm_path(e: params[:e]),  html: { novalidate: true }, local: true, method: :post do |f| %>
       <%= form_group_with_error(f.object, :confirmation_code) do |displayed_error, any_errors| %>
         <%= f.label :confirmation_code, t('.confirmation_code'), class: 'govuk-label govuk-!-margin-bottom-0' %>
         <%= displayed_error %>
         <%= f.text_field :confirmation_code, class: "govuk-input govuk-input--width-10 #{'govuk-input--error' if any_errors}", type: 'number' %>
       <% end %>
 
-      <% if params[:email].present? %>
-        <%= f.hidden_field :email, value: params[:email] %>
+      <% if @email.present? %>
+        <%= f.hidden_field :email, value: @email %>
       <% else %>
         <%= form_group_with_error(f.object, :email) do |displayed_error, any_errors| %>
           <%= f.label :email, t('.email'), class: 'govuk-label govuk-!-margin-bottom-0' %>
@@ -31,9 +31,9 @@
       <%= f.submit t('common.continue'), class: "govuk-button govuk-!-padding-left-7 govuk-!-padding-right-7", 'aria-label': t('common.continue') %>
     <% end %>
 
-    <% if params[:email].present? %>
+    <% if @email.present? %>
       <p class="govuk-body govuk-!-margin-bottom-7">
-        <%= t('.resend_the_confirmation_email_html', link: base_resend_confirmation_email_path(email: params[:email])) %>
+        <%= t('.resend_the_confirmation_email_html', link: base_resend_confirmation_email_path(e: params[:e])) %>
       </p>
     <% end %>
   </div>
