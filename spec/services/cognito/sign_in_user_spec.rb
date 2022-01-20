@@ -1,9 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Cognito::SignInUser do
-  let(:sign_in_user) { described_class.new(email, password, nil, false) }
+  let(:sign_in_user) { described_class.new(email, password, nil, false, redirect_uri) }
   let(:email) { 'test@test.com' }
   let(:password) { 'password123!' }
+  let(:redirect_uri) { 'https://test.com' }
+
+  before do
+    stub_const('ENV', { 'CALLBACK_URLS' => '[https://test.com]' })
+  end
 
   describe '.valid?' do
     context 'when both email and password are present' do
@@ -54,6 +59,19 @@ RSpec.describe Cognito::SignInUser do
         end
       end
     end
+
+    context 'when redirect_uri is not known' do
+      let(:redirect_uri) { 'http://localhost:3000' }
+
+      it 'is not valid' do
+        expect(sign_in_user.valid?).to be false
+      end
+
+      it 'has the correct error message' do
+        sign_in_user.valid?
+        expect(sign_in_user.errors[:base].first).to eq I18n.t('activemodel.errors.models.cognito/sign_in_user.attributes.base.redirect_uri_mismatch')
+      end
+    end
   end
 
   describe 'initialisation of email' do
@@ -70,7 +88,7 @@ RSpec.describe Cognito::SignInUser do
     let(:client) { instance_double(Aws::CognitoIdentityProvider::Client) }
 
     before do
-      stub_const('ENV', { 'COGNITO_AWS_REGION' => 'supersecretregion', 'COGNITO_CLIENT_SECRET' => 'supersecretkey1', 'COGNITO_CLIENT_ID' => 'supersecretkey2' })
+      stub_const('ENV', { 'COGNITO_AWS_REGION' => 'supersecretregion', 'COGNITO_CLIENT_SECRET' => 'supersecretkey1', 'COGNITO_CLIENT_ID' => 'supersecretkey2', 'CALLBACK_URLS' => '[https://test.com]' })
       allow(Aws::CognitoIdentityProvider::Client).to receive(:new).with(region: 'supersecretregion').and_return(client)
     end
 
