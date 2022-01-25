@@ -20,7 +20,7 @@
             <%= t('.email_hint') %>
           </span>
           <%= displayed_error %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "off", class:"govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", spellcheck: false, required: true, aria: { describedby: "email-hint" } %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "off", class:"govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", spellcheck: false, required: true, aria: { describedby: "email-hint", invalid: aria_invalid(f.object, :email) } %>
         <% end %>
 
         <%= form_group_with_error(f.object, :first_name) do |displayed_error, any_errors| %>
@@ -29,7 +29,7 @@
             <%= t('.first_name_hint') %>
           </span>
           <%= displayed_error %>
-          <%= f.text_field :first_name, class:"govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", spellcheck: false, required: true, aria: { describedby: "first_name-hint" } %>
+          <%= f.text_field :first_name, class:"govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", spellcheck: false, required: true, aria: { describedby: "first_name-hint", invalid: aria_invalid(f.object, :first_name) } %>
         <% end %>
 
         <%= form_group_with_error(f.object, :last_name) do |displayed_error, any_errors| %>
@@ -38,7 +38,7 @@
             <%= t('.last_name_hint') %>
           </span>
           <%= displayed_error %>
-          <%= f.text_field :last_name, class:"govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", spellcheck: false, required: true, aria: { describedby: "last_name-hint" } %>
+          <%= f.text_field :last_name, class:"govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", spellcheck: false, required: true, aria: { describedby: "last_name-hint", invalid: aria_invalid(f.object, :last_name)  } %>
         <% end %>
 
         <%= form_group_with_error(f.object, :summary_line) do |displayed_error| %>
