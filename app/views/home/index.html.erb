@@ -13,21 +13,25 @@
       <%= t('.subheading') %>
     </p>
     <p><%= t('.subheading2').html_safe %></p>
-    <p>
-      <%= t('.no_account_html', registration_link: link_to(t('.register_for_one_here'), base_new_user_registration_path, class: 'govuk-link govuk-link--no-visited-state')) %>
-    </p>
+    <p><%= t('.subheading3_html', create_an_account: link_to(t('.create_an_account'), base_new_user_registration_path, class: 'govuk-link govuk-link--no-visited-state')) %></p>
+    <p><%= t('.subheading4') %></p>
   </div>
 </div>
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h2 class="govuk-heading-m govuk-!-margin-top-6 govuk-!-margin-bottom-2 pm-font-weight-semi-bold">
-      <%= t('.before_you_start') %>
-    </h2>
-    <p class="govuk-body">
-      <%= t('.to_use_this_service_html', authorised_customer_list: link_to(t('.authorised_customer_list'), t('.authorised_customer_list_link'), title: t('.authorised_customer_list_title'), class: 'govuk-link govuk-link--no-visited-state')) %>    
-    </p>
     <%= link_to t('.sign_in_office_team'), ENV['OFFICE_TEAM_GET_URL'], title: t('.sign_in_title_office_team'), class: 'govuk-button'%>
     <%= link_to t('.sign_in_unite'), ENV['MERCATEO_GET_URL'], title: t('.sign_in_title_unite'), class: 'govuk-button'%>
+  </div>
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m govuk-!-margin-bottom-2">
+      <%= t('base.sessions.new.problems_signing_in') %>
+    </h2>
+
+    <ul class="govuk-list">
+      <li>
+        <%= link_to t('base.sessions.new.forgotten_password_html'), base_new_user_password_path, class: 'govuk-link' %>
+      </li>
+    </ul>
   </div>
 </div>

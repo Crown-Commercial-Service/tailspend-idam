@@ -8,12 +8,21 @@
       <%= t('.heading_html') %>
     </h1>
 
+    <p class="govuk-body">
+      <%= t('.subheading') %>
+    </p>
+    <p class="govuk-body"><%= t('.subheading2') %></p>
+    <ul class="govuk-list govuk-list--bullet govuk-list--spaced govuk-!-margin-bottom-9 ">
+      <li>
+        <%= t('.bullet1') %>
+      </li>
+      <li>
+        <%= t('.bullet2_html', authorised_customer_list: link_to(t('home.index.authorised_customer_list'), t('home.index.authorised_customer_list_link'), title: t('home.index.authorised_customer_list_title'), class: 'govuk-link govuk-link--no-visited-state')) %>
+      </li>
+    </ul>
+
     <%= form_with model: @result, url: base_user_registration_path,  html: { novalidate: true }, local: true, method: :post do |f| %>
       <fieldset class="govuk-fieldset">
-        <legend class="govuk-body-l govuk-!-margin-bottom-9 govuk-!-padding-left-0">
-          <%= t('.lead') %>
-        </legend>
-
         <%= form_group_with_error(f.object, :email) do |displayed_error, any_errors| %>
           <%= f.label :email, t('.email'), class: 'govuk-label' %>
           <span id="email-hint" class="govuk-hint govuk-!-width-three-quarters">
@@ -45,7 +54,7 @@
           <%= f.hidden_field :summary_line %>
           <%= f.label :organisation, t('.organisation'), class: 'govuk-label' %>
           <span id="organisation-hint" class="govuk-hint govuk-!-width-three-quarters">
-            <%= t('.organisation_hint') %>
+            <%= t('.organisation_hint_html', email: mail_to(t('layouts.footer.email'), t('layouts.footer.email'), class: 'govuk-link ga-support-mailto', aria: { label: t('layouts.footer.email_aria_label') } )) %>
           </span>
           <%= displayed_error %>
           <div id="selected-autocomplete-option" class="govuk-!-width-three-quarters" <%= "hidden" unless f.object.summary_line.present? %>>

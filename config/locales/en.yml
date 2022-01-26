@@ -165,6 +165,8 @@ en:
         list_01: you think your domain should be recognised
         list_02: you still can't create an account
       new:
+        bullet1: complete a call-off contract with one of two suppliers
+        bullet2_html: be a recognised public sector body listed in the %{authorised_customer_list}
         confirm_password: Confirm your password
         create_password: Create a password you’ll remember
         email: Email address
@@ -174,11 +176,12 @@ en:
         heading_html: Create a Tail Spend Solution account
         last_name: Last name
         last_name_hint: Add your last name here.
-        lead: You must be employed by, or represent, a public sector organisation.
         organisation: Organisation
-        organisation_hint: Enter your organisation's full name. We will verify your organisation name to confirm you can use this service. If your organisation is not listed please contact CCS.
+        organisation_hint_html: 'Enter your organisation''s full name. We will verify your organisation name to confirm you can use this service. If your organisation is not listed please contact CCS. You can do this by phone: 0345 410 2222 or email: %{email}'
         password: Password
         password_must_have: 'Your password must have:'
+        subheading: The Tail Spend Solution (RM6202) allows you to browse and buy a range of tail spend products. These are products that are often low volume and low value which organisations usually buy to meet a specific, short term need and are unlikely to buy again or in the near future.
+        subheading2: 'Before you can register and use this service your organisation will need to:'
     sessions:
       new:
         email_address: Email address
@@ -259,13 +262,13 @@ en:
       the_complete_journey: The complete Tail Spend Solution journey was tested, this included every page a buyer would progress through in-order to complete the sign up activity.
       the_content: The content listed below is non-accessible for the following reasons.
       this_statement: 'This accessibility statement applies to the sign in pages of the Tail Spend Solution digital service which can be found at the following URL:'
-      this_statement_date: This statement was prepared on 19th January 2022. It will be reviewed and updated as required.
+      this_statement_date: This statement was prepared on Wednesday 19 January 2022. It will be reviewed and updated as required.
       this_website: 'This website is run by Crown Commercial Service (CCS). We want as many people as possible to be able to use this website. For example, that means you should be able to:'
       this_website_partially_1: This website is partially compliant with the
       this_website_partially_2: due to the non-compliances listed below.
       we_are_always_looking_html: 'We’re always looking to improve the accessibility of this website. If you find any problems not listed on this page or think we’re not meeting accessibility requirements, contact: %{email}.'
       we_know: 'We know some parts of this website are not fully accessible:'
-      website_last_tested: This website was last tested on Wednesday 19th January 2022. The test was carried out by CCS internal testing team.
+      website_last_tested: This website was last tested on Wednesday 19 January 2022. The test was carried out by CCS internal testing team.
       website_text_simple: We’ve also made the website text as simple as possible to understand.
       well_consider: We’ll consider your request and get back to you in five working days.
     cookie_policy:
@@ -328,19 +331,19 @@ en:
       authorised_customer_list: authorised customer list
       authorised_customer_list_link: https://assets.crowncommercial.gov.uk/wp-content/uploads/RM3788-Contract-Notice-Authorised-Customer-List.docx
       authorised_customer_list_title: authrized customers list in .docx format
-      before_you_start: Before you start
-      heading: Tail Spend Solution
-      no_account_html: Not got an account? You can %{registration_link}.
-      register_for_one_here: register for one here
-      sign_in_office_team: Sign in to OT Group
-      sign_in_title_office_team: Login to OT Group
+      create_an_account: create an account
+      heading: Sign in to Tail Spend Solution
+      sign_in_office_team: Sign in to OT
+      sign_in_title_office_team: Login to OT
       sign_in_title_unite: Login to Unite
       sign_in_unite: Sign in to Unite
-      subheading: The Tail Spend Solution provides customers with the choice of two suppliers to choose from. Each supplier solution will provide the opportunity to browse and purchase from a broad range of products to address your Tail Spend needs. Tail Spend is traditionally described as ad-hoc, low volume and usually low value spend.
-      subheading2: Please note that a Framework Call Off Contract needs to have been completed, following a 'Direct Award' or 'Further Competition' prior to registration and use. For further information on how to complete this process please read the 'How To Buy' section on our <a class='govuk-link' href='https://www.crowncommercial.gov.uk/agreements/RM6202' target='_blank'>Home Page</a> or contact the category team at <a class='govuk-link' href='mailto:info@crowncommercial.gov.uk'>info@crowncommercial.gov.uk</a>.
-      to_use_this_service_html: To use this service you need to be a recognised public sector body listed in the %{authorised_customer_list}.
+      subheading: The Tail Spend Solution (RM6202) allows you to browse and buy a range of tail spend products. These are products that are often low volume and low value which organisations usually buy to meet a specific, short term need and are unlikely to buy again or in the near future.
+      subheading2: To use this service you will need to sign in to your chosen supplier's portal using the email and password you used to create your account. If you are not sure who your supplier is, contact your organisation’s administrator.
+      subheading3_html: Before you can sign in, you need to %{create_an_account}.
+      subheading4: Your organisation will need to have completed a call-off contract with a supplier before you can create an account.
   layouts:
     application:
+      sign_in: Sign in
       title: Crown Commercial Services
     cookie-banner:
       accept_all_cookies: Accept all cookies
