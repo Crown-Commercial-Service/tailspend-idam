@@ -32,6 +32,10 @@ module ApplicationHelper
     end
   end
 
+  def aria_invalid(model, attribute)
+    model.errors.include? attribute
+  end
+
   def parameters_without_user_details
     request.parameters.except(:cognito_sign_in_user)
   end
