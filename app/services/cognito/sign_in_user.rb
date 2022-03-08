@@ -65,6 +65,7 @@ module Cognito
     end
 
     def login_user_cognito(client_id, client_secret)
+      byebug
       @auth_response = client.initiate_auth(
         client_id: @client_id,
         auth_flow: 'USER_PASSWORD_AUTH',

@@ -29,6 +29,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # For scheduling tasks
 gem 'arask', '1.2.3'
 
+gem 'httparty'
+
 # for postgresql
 gem 'activerecord-postgis-adapter'
 gem 'pg', '~> 0.18.4'

@@ -56,17 +56,16 @@ module Base
       end
     end
 
-    def build_nonce_jwt
-      decoded_token = JWT.decode @result.cognito_user_response.authentication_result.id_token, nil, false
-      decoded_token[0]['nonce'] = params[:nonce]
-      JWT.encode decoded_token[0], nil, 'none'
-    end
-
     # rubocop:disable Metrics/AbcSize
     def add_nonce(cognito_response, client_nonce)
-      decoded_token = JWT.decode cognito_response.id_token, nil, false
+      decoded_token = JWT.decode(
+        cognito_response.id_token,
+        nil,
+        true, # Verify the signature of this token
+        algorithms: ["RS256"],
+        jwks: fetch_jwks,
+        )
       decoded_token[0]['nonce'] = params[:nonce]
-
       id_token = JWT.encode decoded_token[0], nil, 'none'
       @client_call = ClientCall.new
       @client_call.access_token = cognito_response.access_token
@@ -77,20 +76,19 @@ module Base
       @client_call.sub = decoded_token[0]['sub']
       @client_call.nonce = client_nonce
       @client_call.save!
-      get_saved_client(id_token)
+      @client_call.id
     end
     # rubocop:enable Metrics/AbcSize
-
-    def get_saved_client(token)
-      result = ClientCall.find_by(id_token: token)
-      result.id
-    end
 
     def sign_in_params
       params.require(:cognito_sign_in_user).permit(
         :email,
         :password
       )
+    end
+
+    def fetch_jwks
+      JSON.parse(URI.open("https://cognito-idp.#{ENV['COGNITO_AWS_REGION']}.amazonaws.com/#{ENV['COGNITO_USER_POOL_ID']}/.well-known/jwks.json").string)
     end
   end
 end
