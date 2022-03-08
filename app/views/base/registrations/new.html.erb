@@ -17,7 +17,7 @@
         <%= t('.bullet1') %>
       </li>
       <li>
-        <%= t('.bullet2_html', authorised_customer_list: link_to(t('home.index.authorised_customer_list'), t('home.index.authorised_customer_list_link'), title: t('home.index.authorised_customer_list_title'), class: 'govuk-link govuk-link--no-visited-state')) %>
+        <%= t('.bullet2_html', authorised_customer_list: link_to(t('home.index.authorised_customer_list'), ENV['CUSTOMER_LIST_URL'], title: t('home.index.authorised_customer_list_title'), class: 'govuk-link govuk-link--no-visited-state')) %>
       </li>
     </ul>
 
