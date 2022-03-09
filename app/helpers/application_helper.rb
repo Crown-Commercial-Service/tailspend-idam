@@ -39,4 +39,8 @@ module ApplicationHelper
   def parameters_without_user_details
     request.parameters.except(:cognito_sign_in_user)
   end
+
+  def header_link_text
+    controller.controller_name == 'sessions' && controller.action_name == 'new' ? t('layouts.application.go_back') : t('layouts.application.sign_in')
+  end
 end
