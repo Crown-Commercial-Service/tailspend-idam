@@ -76,6 +76,13 @@ This project uses environment variables which you will need to add to your .env.
 - **AUTH_USER_API_TOKEN** - The token for the authentication of a user when signing in
 - **OFFICE_TEAM_GET_URL** - `http://localhost:8080`
 - **MERCATEO_GET_URL** - `http://localhost:8080`
+- **CUSTOMER_LIST_URL** - The S3 url of the authorised customer list
+- **EMAIL_DOMAINS_CSV_BLOB** - Salesforce url for the emails csv blob
+- **ORGANISATIONS_CSV_BLOB** - Salesforce url for the organisations csv blob
+- **CALLBACK_URLS** - An array with the supplier callback urls
+- **SECRET_KEY_BASE** - App's secret_key_base
+- **ADDITIONAL_EMAILS** - (Optional) Comma separated list of additional email domains for the allow list
+- **ADDITIONAL_EMAILS_REQUIRED** - (Optional) TRUE or FALSE variable to include additional emails in the allow list
 
 ## Running the application
 To run the application use:
