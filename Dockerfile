@@ -1,4 +1,3 @@
-
 FROM ruby:2.7.4
 
 WORKDIR /app
@@ -15,6 +14,8 @@ RUN yarn install --check-files
 RUN gem install bundler && bundle install --jobs 20 --retry 5
 
 COPY . .
+
+RUN rake assets:precompile
 
 EXPOSE 3000
 
