@@ -6,13 +6,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.4', '>= 6.0.4.1'
+gem 'rails', '~> 6.1.7', '>= 6.1.7.5'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 4.3'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 4.3', '>= 4.3.0'
+gem 'webpacker', '~> 5.0', '>= 5.0.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 # gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -27,10 +27,10 @@ gem 'aws-sdk-s3', '~> 1'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 # For scheduling tasks
-gem 'arask', '1.2.3'
+gem 'arask', '1.2.4'
 
 # for postgresql
-gem 'activerecord-postgis-adapter'
+gem 'activerecord-postgis-adapter', '>= 7.0.0'
 gem 'pg', '~> 0.18.4'
 # remove if not option two taken in project
 gem 'jwt'
@@ -48,12 +48,12 @@ gem 'vault'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'dotenv-rails', '>= 2.7.6'
-  gem 'i18n-tasks', '>= 0.9.31'
-  gem 'rspec-rails', '>= 4.0.1'
+  gem 'dotenv-rails', '>= 2.8.0'
+  gem 'i18n-tasks', '>= 1.0.0'
+  gem 'rspec-rails', '>= 5.0.3'
   gem 'rubocop', '>= 0.91.1'
   gem 'rubocop-performance', '>= 1.8.1'
-  gem 'rubocop-rails', '>= 2.8.1'
+  gem 'rubocop-rails', '>= 2.13.1'
   gem 'rubocop-rspec', '>= 1.43.2' # or gem 'rubocop-minitest'
   gem 'brakeman'
   gem 'pry-rails'
