@@ -7,4 +7,5 @@ else
 
     # On exceptions, send email with details
     arask.on_exception email: 'CSI@crowncommercial.gov.uk'
+  end
 end
