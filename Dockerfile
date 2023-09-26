@@ -15,6 +15,8 @@ RUN gem install bundler && bundle install --jobs 20 --retry 5
 
 COPY . .
 
+RUN rake assets:precompile
+
 EXPOSE 3000
 
 CMD ["rails", "server", "-b", "0.0.0.0"]
