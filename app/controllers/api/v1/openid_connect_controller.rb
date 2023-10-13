@@ -39,12 +39,12 @@ module Api
 
       def build_authorize_response(cognito_response, nonce)
         {
-          "access_token": cognito_response.access_token,
-          "expires_in": cognito_response.expires_in,
-          "token_type": cognito_response.token_type,
-          "refresh_token": cognito_response.refresh_token,
-          "id_token": cognito_response.id_token,
-          "nonce": nonce.nil? ? '' : nonce
+          access_token: cognito_response.access_token,
+          expires_in: cognito_response.expires_in,
+          token_type: cognito_response.token_type,
+          refresh_token: cognito_response.refresh_token,
+          id_token: cognito_response.id_token,
+          nonce: nonce.nil? ? '' : nonce
         }
       end
 
@@ -55,7 +55,7 @@ module Api
       end
 
       def get_user_cognito(token)
-        client = Aws::CognitoIdentityProvider::Client.new(region: ENV['COGNITO_AWS_REGION'])
+        client = Aws::CognitoIdentityProvider::Client.new(region: ENV.fetch('COGNITO_AWS_REGION', nil))
         client.get_user({
                           access_token: token
                         })

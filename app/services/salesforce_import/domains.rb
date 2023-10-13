@@ -46,7 +46,7 @@ module SalesforceImport
     end
 
     def self.add_additional_domains
-      return unless ENV['ADDITIONAL_EMAILS_REQUIRED'] == 'TRUE'
+      return unless ENV.fetch('ADDITIONAL_EMAILS_REQUIRED', nil) == 'TRUE'
 
       email_list = ENV['ADDITIONAL_EMAILS'].split(',')
 
@@ -56,15 +56,15 @@ module SalesforceImport
     end
 
     def self.csv_path
-      URI.parse(ENV['EMAIL_DOMAINS_CSV_BLOB']).open
+      URI.parse(ENV.fetch('EMAIL_DOMAINS_CSV_BLOB', nil)).open
     end
 
     def self.get_email_domain_row(url)
       {
-        'url': url,
-        'active': true,
-        'created_at': DateTime.current,
-        'updated_at': DateTime.current
+        url: url.downcase,
+        active: true,
+        created_at: DateTime.current,
+        updated_at: DateTime.current
       }
     end
   end

@@ -12,7 +12,7 @@ module Cognito
     end
 
     def call
-      client.resend_confirmation_code(client_id: ENV['COGNITO_CLIENT_ID'], secret_hash: Cognito::Common.build_secret_hash(email), username: @email)
+      client.resend_confirmation_code(client_id: ENV.fetch('COGNITO_CLIENT_ID', nil), secret_hash: Cognito::Common.build_secret_hash(email), username: @email)
     rescue Aws::CognitoIdentityProvider::Errors::ServiceError => e
       @error = e.message
     end

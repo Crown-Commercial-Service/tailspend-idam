@@ -10,28 +10,20 @@
 <div class="govuk-grid-row govuk-body">
   <div class="govuk-grid-column-two-thirds">
     <p>
-      <%= t('.subheading') %>
+      <%= t('.the_tailspend_solution') %>
     </p>
-    <p><%= t('.subheading2').html_safe %></p>
-    <p><%= t('.subheading3_html', create_an_account: link_to(t('.create_an_account'), base_new_user_registration_path, class: 'govuk-link govuk-link--no-visited-state')) %></p>
-    <p><%= t('.subheading4') %></p>
-  </div>
-</div>
-
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <%= link_to t('.sign_in_office_team'), ENV['OFFICE_TEAM_GET_URL'], title: t('.sign_in_title_office_team'), class: 'govuk-button'%>
-    <%= link_to t('.sign_in_unite'), ENV['MERCATEO_GET_URL'], title: t('.sign_in_title_unite'), class: 'govuk-button'%>
-  </div>
-  <div class="govuk-grid-column-two-thirds">
-    <h2 class="govuk-heading-m govuk-!-margin-bottom-2">
-      <%= t('base.sessions.new.problems_signing_in') %>
-    </h2>
-
-    <ul class="govuk-list">
-      <li>
-        <%= link_to t('base.sessions.new.forgotten_password_html'), base_new_user_password_path, class: 'govuk-link' %>
-      </li>
-    </ul>
+    <p>
+      <%= t('.to_use_this_service') %>
+    </p>
+    <p>
+      <%= t('.before_you_sign_in_html', registration_link: link_to(t('.create_an_account'), base_new_user_registration_path, class: 'govuk-link govuk-link--no-visited-state')) %>
+    </p>
+    <p>
+      <%= t('.your_org_will_need') %>
+    </p>
+    <div class="govuk-button-group">
+      <%= link_to t('.sign_in_to_ot'), ENV['OFFICE_TEAM_GET_URL'], title: t('.sign_in_to_ot'), class: 'govuk-button', data: { moduel: 'govuk-button' } %>
+      <%= link_to t('.sign_in_to_unite'), ENV['MERCATEO_GET_URL'], title: t('.sign_in_to_unite'), class: 'govuk-button', data: { moduel: 'govuk-button' } %>
+    </div>
   </div>
 </div>
