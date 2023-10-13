@@ -4,32 +4,39 @@
 
     <%= render partial: 'shared/error_summary', locals: { errors: @result.errors } %>
 
-    <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
-      <%= t('.heading_html') %>
-    </h1>
-
-    <p class="govuk-body">
-      <%= t('.subheading') %>
-    </p>
-    <p class="govuk-body"><%= t('.subheading2') %></p>
-    <ul class="govuk-list govuk-list--bullet govuk-list--spaced govuk-!-margin-bottom-9 ">
-      <li>
-        <%= t('.bullet1') %>
-      </li>
-      <li>
-        <%= t('.bullet2_html', authorised_customer_list: link_to(t('home.index.authorised_customer_list'), ENV['CUSTOMER_LIST_URL'], title: t('home.index.authorised_customer_list_title'), class: 'govuk-link govuk-link--no-visited-state')) %>
-      </li>
-    </ul>
-
     <%= form_with model: @result, url: base_user_registration_path,  html: { novalidate: true }, local: true, method: :post do |f| %>
       <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+          <h1 class="govuk-fieldset__heading">
+            <%= t('.heading_html') %>
+          </h1>
+        </legend>
+
+        <p class="govuk-body">
+          <%= t('.the_tailspend_solution') %>
+        </p>
+
+        <p class="govuk-body">
+          <%= t('.before_you_can_register') %>
+        </p>
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+          <li>
+            <%= t('.complete_a_call_off') %>
+          </li>
+          <li>
+            <%= t('.be_a_recognised_html', authorised_customer_list: link_to(t('.authorised_customer_list'), t('.authorised_customer_list_link'), title: t('.authorised_customer_list_title'), class: 'govuk-link govuk-link--no-visited-state')) %>    
+          </li>
+        </ul>
+
+        <hr class="govuk-section-break govuk-section-break--m">
+
         <%= form_group_with_error(f.object, :email) do |displayed_error, any_errors| %>
           <%= f.label :email, t('.email'), class: 'govuk-label' %>
           <span id="email-hint" class="govuk-hint govuk-!-width-three-quarters">
             <%= t('.email_hint') %>
           </span>
           <%= displayed_error %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "off", class:"govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", spellcheck: false, required: true, aria: { describedby: "email-hint", invalid: aria_invalid(f.object, :email) } %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "off", class:"govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", spellcheck: false, required: true, aria: { describedby: "email-hint" } %>
         <% end %>
 
         <%= form_group_with_error(f.object, :first_name) do |displayed_error, any_errors| %>
@@ -38,7 +45,7 @@
             <%= t('.first_name_hint') %>
           </span>
           <%= displayed_error %>
-          <%= f.text_field :first_name, class:"govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", spellcheck: false, required: true, aria: { describedby: "first_name-hint", invalid: aria_invalid(f.object, :first_name) } %>
+          <%= f.text_field :first_name, class:"govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", spellcheck: false, required: true, aria: { describedby: "first_name-hint" } %>
         <% end %>
 
         <%= form_group_with_error(f.object, :last_name) do |displayed_error, any_errors| %>
@@ -47,14 +54,19 @@
             <%= t('.last_name_hint') %>
           </span>
           <%= displayed_error %>
-          <%= f.text_field :last_name, class:"govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", spellcheck: false, required: true, aria: { describedby: "last_name-hint", invalid: aria_invalid(f.object, :last_name)  } %>
+          <%= f.text_field :last_name, class:"govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", spellcheck: false, required: true, aria: { describedby: "last_name-hint" } %>
         <% end %>
 
         <%= form_group_with_error(f.object, :summary_line) do |displayed_error| %>
           <%= f.hidden_field :summary_line %>
           <%= f.label :organisation, t('.organisation'), class: 'govuk-label' %>
           <span id="organisation-hint" class="govuk-hint govuk-!-width-three-quarters">
-            <%= t('.organisation_hint_html', email: mail_to(t('layouts.footer.email'), t('layouts.footer.email'), class: 'govuk-link ga-support-mailto', aria: { label: t('layouts.footer.email_aria_label') } )) %>
+            <%= t('.organisation_hint') %>
+            <br>
+            <br>
+            <span class="govuk-body-s">
+              <%= t('.organisation_address_guidance') %>
+            </span>
           </span>
           <%= displayed_error %>
           <div id="selected-autocomplete-option" class="govuk-!-width-three-quarters" <%= "hidden" unless f.object.summary_line.present? %>>
@@ -77,7 +89,7 @@
         <%= form_group_with_error(f.object, :password) do |displayed_error, any_errors| %>
           <%= f.label :password, t('.password'), class: 'govuk-label' %>
           <%= displayed_error %>
-          <%= f.password_field :password, autocomplete: "off", class: "govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", aria: { describedby: 'password-strength passeight passchar passcap passlower passnum' } %>
+          <%= f.password_field :password, autocomplete: "off", class: "govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", aria: { describedby: 'password-strength passeight passcap passlower passnum passsym' } %>
         <% end %>
 
         <%= form_group_with_error(f.object, :password_confirmation) do |displayed_error, any_errors| %>

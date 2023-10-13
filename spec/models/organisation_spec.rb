@@ -27,7 +27,7 @@ RSpec.describe Organisation do
 
   # rubocop:disable RSpec/NestedGroups
   describe '.summary_line' do
-    let(:result) { described_class.find_by(organisation_name: organisation_name).summary_line }
+    let(:result) { described_class.find_by(organisation_name:).summary_line }
 
     context 'when the address is present' do
       context 'when the city is present' do

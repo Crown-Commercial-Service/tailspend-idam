@@ -19,7 +19,7 @@ module ApplicationHelper
       content_for(title_bit)
     end
     title += [t('layouts.application.title')]
-    title.reject(&:blank?).map(&:strip).join(': ')
+    title.compact_blank.map(&:strip).join(': ')
   end
 
   def form_group_with_error(model, attribute)
@@ -32,15 +32,15 @@ module ApplicationHelper
     end
   end
 
-  def aria_invalid(model, attribute)
-    model.errors.include? attribute
-  end
-
   def parameters_without_user_details
     request.parameters.except(:cognito_sign_in_user)
   end
 
-  def header_link_text
-    controller.controller_name == 'sessions' && controller.action_name == 'new' ? t('layouts.application.go_back') : t('layouts.application.sign_in')
+  def cookie_preferences_settings
+    @cookie_preferences_settings ||= begin
+      current_cookie_preferences = JSON.parse(cookies[TailspendIdam.cookie_settings_name] || '{}')
+
+      !current_cookie_preferences.is_a?(Hash) || current_cookie_preferences.empty? ? TailspendIdam.default_cookie_options : current_cookie_preferences
+    end
   end
 end

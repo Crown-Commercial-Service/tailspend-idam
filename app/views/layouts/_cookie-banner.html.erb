@@ -1,19 +1,37 @@
-<div class="cookie-message" id="cookie-consent-container" aria-label="Cookie Policy" aria-live="polite">
-  <div class="cookie-message__inner govuk-width-container" id="cookie-options-container">
-    <div class="govuk-body">
-      <p>
-        <%= t('.why_we_use_cookies') %>
+<div class="govuk-cookie-banner" role="region" aria-label="Cookies on Tailspend">
+  <div class="govuk-cookie-banner__message govuk-width-container">
+    <div id="cookie-options-container" class="govuk-body">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-cookie-banner__heading govuk-heading-m"><%= t('.cookies_on_crown_marketplace') %></h2>
+
+          <div class="govuk-cookie-banner__content">
+            <p><%= t('.we_use_some_essential_cookies') %></p>
+            <p><%= t('.we_use_some_analytics_cookies') %></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="govuk-button-group">
+        <button value="accept" type="button" name="cookies" class="govuk-button" data-module="govuk-button" id="accept-cookies">
+          <%= t('.accept_cookies') %>
+        </button>
+        <button value="reject" type="button" name="cookies" class="govuk-button" data-module="govuk-button" id="reject-cookies">
+          <%= t('.reject_cookies') %>
+        </button>
+        <%= link_to t('.view_cookies'), cookie_policy_path, class: 'govuk-link govuk-link--no-visited-state' %>
+      </div>
+    </div>
+    <div class="govuk-body" id="cookies-accepted-container" hidden>
+      <p class="govuk-!-margin-top-0">
+        <%= t('.cookies_accepted') %>
+        <%= t('.change_cookie_settings_html', cookie_settings_link:  link_to(t('.change_cookie_settings_link'), cookie_settings_path, class: 'govuk-link govuk-link--no-visited-state')) %>
       </p>
     </div>
-    <div class="cookie-message__actions">
-      <%= button_tag t('.accept_all_cookies'), class: 'govuk-button govuk-!-margin-right-4', id: 'accept-all-cookies' %>
-      <%= link_to t('.set_cookie_preferences'), cookie_settings_path, class: 'govuk-button' %>
-    </div>
-  </div>
-  <div class="cookie-accepted-message__inner govuk-width-container" id="cookies-accepted-container" hidden>
-    <div class="govuk-body">
-      <p>
-        <%= t('.cookies_acepted_html', cookies_acepted_link: link_to(t('.cookies_acepted_link_text'), cookie_settings_path, class: 'govuk-link--no-visited-state'))%>
+    <div class="govuk-body" id="cookies-rejected-container" hidden>
+      <p class="govuk-!-margin-top-0">
+        <%= t('.cookies_rejected') %>
+        <%= t('.change_cookie_settings_html', cookie_settings_link:  link_to(t('.change_cookie_settings_link'), cookie_settings_path, class: 'govuk-link govuk-link--no-visited-state')) %>
       </p>
     </div>
   </div>

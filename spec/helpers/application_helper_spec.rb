@@ -21,7 +21,7 @@ RSpec.describe ApplicationHelper do
       let(:email) { 'test@test.com' }
 
       it 'returns nil' do
-        expect(result).to be nil
+        expect(result).to be_nil
       end
     end
 
@@ -54,6 +54,7 @@ RSpec.describe ApplicationHelper do
     let(:model) { Cognito::ForgotPassword.new('') }
     let(:result) do
       form_group_with_error(model, :email) do
+        nil
       end
     end
 
@@ -70,6 +71,50 @@ RSpec.describe ApplicationHelper do
       it 'creates the form group with the error' do
         expect(result).to eq('<div class="govuk-form-group govuk-form-group--error" id="email-form-group"></div>')
         expect { |block| form_group_with_error(model, :email, &block) }.to yield_with_args(error_message_html, true)
+      end
+    end
+  end
+
+  describe '.cookie_preferences_settings' do
+    let(:result) { helper.cookie_preferences_settings }
+    let(:default_cookie_settings) do
+      {
+        'settings_viewed' => false,
+        'usage' => false,
+        'glassbox' => false
+      }
+    end
+
+    context 'when the cookie has not been set' do
+      it 'returns the default settings' do
+        expect(result).to eq(default_cookie_settings)
+      end
+    end
+
+    context 'when the cookie has been set' do
+      before { helper.request.cookies['cookie_preferences'] = cookie_settings }
+
+      context 'and it is a hash' do
+        let(:expected_cookie_settings) do
+          {
+            'settings_viewed' => true,
+            'usage' => true,
+            'glassbox' => false
+          }
+        end
+        let(:cookie_settings) { expected_cookie_settings.to_json }
+
+        it 'returns the settings from the cookie' do
+          expect(result).to eq(expected_cookie_settings)
+        end
+      end
+
+      context 'and it is not a hash' do
+        let(:cookie_settings) { '123' }
+
+        it 'returns the default settings' do
+          expect(result).to eq(default_cookie_settings)
+        end
       end
     end
   end

@@ -99,6 +99,8 @@ search:
 ## Consider these keys used:
 ignore_unused:
   - activemodel.errors.models.*
+  - home.cookie_policy.ga_cookies.row_*
+  - home.cookie_policy.glassbox_cookies.row_*
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'
 # - 'simple_form.{placeholders,hints,labels}.*'

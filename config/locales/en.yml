@@ -22,7 +22,7 @@ en:
             enter_a_password: Enter a password
             enter_first_name: Enter your first name
             enter_last_name: Enter your last name
-            enter_org_name: Select your organisation from the dropdown list
+            enter_org_name: Enter your organisation name
             enter_your_password: Enter your password
             first_name_format: First name must be more than 3 characters
             last_name_format: Last name must be more than 3 characters
@@ -60,6 +60,8 @@ en:
               blank: Enter a password
               invalid_no_capitals: Password must include a capital letter
               invalid_no_number: Password must include a number
+              invalid_no_symbol: Password must include a special character
+              invalid_pwned: Enter a password that is harder to guess
               invalid_symbol: Your password includes invalid symbols
               too_short: The password you entered is not long enough, it needs to be at least 10 characters long
             password_confirmation:
@@ -70,6 +72,7 @@ en:
           attributes:
             confirmation_code:
               blank: Enter your verification code
+              invalid: Invalid verification code provided, please try again.
               invalid_format: Confirmation code must contain numeric characters only
               invalid_length: Confirmation code must be 6 characters
             email:
@@ -78,6 +81,8 @@ en:
               blank: Enter a password
               invalid_no_capitals: Password must include a capital letter
               invalid_no_number: Password must include a number
+              invalid_no_symbol: Password must include a special character
+              invalid_pwned: Enter a password that is harder to guess
               invalid_symbol: Your password includes invalid symbols
               too_short: The password you entered is not long enough, it needs to be at least 10 characters long
             new_password_confirmation:
@@ -102,7 +107,8 @@ en:
         cognito/sign_up_user:
           attributes:
             email:
-              blank: Enter an email address in the correct format, like name@example.com
+              blank: You must enter your email address in the correct format, like name@example.com
+              invalid: You must enter your email address in the correct format, like name@example.com
               not_on_allow_list: You must use a public sector email
             first_name:
               blank: Enter your first name
@@ -114,6 +120,7 @@ en:
               blank: Enter a password
               invalid_no_capitals: Password must include a capital letter
               invalid_no_number: Password must include a number
+              invalid_pwned: Enter a password that is harder to guess
               invalid_symbol: Your password includes invalid symbols
               too_short: The password you entered is not long enough, it needs to be at least 10 characters long
             password_confirmation:
@@ -122,7 +129,7 @@ en:
             phone_number:
               blank: Enter your Phone number
             summary_line:
-              blank: Select your organisation from the dropdown list
+              blank: Enter your organisation
               not_found: A public sector organisation with the name you entered could not be found
   api:
     v1:
@@ -145,7 +152,7 @@ en:
         lead1: If the email address you’ve entered belongs to a registered organisation, we’ll send instructions to reset the password.
         new_password: New password
         password: Your password must have
-        text_html: If you don’t receive this, email <a href="mailto:support@crowncommercial.gov.uk">support@crowncommercial.gov.uk</a>
+        text_html: If you don’t receive this, email <a href="mailto:support@crowncommercial.gov.uk" class="govuk-link--no-visited-state">support@crowncommercial.gov.uk</a>
         verify_code: Verification code
       new:
         email: Email address
@@ -161,12 +168,16 @@ en:
         heading: You must use a public sector email address
         lead_html: You must be employed by, or represent, a public sector organisation to create a <abbr title="Crown Commercial Service">CCS</abbr> account.
         line_01: The email you used doesn't belong to a recognised public sector domain.
-        line_02_html: Create an account using a different email address or email <a href="mailto:info@crowncommercial.gov.uk">info@crowncommercial.gov.uk</a> if
+        line_02_html: Create an account using a different email address or email <a href="mailto:info@crowncommercial.gov.uk" class="govuk-link">info@crowncommercial.gov.uk</a> if
         list_01: you think your domain should be recognised
         list_02: you still can't create an account
       new:
-        bullet1: complete a call-off contract with one of two suppliers
-        bullet2_html: be a recognised public sector body listed in the %{authorised_customer_list}
+        authorised_customer_list: authorised customer list
+        authorised_customer_list_link: https://assets.crowncommercial.gov.uk/wp-content/uploads/RM3788-Contract-Notice-Authorised-Customer-List.docx
+        authorised_customer_list_title: authrized customers list in .docx format
+        be_a_recognised_html: be a recognised public sector body listed in the %{authorised_customer_list}.
+        before_you_can_register: 'Before you can register and use this service your organisation will need to:'
+        complete_a_call_off: complete a call-off contract with one of two suppliers
         confirm_password: Confirm your password
         create_password: Create a password you’ll remember
         email: Email address
@@ -176,12 +187,12 @@ en:
         heading_html: Create a Tail Spend Solution account
         last_name: Last name
         last_name_hint: Add your last name here.
-        organisation: Organisation
-        organisation_hint_html: 'Enter your organisation''s full name. We will verify your organisation name to confirm you can use this service. If your organisation is not listed please contact CCS. You can do this by phone: 0345 410 2222 or email: %{email}'
+        organisation: Organisation name
+        organisation_address_guidance: You can choose alternative delivery and invoice addresses later on.
+        organisation_hint: Enter your organisation's full name. We will verify your organisation name to confirm you can use this service. If your organisation is not listed please contact CCS.
         password: Password
         password_must_have: 'Your password must have:'
-        subheading: The Tail Spend Solution (RM6202) allows you to browse and buy a range of tail spend products. These are products that are often low volume and low value which organisations usually buy to meet a specific, short term need and are unlikely to buy again or in the near future.
-        subheading2: 'Before you can register and use this service your organisation will need to:'
+        the_tailspend_solution: The Tail Spend Solution (RM6202) allows you to browse and buy a range of tail spend products. These are products that are often low volume and low value which organisations usually buy to meet a specific, short term need and are unlikely to buy again or in the near future.
     sessions:
       new:
         email_address: Email address
@@ -199,15 +210,14 @@ en:
         resend_the_confirmation_email_html: <a href="%{link}" class="govuk-link">Resend the email</a>
         you: you
       sign_in_error: You must provide a correct username or password
-      sign_in_error_cognito: Incorrect username or password.
   common:
     continue: Continue
     create_account: Create account
     passcap: at least one capital letter
-    passchar: at least one special character
     passeight: at least 10 characters
     passlower: at least one lowercase letter
     passnum: at least one number
+    passsym: at least one special character
     reset_password: Reset password
     send_reset_email: Send reset email
     sign_in: Sign in
@@ -257,49 +267,59 @@ en:
       list_1_navigate_speach: navigate most of the website using speech recognition software
       list_2_decorative: non-decorative content is used in the CCS sign-in pages, which may make it in accessible to users navigating the site with screen readers.
       list_2_email: the email field on the homepage lacks an autocomplete attribute, so its purpose cannot be determined programmatically
-      market_place_link: https://tailspend.crowncommercial.gov.uk/
       several_aspects: Several aspects of the Tail Spend Solution user journey do not meet the WCAG 2.1 AA success criteria. The accessibility statement on the core Tail Spend Solution product details these.
+      tailspend_link: https://tailspend.crowncommercial.gov.uk/
       the_complete_journey: The complete Tail Spend Solution journey was tested, this included every page a buyer would progress through in-order to complete the sign up activity.
       the_content: The content listed below is non-accessible for the following reasons.
       this_statement: 'This accessibility statement applies to the sign in pages of the Tail Spend Solution digital service which can be found at the following URL:'
-      this_statement_date: This statement was prepared on Wednesday 19 January 2022. It will be reviewed and updated as required.
+      this_statement_date: This statement was prepared on 25th November 2020. It will be reviewed and updated as required.
       this_website: 'This website is run by Crown Commercial Service (CCS). We want as many people as possible to be able to use this website. For example, that means you should be able to:'
       this_website_partially_1: This website is partially compliant with the
       this_website_partially_2: due to the non-compliances listed below.
       we_are_always_looking_html: 'We’re always looking to improve the accessibility of this website. If you find any problems not listed on this page or think we’re not meeting accessibility requirements, contact: %{email}.'
       we_know: 'We know some parts of this website are not fully accessible:'
-      website_last_tested: This website was last tested on Wednesday 19 January 2022. The test was carried out by CCS internal testing team.
+      website_last_tested: This website was last tested on Friday 20 November 2020. The test was carried out by Zoonou Ltd.
       website_text_simple: We’ve also made the website text as simple as possible to understand.
       well_consider: We’ll consider your request and get back to you in five working days.
     cookie_policy:
       change_settings_html: You can %{change_settings_link}.
       change_settings_link_text: change which cookies you’re happy for us to use
       change_your_settings: Change your settings
-      cookie_message_1:
-        expires: 1 year
-        name: tailspend_google_analytics_enabled
-        purpose: Saves your cookie consent settings for Google Analytics
-      cookie_message_2:
-        expires: 1 year
-        name: tailspend_cookie_settings_viewed
-        purpose: Lets us know that you’ve viewed your cookie consent settings
-      cookies_message: Cookies message
-      ga_cookies_1:
-        expires: 2 years
-        name: _ga
-        purpose: This cookie allows Google to track unique users via a client identifier that is randomly generated
-      ga_cookies_2:
-        expires: 10 minutes
-        name: _gat
-        purpose: This cookie is used to monitor and track visitors’ behaviour on the site anonymously
-      ga_cookies_3:
-        expires: 24 hours
-        name: _gid
-        purpose: This cookie is used to group the user behaviour
+      cookie_banner_cookies:
+        row_1:
+          expires: 1 year
+          purpose: Saves your cookie consent preferences
+        row_2:
+          expires: 1 year
+          name: cookie_preferences_saved
+          purpose: Allows us to check when your cookie settings have changed
+      cookies_banner: Cookies banner
+      ga_cookies:
+        row_1:
+          expires: 400 days
+          name: _ga
+          purpose: This cookie allows Google to track unique users via a client identifier that is randomly generated
+        row_2:
+          expires: 10 minutes
+          name: _gat
+          purpose: This cookie is used to monitor and track visitors’ behaviour on the site anonymously
+        row_3:
+          expires: 24 hours
+          name: _gid
+          purpose: This cookie is used to group the user behaviour
       ga_sets_following_cookies: Google Analytics sets the following cookies.
+      glassbox_cookies:
+        row_1:
+          expires: 2 years
+          name: _cls_s
+          purpose: The session identifying cookie. It also indicates if the visitor is new or existing
+        row_2:
+          expires: 2 years
+          name: _cls_v
+          purpose: The visitor identifying cookie
+      glassbox_sets_following_cookies: 'Glassbox sets the following cookies:'
       heading: Details about cookies on Tail Spend Solution
-      last_updated: Last updated 26 January 2021
-      we_do_not_let: We do not allow Google to use or share the data about how you use this site.
+      last_updated: Last updated 22 September 2022.
       what_are_cookies: Tail Spend Solution puts small files (known as ‘cookies’) onto your computer to collect information about how you browse the site. Find out more about the cookies we use, what they’re for and when they expire.
       you_may_see_a_banner: You may see a banner when you visit Tail Spend Solution inviting you to accept cookies or review your settings. We’ll set cookies so that your computer knows you’ve seen it and not to show it again, and also to store your settings.
     cookie_settings:
@@ -307,50 +327,76 @@ en:
       cookie_settings: Cookie settings
       cookies_saved: Your cookie settings were saved
       cookies_saved_description: Other areas of the Tail Spend Solution service may set additional cookies and, if so, will have their own cookie policy and banner.
-      dont_use_cookies: Do not use cookies that measure my website use
+      dont_use_cookies:
+        ga: Do not use cookies that measure my website use (Google Analytics)
+        glassbox: Do not use cookies that measure my website use (Glassbox)
       essential_cookies: These essential cookies do things like remember the notifications you have seen so we do not show them to you again.
       find_out_more: Find out more about cookies on Tail Spend Solution
       heading: Cookies on Tail Spend Solution
       save_changes: Save changes
       the_number_we_use: We use 2 types of cookie. You can choose which cookies you're happy for us to use.
-      use_cookies: Use cookies that measure my website use
+      use_cookies:
+        ga: Use cookies that measure my website use (Google Analytics)
+        glassbox: Use cookies that measure my website use (Glassbox)
       what_are_cookies: Cookies are files saved on your phone, tablet or computer when you visit a website.
       why_we_use_them: We use cookies to store information about how you use the Tail Spend Solution website, such as the pages you visit.
     cookies:
       expires: Expires
-      ga_list: 'Google Analytics sets cookies that store anonymised information about:'
-      ga_list_1: how you got to the site
-      ga_list_2: the pages you visit on Tail Spend Solution, and how long you spend on each page
-      ga_list_3: what you click on while you're visiting the site
-      measure_website_use: Cookies that measure website use
+      measure_website_use:
+        ga: Measuring website usage (Google Analytics)
+        glassbox: Measuring website usage (Glassbox)
+        title: Cookies that measure website use
       name: Name
       purpose: Purpose
       strictly_necessary_cookies: Strictly necessary cookies
-      we_use_ga: We use Google Analytics to measure how you use the website so we can improve it based on user needs.
+    ga_cookies_info:
+      ga_list:
+        item_1: the pages you visit on Tail Spend Solution
+        item_2: how long you spend on each Tail Spend Solution page
+        item_3: how you got to the site
+        item_4: what you click on while you’re visiting the site
+        title: 'Google Analytics stores information about:'
+      we_dont_allow: We don’t allow Google to use or share our analytics data.
+      we_dont_collect: We don’t collect or store your personal information (eg your name or address) so this information can’t be used to identify who you are.
+      we_use_ga: We use Google Analytics software to collect information about how you use Tail Spend Solution. We do this to help make sure the site is meeting the needs of its users and to help us make improvements, eg improving site search.
+    glassbox_cookies_info:
+      glassbox_list:
+        item_1: Browsing activity
+        item_2: Click-stream activity
+        item_3: Session heatmaps
+        item_4: Scrolls
+        title: 'Glassbox stores information about:'
+      we_dont_allow: We don’t allow Glassbox to use or share our analytics data.
+      we_dont_collect: We don’t collect or store your personal information (e.g. your name or address) so this information can’t be used to identify who you are.
+      we_use_glassbox: We use Glassbox software to collect information about how you use Tail Spend Solution. We do this to help make sure the site is meeting the needs of its users and to help us make improvements.
     index:
-      authorised_customer_list: authorised customer list
-      authorised_customer_list_title: authrized customers list in .docx format
+      before_you_sign_in_html: Before you can sign in, you need to %{registration_link}.
       create_an_account: create an account
       heading: Sign in to Tail Spend Solution
-      sign_in_office_team: Sign in to OT
-      sign_in_title_office_team: Login to OT
-      sign_in_title_unite: Login to Unite
-      sign_in_unite: Sign in to Unite
-      subheading: The Tail Spend Solution (RM6202) allows you to browse and buy a range of tail spend products. These are products that are often low volume and low value which organisations usually buy to meet a specific, short term need and are unlikely to buy again or in the near future.
-      subheading2: To use this service you will need to sign in to your chosen supplier's portal using the email and password you used to create your account. If you are not sure who your supplier is, contact your organisation’s administrator.
-      subheading3_html: Before you can sign in, you need to %{create_an_account}.
-      subheading4: Your organisation will need to have completed a call-off contract with a supplier before you can create an account.
+      sign_in_to_ot: Sign in to OT
+      sign_in_to_unite: Sign in to Unite
+      the_tailspend_solution: The Tail Spend Solution (RM6202) allows you to browse and buy a range of tail spend products. These are products that are often low volume and low value which organisations usually buy to meet a specific, short term need and are unlikely to buy again or in the near future.
+      to_use_this_service: To use this service you will need to sign in to your chosen supplier's portal using the email and password you used to create your account. If you are not sure who your supplier is, contact your organisation’s administrator.
+      your_org_will_need: Your organisation will need to have completed a call-off contract with a supplier before you can create an account.
   layouts:
     application:
-      go_back: Go back
-      sign_in: Sign in
       title: Crown Commercial Services
+    contact_us:
+      contact_us: Contact us (opens in a new tab)
+      contact_us_link: https://www.crowncommercial.gov.uk/contact
+      having_problems: Having problems with this service?
+      support_html: "%{link} for support."
     cookie-banner:
-      accept_all_cookies: Accept all cookies
-      cookies_acepted_html: You’ve accepted all cookies. You can %{cookies_acepted_link} at any time.
-      cookies_acepted_link_text: change your cookie settings
-      set_cookie_preferences: Set cookie preferences
-      why_we_use_cookies: We use cookies to collect information about how you use tailspend.crowncommercial.gov.uk. We use this information to make the website work as well as possible and improve government services.
+      accept_cookies: Accept analytics cookies
+      change_cookie_settings_html: You can %{cookie_settings_link} at any time.
+      change_cookie_settings_link: change your cookie settings
+      cookies_accepted: You’ve accepted all analytics cookies.
+      cookies_on_crown_marketplace: Cookies on Tail Spend Solution
+      cookies_rejected: You’ve rejected all analytics cookies.
+      reject_cookies: Reject analytics cookies
+      view_cookies: View cookies
+      we_use_some_analytics_cookies: We’d also like to use analytics cookies so we can understand how you use the service and make improvements.
+      we_use_some_essential_cookies: We use some essential cookies to make this service work.
     footer:
       accessibility_statement_link: Accessibility statement
       accessibility_statement_link_aria_label: View our accessibility statement
@@ -360,14 +406,9 @@ en:
       cookie_settings_link_aria_label: View and change your cookie settings
       crown_commercial_service_logo: The Crown Commercial Service logo
       crown_copyright: "© Crown copyright"
-      email: info@crowncommercial.gov.uk
-      email_aria_label: Email us for support with this service
-      email_or_call_html: Email %{email} or call %{phone} for support.
-      having_problems_with_this_service: Having problems with this service?
       privacy_link: https://www.gov.uk/government/publications/crown-commercial-service-privacy-notice/crown-commercial-service-privacy-notice
       privacy_link_aria_label: View our privacy policy
       privacy_link_text: Privacy policy
-      telephone: 0345 410 2222
   shared:
     error_summary:
       there_is_a_problem: There is a problem

@@ -10,6 +10,7 @@ module Base
 
     def confirm
       @result = Cognito::ConfirmSignUp.call(confirm_sign_up_params)
+
       if @result.success?
         Rails.logger.info 'ACCOUNT ACTIVATION SUCCESSFUL'
         redirect_to base_new_user_session_path

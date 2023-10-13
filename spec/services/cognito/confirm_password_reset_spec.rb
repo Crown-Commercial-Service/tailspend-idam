@@ -5,10 +5,10 @@ RSpec.describe Cognito::ConfirmPasswordReset do
 
   let(:params) do
     {
-      email: email,
-      password: password,
-      password_confirmation: password_confirmation,
-      confirmation_code: confirmation_code
+      email:,
+      password:,
+      password_confirmation:,
+      confirmation_code:
     }
   end
 
@@ -18,9 +18,6 @@ RSpec.describe Cognito::ConfirmPasswordReset do
   let(:confirmation_code) { '123456' }
 
   describe '.valid?' do
-    let(:valid_symbols_sample) { '=+-^$*.[]{}()?"!@#%&/\\,><\':;|_~`'.split('').sample(5).join }
-    let(:invalid_symbols_sample) { '£èöíäü'.split('').sample(2).join }
-
     context 'when all attributes are valid' do
       it 'is valid' do
         expect(confirm_password_reset.valid?).to be true
@@ -75,29 +72,22 @@ RSpec.describe Cognito::ConfirmPasswordReset do
         end
       end
 
-      context 'and it contains valid symbols' do
-        let(:password) { ("Password1234#{valid_symbols_sample}").split('').shuffle.join }
+      context 'and it cointains valid symbols' do
+        %w[= + - ^ $ * . [ ] { } ( ) ? " ! @ # % & / \ , > < ' : ; | _ ~ `].each do |symbol|
+          let(:password) do
+            allowed_characters = ALLOWED_CHARACTERS.dup
+            allowed_characters[-1] = [symbol]
+            generate_random_password(allowed_characters)
+          end
 
-        it 'is valid' do
-          expect(confirm_password_reset.valid?).to be true
+          it "is valid when the symbol is #{symbol}" do
+            expect(confirm_password_reset.valid?).to be true
+          end
         end
       end
 
-      context 'and it contains 1 invalid symbol' do
-        let(:password) { ("Password1234#{valid_symbols_sample}#{invalid_symbols_sample[0]}").split('').shuffle.join }
-
-        it 'is not valid' do
-          expect(confirm_password_reset.valid?).to be false
-        end
-
-        it 'has the correct error message' do
-          confirm_password_reset.valid?
-          expect(confirm_password_reset.errors[:password].first).to eq 'Your password includes invalid symbols'
-        end
-      end
-
-      context 'and it contains multiple invalid symbols' do
-        let(:password) { ("Password1234#{valid_symbols_sample}#{invalid_symbols_sample}").split('').shuffle.join }
+      context 'and it contains invalid symbols' do
+        let(:password) { generate_random_invalid_password }
 
         it 'is not valid' do
           expect(confirm_password_reset.valid?).to be false
@@ -119,6 +109,19 @@ RSpec.describe Cognito::ConfirmPasswordReset do
         it 'has the correct error message' do
           confirm_password_reset.valid?
           expect(confirm_password_reset.errors[:password].first).to eq 'The password you entered is not long enough, it needs to be at least 10 characters long'
+        end
+      end
+
+      context 'and it has been pwned' do
+        let(:password) { PwnedPassword.pluck(:password).sample }
+
+        it 'is not valid' do
+          expect(confirm_password_reset.valid?).to be false
+        end
+
+        it 'has the correct error message' do
+          confirm_password_reset.valid?
+          expect(confirm_password_reset.errors[:password].first).to eq 'Enter a password that is harder to guess'
         end
       end
     end
@@ -201,8 +204,7 @@ RSpec.describe Cognito::ConfirmPasswordReset do
       allow(Aws::CognitoIdentityProvider::Client).to receive(:new).with(region: 'supersecretregion').and_return(client)
       allow(client).to receive(:admin_get_user).and_return(cognito_user)
       allow(cognito_user).to receive(:user_attributes).and_return([attribute_type])
-      allow(attribute_type).to receive(:name).and_return('sub')
-      allow(attribute_type).to receive(:value).and_return('my-cognito-id')
+      allow(attribute_type).to receive_messages(name: 'sub', value: 'my-cognito-id')
       allow(client).to receive(:admin_list_groups_for_user)
     end
 
@@ -229,7 +231,7 @@ RSpec.describe Cognito::ConfirmPasswordReset do
         end
       end
 
-      context 'and confirm_forgot_password raises ServiceError' do
+      context 'and confirm_forgot_password rasies ServiceError' do
         before do
           allow(client).to receive(:confirm_forgot_password).and_raise(Aws::CognitoIdentityProvider::Errors::ServiceError.new('Some context', 'Some message'))
           confirm_password_reset.call
@@ -239,9 +241,24 @@ RSpec.describe Cognito::ConfirmPasswordReset do
           expect(confirm_password_reset.errors[:base].first).to eq 'Some message'
         end
       end
+
+      context 'when the user can not be found' do
+        let(:resp) { instance_double(Cognito::CreateUserFromCognito) }
+
+        before do
+          allow(client).to receive(:confirm_forgot_password)
+          allow(Cognito::CreateUserFromCognito).to receive(:call).with(email).and_return(resp)
+          allow(resp).to receive(:success?).and_return(false)
+          confirm_password_reset.call
+        end
+
+        it 'adds the user can not be found error' do
+          expect(confirm_password_reset.errors[:base].first).to eq 'Please check the information you have entered'
+        end
+      end
     end
 
-    context 'when something is not valid' do
+    context 'when somthing is not valid' do
       let(:password_confirmation) { 'Samus' }
 
       before do

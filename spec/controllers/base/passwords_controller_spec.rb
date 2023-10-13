@@ -10,26 +10,61 @@ RSpec.describe Base::PasswordsController do
   end
 
   describe 'POST create' do
-    before do
-      # rubocop:disable RSpec/AnyInstance
-      allow_any_instance_of(Cognito::ForgotPassword).to receive(:forgot_password).and_return(true)
-      # rubocop:enable RSpec/AnyInstance
-      post :create, params: { cognito_forgot_password: { email: email } }
-    end
+    context 'when no exception is raised' do
+      before do
+        # rubocop:disable RSpec/AnyInstance
+        allow_any_instance_of(Cognito::ForgotPassword).to receive(:forgot_password).and_return(true)
+        # rubocop:enable RSpec/AnyInstance
+        post :create, params: { cognito_forgot_password: { email: } }
+      end
 
-    context 'when the email is invalid' do
-      let(:email) { 'testtest.com' }
+      context 'when the email is invalid' do
+        let(:email) { 'testtest.com' }
 
-      it 'render to the new page' do
-        expect(response).to render_template(:new)
+        it 'render to the new page' do
+          expect(response).to render_template(:new)
+        end
+      end
+
+      context 'when the email is valid' do
+        let(:email) { 'test@test.com' }
+
+        it 'redirects to the edit password page' do
+          expect(response.location.split('=')[0]).to eq "#{base_edit_user_password_url}?e"
+        end
       end
     end
 
-    context 'when the email is valid' do
-      let(:email) { 'test@test.com' }
+    context 'when the email is valid but an exception is raised' do
+      before do
+        # rubocop:disable RSpec/AnyInstance
+        allow_any_instance_of(Cognito::ForgotPassword).to receive(:forgot_password).and_raise(error.new('Some context', 'Some message'))
+        # rubocop:enable RSpec/AnyInstance
+        post :create, params: { cognito_forgot_password: { email: 'test@test.com' } }
+      end
 
-      it 'redirects to the edit password page' do
-        expect(response.location.split('=')[0]).to eq "#{base_edit_user_password_url}?e"
+      context 'and the error is UserNotFoundException' do
+        let(:error) { Aws::CognitoIdentityProvider::Errors::UserNotFoundException }
+
+        it 'redirects to the edit password page' do
+          expect(response.location.split('=')[0]).to eq "#{base_edit_user_password_url}?e"
+        end
+      end
+
+      context 'and the error is InvalidParameterException' do
+        let(:error) { Aws::CognitoIdentityProvider::Errors::InvalidParameterException }
+
+        it 'render to the new page' do
+          expect(response).to render_template(:new)
+        end
+      end
+
+      context 'and the error is ServiceError' do
+        let(:error) { Aws::CognitoIdentityProvider::Errors::ServiceError }
+
+        it 'render to the new page' do
+          expect(response).to render_template(:new)
+        end
       end
     end
   end
@@ -60,7 +95,7 @@ RSpec.describe Base::PasswordsController do
     end
 
     context 'when the reset password is valid' do
-      let(:password) { 'Password12345!' }
+      let(:password) { generate_random_valid_password }
 
       it 'redirects to the home page' do
         expect(response).to redirect_to home_path
