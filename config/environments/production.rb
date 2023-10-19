@@ -86,4 +86,8 @@ Rails.application.configure do
   ENV.fetch('ALLOWED_HOST_DOMAINS', '').split(',').each do |application_domain|
     config.hosts << application_domain
   end
+
+  config.host_authorization = {
+    exclude: ->(request) { request.path.include?('health_check') }
+  }
 end
