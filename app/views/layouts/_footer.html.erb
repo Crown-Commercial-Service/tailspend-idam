@@ -1,15 +1,4 @@
-<div class="footer-feedback govuk-!-padding-1">
-  <div class="govuk-width-container">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full">
-        <p class="govuk-!-margin-bottom-0 govuk-body-s">
-          <span class="govuk-!-font-weight-bold"><%= t('.having_problems_with_this_service') %></span>
-          <%= t('.email_or_call_html', email: mail_to(t('.email'), t('.email'), class: 'govuk-link ga-support-mailto', aria: { label: t('.email_aria_label') } ), phone: t('.telephone')) %>
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render partial: '/layouts/contact_us' %>
 <div class="govuk-footer__container govuk-width-container">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-third">

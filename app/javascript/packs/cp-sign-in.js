@@ -1,22 +1,18 @@
 const lengthReg = () => new RegExp('^.{10,}');
 
-const characterReg = () => new RegExp('[\\^\\$\\*\\.\\[\\]\\{\\}\\(\\)\\?"!@#%&\\/\\\\,><\':;\\|_~`=\\+-]');
-
 const uppercaseReg = () => new RegExp('^(?=.*?[A-Z])');
 
 const lowercaseReg = () => new RegExp('^(?=.*?[a-z])');
 
 const numberReg = () => new RegExp('^(?=.*[0-9])');
 
+const symbolReg = () => new RegExp('^(?=.*[=+-^$*.\\[\\]{}()?"!@#%&/\\,><\':;|_~`])')
+
 const passwordStrength = ($passwordField) => {
   const passwordTests = [
     {
       test: lengthReg(),
       $listItem: $('#passeight'),
-    },
-    {
-      test: characterReg(),
-      $listItem: $('#passchar'),
     },
     {
       test: uppercaseReg(),
@@ -29,6 +25,10 @@ const passwordStrength = ($passwordField) => {
     {
       test: numberReg(),
       $listItem: $('#passnum'),
+    },
+    {
+      test: symbolReg(),
+      $listItem: $('#passsym'),
     },
   ];
 

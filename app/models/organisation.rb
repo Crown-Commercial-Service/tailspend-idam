@@ -4,6 +4,6 @@ class Organisation < ApplicationRecord
   end
 
   def self.find_organisation(summary_line)
-    Organisation.find_by(summary_line: summary_line)
+    Organisation.find_by(summary_line:)
   end
 end

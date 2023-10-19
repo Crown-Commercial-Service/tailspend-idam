@@ -1,6 +1,6 @@
 # Tail Spend Solution IDAM
 
-[![Build Status](https://app.travis-ci.com/Crown-Commercial-Service/pmp-idam.svg?branch=develop)](https://app.travis-ci.com/Crown-Commercial-Service/tailspend-idam)
+[![Build Status](https://app.travis-ci.com/Crown-Commercial-Service/tailspend-idam.svg?branch=develop)](https://app.travis-ci.com/Crown-Commercial-Service/tailspend-idam)
 [![Maintainability](https://api.codeclimate.com/v1/badges/0cd357c324b2731fb1bc/maintainability)](https://codeclimate.com/github/Crown-Commercial-Service/tailspend-idam/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/0cd357c324b2731fb1bc/test_coverage)](https://codeclimate.com/github/Crown-Commercial-Service/tailspend-idam/test_coverage)
 
@@ -10,7 +10,7 @@ This README assumes you are using a MacBook. If you are using a different operat
 
 
 ### Ruby
-This is a Ruby on Rails application using ruby version `2.7.1`.
+This is a Ruby on Rails application using ruby version `3.2.2`.
 Ensure that, if you are using a ruby environment manager, the correct ruby version is being run in your development environment.
 
 This project uses Ruby Gems so you will need to install bundler which can be done with:
@@ -119,6 +119,12 @@ Forwarding                    https://5ed36d69a2e7.ngrok.io -> http://localhost:
 ```
 The final URL displayed is the one you should use to run the application, in this case https://5ed36d69a2e7.ngrok.io.
 
+You will need to add the host that `ngrok` gives you to the `ALLOWED_HOST_DOMAINS` environment variable.
+This is because of a change in rails 7 which, for security reasons, requires us to allow list our application hosts.
+Using this example the following environment variable would be added to the `.env.local` file:
+```
+ALLOWED_HOST_DOMAINS=5ed36d69a2e7.ngrok.io
+```
 
 ### Setting up Keycloak
 Now that the application is running on a HTTPS connection you can set up the Keycloak environment. if you go to `http://localhost:8080/` you should be presented with the ‘Welcome to Keycloak’ page. Navigate to the ‘Administration console’ and log in using the username ‘admin’ and password ‘admin’.
@@ -134,12 +140,11 @@ The first thing you need to do is create a new ‘realm’ which can be done by 
 
 
 Once you have saved this you will need to add mappers. These are the three mappers you need to create:
-| Name                      |     First Name     |      Last Name     |       Organisation       |
-|:-------------------------:|:------------------:|:------------------:|:------------------------:|
-| **Sync Mode Override**    | inherit            | inherit            | import                   |
-| **Mapper Type**           | Attribute Importer | Attribute Importer | Attribute Importer       |
-| **Claim**                 | name               | family_name        | custom:organisation_name |
-| **User Attribute Name**   | firstName          | lastName           | organisation_name        |
+| Name          | Sync Mode Override  | Mapper Type         | Claim                     | User Attribute Name |
+|:-------------:|:-------------------:|:-------------------:|:-------------------------:|:-------------------:|
+| First Name    | inherit             | Attribute Importer  | name                      | firstName           |
+| Last Name     | inherit             | Attribute Importer  | family_name               | lastName            |
+| Organisation  | import              | Attribute Importer  | custom:organisation_name  | organisation_name   |
 
 Once you have done this your Keycloak setup should be complete.
 
@@ -175,4 +180,3 @@ Most of the copy for the application is held within translation files. The follo
 i18n-tasks health
 ```
 If there are any issues that arise, you can follow the output to solve them. Another useful command is `i18n-tasks` as this will give you list of useful tasks that can be performed which may save you some work.
-

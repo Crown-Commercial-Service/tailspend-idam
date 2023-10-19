@@ -10,8 +10,8 @@ RSpec.describe Cognito::ResendConfirmationCode do
       let(:email) { nil }
 
       it 'sets the email and error as nil' do
-        expect(resend_confirmation_code.email).to be nil
-        expect(resend_confirmation_code.error).to be nil
+        expect(resend_confirmation_code.email).to be_nil
+        expect(resend_confirmation_code.error).to be_nil
       end
     end
 
@@ -20,14 +20,14 @@ RSpec.describe Cognito::ResendConfirmationCode do
 
       it 'converts the email to lowercase and sets error as nil' do
         expect(resend_confirmation_code.email).to eq 'tester@test.com'
-        expect(resend_confirmation_code.error).to be nil
+        expect(resend_confirmation_code.error).to be_nil
       end
     end
 
     context 'when the email contains all lowercase letters' do
       it 'sets the email unchanged and sets error as nil' do
         expect(resend_confirmation_code.email).to eq 'tester@test.com'
-        expect(resend_confirmation_code.error).to be nil
+        expect(resend_confirmation_code.error).to be_nil
       end
     end
   end

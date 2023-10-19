@@ -20,7 +20,7 @@ module Base
           cookies.permanent[:remember_token] = code
           Rails.logger.info 'SIGN IN ATTEMPT SUCCESSFUL'
 
-          redirect_to("#{params[:redirect_uri]}?code=#{code}&state=#{params[:state]}")
+          redirect_to("#{params[:redirect_uri]}?code=#{code}&state=#{params[:state]}", allow_other_host: true)
         end
       else
         result_unsuccessful_path

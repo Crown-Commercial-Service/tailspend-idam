@@ -4,7 +4,6 @@ module Cognito
   class SignUpUser < BaseService
     include ActiveModel::Validations
     validates_presence_of :email, :first_name, :last_name, :summary_line
-    validates_format_of :email, with: URI::MailTo::EMAIL_REGEXP, message: I18n.t('activemodel.errors.models.ccs_patterns/home/cog_register.attributes.email_format')
 
     validates :first_name,
               length: { minimum: 2 }
@@ -13,6 +12,7 @@ module Cognito
 
     include PasswordValidator
 
+    validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
     validate :domain_in_allow_list, unless: -> { errors[:email].any? }
     validate :organisation_present
     attr_reader :email, :first_name, :last_name, :summary_line, :password, :password_confirmation, :organisation
@@ -35,6 +35,8 @@ module Cognito
         resp = create_cognito_user
         @cognito_uuid = resp['user_sub']
       end
+    rescue Aws::CognitoIdentityProvider::Errors::UsernameExistsException
+      # We do nothing as we don't want people to be able enumerate users
     rescue Aws::CognitoIdentityProvider::Errors::ServiceError => e
       errors.add(:base, e.message)
     end
@@ -47,7 +49,7 @@ module Cognito
 
     def create_cognito_user
       client.sign_up(
-        client_id: ENV['COGNITO_CLIENT_ID'],
+        client_id: ENV.fetch('COGNITO_CLIENT_ID', nil),
         secret_hash: Cognito::Common.build_secret_hash(email),
         username: email,
         password: password,
