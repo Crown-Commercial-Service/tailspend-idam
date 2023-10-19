@@ -54,7 +54,7 @@ group :development, :test do
   gem 'dotenv-rails', '~> 2.8.1', '>= 2.8.1'
   gem 'i18n-tasks', '~> 1.0.13'
   gem 'rspec-rails', '~> 6.0.3', '>= 6.0.3'
-  gem 'rubocop', '~> 1.56.4'
+  gem 'rubocop', '~> 1.57.1'
   gem 'rubocop-performance', '~> 1.19.1'
   gem 'rubocop-rails', '~> 2.21.2'
   gem 'rubocop-rspec', '~> 2.24.1' # or gem 'rubocop-minitest'
