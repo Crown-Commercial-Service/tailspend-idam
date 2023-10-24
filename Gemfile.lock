@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/jumph4x/canonical-rails.git
-  revision: a636935da290b64b0da088e338fe8de86e808a8d
+  revision: 8ebd1dce99953dbeb50e83b91e668f0bb3d34a8a
   specs:
-    canonical-rails (0.2.14)
-      actionview (>= 4.1, <= 7.1)
+    canonical-rails (0.2.15)
+      actionview (>= 4.1, <= 7.2)
 
 GEM
   remote: https://rubygems.org/
@@ -177,7 +177,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2020.0512)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.4)
+    mini_portile2 (2.8.5)
     minitest (5.20.0)
     msgpack (1.6.0)
     net-imap (0.4.2)
