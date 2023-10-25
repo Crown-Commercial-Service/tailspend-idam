@@ -34,19 +34,11 @@ module Base
       redirect_to home_path if !params.key?(:client_id) || !params.key?(:state)
     end
 
-    def after_sign_in_path_for(resource)
-      stored_location_for(resource) || gateway_url
-    end
-
-    def after_sign_out_path_for(_resource)
-      gateway_url
-    end
-
     def result_unsuccessful_path
       # sign_out
       if @result.needs_password_reset
         Rails.logger.info 'SIGN IN ATTEMPT FAILED: Password reset required'
-        redirect_to base_confirm_forgot_password_path(e: TextEncryptor.encrypt(sign_in_params[:email]))
+        redirect_to base_edit_user_password_path(e: TextEncryptor.encrypt(sign_in_params[:email]))
       elsif @result.needs_confirmation
         Rails.logger.info 'SIGN IN ATTEMPT FAILED: Password confirmation required'
         redirect_to base_users_confirm_path(e: TextEncryptor.encrypt(sign_in_params[:email]))
@@ -54,12 +46,6 @@ module Base
         Rails.logger.info "SIGN IN ATTEMPT FAILED: #{get_error_list(@result.errors)}"
         render :new
       end
-    end
-
-    def build_nonce_jwt
-      decoded_token = JWT.decode @result.cognito_user_response.authentication_result.id_token, nil, false
-      decoded_token[0]['nonce'] = params[:nonce]
-      JWT.encode decoded_token[0], nil, 'none'
     end
 
     # rubocop:disable Metrics/AbcSize
