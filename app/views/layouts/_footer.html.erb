@@ -1,30 +1,44 @@
 <%= render partial: '/layouts/contact_us' %>
-<div class="govuk-footer__container govuk-width-container">
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-one-third">
-      <span class="govuk-footer__logotype">
-        <%= render partial: '/layouts/logotype', locals: { alt_tex: t('.crown_commercial_service_logo') } %>
-      </span>
-    </div>
-
-    <nav class="govuk-grid-column-two-thirds" aria-label="Footer navigation">
-      <div class="govuk-footer__meta">
-        <div class="govuk-footer__meta-item">
-          <%= link_to t('.cookie_policy_link'), cookie_policy_path, class: 'ccs-footer__links ccs-no-print', aria: { label: t('.cookie_policy_link_aria_label') } %>
-        </div>
-        <div class="govuk-footer__meta-item">
-          <%= link_to t('.cookie_settings_link'), cookie_settings_path, class: 'ccs-footer__links ccs-no-print', aria: { label: t('.cookie_settings_link_aria_label') } %>
-        </div>
-        <div class="govuk-footer__meta-item">
-          <%= link_to t('.privacy_link_text'), t('.privacy_link'), class: 'ccs-footer__links ccs-no-print', aria: { label: t('.privacy_link_aria_label') }, target: '_blank' %>
-        </div>
-        <div class="govuk-footer__meta-item">
-          <%= link_to t('.accessibility_statement_link'), accessibility_statement_path, class: 'ccs-footer__links ccs-no-print', aria: { label: t('.accessibility_statement_link_aria_label') } %>
-        </div>
-        <div class="govuk-footer__meta-item">
-          <%= t('.crown_copyright') %>
-        </div>
-      </div>
-    </nav>
-  </div>
-</div>
+<%= ccs_footer(
+  meta: {
+    items: [
+      {
+        text: t('.cookie_policy_link'),
+        href: cookie_policy_path,
+        attributes: {
+          aria: {
+            label: t('.cookie_policy_link_aria_label')
+          }
+        }
+      },
+      {
+        text: t('.cookie_settings_link'),
+        href: cookie_settings_path,
+        attributes: {
+          aria: {
+            label: t('.cookie_settings_link_aria_label')
+          }
+        }
+      },
+      {
+        text: t('.privacy_link_text'),
+        href: t('.privacy_link'),
+        attributes: {
+          target: '_blank',
+          aria: {
+            label: t('.privacy_link_aria_label')
+          }
+        }
+      },
+      {
+        text: t('.accessibility_statement_link'),
+        href: accessibility_statement_path,
+        attributes: {
+          aria: {
+            label: t('.accessibility_statement_link_aria_label')
+          }
+        }
+      }
+    ]
+  }
+) %>

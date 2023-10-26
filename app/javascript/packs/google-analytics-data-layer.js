@@ -26,7 +26,7 @@ const updateDataLayer = (cookiePreferences) => {
   setCookiePreferencesSaved(cookiePreferences)
 }
 
-$(() => {
+const initGoogleAnalyticsDataLayer = () => {
   if (window.dataLayer) {
     const cookiePreferences = getCookiePreferences()
     const cookiePreferencesSaved = getCookiePreferencesSaved()
@@ -35,4 +35,6 @@ $(() => {
       updateDataLayer(JSON.parse(cookiePreferences))
     }
   }
-})
+}
+
+export { initGoogleAnalyticsDataLayer }

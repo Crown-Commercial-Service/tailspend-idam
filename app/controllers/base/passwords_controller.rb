@@ -37,10 +37,6 @@ module Base
       end
     end
 
-    def password_reset_success; end
-
-    def confirm_new; end
-
     private
 
     def forgot_password_params

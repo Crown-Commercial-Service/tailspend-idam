@@ -8,7 +8,7 @@ module Api
       skip_before_action :verify_authenticity_token, only: %i[authorize token user_info]
 
       def authorize
-        authorize = Cognito::Authorize.new(params['client_id'], params['response_type'], params['redirect_uri'])
+        authorize = Cognito::Authorize.new(params[:client_id], params[:response_type], params[:redirect_uri])
         redirect_to(base_new_user_session_path(request.parameters)) if authorize.valid?
       end
 
@@ -20,9 +20,8 @@ module Api
 
       def user_info
         data = get_user_cognito(bearer_token)
-        response_data = {}
-        data.user_attributes.map { |attributes| response_data[attributes[:name]] = attributes[:value] }
-        render json: response_data
+
+        render json: data.user_attributes.to_h { |attributes| [attributes[:name], attributes[:value]] }
       end
 
       private
