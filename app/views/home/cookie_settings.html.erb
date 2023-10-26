@@ -1,22 +1,11 @@
 <%= content_for :page_title, t('.heading') %>
 
-<div class="govuk-grid-row" id="cookie-settings-saved" <%= 'hidden' unless params[:cookies_updated] %>>
-  <div class="govuk-grid-column-three-quarters">
-    <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-      <div class="govuk-notification-banner__header">
-        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-          Success
-        </h2>
-      </div>
-      <div class="govuk-notification-banner__content">
-        <h3 class="govuk-notification-banner__heading">
-          <%= t('.cookies_saved') %>
-        </h3>
-        <p class="govuk-body">
-          <%= t('.cookies_saved_description') %>
-        </p>
-      </div>
-    </div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters" id="cookie-settings-saved" <%= 'hidden' unless params[:cookies_updated] %>>
+    <%= govuk_notification_banner(t('.cookies_saved'), true) %>
+  </div>
+  <div class="govuk-grid-column-three-quarters" id="cookie-settings-not-saved" hidden>
+    <%= govuk_notification_banner(t('.cookies_not_saved'), classes: 'govuk-notification-banner--error', title_text: t('.error')) %>
   </div>
 </div>
 
@@ -52,49 +41,65 @@
         <%= t('home.cookies.measure_website_use.title') %>
       </h2>
 
-      <fieldset class="govuk-fieldset">
-        <legend class="govuk-fieldset__legend">
-          <h3 class="govuk-fieldset__heading govuk-heading-m govuk-!-font-weight-bold">
-            <%= t('home.cookies.measure_website_use.ga') %>
-          </h3>
-        </legend>
-
-        <%= render partial: 'home/ga_cookies_info' %>
-
-        <div class="govuk-radios">
-          <div class="govuk-radios__item">
-            <%= radio_button_tag :ga_cookie_usage, true, cookie_preferences_settings['usage'], class: 'govuk-radios__input' %>
-            <%= label_tag :ga_cookie_usage, t('.use_cookies.ga'), for: :ga_cookie_usage_true, class: 'govuk-label govuk-radios__label' %>
-          </div>
-          <div class="govuk-radios__item">
-            <%= radio_button_tag :ga_cookie_usage, false, !cookie_preferences_settings['usage'], class: 'govuk-radios__input' %>
-            <%= label_tag :ga_cookie_usage, t('.dont_use_cookies.ga'), for: :ga_cookie_usage_false, class: 'govuk-label govuk-radios__label' %>
-          </div>
-        </div>
-      </fieldset>
+      <%= govuk_radios(
+        :ga_cookie_usage,
+        [
+          {
+            value: true,
+            label: {
+              text: t('.use_cookies.ga')
+            },
+            checked: cookie_preferences_settings['usage'],
+          },
+          {
+            value: false,
+            label: {
+              text: t('.dont_use_cookies.ga')
+            },
+            checked: !cookie_preferences_settings['usage'],
+          }
+        ],
+        fieldset: {
+          legend: {
+            text: t('home.cookies.measure_website_use.ga'),
+            classes: 'govuk-fieldset__legend--m'
+          }
+        },
+        hint: {
+          text: render(partial: 'home/ga_cookies_info')
+        }
+      ) %>
 
       <hr class="govuk-section-break govuk-section-break--m">
 
-      <fieldset class="govuk-fieldset">
-        <legend class="govuk-fieldset__legend">
-          <h3 class="govuk-fieldset__heading govuk-heading-m govuk-!-font-weight-bold">
-            <%= t('home.cookies.measure_website_use.glassbox') %>
-          </h3>
-        </legend>
-
-        <%= render partial: 'home/glassbox_cookies_info' %>
-
-        <div class="govuk-radios">
-          <div class="govuk-radios__item">
-            <%= radio_button_tag :glassbox_cookie_usage, true, cookie_preferences_settings['glassbox'], class: 'govuk-radios__input' %>
-            <%= label_tag :glassbox_cookie_usage, t('.use_cookies.glassbox'), for: :glassbox_cookie_usage_true, class: 'govuk-label govuk-radios__label' %>
-          </div>
-          <div class="govuk-radios__item">
-            <%= radio_button_tag :glassbox_cookie_usage, false, !cookie_preferences_settings['glassbox'], class: 'govuk-radios__input' %>
-            <%= label_tag :glassbox_cookie_usage, t('.dont_use_cookies.glassbox'), for: :glassbox_cookie_usage_false, class: 'govuk-label govuk-radios__label' %>
-          </div>
-        </div>
-      </fieldset>
+      <%= govuk_radios(
+        :glassbox_cookie_usage,
+        [
+          {
+            value: true,
+            label: {
+              text: t('.use_cookies.glassbox')
+            },
+            checked: cookie_preferences_settings['glassbox'],
+          },
+          {
+            value: false,
+            label: {
+              text: t('.dont_use_cookies.glassbox')
+            },
+            checked: !cookie_preferences_settings['glassbox'],
+          }
+        ],
+        fieldset: {
+          legend: {
+            text: t('home.cookies.measure_website_use.glassbox'),
+            classes: 'govuk-fieldset__legend--m'
+          }
+        },
+        hint: {
+          text: render(partial: 'home/glassbox_cookies_info')
+        }
+      ) %>
     </div>
   </div>
 
@@ -119,7 +124,7 @@
 
   <div class="govuk-grid-row govuk-body">
     <div class="govuk-grid-column-three-quarters">
-      <%= button_tag t('.save_changes'), class: 'govuk-button', id: 'save-cookie-settings-button' %>
+      <%= govuk_button(t('.save_changes'), attributes: { id: 'save-cookie-settings-button' }) %>
     </div>
   </div>
 <% end %>

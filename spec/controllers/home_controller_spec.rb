@@ -25,7 +25,7 @@ RSpec.describe HomeController do
     end
   end
 
-  describe 'PUT update_cookie_settings' do
+  describe 'GET update_cookie_settings' do
     let(:cookie_names) { response.cookies.map { |cookie_name, _| cookie_name } }
 
     before do
