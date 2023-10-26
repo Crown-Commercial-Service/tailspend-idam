@@ -139,11 +139,6 @@ en:
           error_encountered: An error was encountered with the requested page.
   base:
     passwords:
-      confirm_new:
-        heading: A reset email has been sent.
-        lead: If the email address you’ve entered belongs to a registered organisation, we’ll send a link to reset the password.
-        text01: If you don’t receive this, email
-        text02_html: <a href="mailto:support@crowncommercial.gov.uk">support@crowncommercial.gov.uk</a>
       edit:
         confirm_new_password: Confirm new password
         heading: Reset your password
@@ -159,9 +154,6 @@ en:
         email_hint_html: This is the email address you used to set up the Tail Spend Solution account.
         heading: Reset password
         lead: Enter your email address and we’ll send you a verification code so you can reset your password. Password reset verification codes are only valid for 24 hours.
-      password_reset_success:
-        heading: You have successfully changed your password
-        lead: You can now sign in to your Crown Commercial Service account
     registrations:
       domain_not_on_allow_list:
         back_to_create: Back to create a account
@@ -195,6 +187,7 @@ en:
         the_tailspend_solution: The Tail Spend Solution (RM6202) allows you to browse and buy a range of tail spend products. These are products that are often low volume and low value which organisations usually buy to meet a specific, short term need and are unlikely to buy again or in the near future.
     sessions:
       new:
+        create_account: Create a buyer account
         email_address: Email address
         email_hint_html: Enter the email address you used to set up your account.
         forgotten_password_html: I’ve forgotten my password
@@ -325,11 +318,12 @@ en:
     cookie_settings:
       always_need_to_be_on: They always need to be on.
       cookie_settings: Cookie settings
+      cookies_not_saved: Something went wrong, your cookie preferences were not saved. Please try again.
       cookies_saved: Your cookie settings were saved
-      cookies_saved_description: Other areas of the Tail Spend Solution service may set additional cookies and, if so, will have their own cookie policy and banner.
       dont_use_cookies:
         ga: Do not use cookies that measure my website use (Google Analytics)
         glassbox: Do not use cookies that measure my website use (Glassbox)
+      error: Error
       essential_cookies: These essential cookies do things like remember the notifications you have seen so we do not show them to you again.
       find_out_more: Find out more about cookies on Tail Spend Solution
       heading: Cookies on Tail Spend Solution
@@ -390,9 +384,10 @@ en:
       accept_cookies: Accept analytics cookies
       change_cookie_settings_html: You can %{cookie_settings_link} at any time.
       change_cookie_settings_link: change your cookie settings
-      cookies_accepted: You’ve accepted all analytics cookies.
-      cookies_on_crown_marketplace: Cookies on Tail Spend Solution
-      cookies_rejected: You’ve rejected all analytics cookies.
+      cookies_accepted: 'You’ve accepted all analytics cookies. '
+      cookies_not_saved: Something went wrong, your cookie preferences were not saved. Please try again.
+      cookies_on_tailspend: Cookies on Tail Spend Solution
+      cookies_rejected: 'You’ve rejected all analytics cookies. '
       reject_cookies: Reject analytics cookies
       view_cookies: View cookies
       we_use_some_analytics_cookies: We’d also like to use analytics cookies so we can understand how you use the service and make improvements.
@@ -404,11 +399,12 @@ en:
       cookie_policy_link_aria_label: View our cookie policy
       cookie_settings_link: Cookie settings
       cookie_settings_link_aria_label: View and change your cookie settings
-      crown_commercial_service_logo: The Crown Commercial Service logo
-      crown_copyright: "© Crown copyright"
       privacy_link: https://www.gov.uk/government/publications/crown-commercial-service-privacy-notice/crown-commercial-service-privacy-notice
       privacy_link_aria_label: View our privacy policy
       privacy_link_text: Privacy policy
+    header-banner:
+      back_to_start: Back to start
+      service_name: Sign in to the Tail Spend Solution
   shared:
     error_summary:
       there_is_a_problem: There is a problem

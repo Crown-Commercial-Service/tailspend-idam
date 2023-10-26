@@ -1,32 +1,44 @@
 <%= content_for :page_title, t('.sign_in_header') %>
+
 <h1 class="govuk-heading-xl">
   <%= t('.sign_in_header') %>
 </h1>
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <%= render partial: 'shared/error_summary', locals: { errors: @result.errors } %>
 
     <%= form_with model: @result, url: base_user_session_path(parameters_without_user_details),  html: { novalidate: true }, local: true, method: :post do |f| %>
-      <%= form_group_with_error(f.object, :email) do |displayed_error, any_errors| %>
-        <%= f.label :email, t('.email_address'), class: 'govuk-label govuk-label--m govuk-!-margin-bottom-0' %>
-        <span id="email-hint" class="govuk-hint govuk-!-width-three-quarters">
-          <%= t('.email_hint_html') %>
-        </span>
-        <%= displayed_error %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "off", class:"govuk-input govuk-!-width-two-thirds #{'govuk-input--error' if any_errors}", spellcheck: false, required: true, aria: { describedby: "email-hint" } %>
-      <% end %>
+      <%= govuk_input(
+        :email,
+        form: f,
+        label: {
+          text: t('.email_address'),
+          classes: 'govuk-label--m'
+        },
+        hint: {
+          text: t('.email_hint_html')
+        },
+        classes: 'govuk-!-width-three-quarters',
+        field_type: :email,
+      ) %>
 
-      <%= form_group_with_error(f.object, :password) do |displayed_error, any_errors| %>
-        <%= f.label :password, t('.password'), class: 'govuk-label govuk-label--m govuk-!-margin-bottom-0' %>
-        <%= displayed_error %>
-        <%= f.password_field :password, autofocus: true, autocomplete: "off", class:"govuk-input govuk-!-width-two-thirds #{'govuk-input--error' if any_errors}", spellcheck: false, required: true %>
-      <% end %>
+      <%= govuk_input(
+        :password,
+        form: f,
+        label: {
+          text: t('.password'),
+          classes: 'govuk-label--m'
+        },
+        classes: 'govuk-!-width-three-quarters',
+        field_type: :password,
+      ) %>
 
-      <%= f.submit t('common.sign_in'), id: "submit", class: "govuk-button govuk-!-padding-left-7 govuk-!-padding-right-7", 'aria-label': "#{t('common.sign_in')}" %>
+      <%= govuk_button(t('common.sign_in'), form: f, classes: 'govuk-!-padding-left-7 govuk-!-padding-right-7') %>
     <% end %>
 
     <p class="govuk-body govuk-!-margin-bottom-7">
-      <%= link_to t('activemodel.errors.models.ccs_patterns/home/cog_sign_in.create_account_html'), base_new_user_registration_path, class: "govuk-link" %>
+      <%= link_to t('.create_account'), base_new_user_registration_path, class: "govuk-link" %>
     </p>
 
     <h2 class="govuk-heading-m govuk-!-margin-bottom-2">

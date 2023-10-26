@@ -8,7 +8,7 @@ const addFocusEvent = (error) => {
   });
 };
 
-$(() => {
+const initErrorLinks = () => {
   const errorSummary = $('.govuk-error-summary__list');
 
   if (errorSummary.length) {
@@ -16,4 +16,6 @@ $(() => {
 
     errorLinks.each((_, element) => addFocusEvent(element));
   }
-});
+}
+
+export { initErrorLinks }

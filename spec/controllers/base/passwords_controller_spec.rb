@@ -102,20 +102,4 @@ RSpec.describe Base::PasswordsController do
       end
     end
   end
-
-  describe 'GET confirm_new' do
-    before { get :confirm_new }
-
-    it 'renders the confirm_new page' do
-      expect(response).to render_template(:confirm_new)
-    end
-  end
-
-  describe 'GET password_reset_success' do
-    before { get :password_reset_success }
-
-    it 'renders the password_reset_success page' do
-      expect(response).to render_template(:password_reset_success)
-    end
-  end
 end

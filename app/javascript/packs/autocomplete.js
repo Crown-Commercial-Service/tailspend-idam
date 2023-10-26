@@ -17,7 +17,7 @@ const tailspendAutoComplete = {
           populateResults(response.summary_lines);
           noResults = response.noResults;
         },
-        error() {},
+        error() { },
       });
     }
   },
@@ -40,24 +40,22 @@ const tailspendAutoComplete = {
       onConfirm(query) {
         if (query !== undefined) {
           $('#cognito_sign_up_user_summary_line').val(query);
-          $('#selected-autocomplete-option').show();
-          $('#selected-autocomplete-option p span').text(query);
         }
       },
     });
 
-    $('#organisation-input').on('keyup', (e) => {
-      if ($(e.target).val() !== $('#selected-autocomplete-option p span').text()) {
+    $('#cognito_sign_up_user_organisation').on('keyup', (e) => {
+      if ($(e.target).val() !== $('#cognito_sign_up_user_summary_line').val()) {
         $('#cognito_sign_up_user_summary_line').val('');
-        $('#selected-autocomplete-option').hide();
-        $('#selected-autocomplete-option p span').text('');
       }
     });
   },
 };
 
-$(() => {
+const initAutoComplete = () => {
   if ($('#my-autocomplete-container').length > 0) {
     tailspendAutoComplete.initAutoComplete();
   }
-});
+}
+
+export { initAutoComplete }

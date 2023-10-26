@@ -38,6 +38,8 @@ module Base
 
     def assign_email
       @email = params[:e].present? ? TextEncryptor.decrypt(params[:e]) : confirm_sign_up_params[:email]
+    rescue ActionController::ParameterMissing
+      @email = nil
     end
   end
 end

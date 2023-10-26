@@ -38,7 +38,7 @@
   <% end -%>
 
   <div class="error-content">
-    <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
+    <%= govuk_skip_link('Skip to main content', '#main-content') %>
 
     <%= render partial: '/layouts/cookie-banner' unless cookie_preferences_settings['settings_viewed'] || controller.action_name == 'cookie_settings' %>
     <%= render partial: '/layouts/header-banner' %>
@@ -51,9 +51,8 @@
     </div>
   </div>
 
-  <footer id="main-footer" class="govuk-footer" role="contentinfo">
-    <%= render partial: '/layouts/footer' %>
-  </footer>
+  <%= render partial: '/layouts/footer' %>
+
   <%= javascript_pack_tag 'govuk', 'data-turbolinks-track': 'reload' %>
 </body>
 

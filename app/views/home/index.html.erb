@@ -22,8 +22,8 @@
       <%= t('.your_org_will_need') %>
     </p>
     <div class="govuk-button-group">
-      <%= link_to t('.sign_in_to_ot'), ENV['OFFICE_TEAM_GET_URL'], title: t('.sign_in_to_ot'), class: 'govuk-button', data: { moduel: 'govuk-button' } %>
-      <%= link_to t('.sign_in_to_unite'), ENV['MERCATEO_GET_URL'], title: t('.sign_in_to_unite'), class: 'govuk-button', data: { moduel: 'govuk-button' } %>
+      <%= govuk_button(t('.sign_in_to_ot'), href: ENV['OFFICE_TEAM_GET_URL']) %>
+      <%= govuk_button(t('.sign_in_to_unite'), href: ENV['MERCATEO_GET_URL']) %>
     </div>
   </div>
 </div>
