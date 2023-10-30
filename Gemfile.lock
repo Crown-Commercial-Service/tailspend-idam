@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/jumph4x/canonical-rails.git
-  revision: 8ebd1dce99953dbeb50e83b91e668f0bb3d34a8a
+  revision: 11b9008593c9276cbb24e4710d7e43fa4c316879
   specs:
     canonical-rails (0.2.15)
       actionview (>= 4.1, <= 7.2)
