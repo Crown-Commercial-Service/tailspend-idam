@@ -222,6 +222,9 @@ en:
       check_pasted_address: If you pasted the web address, check you copied the entire address.
       check_web_address: If you typed the web address, check it is correct.
       page_not_found: Page not found
+    service_unavailable:
+      service_unavailable: Sorry, the service is unavailable
+      will_be_available_later: You will be able to use the service later.
     unacceptable:
       changes_rejected: Sorry, the change you wanted was rejected
       explanation: Maybe you tried to change something you didn’t have access to.
