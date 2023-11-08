@@ -1,11 +1,28 @@
+ARG NODE_VERSION=20.0.0
+
+#FROM ruby:3.2.2-alpine AS base
+
+FROM node:${NODE_VERSION}-alpine AS node
+
 FROM ruby:3.2.2-alpine
 
-ARG NODE_MAJOR=20
+COPY --from=node /usr/lib /usr/lib
+COPY --from=node /usr/local/share /usr/local/share
+COPY --from=node /usr/local/lib /usr/local/lib
+COPY --from=node /usr/local/include /usr/local/include
+COPY --from=node /usr/local/bin /usr/local/bin
+
+# COPY --from=base /usr/local/bundle /usr/local/bundle
 
 RUN apk add --update --no-cache \
-  nodejs \
+  npm \
   ca-certificates \
-  npm install -g yarn@1.22.19
+  build-base \
+  libpq-dev \
+  git \
+  tzdata
+
+RUN npm install -g yarn@1.22.19 --force
 
 RUN yarn install --check-files
 
