@@ -7,9 +7,9 @@ FROM node:${NODE_VERSION}-alpine AS node
 # Pull in relevant ruby image
 FROM ruby:3.2.2-alpine
 
-# As it is a multistage build
-# We will pull in the contents from the previous node image
-# To our current ruby image
+# As this is a multistage Docker image build
+# we will pull in the contents from the previous node image build stage
+# to our current ruby build image stage
 COPY --from=node /usr/lib /usr/lib
 COPY --from=node /usr/local/share /usr/local/share
 COPY --from=node /usr/local/lib /usr/local/lib
