@@ -12,7 +12,7 @@ COPY Gemfile Gemfile.lock ./
 
 RUN yarn install --check-files
 
-RUN gem install bundler && bundle install --jobs 20 --retry 5
+RUN gem install bundler && bundle install --jobs 4 --retry 5
 
 COPY . .
 
