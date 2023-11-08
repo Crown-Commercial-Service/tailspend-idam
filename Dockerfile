@@ -1,25 +1,45 @@
-FROM ruby:3.2.2
+# Pass in nodejs version
+ARG NODE_MAJOR=20.0.0
 
-ARG NODE_MAJOR=20
+# Pull in the nodejs image
+FROM node:${NODE_MAJOR}-alpine AS node
 
+# Pull in relevant ruby image
+FROM ruby:3.2.2-alpine
+
+# As it is a multistage build
+# We will pull in the contents from the previous node image
+# To our current ruby image
+COPY --from=node /usr/lib /usr/lib
+COPY --from=node /usr/local/share /usr/local/share
+COPY --from=node /usr/local/lib /usr/local/lib
+COPY --from=node /usr/local/include /usr/local/include
+COPY --from=node /usr/local/bin /usr/local/bin
+
+# Set the app directory
 WORKDIR /app
 
-RUN apt-get update && \
-  apt-get install -y ca-certificates curl gnupg && \
-  mkdir -p /etc/apt/keyrings && \
-  curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
-  echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list  && \
-  apt-get update && \
-  apt-get install -y nodejs && \
-  npm install -g yarn@1.22.19
+# Install application dependencies
+RUN apk add --update --no-cache \
+  npm \
+  ca-certificates \
+  build-base \
+  libpq-dev \
+  git \
+  tzdata \
+  curl
 
-COPY Gemfile Gemfile.lock ./
+RUN npm install -g yarn@1.22.19 --force
 
 RUN yarn install --check-files
 
-RUN gem install bundler && bundle install --jobs 20 --retry 5
+RUN gem install bundler
 
 COPY . .
+
+COPY Gemfile Gemfile.lock ./
+
+RUN bundle install --jobs 20 --retry 5
 
 RUN NODE_OPTIONS=--openssl-legacy-provider rake assets:precompile
 
