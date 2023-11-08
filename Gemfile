@@ -52,7 +52,7 @@ gem 'rack-attack', '~> 6.7.0'
 gem 'ccs-frontend_helpers', '~> 0.1.1'
 
 # Tzinfo gem to work with alpine image
-gem 'tzinfo-data'
+#gem 'tzinfo-data'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
