@@ -33,13 +33,11 @@ RUN npm install -g yarn@1.22.19 --force
 
 RUN yarn install --check-files
 
-RUN gem install bundler
-
 COPY . .
 
 COPY Gemfile Gemfile.lock ./
 
-RUN bundle install --jobs 20 --retry 5
+RUN gem install bundler && bundle install --jobs 20 --retry 5
 
 RUN NODE_OPTIONS=--openssl-legacy-provider rake assets:precompile
 
