@@ -40,7 +40,7 @@ RUN NODE_OPTIONS=--openssl-legacy-provider rake assets:precompile
 
 EXPOSE 3000
 
-CMD rm -f tmp/pid/server.pid & rails s -b '0.0.0.0'
+CMD rm -f tmp/pid/server.pid && rails server -b '0.0.0.0'
 
 
 # RUN apt-get update && \
