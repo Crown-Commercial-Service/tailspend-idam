@@ -26,7 +26,8 @@ RUN apk add --update --no-cache \
   build-base \
   libpq-dev \
   git \
-  tzdata
+  tzdata \
+  curl
 
 RUN npm install -g yarn@1.22.19 --force
 
