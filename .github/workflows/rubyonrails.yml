@@ -1,12 +1,17 @@
 name: "Ruby on Rails CI"
 
 on:
-  push:
-    branches-ignore:
-      - develop
-      - staging
-      - main
-  pull_request:
+  workflow_call:
+    inputs:
+      publish_test_report:
+        description: 'A trigger to publish the test report'
+        default: false
+        required: false
+        type: boolean
+    secrets:
+      cc_test_reporter_id:
+        description: 'The code climate test report ID'
+        required: false
 
 jobs:
   unit-test:
@@ -25,7 +30,7 @@ jobs:
     env:
       RAILS_ENV: test
       DATABASE_URL: "postgis://rails:password@localhost:5432/rails_test"
-      # CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+      CC_TEST_REPORTER_ID: ${{ secrets.cc_test_reporter_id }}
 
     steps:
       - name: Checkout code
@@ -45,8 +50,8 @@ jobs:
       - name: Run unit tests
         run: bin/rake
 
-      # - name: publish code coverage
-      #   uses: paambaati/codeclimate-action@v5.0.0
-      #   with:
-      #     debug: true
-      #   if: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'develop' }}
+      - name: publish code coverage
+        uses: paambaati/codeclimate-action@v5.0.0
+        with:
+          debug: true
+        if: ${{ inputs.publish_test_report }}
