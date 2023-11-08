@@ -1,8 +1,8 @@
 # Pass in nodejs version
-ARG NODE_MAJOR=20.0.0
+ARG NODE_VERSION=20.0.0
 
 # Pull in the nodejs image
-FROM node:${NODE_MAJOR}-alpine AS node
+FROM node:${NODE_VERSION}-alpine AS node
 
 # Pull in relevant ruby image
 FROM ruby:3.2.2-alpine
