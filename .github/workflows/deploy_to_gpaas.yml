@@ -1,0 +1,53 @@
+name: "Deploy latest code to GPaaS"
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        description: 'The name of the environment we are deploying to'
+        required: true
+        type: string
+    secrets:
+      CF_API:
+        description: 'The GPaaS API'
+        required: true
+      CF_USERNAME:
+        description: 'The GPaaS Username'
+        required: true
+      CF_PASSWORD:
+        description: 'The GPaaS Password'
+        required: true
+      CF_ORG:
+        description: 'The org to deploy to'
+        required: true
+
+concurrency:
+  group: deploy-${{ inputs.environment }}
+
+jobs:
+  run-unit-tests:
+    uses: ./.github/workflows/rubyonrails.yml
+
+  run-docker-tests:
+    uses: ./.github/workflows/docker-image.yml
+
+  deploy-to-application:
+    runs-on: ubuntu-latest
+    needs:
+      - run-unit-tests
+      - run-docker-tests
+    environment:
+      name: ${{ inputs.environment }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to GPaaS
+        uses: citizen-of-planet-earth/cf-cli-action@master
+        with:
+          cf_api: ${{ secrets.CF_API }}
+          cf_username: ${{ secrets.CF_USERNAME }}
+          cf_password: ${{ secrets.CF_PASSWORD }}
+          cf_org: ${{ secrets.CF_ORG }}
+          cf_space: ${{ inputs.environment }}
+          command: push -f config/manifests/${{ inputs.environment }}.yml --strategy rolling
