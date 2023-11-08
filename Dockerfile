@@ -2,25 +2,28 @@ FROM ruby:3.2.2-alpine
 
 ARG NODE_MAJOR=20
 
-WORKDIR /app
-
-RUN apk add --update ca-certificates curl nodejs npm
-
-RUN npm install -g yarn@1.22.19
-
-COPY Gemfile Gemfile.lock ./
+RUN apk add --update --no-cache \
+  nodejs \
+  ca-certificates \
+  npm install -g yarn@1.22.19
 
 RUN yarn install --check-files
 
-RUN gem install bundler && bundle install --jobs 4 --retry 5
+RUN gem install bundler
+
+WORKDIR /app
 
 COPY . .
+
+COPY Gemfile Gemfile.lock ./
+
+RUN bundle install --jobs 20 --retry 5
 
 RUN NODE_OPTIONS=--openssl-legacy-provider rake assets:precompile
 
 EXPOSE 3000
 
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD rm -f tmp/pid/server.pid & rails s -b '0.0.0.0'
 
 
 # RUN apt-get update && \
