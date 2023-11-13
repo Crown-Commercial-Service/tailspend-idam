@@ -21,6 +21,9 @@ module Cognito
 
     def call
       confirm_sign_up if valid?
+    rescue Aws::CognitoIdentityProvider::Errors::NotAuthorizedException
+      # We do nothing as we don't want people to be able enumerate users
+      errors.add(:confirmation_code, :invalid)
     rescue Aws::CognitoIdentityProvider::Errors::ServiceError => e
       errors.add(:confirmation_code, e.message)
     end
@@ -33,7 +36,7 @@ module Cognito
 
     def confirm_sign_up
       @response = client.confirm_sign_up(
-        client_id: ENV['COGNITO_CLIENT_ID'],
+        client_id: ENV.fetch('COGNITO_CLIENT_ID', nil),
         secret_hash: Cognito::Common.build_secret_hash(email),
         username: email,
         confirmation_code: confirmation_code

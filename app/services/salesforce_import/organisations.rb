@@ -51,18 +51,18 @@ module SalesforceImport
       if Rails.env.test?
         Rails.root.join('data/test_organisations.csv')
       else
-        URI.parse(ENV['ORGANISATIONS_CSV_BLOB']).open
+        URI.parse(ENV.fetch('ORGANISATIONS_CSV_BLOB', nil)).open
       end
     end
 
     def self.get_organisation_row(row)
       {
-        'organisation_name': row['CustomerName'],
-        'active': !organisation_inactive?(row['CustomerName']),
-        'created_at': DateTime.current,
-        'updated_at': DateTime.current,
-        'urn': row['UniqueReferenceNumber'].to_i,
-        'summary_line': get_summary_line(row)
+        organisation_name: row['CustomerName'],
+        active: !organisation_inactive?(row['CustomerName']),
+        created_at: DateTime.current,
+        updated_at: DateTime.current,
+        urn: row['UniqueReferenceNumber'].to_i,
+        summary_line: get_summary_line(row)
       }
     end
 
@@ -70,7 +70,7 @@ module SalesforceImport
       if row['Address'].nil? && row['City'].nil? && row['Postcode'].nil?
         row['CustomerName']
       else
-        "#{row['CustomerName']} (#{[row['Address'], row['City'], row['Postcode']].reject(&:nil?).join(', ')})"
+        "#{row['CustomerName']} (#{[row['Address'], row['City'], row['Postcode']].compact.join(', ')})"
       end
     end
 

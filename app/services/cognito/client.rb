@@ -29,7 +29,7 @@ module Cognito
 
     def describe_user_pool_client
       @client_response = client.describe_user_pool_client(
-        user_pool_id: ENV['COGNITO_USER_POOL_ID'],
+        user_pool_id: ENV.fetch('COGNITO_USER_POOL_ID', nil),
         client_id: @client_id,
       )
     end

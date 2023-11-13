@@ -15,7 +15,7 @@ RSpec.describe Base::RegistrationsController do
 
     before do
       # rubocop:disable RSpec/AnyInstance
-      allow_any_instance_of(Cognito::SignUpUser).to receive(:create_cognito_user).and_return({ 'user_sub': '1234567890' })
+      allow_any_instance_of(Cognito::SignUpUser).to receive(:create_cognito_user).and_return({ user_sub: '1234567890' })
       # rubocop:enable RSpec/AnyInstance
       AllowedEmailDomain.create(url: 'testemail.com', active: true)
       post :create, params: { cognito_sign_up_user: { email: email, first_name: first_name, last_name: 'Smith', password: 'Password890!', password_confirmation: 'Password890!', summary_line: 'Active Organisation 1 (1 Test Road, London, AB1 2CD)' } }

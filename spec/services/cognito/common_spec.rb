@@ -43,7 +43,7 @@ RSpec.describe Cognito::Common do
       let(:bearer_token) { 'Some other token' }
 
       it 'returns nil' do
-        expect(described_class.bearer_token(request)).to be nil
+        expect(described_class.bearer_token(request)).to be_nil
       end
     end
   end

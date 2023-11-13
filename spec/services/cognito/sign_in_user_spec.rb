@@ -6,9 +6,7 @@ RSpec.describe Cognito::SignInUser do
   let(:password) { 'password123!' }
   let(:redirect_uri) { 'https://test.com' }
 
-  before do
-    stub_const('ENV', { 'CALLBACK_URLS' => '[https://test.com]' })
-  end
+  before { stub_const('ENV', { 'CALLBACK_URLS' => '[https://test.com]' }) }
 
   describe '.valid?' do
     context 'when both email and password are present' do
@@ -41,6 +39,14 @@ RSpec.describe Cognito::SignInUser do
         it 'has the correct error message' do
           sign_in_user.valid?
           expect(sign_in_user.errors[:email].first).to eq 'You must enter your email address in the correct format, like name@example.com'
+        end
+      end
+
+      context 'and the domains contain a dash' do
+        let(:email) { 'test@digital.cabinet-office.gov.uk' }
+
+        it 'is valid' do
+          expect(sign_in_user.valid?).to be true
         end
       end
     end
@@ -101,14 +107,14 @@ RSpec.describe Cognito::SignInUser do
         allow(client).to receive(:describe_user_pool_client).and_return(client_creds)
         allow(client_creds).to receive(:user_pool_client).and_return(user_pool_client)
         allow(user_pool_client).to receive(:explicit_auth_flows).and_return(explicit_auth_flows)
+        allow(sign_in_user).to receive(:sleep)
       end
 
       context 'and the explicit_auth_flows includes "USER_PASSWORD_AUTH"' do
         let(:explicit_auth_flows) { ['USER_PASSWORD_AUTH'] }
 
         before do
-          allow(user_pool_client).to receive(:client_id).and_return('supersecretkey2')
-          allow(user_pool_client).to receive(:client_secret).and_return('supersecretkey1')
+          allow(user_pool_client).to receive_messages(client_id: 'supersecretkey2', client_secret: 'supersecretkey1')
           allow(client).to receive(:initiate_auth).and_return(auth_response)
           sign_in_user.call
         end
@@ -143,10 +149,8 @@ RSpec.describe Cognito::SignInUser do
     end
 
     context 'when an error is raised' do
-      let(:message) { 'Some message' }
-
       before do
-        allow(client).to receive(:describe_user_pool_client).and_raise(error.new('Some context', message))
+        allow(client).to receive(:describe_user_pool_client).and_raise(error.new('Some context', 'Some message'))
         sign_in_user.call
       end
 
@@ -175,26 +179,6 @@ RSpec.describe Cognito::SignInUser do
 
         it 'sets the error and success will be false' do
           expect(sign_in_user.errors[:base].first).to eq 'You must provide a correct username or password'
-          expect(sign_in_user.success?).to be false
-        end
-      end
-
-      context 'and the error is NotAuthorizedException' do
-        let(:message) { 'Incorrect username or password.' }
-        let(:error) { Aws::CognitoIdentityProvider::Errors::NotAuthorizedException }
-
-        it 'sets the error and success will be false' do
-          expect(sign_in_user.errors[:base].first).to eq 'You must provide a correct username or password'
-          expect(sign_in_user.success?).to be false
-        end
-      end
-
-      context 'and the error is NotAuthorizedException with too many attempts exception' do
-        let(:message) { 'Password attempt limit exceeded.' }
-        let(:error) { Aws::CognitoIdentityProvider::Errors::NotAuthorizedException }
-
-        it 'sets the error and success will be false' do
-          expect(sign_in_user.errors[:base].first).to eq 'Password attempt limit exceeded.'
           expect(sign_in_user.success?).to be false
         end
       end

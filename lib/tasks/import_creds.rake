@@ -1,7 +1,7 @@
 namespace :import_creds do
   desc 'Import creds'
   task import: :environment do
-    vcap_services = JSON.parse(ENV['VCAP_SERVICES'])
+    vcap_services = JSON.parse(ENV.fetch('VCAP_SERVICES', nil))
     puts 'Pulling creds'
     s3_creds = Aws::Credentials.new(vcap_services['aws-s3-bucket'][0]['credentials']['aws_access_key_id'], vcap_services['aws-s3-bucket'][0]['credentials']['aws_secret_access_key'])
     s3 = Aws::S3::Resource.new(region: vcap_services['aws-s3-bucket'][0]['credentials']['aws_region'], credentials: s3_creds)

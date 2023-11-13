@@ -1,8 +1,6 @@
 <%= content_for :page_title, t('.heading') %>
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
-
     <h1 class="govuk-heading-xl">
       <%= t('.heading') %>
     </h1>
@@ -28,7 +26,8 @@
       </li>
     </ul>
 
-    <%= link_to t('.back_to_create'), base_new_user_registration_path, class: 'govuk-button govuk-!-margin-top-4  govuk-!-margin-bottom-8 govuk-!-padding-left-5 govuk-!-padding-right-5', 'aria-label': t('.back_to_create') %>
+    <hr class="govuk-section-break govuk-section-break--m">
 
+    <%= govuk_button(t('.back_to_create'), href: base_new_user_registration_path) %>
   </div>
 </div>

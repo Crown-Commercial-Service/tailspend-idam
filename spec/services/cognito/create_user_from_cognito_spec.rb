@@ -10,8 +10,8 @@ RSpec.describe Cognito::CreateUserFromCognito do
       let(:email) { nil }
 
       it 'sets the email and error as nil' do
-        expect(create_user_from_cognito.email).to be nil
-        expect(create_user_from_cognito.error).to be nil
+        expect(create_user_from_cognito.email).to be_nil
+        expect(create_user_from_cognito.error).to be_nil
       end
     end
 
@@ -20,14 +20,14 @@ RSpec.describe Cognito::CreateUserFromCognito do
 
       it 'converts the email to lowercase and sets error as nil' do
         expect(create_user_from_cognito.email).to eq 'tester@test.com'
-        expect(create_user_from_cognito.error).to be nil
+        expect(create_user_from_cognito.error).to be_nil
       end
     end
 
     context 'when the email contains all lowercase letters' do
       it 'sets the email unchanged and sets error as nil' do
         expect(create_user_from_cognito.email).to eq 'tester@test.com'
-        expect(create_user_from_cognito.error).to be nil
+        expect(create_user_from_cognito.error).to be_nil
       end
     end
   end
@@ -47,8 +47,7 @@ RSpec.describe Cognito::CreateUserFromCognito do
       before do
         allow(client).to receive(:admin_get_user).and_return(cognito_user)
         allow(cognito_user).to receive(:user_attributes).and_return([attribute_type])
-        allow(attribute_type).to receive(:name).and_return('sub')
-        allow(attribute_type).to receive(:value).and_return('my-cognito-id')
+        allow(attribute_type).to receive_messages(name: 'sub', value: 'my-cognito-id')
         allow(client).to receive(:admin_list_groups_for_user)
         create_user_from_cognito.call
       end
@@ -94,8 +93,7 @@ RSpec.describe Cognito::CreateUserFromCognito do
 
     before do
       create_user_from_cognito.instance_variable_set(:@cognito_user, cognito_user)
-      allow(attribute_type).to receive(:name).and_return('sub')
-      allow(attribute_type).to receive(:value).and_return('my-cognito-id')
+      allow(attribute_type).to receive_messages(name: 'sub', value: 'my-cognito-id')
     end
 
     context 'when the user has been found' do
@@ -110,7 +108,7 @@ RSpec.describe Cognito::CreateUserFromCognito do
       before { allow(cognito_user).to receive(:user_attributes).and_return([]) }
 
       it 'returns nil' do
-        expect(create_user_from_cognito.send(:cognito_attribute, 'sub')).to be nil
+        expect(create_user_from_cognito.send(:cognito_attribute, 'sub')).to be_nil
       end
     end
   end

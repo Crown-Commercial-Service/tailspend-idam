@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get '/', to: 'home#index', as: :home
   get '/accessibility-statement', to: 'home#accessibility_statement'
   get '/cookie-settings', to: 'home#cookie_settings'
+  get '/cookie-settings/update', to: 'home#update_cookie_settings'
   get '/cookie-policy', to: 'home#cookie_policy'
+  get '/health_check', to: 'health_check#index'
 
   # API endpoints here
   namespace :api do
@@ -39,4 +41,5 @@ Rails.application.routes.draw do
   get '/404', to: 'errors#not_found'
   get '/422', to: 'errors#unacceptable'
   get '/500', to: 'errors#internal_error'
+  get '/503', '/service-unavailable', to: 'errors#service_unavailable'
 end

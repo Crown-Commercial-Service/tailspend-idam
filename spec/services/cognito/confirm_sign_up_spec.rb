@@ -5,8 +5,8 @@ RSpec.describe Cognito::ConfirmSignUp do
 
   let(:params) do
     {
-      email: email,
-      confirmation_code: confirmation_code
+      email:,
+      confirmation_code:
     }
   end
 
@@ -108,13 +108,26 @@ RSpec.describe Cognito::ConfirmSignUp do
 
     context 'when there are errors' do
       before do
-        allow(client).to receive(:confirm_sign_up).and_raise(Aws::CognitoIdentityProvider::Errors::ServiceError.new('Some context', 'Some message'))
+        allow(client).to receive(:confirm_sign_up).and_raise(error.new('Some context', 'Some message'))
         confirm_sign_up.call
       end
 
-      it 'sets the error and success will be false' do
-        expect(confirm_sign_up.errors[:confirmation_code].first).to eq 'Some message'
-        expect(confirm_sign_up.success?).to be false
+      context 'and the error is generic' do
+        let(:error) { Aws::CognitoIdentityProvider::Errors::ServiceError }
+
+        it 'sets the error and success will be false' do
+          expect(confirm_sign_up.errors[:confirmation_code].first).to eq 'Some message'
+          expect(confirm_sign_up.success?).to be false
+        end
+      end
+
+      context 'and the error is NotAuthorizedException' do
+        let(:error) { Aws::CognitoIdentityProvider::Errors::NotAuthorizedException }
+
+        it 'sets the error and success will be false' do
+          expect(confirm_sign_up.errors[:confirmation_code].first).to eq 'Invalid verification code provided, please try again.'
+          expect(confirm_sign_up.success?).to be false
+        end
       end
     end
   end

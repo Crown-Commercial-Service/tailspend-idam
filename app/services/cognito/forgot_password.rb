@@ -5,7 +5,7 @@ module Cognito
     include ActiveModel::Validations
     attr_reader :email, :error
 
-    validates :email, format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i }
+    validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
     def initialize(email)
       @email = email.try(:downcase)
@@ -16,7 +16,7 @@ module Cognito
     def call
       forgot_password if valid?
     rescue Aws::CognitoIdentityProvider::Errors::UserNotFoundException
-      errors.add(:base, :user_not_found)
+      # We do nothing as we don't want people to be able enumerate users
     rescue Aws::CognitoIdentityProvider::Errors::InvalidParameterException
       errors.add(:base, :user_not_found)
     rescue Aws::CognitoIdentityProvider::Errors::ServiceError => e
@@ -30,7 +30,7 @@ module Cognito
     private
 
     def forgot_password
-      client.forgot_password(client_id: ENV['COGNITO_CLIENT_ID'], secret_hash: Cognito::Common.build_secret_hash(email), username: email)
+      client.forgot_password(client_id: ENV.fetch('COGNITO_CLIENT_ID', nil), secret_hash: Cognito::Common.build_secret_hash(email), username: email)
     end
   end
 end
