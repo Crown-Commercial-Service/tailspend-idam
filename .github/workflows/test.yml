@@ -1,0 +1,20 @@
+name: "Run our tests"
+
+on:
+  push:
+    branches-ignore:
+      - develop
+      - preprod
+      - main
+  pull_request:
+
+jobs:
+  run-unit-tests:
+    uses: ./.github/workflows/rubyonrails.yml
+    with:
+      publish_test_report: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'develop' }}
+    secrets:
+      cc_test_reporter_id: ${{ secrets.CC_TEST_REPORTER_ID }}
+
+  run-docker-build:
+    uses: ./.github/workflows/docker-image.yml

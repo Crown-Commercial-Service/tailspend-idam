@@ -6,6 +6,10 @@ module Base
       @response = Cognito::ForgotPassword.new(nil)
     end
 
+    def edit
+      @response = Cognito::ConfirmPasswordReset.new({ email: TextEncryptor.decrypt(params[:e]) })
+    end
+
     def create
       @response = Cognito::ForgotPassword.call(forgot_password_params[:email])
       if @response.success?
@@ -17,10 +21,6 @@ module Base
 
         render :new
       end
-    end
-
-    def edit
-      @response = Cognito::ConfirmPasswordReset.new({ email: TextEncryptor.decrypt(params[:e]) })
     end
 
     def update
@@ -36,10 +36,6 @@ module Base
         render :edit, erorr: @response.error
       end
     end
-
-    def password_reset_success; end
-
-    def confirm_new; end
 
     private
 

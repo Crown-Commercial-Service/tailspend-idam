@@ -1,44 +1,134 @@
-import Cookies from 'js-cookie';
+import Cookies from 'js-cookie'
 
-const removeGACookies = () => {
-  const cookieList = Object.keys(Cookies.get());
-  const gaCookieList = [];
+const cookieUpdateOptions = [
+  {
+    cookieName: 'usage',
+    cookiePrefixes: ['_ga', '_gi']
+  },
+  {
+    cookieName: 'glassbox',
+    cookiePrefixes: ['_cls']
+  }
+]
+
+const getCookiePreferences = () => {
+  const defaultCookieSettings = '{"usage":true,"glassbox":false}'
+
+  return JSON.parse(Cookies.get('cookie_preferences') ?? defaultCookieSettings)
+}
+
+const removeUnwantedCookies = () => {
+  const cookieList = Object.keys(Cookies.get())
+  const cookiesToRemove = ['tailspend_cookie_settings_viewed', 'tailspend_google_analytics_enabled', 'tailspend_cookie_options_v1'];
+  const cookiePreferences = getCookiePreferences()
+  const cookiePrefixes = []
+
+  cookieUpdateOptions.forEach((cookieUpdateOption) => {
+    if (!cookiePreferences[cookieUpdateOption.cookieName]) cookiePrefixes.push(...cookieUpdateOption.cookiePrefixes)
+  })
 
   for (let i = 0; i < cookieList.length; i++) {
-    const cookieName = cookieList[i];
+    const cookieName = cookieList[i]
 
-    if (cookieName.startsWith('_ga') || cookieName.startsWith('_gi')) gaCookieList.push(cookieName);
+    if (cookiePrefixes.some((cookiePrefix) => cookieName.startsWith(cookiePrefix))) cookiesToRemove.push(cookieName)
   }
 
-  gaCookieList.forEach((cookieName) => Cookies.remove(cookieName, { path: '/', domain: '.crowncommercial.gov.uk'}));
-};
+  cookiesToRemove.forEach((cookieName) => { Cookies.remove(cookieName, { path: '/', domain: '.crowncommercial.gov.uk' }) })
+}
 
-document.addEventListener('DOMContentLoaded', () => {
-  if (Cookies.get('tailspend_cookie_settings_viewed') === 'true') $('#cookie-consent-container').hide();
-  if (Cookies.get('tailspend_google_analytics_enabled') !== 'true') removeGACookies();
-});
+const removeGACookies = (cookieBannerFormData, successFunction, failureFunction) => {
+  let success = false
 
-$(() => {
-  $('#accept-all-cookies').on('click', (e) => {
-    e.preventDefault();
-
-    Cookies.set('tailspend_cookie_settings_viewed', 'true', { expires: 365 });
-    Cookies.set('tailspend_google_analytics_enabled', 'true', { expires: 365 });
-    $('#cookie-options-container').hide();
-    $('#cookies-accepted-container').show();
-  });
-
-  $('#save-cookie-settings-button').on('click', () => {
-    Cookies.set('tailspend_cookie_settings_viewed', 'true', { expires: 365 });
-
-    if ($('input[name=ga_cookie_usage]:checked').val() === 'true') {
-      Cookies.set('tailspend_google_analytics_enabled', 'true', { expires: 365 });
-    } else {
-      Cookies.remove('tailspend_google_analytics_enabled');
-      removeGACookies();
+  $.ajax({
+    type: 'GET',
+    url: '/cookie-settings/update',
+    data: cookieBannerFormData,
+    dataType: 'json',
+    success() {
+      success = true
+    },
+    error() {
+      success = false
+    },
+    complete() {
+      success ? successFunction() : failureFunction()
     }
+  }).catch(() => {
+    failureFunction()
+  })
+}
 
-    $('#cookie-settings-saved').removeClass('govuk-visually-hidden');
-    $('html, body').animate({ scrollTop: $('#cookie-settings-saved').offset().top }, 'slow');
-  });
-});
+const scrollNotificationBannerIntoView = ($notificationBanner, $otherNotificationBanner) => {
+  $otherNotificationBanner.hide()
+  $notificationBanner.show()
+
+  const offsetCoordinates = $notificationBanner.offset()
+
+  if (offsetCoordinates !== undefined) {
+    $('html, body').animate({ scrollTop: offsetCoordinates.top }, 'slow')
+  }
+}
+
+const cookiesSaved = () => {
+  scrollNotificationBannerIntoView(
+    $('#cookie-settings-saved'),
+    $('#cookie-settings-not-saved')
+  )
+}
+
+const cookiesNotSaved = () => {
+  scrollNotificationBannerIntoView(
+    $('#cookie-settings-not-saved'),
+    $('#cookie-settings-saved')
+  )
+}
+
+const cookieSettingsViewed = ($newBanner) => {
+  $('#cookie-options-container').hide()
+  $newBanner.show()
+}
+
+const cookieSettingsError = () => {
+  $('#cookie-settings-not-saved').show()
+}
+
+const updateBanner = (isAccepeted, $newBanner) => {
+  removeGACookies(
+    {
+      ga_cookie_usage: isAccepeted,
+      glassbox_cookie_usage: isAccepeted
+    },
+    cookieSettingsViewed.bind(null, $newBanner),
+    cookieSettingsError
+  )
+}
+
+const initCookiePolicy = () => {
+  removeUnwantedCookies()
+
+  $('[name="cookies"]').on('click', (event) => {
+    event.preventDefault()
+
+    const buttonValue = event.currentTarget.value
+
+    updateBanner(String(buttonValue === 'accept'), $(`#cookies-${buttonValue}ed-container`))
+  })
+
+  const $form = $('#update-cookie-setings')
+
+  $form.on('submit', (event) => {
+    event.preventDefault()
+
+    $('#cookie-settings-saved').show()
+
+    const formData = Object.fromEntries($form.serializeArray().map((element) => [element.name, element.value]))
+
+    removeGACookies(
+      formData,
+      cookiesSaved,
+      cookiesNotSaved
+    )
+  })
+}
+
+export { initCookiePolicy }

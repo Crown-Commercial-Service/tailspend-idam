@@ -18,7 +18,10 @@ module Cognito
     end
 
     def call
-      confirm_forgot_password if valid?
+      if valid?
+        create_user_if_needed
+        confirm_forgot_password
+      end
     rescue Aws::CognitoIdentityProvider::Errors::CodeMismatchException => e
       errors.add(:confirmation_code, e.message)
     rescue Aws::CognitoIdentityProvider::Errors::ServiceError => e
@@ -33,12 +36,21 @@ module Cognito
 
     def confirm_forgot_password
       @response = client.confirm_forgot_password(
-        client_id: ENV['COGNITO_CLIENT_ID'],
+        client_id: ENV.fetch('COGNITO_CLIENT_ID', nil),
         secret_hash: Cognito::Common.build_secret_hash(email),
         username: email,
         password: password,
         confirmation_code: confirmation_code
       )
+    end
+
+    def create_user_if_needed
+      resp = CreateUserFromCognito.call(email)
+      if resp.success?
+        resp.user
+      else
+        errors.add(:base, I18n.t('activemodel.errors.models.cognito/confirm_password_reset.user_not_found'))
+      end
     end
   end
 end

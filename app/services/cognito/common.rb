@@ -3,7 +3,7 @@
 module Cognito
   class Common < BaseService
     def self.build_secret_hash(email)
-      build_client_secret_hash(email, ENV['COGNITO_CLIENT_ID'], ENV['COGNITO_CLIENT_SECRET'])
+      build_client_secret_hash(email, ENV.fetch('COGNITO_CLIENT_ID', nil), ENV.fetch('COGNITO_CLIENT_SECRET', nil))
     end
 
     # if client has a secret we need to use that to build thier secret for cognito
@@ -15,7 +15,7 @@ module Cognito
 
     def get_client_credentials(client_id)
       client.describe_user_pool_client(
-        user_pool_id: ENV['COGNITO_USER_POOL_ID'],
+        user_pool_id: ENV.fetch('COGNITO_USER_POOL_ID', nil),
         client_id: client_id,
       )
     end

@@ -1,13 +1,8 @@
-<%= render 'layouts/logo' %>
-<div class="govuk-header__content">
-  <span class="govuk-header__link--service-name">Sign in to the Tail Spend Solution</span>
-  <% unless current_page?('/')  %>
-    <nav role="navigation" aria-label="Top Level Navigation">
-      <ul id="navigation" class="govuk-header__navigation ">
-        <li class="govuk-header__navigation-item ">
-          <a class="govuk-header__link" id="back_to_register_link" href="<%= home_path %>">Back to start</a>
-        </li>
-      </ul>
-    </nav>
-  <% end %>
-</div>
+<%= ccs_header(
+  service: {
+    name: t('.service_name')
+  },
+  navigation: {
+    primary_items: ['/', '/service-unavailable', '/503'].any? { |path| current_page?(path) } ? nil : [{ text: t('.back_to_start'), href: home_path }]
+  }
+) %>

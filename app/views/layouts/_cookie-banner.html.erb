@@ -1,20 +1,58 @@
-<div class="cookie-message" id="cookie-consent-container" aria-label="Cookie Policy" aria-live="polite">
-  <div class="cookie-message__inner govuk-width-container" id="cookie-options-container">
-    <div class="govuk-body">
-      <p>
-        <%= t('.why_we_use_cookies') %>
-      </p>
-    </div>
-    <div class="cookie-message__actions">
-      <%= button_tag t('.accept_all_cookies'), class: 'govuk-button govuk-!-margin-right-4', id: 'accept-all-cookies' %>
-      <%= link_to t('.set_cookie_preferences'), cookie_settings_path, class: 'govuk-button' %>
-    </div>
-  </div>
-  <div class="cookie-accepted-message__inner govuk-width-container" id="cookies-accepted-container" hidden>
-    <div class="govuk-body">
-      <p>
-        <%= t('.cookies_acepted_html', cookies_acepted_link: link_to(t('.cookies_acepted_link_text'), cookie_settings_path, class: 'govuk-link--no-visited-state'))%>
-      </p>
-    </div>
-  </div>
-</div>
+<%= govuk_cookie_banner(
+  [
+    {
+      heading_text: t('.cookies_on_tailspend'),
+      text: capture do
+        concat(tag.p(t('.we_use_some_essential_cookies'), class: 'govuk-body'))
+        concat(tag.p(t('.we_use_some_analytics_cookies'), class: 'govuk-body'))
+        concat(tag.div(govuk_warning_text(t('.cookies_not_saved')), id: 'cookie-settings-not-saved', hidden: ''))
+      end,
+      actions: [
+        {
+          text: t('.accept_cookies'),
+          attributes: {
+            id: 'accept-cookies',
+            name: 'cookies',
+            value: 'accept'
+          },
+        },
+        {
+          text: t('.reject_cookies'),
+          attributes: {
+            id: 'reject-cookies',
+            name: 'cookies',
+            value: 'reject'
+          },
+        },
+        {
+          text: t('.view_cookies'),
+          href: cookie_policy_path,
+          classes: 'govuk-link--no-visited-state'
+        },
+      ],
+      attributes: {
+        id: 'cookie-options-container'
+      }
+    },
+    {
+      text: capture do
+        concat(t('.cookies_accepted'))
+        concat(t('.change_cookie_settings_html', cookie_settings_link:  link_to(t('.change_cookie_settings_link'), cookie_settings_path, class: 'govuk-link govuk-link--no-visited-state')))
+      end,
+      attributes: {
+        id: 'cookies-accepted-container',
+        hidden: true
+      }
+    },
+    {
+      text: capture do
+        concat(t('.cookies_rejected'))
+        concat(t('.change_cookie_settings_html', cookie_settings_link:  link_to(t('.change_cookie_settings_link'), cookie_settings_path, class: 'govuk-link govuk-link--no-visited-state')))
+      end,
+      attributes: {
+        id: 'cookies-rejected-container',
+        hidden: true
+      }
+    }
+  ]
+) %>

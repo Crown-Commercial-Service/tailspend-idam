@@ -8,7 +8,7 @@ module Api
       skip_before_action :verify_authenticity_token, only: %i[authorize token user_info]
 
       def authorize
-        authorize = Cognito::Authorize.new(params['client_id'], params['response_type'], params['redirect_uri'])
+        authorize = Cognito::Authorize.new(params[:client_id], params[:response_type], params[:redirect_uri])
         redirect_to(base_new_user_session_path(request.parameters)) if authorize.valid?
       end
 
@@ -20,9 +20,8 @@ module Api
 
       def user_info
         data = get_user_cognito(bearer_token)
-        response_data = {}
-        data.user_attributes.map { |attributes| response_data[attributes[:name]] = attributes[:value] }
-        render json: response_data
+
+        render json: data.user_attributes.to_h { |attributes| [attributes[:name], attributes[:value]] }
       end
 
       private
@@ -39,12 +38,12 @@ module Api
 
       def build_authorize_response(cognito_response, nonce)
         {
-          "access_token": cognito_response.access_token,
-          "expires_in": cognito_response.expires_in,
-          "token_type": cognito_response.token_type,
-          "refresh_token": cognito_response.refresh_token,
-          "id_token": cognito_response.id_token,
-          "nonce": nonce.nil? ? '' : nonce
+          access_token: cognito_response.access_token,
+          expires_in: cognito_response.expires_in,
+          token_type: cognito_response.token_type,
+          refresh_token: cognito_response.refresh_token,
+          id_token: cognito_response.id_token,
+          nonce: nonce.nil? ? '' : nonce
         }
       end
 
@@ -55,7 +54,7 @@ module Api
       end
 
       def get_user_cognito(token)
-        client = Aws::CognitoIdentityProvider::Client.new(region: ENV['COGNITO_AWS_REGION'])
+        client = Aws::CognitoIdentityProvider::Client.new(region: ENV.fetch('COGNITO_AWS_REGION', nil))
         client.get_user({
                           access_token: token
                         })

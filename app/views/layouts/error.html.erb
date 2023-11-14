@@ -24,23 +24,24 @@
   <%= javascript_pack_tag 'application' %>
 
   <meta property="og:image" content="<%= asset_pack_url('media/images/govuk-opengraph-image.png') %>">
+
+  <%= render partial: '/shared/google/tag_manager_head' if TailspendIdam.google_tag_manager_tracking_id.present? %>
+
   <%= canonical_tag %>
 </head>
 
 <body class="govuk-template__body app-body-class error-box" data-test="My value" data-other="report:details">
-  <script>
+  <%= render partial: '/shared/google/tag_manager_body' if TailspendIdam.google_tag_manager_tracking_id.present? %>
+
+  <%= javascript_tag nonce: true do -%>
     document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
-  </script>
+  <% end -%>
 
   <div class="error-content">
-    <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
+    <%= govuk_skip_link('Skip to main content', '#main-content') %>
 
-    <header id="main-header" class="govuk-header" role="banner" data-module="header">
-      <%# render partial: '/layouts/cookie-banner' %>
-      <div class="govuk-header__container govuk-width-container">
-        <%= render partial: '/layouts/header-banner', locals: {end_of_journey: false} %>
-      </div>
-    </header>
+    <%= render partial: '/layouts/cookie-banner' unless cookie_preferences_settings['settings_viewed'] || controller.action_name == 'cookie_settings' %>
+    <%= render partial: '/layouts/header-banner' %>
 
     <div class="govuk-width-container app-width-container--wide">
       <!--a href="<%# base_new_user_session_path %>" class="govuk-back-link">Back</a -->
@@ -50,9 +51,8 @@
     </div>
   </div>
 
-  <footer id="main-footer" class="govuk-footer" role="contentinfo">
-    <%= render partial: '/layouts/footer' %>
-  </footer>
+  <%= render partial: '/layouts/footer' %>
+
   <%= javascript_pack_tag 'govuk', 'data-turbolinks-track': 'reload' %>
 </body>
 

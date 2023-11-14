@@ -13,16 +13,21 @@
     </p>
 
     <%= form_with model: @response, url: base_users_password_path,  html: { novalidate: true }, local: true, method: :post do |f| %>
-      <%= form_group_with_error(f.object, :email) do |displayed_error, any_errors| %>
-        <%= f.label :email, t('.email'), class: 'govuk-label govuk-label--m govuk-!-margin-bottom-0' %>
-        <span id="email-hint" class="govuk-hint govuk-!-width-three-quarters">
-          <%= t('.email_hint_html') %>
-        </span>
-        <%= displayed_error %>
-        <%= f.email_field :email, autocomplete: "off", class:"govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", spellcheck: false, required: true, aria: { describedby: "email-hint" } %>
-      <% end %>
+      <%= govuk_input(
+        :email,
+        form: f,
+        label: {
+          text: t('.email'),
+          classes: 'govuk-label--m'
+        },
+        hint: {
+          text: t('.email_hint_html')
+        },
+        classes: 'govuk-!-width-three-quarters',
+        field_type: :email,
+      ) %>
 
-      <%= f.submit t('common.send_reset_email'), class: 'govuk-button govuk-!-padding-left-7 govuk-!-padding-right-7', 'aria-label': t('common.send_reset_email') %>
+      <%= govuk_button(t('common.send_reset_email'), form: f) %>
     <% end %>
   </div>
 </div>

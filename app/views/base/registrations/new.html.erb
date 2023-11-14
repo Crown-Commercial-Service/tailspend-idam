@@ -4,81 +4,122 @@
 
     <%= render partial: 'shared/error_summary', locals: { errors: @result.errors } %>
 
-    <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
-      <%= t('.heading_html') %>
-    </h1>
+    <%= govuk_fieldset(
+      legend: {
+        text: t('.heading_html'),
+        is_page_heading: true,
+        classes: 'govuk-fieldset__legend--xl'
+      }
+    ) do %>
 
-    <%= form_with model: @result, url: base_user_registration_path,  html: { novalidate: true }, local: true, method: :post do |f| %>
-      <fieldset class="govuk-fieldset">
-        <legend class="govuk-body-l govuk-!-margin-bottom-9 govuk-!-padding-left-0">
-          <%= t('.lead') %>
-        </legend>
+      <p class="govuk-body">
+        <%= t('.the_tailspend_solution') %>
+      </p>
 
-        <%= form_group_with_error(f.object, :email) do |displayed_error, any_errors| %>
-          <%= f.label :email, t('.email'), class: 'govuk-label' %>
-          <span id="email-hint" class="govuk-hint govuk-!-width-three-quarters">
-            <%= t('.email_hint') %>
-          </span>
-          <%= displayed_error %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "off", class:"govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", spellcheck: false, required: true, aria: { describedby: "email-hint" } %>
-        <% end %>
+      <p class="govuk-body">
+        <%= t('.before_you_can_register') %>
+      </p>
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>
+          <%= t('.complete_a_call_off') %>
+        </li>
+        <li>
+          <%= t('.be_a_recognised_html', authorised_customer_list: link_to(t('.authorised_customer_list'), t('.authorised_customer_list_link'), title: t('.authorised_customer_list_title'), class: 'govuk-link govuk-link--no-visited-state')) %>    
+        </li>
+      </ul>
 
-        <%= form_group_with_error(f.object, :first_name) do |displayed_error, any_errors| %>
-          <%= f.label :first_name, t('.first_name'), class: 'govuk-label' %>
-          <span id="first_name-hint" class="govuk-hint govuk-!-width-three-quarters">
-            <%= t('.first_name_hint') %>
-          </span>
-          <%= displayed_error %>
-          <%= f.text_field :first_name, class:"govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", spellcheck: false, required: true, aria: { describedby: "first_name-hint" } %>
-        <% end %>
+      <hr class="govuk-section-break govuk-section-break--m">
 
-        <%= form_group_with_error(f.object, :last_name) do |displayed_error, any_errors| %>
-          <%= f.label :last_name, t('.last_name'), class: 'govuk-label' %>
-          <span id="last_name-hint" class="govuk-hint govuk-!-width-three-quarters">
-            <%= t('.last_name_hint') %>
-          </span>
-          <%= displayed_error %>
-          <%= f.text_field :last_name, class:"govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", spellcheck: false, required: true, aria: { describedby: "last_name-hint" } %>
-        <% end %>
+      <%= form_with model: @result, url: base_user_registration_path,  html: { novalidate: true }, local: true, method: :post do |f| %>
+        <%= govuk_input(
+          :email,
+          form: f,
+          label: {
+            text: t('.email'),
+          },
+          hint: {
+            text: t('.email_hint')
+          },
+          classes: 'govuk-!-width-three-quarters',
+          field_type: :email,
+        ) %>
 
-        <%= form_group_with_error(f.object, :summary_line) do |displayed_error| %>
+        <%= govuk_input(
+          :first_name,
+          form: f,
+          label: {
+            text: t('.first_name'),
+          },
+          hint: {
+            text: t('.first_name_hint')
+          },
+          classes: 'govuk-!-width-three-quarters',
+        ) %>
+
+        <%= govuk_input(
+          :last_name,
+          form: f,
+          label: {
+            text: t('.last_name'),
+          },
+          hint: {
+            text: t('.last_name_hint')
+          },
+          classes: 'govuk-!-width-three-quarters',
+        ) %>
+
+        <%= govuk_form_group(:summary_line, model: f.object) do |displayed_error| %>
           <%= f.hidden_field :summary_line %>
-          <%= f.label :organisation, t('.organisation'), class: 'govuk-label' %>
-          <span id="organisation-hint" class="govuk-hint govuk-!-width-three-quarters">
+          <%= govuk_label(:organisation, t('.organisation'), form: f) %>
+          <%= govuk_hint(attributes: { id: 'organisation-hint' }) do %>
             <%= t('.organisation_hint') %>
-          </span>
+            <br>
+            <br>
+            <%= t('.organisation_address_guidance') %>
+          <% end %>
           <%= displayed_error %>
-          <div id="selected-autocomplete-option" class="govuk-!-width-three-quarters" <%= "hidden" unless f.object.summary_line.present? %>>
-            <p class="govuk-body govuk-!-font-weight-regular govuk-tag govuk-tag--green"><strong>Selected option: </strong><span><%= f.object.summary_line %></span></p>
-          </div>
           <div id="my-autocomplete-container" class="govuk-!-width-three-quarters">
           </div>
         <% end %>
-      </fieldset>
 
-      <fieldset class="govuk-fieldset govuk-!-margin-bottom-6">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-          <%= t('.create_password') %>
-        </legend>
+        <%= govuk_fieldset(
+          legend: {
+            text: t('.create_password'),
+            classes: 'govuk-fieldset__legend--m'
+          }
+        ) do %>
+          <p class="govuk-body govuk-!-margin-bottom-1" id="password-strength"><%= t('.password_must_have') %></p>
 
-        <p class="govuk-body govuk-!-margin-bottom-1" id="password-strength"><%= t('.password_must_have') %></p>
+          <%= render '/layouts/password-strength', password_id: "#{f.object_name}_password" %>
 
-        <%= render '/layouts/password-strength', password_id: "#{f.object_name}_password" %>
+          <%= govuk_input(
+            :password,
+            form: f,
+            label: {
+              text: t('.password'),
+            },
+            classes: 'govuk-!-width-three-quarters',
+            field_type: :password,
+            attributes: {
+              aria: {
+                describedby: 'password-strength passeight passcap passnum'
+              }
+            },
+          ) %>
 
-        <%= form_group_with_error(f.object, :password) do |displayed_error, any_errors| %>
-          <%= f.label :password, t('.password'), class: 'govuk-label' %>
-          <%= displayed_error %>
-          <%= f.password_field :password, autocomplete: "off", class: "govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}", aria: { describedby: 'password-strength passeight passchar passcap passlower passnum' } %>
+          <%= govuk_input(
+            :password_confirmation,
+            form: f,
+            label: {
+              text: t('.confirm_password'),
+            },
+            classes: 'govuk-!-width-three-quarters',
+            field_type: :password,
+          ) %>
         <% end %>
 
-        <%= form_group_with_error(f.object, :password_confirmation) do |displayed_error, any_errors| %>
-          <%= f.label :password_confirmation, t('.confirm_password'), class: 'govuk-label' %>
-          <%= displayed_error %>
-          <%= f.password_field :password_confirmation, autocomplete: "off", class: "govuk-input govuk-!-width-three-quarters #{'govuk-input--error' if any_errors}"  %>
-        <% end %>
-      </fieldset>
-
-      <%= f.submit t('common.create_account'), id: "submit", class: "govuk-button govuk-!-padding-left-7 govuk-!-padding-right-7 govuk-!-margin-bottom-8", name: 'Create account' %>
+        <%= govuk_button(t('common.create_account'), form: f) %>
+      <% end %>
     <% end %>
   </div>
 </div>

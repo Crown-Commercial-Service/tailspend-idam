@@ -1,0 +1,30 @@
+version: "3.1"
+services:
+  tailspend-idam:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@db:5432/postgres
+      - COGNITO_CLIENT_ID=your_cognito_client_id
+      - COGNITO_CLIENT_SECRET=your_cognito_client_secret
+      - COGNITO_USER_POOL_ID=your_cognito_user_pool_id
+      - COGNITO_AWS_REGION=your_aws_region
+      - AWS_ACCESS_KEY=your_aws_access_key
+      - AWS_SECRET_KEY=your_aws_secret_key
+      - AUTH_USER_API_TOKEN=your_auth_user_api_token
+      - OFFICE_TEAM_GET_URL=http://localhost:8080
+      - MERCATEO_GET_URL=http://localhost:8080
+  db:
+    image: postgres
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password

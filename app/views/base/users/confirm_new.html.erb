@@ -11,29 +11,39 @@
       <%= t('.lead', location: @email.present? ? @email: t('.you')) %>
     </p>
 
-    <%= form_with model: @result, url: base_users_confirm_path(e: params[:e]),  html: { novalidate: true }, local: true, method: :post do |f| %>
-      <%= form_group_with_error(f.object, :confirmation_code) do |displayed_error, any_errors| %>
-        <%= f.label :confirmation_code, t('.confirmation_code'), class: 'govuk-label govuk-!-margin-bottom-0' %>
-        <%= displayed_error %>
-        <%= f.text_field :confirmation_code, class: "govuk-input govuk-input--width-10 #{'govuk-input--error' if any_errors}", type: 'number' %>
-      <% end %>
+    <%= form_with model: @result, url: base_users_confirm_path(e: params[:e]), html: { novalidate: true }, local: true, method: :post do |f| %>
+      <%= govuk_input(
+        :confirmation_code,
+        form: f,
+        label: {
+          text: t('.confirmation_code'),
+        },
+        classes: 'govuk-!-width-three-quarters',
+        attributes: {
+          maxlength: 6
+        }
+      ) %>
 
       <% if @email.present? %>
         <%= f.hidden_field :email, value: @email %>
       <% else %>
-        <%= form_group_with_error(f.object, :email) do |displayed_error, any_errors| %>
-          <%= f.label :email, t('.email'), class: 'govuk-label govuk-!-margin-bottom-0' %>
-          <%= displayed_error %>
-          <%= f.text_field :email, class: "govuk-input govuk-input--width-20 #{'govuk-input--error' if any_errors}" %>
-        <% end %>
+        <%= govuk_input(
+        :email,
+        form: f,
+        label: {
+          text: t('.email'),
+        },
+        classes: 'govuk-!-width-three-quarters',
+        field_type: :email,
+      ) %>
       <% end %>
 
-      <%= f.submit t('common.continue'), class: "govuk-button govuk-!-padding-left-7 govuk-!-padding-right-7", 'aria-label': t('common.continue') %>
+      <%= govuk_button(t('common.continue'), form: f) %>
     <% end %>
 
     <% if @email.present? %>
       <p class="govuk-body govuk-!-margin-bottom-7">
-        <%= t('.resend_the_confirmation_email_html', link: base_resend_confirmation_email_path(e: params[:e])) %>
+        <%= t('.resend_the_confirmation_email_html', link: base_resend_confirmation_email_path(e: TextEncryptor.encrypt(@email))) %>
       </p>
     <% end %>
   </div>
