@@ -19,7 +19,7 @@ class ErrorsController < ApplicationController
 
   def service_unavailable
     respond_to do |format|
-      format.html { render status: :service_unavailable, layout: 'error' }
+      format.html { render status: :ok, layout: 'error' }
     end
   end
 end

@@ -1,44 +1,48 @@
 <%= render partial: '/layouts/contact_us' %>
 <%= ccs_footer(
   meta: {
-    items: [
-      {
-        text: t('.cookie_policy_link'),
-        href: cookie_policy_path,
-        attributes: {
-          aria: {
-            label: t('.cookie_policy_link_aria_label')
+    items: unless current_page?(service_unavailable_path)
+      [
+        {
+          text: t('.cookie_policy_link'),
+          href: cookie_policy_path,
+          attributes: {
+            aria: {
+              label: t('.cookie_policy_link_aria_label')
+            }
+          }
+        },
+        {
+          text: t('.cookie_settings_link'),
+          href: cookie_settings_path,
+          attributes: {
+            aria: {
+              label: t('.cookie_settings_link_aria_label')
+            }
+          }
+        },
+        {
+          text: t('.privacy_link_text'),
+          href: t('.privacy_link'),
+          attributes: {
+            target: '_blank',
+            aria: {
+              label: t('.privacy_link_aria_label')
+            }
+          }
+        },
+        {
+          text: t('.accessibility_statement_link'),
+          href: accessibility_statement_path,
+          attributes: {
+            aria: {
+              label: t('.accessibility_statement_link_aria_label')
+            }
           }
         }
-      },
-      {
-        text: t('.cookie_settings_link'),
-        href: cookie_settings_path,
-        attributes: {
-          aria: {
-            label: t('.cookie_settings_link_aria_label')
-          }
-        }
-      },
-      {
-        text: t('.privacy_link_text'),
-        href: t('.privacy_link'),
-        attributes: {
-          target: '_blank',
-          aria: {
-            label: t('.privacy_link_aria_label')
-          }
-        }
-      },
-      {
-        text: t('.accessibility_statement_link'),
-        href: accessibility_statement_path,
-        attributes: {
-          aria: {
-            label: t('.accessibility_statement_link_aria_label')
-          }
-        }
-      }
-    ]
+      ]
+    else
+      []
+    end
   }
 ) %>
