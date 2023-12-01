@@ -9,6 +9,7 @@ ARG RUBY_VERSION=3.2.2
 FROM public.ecr.aws/docker/library/node:${NODE_VERSION}-alpine
 
 # Pull in relevant ruby image
+# FROM ruby:${RUBY_VERSION}-alpine
 FROM public.ecr.aws/docker/library/ruby:${RUBY_VERSION}-alpine
 
 # As this is a multistage Docker image build
