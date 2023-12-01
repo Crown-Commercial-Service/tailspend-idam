@@ -18,7 +18,6 @@ FROM public.ecr.aws/docker/library/ruby:${RUBY_VERSION}-alpine
 # so that the ruby image build stage has the correct nodejs version
 COPY --from=node /usr/local/bin /usr/local/bin
 
-RUN node -v
 # Set the app directory
 WORKDIR /app
 
