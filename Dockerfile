@@ -14,10 +14,6 @@ FROM ruby:${RUBY_VERSION}-alpine
 # we will pull in the contents from the previous node image build stage
 # to our current ruby build image stage
 # so that the ruby image build stage has the correct nodejs version
-COPY --from=node /usr/lib /usr/lib
-COPY --from=node /usr/local/share /usr/local/share
-COPY --from=node /usr/local/lib /usr/local/lib
-COPY --from=node /usr/local/include /usr/local/include
 COPY --from=node /usr/local/bin /usr/local/bin
 
 # Set the app directory
