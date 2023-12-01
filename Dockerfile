@@ -15,7 +15,7 @@ FROM ruby:${RUBY_VERSION}-alpine
 
 COPY --from=node /app /app
 
-RUN echo node -v
+RUN node -v
 # As this is a multistage Docker image build
 # we will pull in the contents from the previous node image build stage
 # to our current ruby build image stage
