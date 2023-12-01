@@ -4,9 +4,6 @@ ARG NODE_VERSION=20.0.0
 # Pass in ruby version
 ARG RUBY_VERSION=3.2.2
 
-# Application build packages
-ENV BUILD_PACKAGES build-base ca-certificates curl git libpq-dev npm tzdata
-
 # Pull in the nodejs image
 FROM node:${NODE_VERSION}-alpine AS node
 
@@ -26,8 +23,15 @@ COPY --from=node /usr/local/bin /usr/local/bin
 # Set the app directory
 WORKDIR /app
 
-# Build application
-RUN apk add --update --no-cache $BUILD_PACKAGES
+# Install application dependencies
+RUN apk add --update --no-cache \
+  npm \
+  ca-certificates \
+  build-base \
+  libpq-dev \
+  git \
+  tzdata \
+  curl
 
 RUN npm install -g yarn@1.22.19 --force
 
@@ -37,6 +41,7 @@ COPY . .
 
 COPY Gemfile Gemfile.lock ./
 
+# Build application
 RUN gem install bundler && bundle install --jobs 4 --retry 5
 
 RUN NODE_OPTIONS=--openssl-legacy-provider rake assets:precompile
