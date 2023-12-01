@@ -5,7 +5,7 @@ ARG NODE_VERSION=20.0.0
 ARG RUBY_VERSION=3.2.2
 
 # Application build packages
-ENV BUILD_PACKAGES npm ca-certificates build-base libpq-dev git tzdata curl
+ENV BUILD_PACKAGES build-base ca-certificates curl git libpq-dev npm tzdata
 
 # Pull in the nodejs image
 FROM node:${NODE_VERSION}-alpine AS node
