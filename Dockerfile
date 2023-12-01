@@ -4,6 +4,9 @@ ARG NODE_VERSION=20.0.0
 # Pass in ruby version
 ARG RUBY_VERSION=3.2.2
 
+# Application build packages
+ENV BUILD_PACKAGES npm ca-certificates build-base libpq-dev git tzdata curl
+
 # Pull in the nodejs image
 FROM node:${NODE_VERSION}-alpine AS node
 
@@ -23,15 +26,8 @@ COPY --from=node /usr/local/bin /usr/local/bin
 # Set the app directory
 WORKDIR /app
 
-# Install application dependencies
-RUN apk add --update --no-cache \
-  npm \
-  ca-certificates \
-  build-base \
-  libpq-dev \
-  git \
-  tzdata \
-  curl
+# Build application
+RUN apk add --update --no-cache $BUILD_PACKAGES
 
 RUN npm install -g yarn@1.22.19 --force
 
