@@ -25,13 +25,13 @@ WORKDIR /app
 
 # Install application dependencies
 RUN apk add --update --no-cache \
-  npm \
-  ca-certificates \
   build-base \
-  libpq-dev \
+  ca-certificates \
+  curl \
   git \
-  tzdata \
-  curl
+  libpq-dev \
+  npm \
+  tzdata
 
 RUN npm install -g yarn@1.22.19 --force
 
