@@ -42,7 +42,9 @@ COPY . .
 COPY Gemfile Gemfile.lock ./
 
 # Build application
-RUN gem install bundler && bundle install --jobs 4 --retry 5 && bundle clean
+RUN gem install bundler && bundle install --jobs 4 --retry 5
+
+RUN bundle clean --force
 
 RUN NODE_OPTIONS=--openssl-legacy-provider rake assets:precompile
 
