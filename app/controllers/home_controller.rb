@@ -48,7 +48,7 @@ class HomeController < ApplicationController
   def delete_unwanted_cookie(cookie_prefixes)
     return unless cookie_prefixes.any?
 
-    cookies.each do |cookie_name, _|
+    cookies.each_key do |cookie_name|
       cookies.delete(cookie_name, path: '/', domain: '.crowncommercial.gov.uk') if cookie_prefixes.any? { |cookie_prefix| cookie_name.start_with? cookie_prefix }
     end
   end

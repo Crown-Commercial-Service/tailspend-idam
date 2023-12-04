@@ -4,7 +4,7 @@ def config_vault
   vcap_services = JSON.parse(ENV.fetch('VCAP_SERVICES', nil))
   key_store_path = ''
   Vault.configure do |config|
-    vcap_services['hashicorp-vault'].each do |key, _value|
+    vcap_services['hashicorp-vault'].each_key do |key|
       key_store_path = "#{key['credentials']['backends_shared']['space']}/#{ENV.fetch('SERVER_ENV_NAME', nil)}"
       config.address = key['credentials']['address']
       config.token = key['credentials']['auth']['token']
