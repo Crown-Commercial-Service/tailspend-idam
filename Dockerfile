@@ -8,7 +8,7 @@ ARG RUBY_VERSION=3.2.2
 FROM node:${NODE_VERSION}-alpine AS node
 #FROM public.ecr.aws/docker/library/node:${NODE_VERSION}-alpine AS node
 
-# Pull in relevant ruby image
+# Pull in the ruby image
 FROM ruby:${RUBY_VERSION}-alpine
 #FROM public.ecr.aws/docker/library/ruby:${RUBY_VERSION}-alpine
 
