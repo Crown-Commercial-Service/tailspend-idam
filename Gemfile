@@ -35,7 +35,7 @@ gem 'pg', '~> 1.5.4'
 # remove if not option two taken in project
 gem 'jwt', '~> 2.7.1'
 gem 'rest-client', '~> 2.1'
-gem 'rollbar', '~> 3.4.1'
+gem 'rollbar', '~> 3.4.2'
 gem 'roo', '~> 2.10.0'
 # remove if not option two taken in project
 
