@@ -14,7 +14,7 @@ const cookieUpdateOptions = [
 const getCookiePreferences = () => {
   const defaultCookieSettings = '{"usage":true,"glassbox":false}'
 
-  return JSON.parse(Cookies.get('cookie_preferences') ?? defaultCookieSettings)
+  return JSON.parse(Cookies.get('cookie_preferences_tailspend') ?? defaultCookieSettings)
 }
 
 const removeUnwantedCookies = () => {
