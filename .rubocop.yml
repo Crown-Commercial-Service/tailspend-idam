@@ -140,3 +140,6 @@ Metrics/ModuleLength:
 
 Style/HashSyntax:
     EnforcedShorthandSyntax: consistent
+
+Style/HashEachMethods:
+    Enabled: false
