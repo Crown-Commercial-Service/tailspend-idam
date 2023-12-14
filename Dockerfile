@@ -5,10 +5,10 @@ ARG NODE_VERSION=20.10.0
 ARG RUBY_VERSION=3.2.2
 
 # Pull in the nodejs image
-FROM node:${NODE_VERSION}-alpine3.18 AS node
+FROM node:${NODE_VERSION}-alpine3.19 AS node
 
 # Pull in the ruby image
-FROM ruby:${RUBY_VERSION}-alpine3.18
+FROM ruby:${RUBY_VERSION}-alpine3.19
 
 # As this is a multistage Docker image build
 # we will pull in the contents from the previous node image build stage
