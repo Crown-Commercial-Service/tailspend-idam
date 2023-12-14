@@ -1,4 +1,4 @@
-if ENV.fetch('PREVENT_ARASK', '0') == '1'  # Set to '1' to disable Arask job setup
+if ENV.fetch('PREVENT_ARASK', '0') == '1' # Set to '1' to disable Arask job setup
   Rails.logger.info 'Skipping Arask setup'
 else
   Rails.logger.info 'Setting up Arask'
