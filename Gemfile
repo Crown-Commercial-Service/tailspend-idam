@@ -58,7 +58,7 @@ group :development, :test do
   gem 'i18n-tasks', '~> 1.0.13'
   gem 'rspec-rails', '~> 6.1.0'
   gem 'rubocop', '~> 1.59.0'
-  gem 'rubocop-performance', '~> 1.19.1'
+  gem 'rubocop-performance', '~> 1.20.1'
   gem 'rubocop-rails', '~> 2.22.2'
   gem 'rubocop-rspec', '~> 2.25.0' # or gem 'rubocop-minitest'
   gem 'brakeman', '~> 6.1.1'
