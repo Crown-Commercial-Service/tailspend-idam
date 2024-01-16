@@ -1,12 +1,8 @@
 name: "Run our tests"
 
 on:
-  push:
-    branches-ignore:
-      - develop
-      - preprod
-      - main
-  pull_request:
+  - push
+  - pull_request
 
 jobs:
   run-unit-tests:
