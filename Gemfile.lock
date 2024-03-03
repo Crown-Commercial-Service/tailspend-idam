@@ -178,7 +178,8 @@ GEM
       activesupport (>= 5.0.0)
     jmespath (1.6.2)
     json (2.7.1)
-    jwt (2.7.1)
+    jwt (2.8.1)
+      base64
     language_server-protocol (3.17.0.3)
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -402,7 +403,7 @@ DEPENDENCIES
   dotenv-rails (~> 2.8.1, >= 2.8.1)
   i18n-tasks (~> 1.0.13)
   jbuilder (~> 2.11, >= 2.11.5)
-  jwt (~> 2.7.1)
+  jwt (~> 2.8.1)
   listen (~> 3.8)
   pg (~> 1.5.4)
   puma (~> 6.4)
