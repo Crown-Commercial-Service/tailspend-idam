@@ -36,7 +36,10 @@ RSpec.describe Cognito::CreateUserFromCognito do
     let(:client) { instance_double(Aws::CognitoIdentityProvider::Client) }
 
     before do
-      stub_const('ENV', { 'COGNITO_AWS_REGION' => 'supersecretregion', 'COGNITO_CLIENT_SECRET' => 'supersecretkey1', 'COGNITO_CLIENT_ID' => 'supersecretkey2', 'COGNITO_USER_POOL_ID' => 'myuserpool' })
+      ENV['COGNITO_AWS_REGION'] = 'supersecretregion'
+      ENV['COGNITO_CLIENT_SECRET'] = 'supersecretkey1'
+      ENV['COGNITO_CLIENT_ID'] = 'supersecretkey2'
+      ENV['COGNITO_USER_POOL_ID'] = 'myuserpool'
       allow(Aws::CognitoIdentityProvider::Client).to receive(:new).with(region: 'supersecretregion').and_return(client)
     end
 
