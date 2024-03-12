@@ -200,7 +200,9 @@ RSpec.describe Cognito::ConfirmPasswordReset do
     let(:attribute_type) { double }
 
     before do
-      stub_const('ENV', { 'COGNITO_AWS_REGION' => 'supersecretregion', 'COGNITO_CLIENT_SECRET' => 'supersecretkey1', 'COGNITO_CLIENT_ID' => 'supersecretkey2' })
+      ENV['COGNITO_AWS_REGION'] = 'supersecretregion'
+      ENV['COGNITO_CLIENT_SECRET'] = 'supersecretkey1'
+      ENV['COGNITO_CLIENT_ID'] = 'supersecretkey2'
       allow(Aws::CognitoIdentityProvider::Client).to receive(:new).with(region: 'supersecretregion').and_return(client)
       allow(client).to receive(:admin_get_user).and_return(cognito_user)
       allow(cognito_user).to receive(:user_attributes).and_return([attribute_type])

@@ -6,7 +6,7 @@ RSpec.describe Cognito::SignInUser do
   let(:password) { 'password123!' }
   let(:redirect_uri) { 'https://test.com' }
 
-  before { stub_const('ENV', { 'CALLBACK_URLS' => '[https://test.com]' }) }
+  before { ENV['CALLBACK_URLS'] = '[https://test.com]' }
 
   describe '.valid?' do
     context 'when both email and password are present' do
@@ -94,7 +94,9 @@ RSpec.describe Cognito::SignInUser do
     let(:client) { instance_double(Aws::CognitoIdentityProvider::Client) }
 
     before do
-      stub_const('ENV', { 'COGNITO_AWS_REGION' => 'supersecretregion', 'COGNITO_CLIENT_SECRET' => 'supersecretkey1', 'COGNITO_CLIENT_ID' => 'supersecretkey2', 'CALLBACK_URLS' => '[https://test.com]' })
+      ENV['COGNITO_AWS_REGION'] = 'supersecretregion'
+      ENV['COGNITO_CLIENT_SECRET'] = 'supersecretkey1'
+      ENV['COGNITO_CLIENT_ID'] = 'supersecretkey2'
       allow(Aws::CognitoIdentityProvider::Client).to receive(:new).with(region: 'supersecretregion').and_return(client)
     end
 

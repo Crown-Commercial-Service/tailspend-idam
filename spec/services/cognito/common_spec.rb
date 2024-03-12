@@ -9,7 +9,8 @@ RSpec.describe Cognito::Common do
       let(:result) { described_class.build_secret_hash('tester@test.com') }
 
       before do
-        stub_const('ENV', { 'COGNITO_CLIENT_SECRET' => cognito_client_secret, 'COGNITO_CLIENT_ID' => cognito_client_id })
+        ENV['COGNITO_CLIENT_SECRET'] = cognito_client_secret
+        ENV['COGNITO_CLIENT_ID'] = cognito_client_id
       end
 
       it 'creates the same secret hash every time' do
