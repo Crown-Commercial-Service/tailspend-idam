@@ -31,7 +31,7 @@ gem 'arask', '~> 1.2.3'
 gem 'activerecord-postgis-adapter', '~> 9.0.1'
 gem 'pg', '~> 1.5.6'
 # remove if not option two taken in project
-gem 'jwt', '~> 2.7.1'
+gem 'jwt', '~> 2.8.1'
 gem 'rest-client', '~> 2.1'
 gem 'rollbar', '~> 3.5.1'
 gem 'roo', '~> 2.10.1'
