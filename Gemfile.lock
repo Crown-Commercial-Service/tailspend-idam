@@ -145,7 +145,7 @@ GEM
     erubi (1.12.0)
     et-orbi (1.2.7)
       tzinfo
-    ffi (1.15.5)
+    ffi (1.16.3)
     fugit (1.8.1)
       et-orbi (~> 1, >= 1.2.7)
       raabro (~> 1.4)
@@ -180,7 +180,7 @@ GEM
     jwt (2.8.1)
       base64
     language_server-protocol (3.17.0.3)
-    listen (3.8.0)
+    listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.22.0)
@@ -402,7 +402,7 @@ DEPENDENCIES
   i18n-tasks (~> 1.0.13)
   jbuilder (~> 2.11, >= 2.11.5)
   jwt (~> 2.8.1)
-  listen (~> 3.8)
+  listen (~> 3.9)
   pg (~> 1.5.6)
   puma (~> 6.4)
   rack-attack (~> 6.7.0)
