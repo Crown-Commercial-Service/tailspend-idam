@@ -4,7 +4,7 @@ require:
   - rubocop-rspec # or rubocop-minitest
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 3.2
+  TargetRubyVersion: 3.3
   Exclude:
     - 'db/**/*'
     - 'script/**/*'
