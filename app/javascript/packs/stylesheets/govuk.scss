@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700");
 
-$govuk-assets-path: "~govuk-frontend/govuk/assets/";
+$govuk-assets-path: "~govuk-frontend/dist/govuk/assets/";
 $govuk-button-background-colour: #007e8a;
 
-@import "govuk-frontend/govuk/all";
+@import "govuk-frontend/dist/govuk/all";
 @import "accessible-autocomplete";
 
 $ccs-border-colour: #b1b4b6;
@@ -77,10 +77,8 @@ $ccs-footer-columns-to-rows-point: 501px;
   // alphagov/govuk_template includes a specific a:link:focus selector
   // designed to make unvisited links a slightly darker blue when focussed, so
   // we need to override the text colour for that combination of selectors.
-  @include govuk-compatibility(govuk_template) {
-    &:link:focus {
-      @include govuk-text-colour;
-    }
+  &:link:focus {
+    @include govuk-text-colour;
   }
 }
 
