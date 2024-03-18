@@ -22,7 +22,7 @@ gem 'aws-sdk-cognitoidentityprovider', '~> 1.88.0'
 # importing creds
 gem 'aws-sdk-s3', '~> 1'
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '~> 1.17.1', require: false
+gem 'bootsnap', '~> 1.18.3', require: false
 
 # For scheduling tasks
 gem 'arask', '~> 1.2.3'
