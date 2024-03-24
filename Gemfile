@@ -54,7 +54,7 @@ group :development, :test do
   gem 'byebug', '~> 11.1.3', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails', '~> 3.1.0'
   gem 'i18n-tasks', '~> 1.0.13'
-  gem 'rspec-rails', '~> 6.1.1'
+  gem 'rspec-rails', '~> 6.1.2'
   gem 'rubocop', '~> 1.62.1'
   gem 'rubocop-performance', '~> 1.20.2'
   gem 'rubocop-rails', '~> 2.24.0'
