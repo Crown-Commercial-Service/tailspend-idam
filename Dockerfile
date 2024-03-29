@@ -1,17 +1,18 @@
 # Pass in alpine version
-ARG ALPINE_VERSION=3.19
+#ARG ALPINE_VERSION=3.19
 
 # Pass in nodejs version
-ARG NODE_VERSION=20.11.0
+#ARG NODE_VERSION=20.11.0
 
 # Pass in ruby version
-ARG RUBY_VERSION=3.3.0
+#ARG RUBY_VERSION=3.3.0
 
 # Pull in the nodejs image
-FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS node
-
+#FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS node
+FROM node:20.11.0-alpine3.19 AS node
 # Pull in the ruby image
-FROM ruby:${RUBY_VERSION}-alpine${ALPINE_VERSION} AS ruby
+#FROM ruby:${RUBY_VERSION}-alpine${ALPINE_VERSION} AS ruby
+FROM ruby:3.3.0-alpine3.19 AS ruby
 
 # As this is a multistage Docker image build
 # we will pull in the contents from the previous node image build stage
