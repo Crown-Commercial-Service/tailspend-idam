@@ -49,6 +49,7 @@ EXPOSE 3000
 
 FROM gcr.io/distroless/base-debian12
 
-COPY --from=ruby /app /
+COPY --from=ruby /app /app
 
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["/app"]
+#CMD ["rails", "server", "-b", "0.0.0.0"]
