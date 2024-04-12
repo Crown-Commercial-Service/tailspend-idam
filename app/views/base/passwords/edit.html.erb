@@ -32,14 +32,15 @@
 
       <%= render '/layouts/password-strength', password_id: "#{f.object_name}_password" %>
 
-      <%= govuk_input(
+      <%= govuk_password_input(
         :password,
         form: f,
         label: {
           text: t('.new_password'),
         },
-        classes: 'govuk-!-width-three-quarters',
-        field_type: :password,
+        form_group: {
+          classes: 'govuk-!-width-three-quarters'
+        },
         attributes: {
           aria: {
             describedby: 'password-strength passeight passcap passnum'
@@ -47,14 +48,15 @@
         }
       ) %>
 
-      <%= govuk_input(
+      <%= govuk_password_input(
         :password_confirmation,
         form: f,
         label: {
           text: t('.confirm_new_password'),
         },
-        classes: 'govuk-!-width-three-quarters',
-        field_type: :password
+        form_group: {
+          classes: 'govuk-!-width-three-quarters'
+        },
       ) %>
 
       <%= govuk_input(

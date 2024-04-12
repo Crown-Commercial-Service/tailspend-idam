@@ -23,15 +23,16 @@
         field_type: :email,
       ) %>
 
-      <%= govuk_input(
+      <%= govuk_password_input(
         :password,
         form: f,
         label: {
           text: t('.password'),
           classes: 'govuk-label--m'
         },
-        classes: 'govuk-!-width-three-quarters',
-        field_type: :password,
+        form_group: {
+          classes: 'govuk-!-width-three-quarters'
+        },
       ) %>
 
       <%= govuk_button(t('common.sign_in'), form: f, classes: 'govuk-!-padding-left-7 govuk-!-padding-right-7') %>
