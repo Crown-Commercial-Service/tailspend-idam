@@ -5,7 +5,7 @@ ARG ALPINE_VERSION=3.19
 ARG NODE_VERSION=20.11.0
 
 # Pass in ruby version
-ARG RUBY_VERSION=3.3.0
+ARG RUBY_VERSION=3.3.1
 
 # Pull in the nodejs image
 FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS node
