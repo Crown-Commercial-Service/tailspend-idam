@@ -28,7 +28,7 @@ gem 'bootsnap', '~> 1.18.3', require: false
 gem 'arask', '~> 1.2.3'
 
 # for postgresql
-gem 'activerecord-postgis-adapter', '~> 9.0.1'
+gem 'activerecord-postgis-adapter', '~> 9.0.2'
 gem 'pg', '~> 1.5.6'
 # remove if not option two taken in project
 gem 'jwt', '~> 2.8.1'
