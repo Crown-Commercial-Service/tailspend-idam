@@ -18,7 +18,7 @@ gem 'jbuilder', '~> 2.12'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # for cognito
-gem 'aws-sdk-cognitoidentityprovider', '~> 1.91.0'
+gem 'aws-sdk-cognitoidentityprovider', '~> 1.92.0'
 # importing creds
 gem 'aws-sdk-s3', '~> 1'
 # Reduces boot times through caching; required in config/boot.rb
