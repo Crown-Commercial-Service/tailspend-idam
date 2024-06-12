@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.1.2'
+gem 'rails', '~> 7.1.3', '>= 7.1.3.3'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.6'
 # Use Puma as the app server
@@ -27,7 +27,7 @@ gem 'aws-sdk-s3', '~> 1'
 gem 'bootsnap', '~> 1.17.0', require: false
 
 # For scheduling tasks
-gem 'arask', '~> 1.2.3'
+gem 'arask', '~> 1.2.4'
 
 # for postgresql
 gem 'activerecord-postgis-adapter', '~> 9.0.1'
@@ -49,7 +49,7 @@ gem 'aws-sdk-ssm', '~> 1.161.0'
 gem 'rack-attack', '~> 6.7.0'
 
 # GOV.UK Frontend helpers
-gem 'ccs-frontend_helpers', '~> 0.1.2'
+gem 'ccs-frontend_helpers', '~> 0.2.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
