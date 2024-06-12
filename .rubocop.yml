@@ -19,20 +19,124 @@ AllCops:
     - 'config/puma.rb'
     - 'config/environments/*'
 
+# Rails rubocop config
 Rails:
     Enabled: true
 
 Rails/Presence:
     Enabled: false
 
+# RSpec rubocop config
+RSpec:
+    Enabled: true
+
+RSpec/ContextWording:
+    Prefixes:
+      - when
+      - with
+      - without
+      - and
+
+RSpec/DescribeClass:
+    Exclude:
+        - 'spec/models/db_seeds_spec.rb'
+        - 'spec/views/**/*'
+        - 'spec/i18n_spec.rb'
+
+RSpec/Dialect:
+    PreferredMethods:
+        background: :before
+        scenario:   :it
+        xscenario:  :xit
+        given:      :let
+        given!:     :let!
+        feature:    :describe
+    Exclude:
+        - 'spec/features/**/*'
+
+RSpec/ExampleLength:
+    Max: 10
+    Exclude:
+        - 'spec/features/**/*'
+
+RSpec/MultipleExpectations:
+    Max: 3
+    Exclude:
+        - 'spec/features/**/*'
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/NestedGroups:
+    Max: 4
+
+# RSpecRails rubocop config
+RSpecRails:
+    Enabled: true
+
+# Standard rubocop config
 Bundler/OrderedGems:
     Enabled: false
+
+Layout/EndOfLine:
+   EnforcedStyle: lf
+
+Layout/TrailingEmptyLines:
+    Enabled: true
+
+Metrics/AbcSize:
+    Max: 25 # TODO: Restore to '20'
+    Exclude:
+        - 'spec/**/*'
+
+Metrics/BlockLength:
+    Max: 40
+    Exclude:
+        - 'spec/**/*'
+
+Metrics/ClassLength:
+    Enabled: false
+
+Layout/LineLength:
+    Max: 120
+    Enabled: false
+    AllowedPatterns:
+        - 'it .* do$'
+        - 'context .* do$'
+        - 'scenario .* do$'
+
+Metrics/MethodLength:
+    Max: 50
+    Exclude:
+
+Metrics/ModuleLength:
+    Exclude:
+        - 'spec/models/**/*'
+        - 'spec/controllers/**/*'
+
+Metrics/ParameterLists:
+  Max: 6
 
 Style/Alias:
     Enabled: false
 
+Style/ClassAndModuleChildren:
+    Enabled: false
+
+Style/Documentation:
+    Enabled: false
+
+Style/DoubleNegation:
+    Enabled: false
+
 Style/FrozenStringLiteralComment:
     Enabled: false
+
+Style/HashEachMethods:
+    Enabled: false
+
+Style/HashSyntax:
+    EnforcedShorthandSyntax: consistent
 
 Style/NumericLiterals:
     Enabled: false
@@ -46,102 +150,5 @@ Style/TrailingCommaInHashLiteral:
 Style/TrailingCommaInArguments:
     Enabled: false
 
-Style/Documentation:
-    Enabled: false
-
-Style/DoubleNegation:
-    Enabled: false
-
 Style/WordArray:
-    Enabled: false
-
-Style/ClassAndModuleChildren:
-    Enabled: false
-
-Layout/EndOfLine:
-   EnforcedStyle: lf
-
-Layout/TrailingEmptyLines:
-    Enabled: true
-
-Metrics/ClassLength:
-    Enabled: false
-
-Metrics/MethodLength:
-    Max: 50
-    Exclude:
-
-Metrics/AbcSize:
-    Max: 25 # TODO: Restore to '20'
-    Exclude:
-        - 'spec/**/*'
-
-Layout/LineLength:
-    Max: 120
-    Enabled: false
-    AllowedPatterns:
-        - 'it .* do$'
-        - 'context .* do$'
-        - 'scenario .* do$'
-
-Metrics/BlockLength:
-    Max: 40
-    Exclude:
-        - 'spec/**/*'
-
-
-# Migration/RequireUUIDPrimaryKeys:
-#   Enabled: false
-#   Include:
-#     - 'db/migrate/*.rb'
-
-# Migration/RequireLimitOnString:
-#     Include:
-#         - 'db/migrate/*.rb'
-
-RSpec/DescribeClass:
-    Exclude:
-        - 'spec/models/db_seeds_spec.rb'
-        - 'spec/views/**/*'
-        - 'spec/i18n_spec.rb'
-
-RSpec/Capybara/FeatureMethods:
-    Exclude:
-        - 'spec/features/**/*'
-
-RSpec/MultipleExpectations:
-    Max: 3
-    Exclude:
-        - 'spec/features/**/*'
-
-RSpec/ExampleLength:
-    Max: 10
-    Exclude:
-        - 'spec/features/**/*'
-
-RSpec/NestedGroups:
-    Max: 4
-
-RSpec/ContextWording:
-    Prefixes:
-      - when
-      - with
-      - without
-      - and
-
-RSpec/MultipleMemoizedHelpers:
-  Enabled: false
-
-Metrics/ParameterLists:
-  Max: 6
-
-Metrics/ModuleLength:
-    Exclude:
-        - 'spec/models/**/*'
-        - 'spec/controllers/**/*'
-
-Style/HashSyntax:
-    EnforcedShorthandSyntax: consistent
-
-Style/HashEachMethods:
     Enabled: false
