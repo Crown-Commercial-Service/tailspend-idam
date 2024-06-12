@@ -34,6 +34,9 @@ module TailspendIdam
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
 
+    config.assets.paths << Rails.root.join('node_modules/ccs-frontend/dist/ccs/assets')
+    config.assets.paths << Rails.root.join('node_modules/govuk-frontend/dist/govuk/assets')
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

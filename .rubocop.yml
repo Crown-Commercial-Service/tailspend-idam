@@ -1,7 +1,9 @@
 require: 
   - rubocop-performance
   - rubocop-rails
-  - rubocop-rspec # or rubocop-minitest
+  - rubocop-rspec
+  - rubocop-rspec_rails
+
 AllCops:
   NewCops: enable
   TargetRubyVersion: 3.3

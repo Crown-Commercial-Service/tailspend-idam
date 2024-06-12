@@ -1,0 +1,7 @@
+// Make sure that all p tags and a tags have the GOV.UK Styles by default
+$govuk-global-styles: true;
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700');
+
+$govuk-font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+$govuk-font-family-print: sans-serif;

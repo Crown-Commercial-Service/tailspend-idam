@@ -9,8 +9,16 @@ ruby '3.3.1'
 gem 'rails', '~> 7.1.3'
 # Use Puma as the app server
 gem 'puma', '~> 6.4'
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 5.4', '>= 5.4.4'
+
+# The modern asset pipeline for Rails [https://github.com/rails/propshaft]
+gem 'propshaft'
+
+# Bundle and process CSS [https://github.com/rails/cssbundling-rails]
+gem 'cssbundling-rails', '~> 1.4'
+
+# Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
+gem 'jsbundling-rails', '~> 1.3'
+
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 # gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -47,7 +55,7 @@ gem 'aws-sdk-ssm', '~> 1.168.0'
 gem 'rack-attack', '~> 6.7.0'
 
 # GOV.UK Frontend helpers
-gem 'ccs-frontend_helpers', '~> 0.3.0'
+gem 'ccs-frontend_helpers', '~> 1.0.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
