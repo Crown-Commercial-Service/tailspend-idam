@@ -1,0 +1,86 @@
+// Default font
+body {
+  font-family: $govuk-font-family;
+}
+
+// Hide logo
+.ccs-remove {
+  display: block;
+  position: absolute;
+  left: -3000px;
+  top: -3000px;
+}
+
+// Makes the error page a full page
+.error-box {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.error-content {
+  flex: 1 0 auto;
+  /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
+}
+
+// CCS abbreviation
+abbr[title] {
+  text-decoration: none;
+}
+
+.footer-feedback {
+  background-color: govuk-colour("light-grey");
+}
+
+// Notification banner
+.govuk-notification-banner--error {
+  border-color: $govuk-error-colour;
+
+  background-color: $govuk-error-colour;
+}
+
+// Password rules
+#passwordrules li.correct {
+  color: govuk-colour("green");
+}
+
+#passwordrules li.correct span {
+  background-image: url("data:image/svg+xml,%3Csvg height='15' viewBox='0 0 19 15' width='19' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m43.6740506 1353.95951 9.8607595-9.95951 2.4651899 2.55061-12.3259494 12.44939-6.6740506-6.74089 2.5253165-2.55061z' fill='%23006435' fill-rule='evenodd' transform='translate(-37 -1344)'/%3E%3C/svg%3E");
+}
+
+#passwordrules li.wrong {
+  color: govuk-colour("red");
+}
+
+#passwordrules li.wrong span {
+  background-image: url("data:image/svg+xml,%3Csvg height='14' viewBox='0 0 14 14' width='14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m46 1385.41176-4.5882353 4.58824-2.4117647-2.41176 4.5882353-4.58824-4.5882353-4.58824 2.4117647-2.41176 4.5882353 4.58824 4.5882353-4.58824 2.4117647 2.41176-4.5882353 4.58824 4.5882353 4.58824-2.4117647 2.41176z' fill='%23b10e1e' fill-rule='evenodd' transform='matrix(-1 0 0 1 53 -1376)'/%3E%3C/svg%3E");
+}
+
+#passwordrules li.correct span:first-child,
+#passwordrules li.wrong span:first-child {
+  position: relative;
+  top: 0.2rem;
+}
+
+#passwordrules li.correct span:first-child b,
+#passwordrules li.wrong span:first-child b {
+  position: absolute;
+  left: -3000px;
+  top: -3000px;
+}
+
+#passwordrules li span {
+  display: inline-block;
+  background-image: none;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+}
+
+#passwordrules li span b {
+  display: inline-block;
+  margin-right: 0.3rem;
+  width: inherit;
+  height: inherit;
+}

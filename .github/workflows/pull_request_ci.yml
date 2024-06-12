@@ -1,0 +1,22 @@
+name: "CI for Pull Requests"
+
+on:
+  pull_request:
+
+jobs:
+  run-code-analysis:
+    uses: ./.github/workflows/code_analysis.yml
+
+  run-unit-tests:
+    uses: ./.github/workflows/unit_tests.yml
+    with:
+      publish_test_report: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'develop' }}
+    secrets:
+      cc_test_reporter_id: ${{ secrets.CC_TEST_REPORTER_ID }}
+    needs:
+      - run-code-analysis
+
+  run-docker-tests:
+    uses: ./.github/workflows/docker_tests.yml
+    needs:
+      - run-code-analysis

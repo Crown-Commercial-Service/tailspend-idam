@@ -1,17 +1,31 @@
-# Pass in alpine version
+# Set the alpine version so they match for both images
 ARG ALPINE_VERSION=3.19
 
-# Pass in nodejs version
-ARG NODE_VERSION=20.11.0
+# Set the NodeJS version
+ARG NODE_VERSION=iron
 
-# Pass in ruby version
+# Set the Ruby version
 ARG RUBY_VERSION=3.3.1
 
-# Pull in the nodejs image
+# Pull in the NodeJS image
 FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS node
 
-# Pull in the ruby image
-FROM ruby:${RUBY_VERSION}-alpine${ALPINE_VERSION}
+# Pull in the Ruby image
+FROM ruby:${RUBY_VERSION}-alpine${ALPINE_VERSION} AS base
+
+# Rails app lives here
+WORKDIR /rails
+
+# Set production environment
+ENV RAILS_ENV="production" \
+    RAILS_SERVE_STATIC_FILES="true" \
+    RAILS_LOG_TO_STDOUT="true" \
+    BUNDLE_DEPLOYMENT="1" \
+    BUNDLE_PATH="/usr/local/bundle" \
+    BUNDLE_WITHOUT="development test"
+
+# Throw-away build stage to reduce size of final image
+FROM base as build
 
 # As this is a multistage Docker image build
 # we will pull in the contents from the previous node image build stage
@@ -19,32 +33,66 @@ FROM ruby:${RUBY_VERSION}-alpine${ALPINE_VERSION}
 # so that the ruby image build stage has the correct nodejs version
 COPY --from=node /usr/local/bin /usr/local/bin
 
-# Set the app directory
-WORKDIR /app
-
 # Install application dependencies
 RUN apk add --update --no-cache \
-  build-base \
-  ca-certificates \
-  curl \
-  git \
-  libpq-dev \
-  npm \
-  tzdata
+    build-base \
+    curl \
+    git \
+    libpq-dev \
+    npm \
+    tzdata
 
-RUN npm install -g yarn@1.22.19 --force
+# Enable corepack for yarn
+RUN corepack enable
 
-RUN yarn install --check-files
+# Install application gems
+COPY Gemfile Gemfile.lock ./
+RUN bundle install && \
+    rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
+    bundle exec bootsnap precompile --gemfile
 
+# Install node modules
+COPY package.json yarn.lock .yarnrc.yml ./
+COPY .yarn ./.yarn
+RUN yarn workspaces focus --all --production
+
+# Copy application code
 COPY . .
 
-COPY Gemfile Gemfile.lock ./
+# Precompile bootsnap code for faster boot times
+RUN bundle exec bootsnap precompile app/ lib/
 
-# Build application
-RUN gem install bundler && bundle install --jobs 4 --retry 5 && bundle clean --force
+# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
+RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
-RUN NODE_OPTIONS=--openssl-legacy-provider rake assets:precompile
+# Final stage for app image
+FROM base
 
+# Install packages needed for deployment
+RUN apk add --update --no-cache \
+    bash \
+    ca-certificates \
+    curl \
+    libpq-dev \
+    tzdata
+
+# Copy built artifacts: gems, application
+COPY --from=build /usr/local/bundle /usr/local/bundle
+COPY --from=build /rails /rails
+
+# Run and own only the runtime files as a non-root user for security
+RUN adduser rails -D --shell /bin/bash
+
+# Own the runtime files for the app
+RUN chown -R rails:rails db log tmp data
+
+USER rails:rails
+
+# Entrypoint prepares the database.
+ENTRYPOINT ["/rails/bin/docker-entrypoint"]
+
+# Run the web app on port 3000
 EXPOSE 3000
 
-CMD ["rails", "server", "-b", "0.0.0.0"]
+# Start the server by default, this can be overwritten at runtime
+CMD ["./bin/rails", "server", "-b", "0.0.0.0"]

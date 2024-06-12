@@ -86,12 +86,18 @@ This project uses environment variables which you will need to add to your .env.
 - **MERCATEO_GET_URL** - `http://localhost:8080`
 
 ## Running the application
-To run the application use:
-```
-bundle exec rails s
-```
-This will then run the rails server on localhost:3000 but you will need to do some more setup before you can fully use and test the application.
 
+You can run the web application with:
+
+```shell
+bin/dev
+```
+
+This will:
+- bring up the web application on [localhost:3000](http://localhost:3000)
+- watch CSS and JavaScript assets for changes
+
+However, you will need to do some more setup before you can fully use and test the application.
 
 ## Using the application in the development environment
 ### Running Keycloak in the Docker container
