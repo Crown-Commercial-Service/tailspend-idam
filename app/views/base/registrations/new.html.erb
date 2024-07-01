@@ -90,7 +90,7 @@
         ) do %>
           <p class="govuk-body govuk-!-margin-bottom-1" id="password-strength"><%= t('.password_must_have') %></p>
 
-          <%= render '/layouts/password-strength', password_id: "#{f.object_name}_password" %>
+          <%= password_strength("#{f.object_name}_password") %>
 
           <%= govuk_password_input(
             :password,
@@ -103,7 +103,7 @@
             },
             attributes: {
               aria: {
-                describedby: 'password-strength passeight passcap passnum'
+                describedby: 'password-strength'
               }
             },
           ) %>

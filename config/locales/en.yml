@@ -207,10 +207,10 @@ en:
     continue: Continue
     create_account: Create account
     passcap: at least one capital letter
-    passeight: at least 10 characters
     passlower: at least one lowercase letter
     passnum: at least one number
     passsym: at least one special character
+    passten: at least 10 characters
     reset_password: Reset password
     send_reset_email: Send reset email
     sign_in: Sign in
@@ -378,11 +378,6 @@ en:
   layouts:
     application:
       title: Crown Commercial Services
-    contact_us:
-      contact_us: Contact us (opens in a new tab)
-      contact_us_link: https://www.crowncommercial.gov.uk/contact
-      having_problems: Having problems with this service?
-      support_html: "%{link} for support."
     cookie-banner:
       accept_cookies: Accept analytics cookies
       change_cookie_settings_html: You can %{cookie_settings_link} at any time.
@@ -398,6 +393,11 @@ en:
     footer:
       accessibility_statement_link: Accessibility statement
       accessibility_statement_link_aria_label: View our accessibility statement
+      contact_us:
+        contact_us: Contact us (opens in a new tab)
+        contact_us_link: https://www.crowncommercial.gov.uk/contact
+        having_problems: 'Having problems with this service? '
+        support: " for support."
       cookie_policy_link: Cookie policy
       cookie_policy_link_aria_label: View our cookie policy
       cookie_settings_link: Cookie settings
