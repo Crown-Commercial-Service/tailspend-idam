@@ -4,21 +4,13 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/0cd357c324b2731fb1bc/maintainability)](https://codeclimate.com/github/Crown-Commercial-Service/tailspend-idam/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/0cd357c324b2731fb1bc/test_coverage)](https://codeclimate.com/github/Crown-Commercial-Service/tailspend-idam/test_coverage)
 
-
-**Deployments**
-| Environment     | Deployment status                                                                                                                                         |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Development     | ![Latest Development deployment](https://github.com/Crown-Commercial-Service/tailspend-idam/actions/workflows/setup_deployment.yml/badge.svg?branch=develop)    |
-| Pre-Production  | ![Latest Pre-Production deployment](https://github.com/Crown-Commercial-Service/tailspend-idam/actions/workflows/setup_deployment.yml/badge.svg?branch=preprod) |
-| Production      | ![Latest Production deployment](https://github.com/Crown-Commercial-Service/tailspend-idam/actions/workflows/setup_deployment.yml/badge.svg?branch=main)        |
-
 ## Prerequisites
 
 This README assumes you are using a MacBook. If you are using a different operating system you may need to take different steps to achive the same results but the prerequisites are likely to be the same or similar.
 
 
 ### Ruby
-This is a Ruby on Rails application using ruby version `3.3.1`.
+This is a Ruby on Rails application using ruby version `3.3.3`.
 Ensure that, if you are using a ruby environment manager, the correct ruby version is being run in your development environment.
 
 This project uses Ruby Gems so you will need to install bundler which can be done with:
