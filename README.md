@@ -186,3 +186,16 @@ Most of the copy for the application is held within translation files. The follo
 i18n-tasks health
 ```
 If there are any issues that arise, you can follow the output to solve them. Another useful command is `i18n-tasks` as this will give you list of useful tasks that can be performed which may save you some work.
+
+## Deploying to staging and production
+
+We use Git tags to manage our deployments to staging and production.
+
+To create a new release:
+- From the release commit (nearly always the HEAD of the main branch) checkout a new branch with the release version in the format:
+`release-<major>.<minor>.<patch>`
+- Update the version number in the VERSION file
+- Update the CHANGELOG with a list of the changes and their Pull Requests
+- Commit the changes (with the commit message 'Release v<major>.<minor>.<patch>'), push to GitHub and open a Pull Request
+- Once this Pull Request has been reviewed and merged a new GitHub release will be created
+- Use the create Git tag reference in Jenkins to release the code changes
