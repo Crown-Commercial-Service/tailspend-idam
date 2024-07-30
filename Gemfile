@@ -14,10 +14,10 @@ gem 'puma', '~> 6.4'
 gem 'propshaft'
 
 # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
-gem 'cssbundling-rails', '~> 1.4'
+gem 'cssbundling-rails', '~> 1.4', '>= 1.4.1'
 
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
-gem 'jsbundling-rails', '~> 1.3'
+gem 'jsbundling-rails', '~> 1.3', '>= 1.3.1'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 # gem 'turbolinks', '~> 5'
