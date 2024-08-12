@@ -55,7 +55,7 @@ gem 'aws-sdk-ssm', '~> 1.175.0'
 gem 'rack-attack', '~> 6.7.0'
 
 # GOV.UK Frontend helpers
-gem 'ccs-frontend_helpers', '~> 1.1.1'
+gem 'ccs-frontend_helpers', '~> 1.1.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
