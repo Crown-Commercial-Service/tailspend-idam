@@ -25,7 +25,7 @@ ENV RAILS_ENV="production" \
     BUNDLE_WITHOUT="development test"
 
 # Throw-away build stage to reduce size of final image
-FROM base as build
+FROM base AS build
 
 # As this is a multistage Docker image build
 # we will pull in the contents from the previous node image build stage
