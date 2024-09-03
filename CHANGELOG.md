@@ -11,8 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Remove Turbolinks as it is no longer supported ([PR 392](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/392))
 
-### Fixed
+### Changed
 
+- Update ruby to v3.3.5 ([PR 393](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/393))
 - Update ruby to v3.3.4 ([PR 391](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/391))
 
 ## [2.1.1] - 2024-08-22
