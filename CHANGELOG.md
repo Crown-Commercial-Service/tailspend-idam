@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Update alpine to v3.20 ([PR 395](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/395))
 - Update ruby to v3.3.5 ([PR 393](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/393))
 - Update ruby to v3.3.4 ([PR 391](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/391))
 
