@@ -9,7 +9,7 @@
     "@rollup/plugin-typescript": "^12.1.0",
     "@types/jquery": "^3.5.30",
     "@types/js-cookie": "^3.0.6",
-    "@types/node": "^22.5.5",
+    "@types/node": "^22.7.4",
     "@types/rails__ujs": "^6.0.4",
     "accessible-autocomplete": "^3.0.1",
     "ccs-frontend": "^1.1.3",
