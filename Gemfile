@@ -66,7 +66,7 @@ group :development, :test do
   gem 'rubocop-rails', '~> 2.26.2'
   gem 'rubocop-rspec', '~> 3.1.0'
   gem 'rubocop-rspec_rails', '~> 2.30.0'
-  gem 'brakeman', '~> 6.2.1'
+  gem 'brakeman', '~> 6.2.2'
 end
 
 group :development do
