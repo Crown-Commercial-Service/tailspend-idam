@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/jumph4x/canonical-rails.git
-  revision: fbc1c88c71131ddb1352953cd6048033fd2473e5
+  revision: b3f0d408cd198c44ec3497370f320cadeb708216
   specs:
-    canonical-rails (0.2.15)
+    canonical-rails (0.2.16)
       actionview (>= 4.1, < 7.3)
 
 GEM
@@ -179,7 +179,7 @@ GEM
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.22.0)
+    loofah (2.23.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.8.1)
