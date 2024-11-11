@@ -1,7 +1,7 @@
 {
   "name": "tailspend_idam",
   "private": true,
-  "packageManager": "yarn@4.3.0",
+  "packageManager": "yarn@4.5.1",
   "dependencies": {
     "@rails/ujs": "^7.1.500",
     "@rollup/plugin-commonjs": "^28.0.1",
