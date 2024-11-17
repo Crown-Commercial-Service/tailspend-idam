@@ -62,7 +62,7 @@ group :development, :test do
   gem 'i18n-tasks', '~> 1.0.14'
   gem 'rspec-rails', '~> 7.1.0'
   gem 'rubocop', '~> 1.68.0'
-  gem 'rubocop-performance', '~> 1.22.1'
+  gem 'rubocop-performance', '~> 1.23.0'
   gem 'rubocop-rails', '~> 2.27.0'
   gem 'rubocop-rspec', '~> 3.2.0'
   gem 'rubocop-rspec_rails', '~> 2.30.0'
