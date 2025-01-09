@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.3.6'
+ruby '3.4.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 7.1.5'
@@ -41,6 +41,7 @@ gem 'jwt', '~> 2.9.3'
 gem 'rest-client', '~> 2.1'
 gem 'rollbar', '~> 3.6.0'
 gem 'roo', '~> 2.10.1'
+gem 'csv', '~> 3.3.2'
 # remove if not option two taken in project
 
 # For canonical urls

@@ -131,6 +131,7 @@ GEM
     crass (1.0.6)
     cssbundling-rails (1.4.1)
       railties (>= 6.0.0)
+    csv (3.3.2)
     date (3.4.0)
     diff-lcs (1.5.1)
     docile (1.4.0)
@@ -390,6 +391,7 @@ DEPENDENCIES
   canonical-rails!
   ccs-frontend_helpers (~> 2.0.0)
   cssbundling-rails (~> 1.4)
+  csv (~> 3.3.2)
   dotenv-rails (~> 3.1.4)
   i18n-tasks (~> 1.0.14)
   jbuilder (~> 2.13)
@@ -417,7 +419,7 @@ DEPENDENCIES
   web-console (~> 4.2.1)
 
 RUBY VERSION
-   ruby 3.3.6p108
+   ruby 3.4.1p0
 
 BUNDLED WITH
    2.4.6
