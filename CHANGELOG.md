@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Upgrade ruby version to v3.4.1 ([PR 540](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/540))
+- Upgrade alpine version to v3.21 ([PR 540](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/540))
 - Update ruby to v3.3.6 ([PR 489](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/489))
 - Update Node to LTS Jod (v22.11.0) ([PR 488](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/488))
 - Update alpine to v3.20 ([PR 395](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/395))
