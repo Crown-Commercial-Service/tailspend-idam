@@ -64,7 +64,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 7.1.0'
   gem 'rubocop', '~> 1.70.0'
   gem 'rubocop-performance', '~> 1.23.1'
-  gem 'rubocop-rails', '~> 2.28.0'
+  gem 'rubocop-rails', '~> 2.29.0'
   gem 'rubocop-rspec', '~> 3.3.0'
   gem 'rubocop-rspec_rails', '~> 2.30.0'
   gem 'brakeman', '~> 7.0.0'
