@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.13'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # for cognito
-gem 'aws-sdk-cognitoidentityprovider', '~> 1.113.0'
+gem 'aws-sdk-cognitoidentityprovider', '~> 1.114.0'
 # importing creds
 gem 'aws-sdk-s3', '~> 1'
 # Reduces boot times through caching; required in config/boot.rb
@@ -48,7 +48,7 @@ gem 'csv', '~> 3.3.2'
 gem 'canonical-rails', github: 'jumph4x/canonical-rails'
 
 # For environment variables
-gem 'aws-sdk-ssm', '~> 1.187.0'
+gem 'aws-sdk-ssm', '~> 1.188.0'
 
 # Add rate limiting on the API
 gem 'rack-attack', '~> 6.7.0'
