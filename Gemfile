@@ -8,7 +8,7 @@ ruby '3.4.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 7.1.5'
 # Use Puma as the app server
-gem 'puma', '~> 6.5'
+gem 'puma', '~> 6.6'
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem 'propshaft'
