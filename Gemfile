@@ -39,7 +39,7 @@ gem 'pg', '~> 1.5.9'
 # remove if not option two taken in project
 gem 'jwt', '~> 2.10.1'
 gem 'rest-client', '~> 2.1'
-gem 'rollbar', '~> 3.6.0'
+gem 'rollbar', '~> 3.6.1'
 gem 'roo', '~> 2.10.1'
 gem 'csv', '~> 3.3.2'
 # remove if not option two taken in project
