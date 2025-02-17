@@ -1,7 +1,10 @@
-require: 
+---
+plugins:
   - rubocop-performance
   - rubocop-rails
   - rubocop-rspec
+
+require: 
   - rubocop-rspec_rails
 
 AllCops:
@@ -104,6 +107,9 @@ Layout/LineLength:
         - 'it .* do$'
         - 'context .* do$'
         - 'scenario .* do$'
+
+Lint/UselessConstantScoping:
+    Enabled: false
 
 Metrics/MethodLength:
     Max: 50
