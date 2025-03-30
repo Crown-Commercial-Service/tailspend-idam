@@ -58,7 +58,7 @@ gem 'ccs-frontend_helpers', '~> 2.2.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', '~> 11.1.3', platforms: %i[mri mingw x64_mingw]
+  gem 'byebug', '~> 12.0.0', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails', '~> 3.1.4'
   gem 'i18n-tasks', '~> 1.0.15'
   gem 'rspec-rails', '~> 7.1.1'
