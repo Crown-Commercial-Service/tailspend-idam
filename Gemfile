@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.4.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.1.5'
+gem 'rails', '~> 8.0.2'
 # Use Puma as the app server
 gem 'puma', '~> 6.6'
 
@@ -34,7 +34,7 @@ gem 'bootsnap', '~> 1.18.4', require: false
 gem 'arask', '~> 1.2.3'
 
 # for postgresql
-gem 'activerecord-postgis-adapter', '~> 9.0.2'
+gem 'activerecord-postgis-adapter', '~> 11.0.0'
 gem 'pg', '~> 1.5.9'
 # remove if not option two taken in project
 gem 'jwt', '~> 2.10.1'
@@ -59,7 +59,7 @@ gem 'ccs-frontend_helpers', '~> 2.2.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', '~> 12.0.0', platforms: %i[mri mingw x64_mingw]
-  gem 'dotenv-rails', '~> 3.1.4'
+  gem 'dotenv-rails', '~> 3.1.8'
   gem 'i18n-tasks', '~> 1.0.15'
   gem 'rspec-rails', '~> 7.1.1'
   gem 'rubocop', '~> 1.75.2'
