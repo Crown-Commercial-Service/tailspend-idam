@@ -23,7 +23,7 @@ updates:
         patterns:
           - 'aws*'
 
-  - package-ecosystem: "npm"
+  - package-ecosystem: "bun"
     directory: "/"
     schedule:
       interval: "weekly"
@@ -54,12 +54,6 @@ updates:
           - 'cssnano-*'
           - 'postcss'
           - 'postcss-*'
-
-      rollup:
-        patterns:
-          - '@rollup/*'
-          - 'rollup'
-          - 'rollup-*'
 
       frontend:
         patterns:

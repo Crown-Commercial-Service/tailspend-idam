@@ -1,24 +1,30 @@
 import accessibleAutocomplete from 'accessible-autocomplete'
+import { get } from '@rails/request.js'
 
 let noResults = false
 
 const tailspendAutoComplete = {
   autocomplete: [],
 
-  query(query: string, populateResults: (summaryLines: string[]) => void) {
+  async query(query: string, populateResults: (summaryLines: string[]) => void) {
     if (query.length > 2) {
-      $.ajax({
-        url: '/api/v1/organisation-search',
-        type: 'get',
-        data: {
-          search: query,
-        },
-        success(response) {
-          populateResults(response.summary_lines)
-          noResults = response.noResults
-        },
-        error() { },
-      })
+      try {
+        const response = await get(
+          '/api/v1/organisation-search',
+          {
+            query: { search: query }
+          }
+        )
+  
+        if (response.ok) {
+          const responseData = await response.json
+  
+          populateResults(responseData.summary_lines)
+          noResults = responseData.noResults
+        }
+      } catch {
+        // Do nothing
+      }
     }
   },
 
