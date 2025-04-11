@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   end
 
   get '/404', to: 'errors#not_found'
+  get '/406', to: 'errors#not_acceptable'
   get '/422', to: 'errors#unacceptable'
   get '/500', to: 'errors#internal_error'
   get '/service-unavailable', to: 'errors#service_unavailable'
