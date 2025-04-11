@@ -7,7 +7,7 @@ module Api
 
       def search
         result = Organisation.search_organisations(params[:search])
-        Rails.logger.debug result.length
+
         if result.length < 200
           render json: { summary_lines: result, no_results: result.empty? }
         else

@@ -218,6 +218,9 @@ en:
     internal_error:
       there_is_a_problem: Sorry, there is a problem with the service
       try_again_later: Try again later.
+    not_acceptable:
+      browser_not_supported: Your browser is not supported
+      upgrade_your_browser: Please upgrade your browser to continue.
     not_found:
       check_pasted_address: If you pasted the web address, check you copied the entire address.
       check_web_address: If you typed the web address, check it is correct.
