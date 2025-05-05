@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.4.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.1.5'
+gem 'rails', '~> 7.2.0'
 # Use Puma as the app server
 gem 'puma', '~> 6.6'
 
@@ -54,7 +54,7 @@ gem 'aws-sdk-ssm', '~> 1.192.0'
 gem 'rack-attack', '~> 6.7.0'
 
 # GOV.UK Frontend helpers
-gem 'ccs-frontend_helpers', '~> 2.2.0'
+gem 'ccs-frontend_helpers', '~> 2.3.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
