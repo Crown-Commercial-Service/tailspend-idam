@@ -1,4 +1,4 @@
-name: "Analyse Ruby code with RuboCop and JavaScript code with ESLint"
+name: "Analyse Ruby code with RuboCop and Brakeman and JavaScript code with ESLint"
 
 on:
   workflow_call:
@@ -16,10 +16,20 @@ jobs:
         with:
           bundler-cache: true
 
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.2.13
+
       - name: Run rubocop
-        run: bundle exec rubocop
+        run: bin/rubocop
       
       - name: Check JavaScript code quality
         run: |
-          yarn install
-          yarn lint
+          bun install
+          bun lint
+          bun typecheck
+
+      # To be added in the future
+      # - name: Run brakeman
+      #   run: bin/brakeman

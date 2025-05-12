@@ -41,6 +41,11 @@ jobs:
         with:
           bundler-cache: true
 
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.2.13
+
       - name: Set up database schema
         run: bin/rails db:test:prepare
 

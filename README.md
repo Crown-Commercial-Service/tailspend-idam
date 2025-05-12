@@ -19,10 +19,10 @@ gem install bundler
 ```
 
 
-### Yarn
-In order to either run the project you will need to install Yarn. This is a package manager for JavaScript and is used to install Node modules and you can install it with:
+### Bun
+In order to either run the project you will need to install Bun. This is a package manager for JavaScript and is used to install Node modules and you can install it with:
 ```
-brew install yarn
+brew install bun
 ```
 
 
@@ -48,7 +48,7 @@ brew services start postgresql
 ## Initialising the project
 For all the node packages you will need to run:
 ```
-yarn install
+bun install
 ```
 Once this has completed successfully, the next step is to install the required ruby gems to run the project. This can be done with the following command:
 ```

@@ -5,6 +5,12 @@ class ErrorsController < ApplicationController
     end
   end
 
+  def not_acceptable
+    respond_to do |format|
+      format.html { render status: :not_acceptable, layout: 'error' }
+    end
+  end
+
   def unacceptable
     respond_to do |format|
       format.html { render status: :unprocessable_entity, layout: 'error' }
