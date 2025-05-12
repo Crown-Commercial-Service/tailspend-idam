@@ -6,7 +6,7 @@
         "@rails/request.js": "^0.0.12",
         "@types/jquery": "^3.5.32",
         "@types/js-cookie": "^3.0.6",
-        "@types/node": "^22.14.0",
+        "@types/node": "^22.15.17",
         "@types/rails__request.js": "^0.0.0",
         "accessible-autocomplete": "^3.0.1",
         "ccs-frontend": "^1.4.0",
@@ -103,7 +103,7 @@
 
     "@types/json-schema": ["@types/json-schema@7.0.15", "", {}, "sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA=="],
 
-    "@types/node": ["@types/node@22.14.0", "", { "dependencies": { "undici-types": "~6.21.0" } }, "sha512-Kmpl+z84ILoG+3T/zQFyAJsU6EPTmOCj8/2+83fSN6djd6I4o7uOuGIH6vq3PrjY5BGitSbFuMN18j3iknubbA=="],
+    "@types/node": ["@types/node@22.15.17", "", { "dependencies": { "undici-types": "~6.21.0" } }, "sha512-wIX2aSZL5FE+MR0JlvF87BNVrtFWf6AE6rxSE9X7OwnVvoyCQjpzSRJ+M87se/4QCkCiebQAqrJ0y6fwIyi7nw=="],
 
     "@types/rails__request.js": ["@types/rails__request.js@0.0.0", "", {}, "sha512-5QE45w3Isu6bGbK9+3duaMo66trVz6i2FAz4O//Lnk9n6w9Tnf6ofXydn2ANKoDFfTSdjdHl8h0jKuXHswubCg=="],
 
