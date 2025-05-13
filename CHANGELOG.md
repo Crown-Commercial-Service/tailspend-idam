@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Upgrade Rails to v7.2.2.1 ([PR 641](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/641))
 - Use Bun to manage our assets ([PR 641](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/641))
+- Upgrade GOV.UK Frontend version to v5.10.0 ([PR 672](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/672))
+- Upgrade CCS Frontend version to v1.4.1 ([PR 672](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/672))
 
 ## [2.2.1] - 2025-03-24
 
