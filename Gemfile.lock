@@ -127,7 +127,7 @@ GEM
     crass (1.0.6)
     cssbundling-rails (1.4.3)
       railties (>= 6.0.0)
-    csv (3.3.3)
+    csv (3.3.4)
     date (3.4.1)
     diff-lcs (1.6.0)
     docile (1.4.0)
@@ -408,7 +408,7 @@ DEPENDENCIES
   canonical-rails!
   ccs-frontend_helpers (~> 2.4.0)
   cssbundling-rails (~> 1.4)
-  csv (~> 3.3.3)
+  csv (~> 3.3.4)
   dotenv-rails (~> 3.1.8)
   i18n-tasks (~> 1.0.15)
   jbuilder (~> 2.13)
