@@ -44,7 +44,7 @@ gem 'jwt', '~> 2.10.1'
 gem 'rest-client', '~> 2.1'
 gem 'rollbar', '~> 3.6.2'
 gem 'roo', '~> 2.10.1'
-gem 'csv', '~> 3.3.4'
+gem 'csv', '~> 3.3.5'
 # remove if not option two taken in project
 
 # For canonical urls
