@@ -33,13 +33,15 @@ module Base
     end
 
     def sign_up_params
-      params.require(:cognito_sign_up_user).permit(
-        :email,
-        :first_name,
-        :last_name,
-        :summary_line,
-        :password,
-        :password_confirmation
+      params.expect(
+        cognito_sign_up_user: %i[
+          email
+          first_name
+          last_name
+          summary_line
+          password
+          password_confirmation
+        ]
       )
     end
   end
