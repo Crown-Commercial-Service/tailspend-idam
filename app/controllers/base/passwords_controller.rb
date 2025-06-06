@@ -40,15 +40,17 @@ module Base
     private
 
     def forgot_password_params
-      params.require(:cognito_forgot_password).permit(:email)
+      params.expect(cognito_forgot_password: [:email])
     end
 
     def confirm_password_params
-      params.require(:cognito_confirm_password_reset).permit(
-        :email,
-        :password,
-        :password_confirmation,
-        :confirmation_code,
+      params.expect(
+        cognito_confirm_password_reset: %i[
+          email
+          password
+          password_confirmation
+          confirmation_code
+        ],
       )
     end
   end

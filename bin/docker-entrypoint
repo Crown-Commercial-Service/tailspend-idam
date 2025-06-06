@@ -8,6 +8,7 @@ fi
 # If running the rails server then create or migrate existing database
 if [ "$PREVENT_ARASK" = '0' ]; then
   ./bin/rails db:prepare
+  ./bin/jobs
+else
+  exec "${@}"
 fi
-
-exec "${@}"

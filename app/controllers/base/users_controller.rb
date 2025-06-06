@@ -30,9 +30,11 @@ module Base
     private
 
     def confirm_sign_up_params
-      params.require(:cognito_confirm_sign_up).permit(
-        :confirmation_code,
-        :email
+      params.expect(
+        cognito_confirm_sign_up: %i[
+          confirmation_code
+          email
+        ]
       )
     end
 

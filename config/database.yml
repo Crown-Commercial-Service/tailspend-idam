@@ -24,12 +24,9 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
-  <<: *default
-  database: postgres
-  host: localhost
-  port: 5432
-  username: postgres
-  password: password
+  primary:
+    <<: *default
+    database: tailspend_idam_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,6 +54,10 @@ development:
   #   log, notice, warning, error, fatal, and panic
   # Defaults to warning.
   #min_messages: notice
+  queue:
+    <<: *default
+    database: tailspend_idam_development_queue
+    migrations_paths: db/queue_migrate
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -85,10 +86,15 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  advisory_locks: false
-  host: <%= ENV['CCS_DEFAULT_DB_HOST'] %>
-  port: <%= ENV['CCS_DEFAULT_DB_PORT'] %>
-  database: <%= ENV['CCS_DEFAULT_DB_NAME'] %>
-  username: <%= ENV['CCS_DEFAULT_DB_USER'] %>
-  password: <%= ENV['CCS_DEFAULT_DB_PASSWORD'] %>
+  primary: &primary_production
+    <<: *default
+    advisory_locks: false
+    host: <%= ENV['CCS_DEFAULT_DB_HOST'] %>
+    port: <%= ENV['CCS_DEFAULT_DB_PORT'] %>
+    database: <%= ENV['CCS_DEFAULT_DB_NAME'] %>
+    username: <%= ENV['CCS_DEFAULT_DB_USER'] %>
+    password: <%= ENV['CCS_DEFAULT_DB_PASSWORD'] %>
+  queue:
+    <<: *primary_production
+    database: <%= ENV['CCS_DEFAULT_DB_NAME'] %>_queue
+    migrations_paths: db/queue_migrate

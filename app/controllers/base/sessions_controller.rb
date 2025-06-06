@@ -73,9 +73,11 @@ module Base
     end
 
     def sign_in_params
-      params.require(:cognito_sign_in_user).permit(
-        :email,
-        :password
+      params.expect(
+        cognito_sign_in_user: %i[
+          email
+          password
+        ]
       )
     end
   end

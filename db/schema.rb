@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_13_132319) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_06_124032) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
-  enable_extension "plpgsql"
   enable_extension "postgis"
 
   create_table "allowed_email_domains", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -21,13 +21,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_13_132319) do
     t.boolean "active", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "arask_jobs", force: :cascade do |t|
-    t.string "job"
-    t.datetime "execute_at", precision: nil
-    t.string "interval"
-    t.index ["execute_at"], name: "index_arask_jobs_on_execute_at"
   end
 
   create_table "client_calls", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -57,5 +50,4 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_13_132319) do
     t.string "password", limit: 60
     t.index ["password"], name: "index_pwned_passwords_on_password"
   end
-
 end

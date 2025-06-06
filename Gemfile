@@ -33,8 +33,8 @@ gem 'aws-sdk-s3', '~> 1'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '~> 1.18.6', require: false
 
-# For scheduling tasks
-gem 'arask', '~> 1.2.3'
+# For background jobs
+gem 'solid_queue', '~> 1.1.5'
 
 # for postgresql
 gem 'activerecord-postgis-adapter', '~> 11.0.0'

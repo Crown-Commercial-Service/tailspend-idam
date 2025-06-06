@@ -1,0 +1,5 @@
+production:
+  periodic_salesforce_import:
+    class: SalesforceImportJob
+    queue: default
+    schedule: '0 */1 * * *'
