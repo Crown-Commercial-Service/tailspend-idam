@@ -5,7 +5,7 @@
     "@rails/request.js": "^0.0.12",
     "@types/jquery": "^3.5.32",
     "@types/js-cookie": "^3.0.6",
-    "@types/node": "^22.15.29",
+    "@types/node": "^22.15.30",
     "@types/rails__request.js": "^0.0.0",
     "accessible-autocomplete": "^3.0.1",
     "ccs-frontend": "^1.4.1",
