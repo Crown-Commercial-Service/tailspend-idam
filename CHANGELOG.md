@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## Changed
+## [3.0.0] - 2025-06-16
+
+### Changed
 
 - Upgrade Rails to v7.2.2.1 ([PR 641](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/641))
 - Use Bun to manage our assets ([PR 641](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/641))
