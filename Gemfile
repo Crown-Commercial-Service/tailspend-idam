@@ -40,7 +40,7 @@ gem 'solid_queue', '~> 1.1.5'
 gem 'activerecord-postgis-adapter', '~> 11.0.0'
 gem 'pg', '~> 1.5.9'
 # remove if not option two taken in project
-gem 'jwt', '~> 3.0.0'
+gem 'jwt', '~> 3.1.2'
 gem 'rest-client', '~> 2.1'
 gem 'rollbar', '~> 3.6.2'
 gem 'roo', '~> 2.10.1'
