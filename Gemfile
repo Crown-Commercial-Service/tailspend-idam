@@ -70,7 +70,7 @@ group :development, :test do
   gem 'rubocop-rails', '~> 2.32.0'
   gem 'rubocop-rspec', '~> 3.6.0'
   gem 'rubocop-rspec_rails', '~> 2.31.0'
-  gem 'brakeman', '~> 7.0.2'
+  gem 'brakeman', '~> 7.1.0'
 end
 
 group :development do
