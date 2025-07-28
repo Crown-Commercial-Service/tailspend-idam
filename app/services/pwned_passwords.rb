@@ -1,6 +1,7 @@
 module PwnedPasswords
   class TestPassword
     include ActiveModel::Validations
+
     attr_reader :password
 
     validates :password, presence: true, length: { within: 10..200 }

@@ -3,6 +3,7 @@
 module Cognito
   class ForgotPassword < BaseService
     include ActiveModel::Validations
+
     attr_reader :email, :error
 
     validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }

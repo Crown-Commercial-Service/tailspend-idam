@@ -1,6 +1,7 @@
 module Cognito
   class Authorize < BaseService
     include ActiveModel::Validations
+
     attr_reader :client_id, :response_type, :redirect_uri
 
     validates_presence_of :client_id, :response_type, :redirect_uri

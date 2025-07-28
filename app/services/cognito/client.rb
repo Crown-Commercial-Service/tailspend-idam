@@ -3,6 +3,7 @@
 module Cognito
   class Client < BaseService
     include ActiveModel::Validations
+
     attr_reader :client_id
 
     validates_presence_of :client_id
