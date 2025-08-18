@@ -7,9 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.1] - 2025-08-18
+
 ### Changed
 
 - Upgrade ruby version to v3.4.3 ([PR 740](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/740))
+
+### Security
+
+- Various dependency updates
 
 ## [3.0.0] - 2025-06-16
 
