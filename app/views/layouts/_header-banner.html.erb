@@ -1,8 +1,0 @@
-<%= ccs_header(
-  service: {
-    name: t('.service_name')
-  },
-  navigation: {
-    primary_items: ['/', '/service-unavailable', '/503'].any? { |path| current_page?(path) } ? nil : [{ text: t('.back_to_start'), href: home_path }]
-  }
-) %>
