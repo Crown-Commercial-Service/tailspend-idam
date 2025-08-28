@@ -408,7 +408,7 @@ en:
       privacy_link: https://www.gov.uk/government/publications/crown-commercial-service-privacy-notice/crown-commercial-service-privacy-notice
       privacy_link_aria_label: View our privacy policy
       privacy_link_text: Privacy policy
-    header-banner:
+    service-navigation:
       back_to_start: Back to start
       service_name: Sign in to the Tail Spend Solution
   shared:
