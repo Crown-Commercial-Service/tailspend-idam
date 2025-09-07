@@ -65,10 +65,10 @@ group :development, :test do
   gem 'dotenv-rails', '~> 3.1.8'
   gem 'i18n-tasks', '~> 1.0.15'
   gem 'rspec-rails', '~> 8.0.2'
-  gem 'rubocop', '~> 1.80.1'
-  gem 'rubocop-performance', '~> 1.25.0'
+  gem 'rubocop', '~> 1.80.2'
+  gem 'rubocop-performance', '~> 1.26.0'
   gem 'rubocop-rails', '~> 2.33.3'
-  gem 'rubocop-rspec', '~> 3.6.0'
+  gem 'rubocop-rspec', '~> 3.7.0'
   gem 'rubocop-rspec_rails', '~> 2.31.0'
   gem 'brakeman', '~> 7.1.0'
 end
