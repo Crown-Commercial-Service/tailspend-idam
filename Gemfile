@@ -51,7 +51,7 @@ gem 'csv', '~> 3.3.5'
 gem 'canonical-rails', github: 'jumph4x/canonical-rails'
 
 # For environment variables
-gem 'aws-sdk-ssm', '~> 1.203.0'
+gem 'aws-sdk-ssm', '~> 1.204.0'
 
 # Add rate limiting on the API
 gem 'rack-attack', '~> 6.7.0'
