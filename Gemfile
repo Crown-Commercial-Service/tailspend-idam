@@ -54,7 +54,7 @@ gem 'canonical-rails', github: 'jumph4x/canonical-rails'
 gem 'aws-sdk-ssm', '~> 1.204.0'
 
 # Add rate limiting on the API
-gem 'rack-attack', '~> 6.7.0'
+gem 'rack-attack', '~> 6.8.0'
 
 # GOV.UK Frontend helpers
 gem 'ccs-frontend_helpers', '~> 3.1.0'
