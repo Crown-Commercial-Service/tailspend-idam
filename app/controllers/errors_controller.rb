@@ -13,7 +13,7 @@ class ErrorsController < ApplicationController
 
   def unacceptable
     respond_to do |format|
-      format.html { render status: :unprocessable_entity, layout: 'error' }
+      format.html { render status: :unprocessable_content, layout: 'error' }
     end
   end
 
