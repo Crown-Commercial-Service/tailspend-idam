@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.4.3'
+ruby '3.4.7'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 8.0.4'
@@ -57,7 +57,7 @@ gem 'aws-sdk-ssm', '~> 1.207.0'
 gem 'rack-attack', '~> 6.8.0'
 
 # GOV.UK Frontend helpers
-gem 'ccs-frontend_helpers', '~> 3.1.0'
+gem 'ccs-frontend_helpers', '~> 3.3.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

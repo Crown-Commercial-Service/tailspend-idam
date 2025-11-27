@@ -10,7 +10,7 @@ This README assumes you are using a MacBook. If you are using a different operat
 
 
 ### Ruby
-This is a Ruby on Rails application using ruby version `3.4.3`.
+This is a Ruby on Rails application using ruby version `3.4.7`.
 Ensure that, if you are using a ruby environment manager, the correct ruby version is being run in your development environment.
 
 This project uses Ruby Gems so you will need to install bundler which can be done with:

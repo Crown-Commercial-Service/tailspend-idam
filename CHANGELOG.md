@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Upgrade ruby version to v3.4.7 ([PR 858](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/858))
+- Update CCS Frontend with the new linear CCS logo ([PR 858](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/858))
+- Update CCS Frontend with the crown on the footer ([PR 858](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/858))
+
 ## [3.1.0] - 2025-09-22
 
 ### Changed
