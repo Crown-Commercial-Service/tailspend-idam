@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.14'
 # for cognito
 gem 'aws-sdk-cognitoidentityprovider', '~> 1.132.0'
 # importing creds
-gem 'aws-sdk-s3', '~> 1'
+gem 'aws-sdk-s3', '~> 1', '>= 1.208.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '~> 1.19.0', require: false
 
