@@ -443,7 +443,7 @@ DEPENDENCIES
   brakeman (~> 7.1.2)
   byebug (~> 13.0.0)
   canonical-rails!
-  ccs-frontend_helpers (~> 3.3.0)
+  ccs-frontend_helpers (~> 3.4.0)
   cssbundling-rails (~> 1.4)
   csv (~> 3.3.5)
   dotenv-rails (~> 3.2.0)

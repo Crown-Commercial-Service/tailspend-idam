@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Update GOV.UK Frontend and CCS Frontend ([PR 896](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/896))
+
 ## [3.2.1] - 2026-01-05
 
 ### Security
