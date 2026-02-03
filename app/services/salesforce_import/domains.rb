@@ -33,13 +33,13 @@ module SalesforceImport
     # rubocop:enable Rails/SkipsModelValidations
 
     def self.remove_duplicates
-      query = <<-SQL.squish
-      DELETE FROM
-        allowed_email_domains a
-          USING allowed_email_domains b
-      WHERE
-        a.id < b.id
-        AND a.url = b.url;
+      query = <<~SQL.squish
+        DELETE FROM
+          allowed_email_domains a
+            USING allowed_email_domains b
+        WHERE
+          a.id < b.id
+          AND a.url = b.url;
       SQL
 
       ActiveRecord::Base.connection.execute(query)
