@@ -35,13 +35,13 @@ module SalesforceImport
     # rubocop:enable Rails/SkipsModelValidations
 
     def self.remove_duplicates
-      query = <<-SQL.squish
-      DELETE FROM
-        organisations a
-          USING organisations b
-      WHERE
-        a.id < b.id
-        AND a.summary_line = b.summary_line;
+      query = <<~SQL.squish
+        DELETE FROM
+          organisations a
+            USING organisations b
+        WHERE
+          a.id < b.id
+          AND a.summary_line = b.summary_line;
       SQL
 
       ActiveRecord::Base.connection.execute(query)
