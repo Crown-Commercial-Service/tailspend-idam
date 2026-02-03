@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add flag to show GCA branding ([PR 914](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/914))
+
 ### Changed
 
 - Update GOV.UK Frontend and CCS Frontend ([PR 896](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/896))
