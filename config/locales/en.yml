@@ -147,7 +147,7 @@ en:
         lead1: If the email address you’ve entered belongs to a registered organisation, we’ll send instructions to reset the password.
         new_password: New password
         password: Your password must have
-        text_html: If you don’t receive this, email <a href="mailto:support@crowncommercial.gov.uk" class="govuk-link--no-visited-state">support@crowncommercial.gov.uk</a>
+        text_html: If you don’t receive this, email <a href="mailto:support@%{org_domain}.gov.uk" class="govuk-link--no-visited-state">support@%{org_domain}.gov.uk</a>
         verify_code: Verification code
       new:
         email: Email address
@@ -158,14 +158,14 @@ en:
       domain_not_on_allow_list:
         back_to_create: Back to create a account
         heading: You must use a public sector email address
-        lead_html: You must be employed by, or represent, a public sector organisation to create a <abbr title="Crown Commercial Service">CCS</abbr> account.
+        lead_html: You must be employed by, or represent, a public sector organisation to create a <abbr title="%{org_name}">%{org_name_abbr}</abbr> account.
         line_01: The email you used doesn't belong to a recognised public sector domain.
-        line_02_html: Create an account using a different email address or email <a href="mailto:info@crowncommercial.gov.uk" class="govuk-link">info@crowncommercial.gov.uk</a> if
+        line_02_html: Create an account using a different email address or email <a href="mailto:info@%{org_domain}.gov.uk" class="govuk-link">info@%{org_domain}.gov.uk</a> if
         list_01: you think your domain should be recognised
         list_02: you still can't create an account
       new:
         authorised_customer_list: authorised customer list
-        authorised_customer_list_link: https://assets.crowncommercial.gov.uk/wp-content/uploads/RM3788-Contract-Notice-Authorised-Customer-List.docx
+        authorised_customer_list_link: https://assets.%{org_domain}.gov.uk/wp-content/uploads/RM3788-Contract-Notice-Authorised-Customer-List.docx
         authorised_customer_list_title: authrized customers list in .docx format
         be_a_recognised_html: be a recognised public sector body listed in the %{authorised_customer_list}.
         before_you_can_register: 'Before you can register and use this service your organisation will need to:'
@@ -181,7 +181,7 @@ en:
         last_name_hint: Add your last name here.
         organisation: Organisation name
         organisation_address_guidance: You can choose alternative delivery and invoice addresses later on.
-        organisation_hint: Enter your organisation's full name. We will verify your organisation name to confirm you can use this service. If your organisation is not listed please contact CCS.
+        organisation_hint: Enter your organisation's full name. We will verify your organisation name to confirm you can use this service. If your organisation is not listed please contact %{org_name_abbr}.
         password: Password
         password_must_have: 'Your password must have:'
         the_tailspend_solution: The Tail Spend Solution (RM6202) allows you to browse and buy a range of tail spend products. These are products that are often low volume and low value which organisations usually buy to meet a specific, short term need and are unlikely to buy again or in the near future.
@@ -233,7 +233,7 @@ en:
       explanation: Maybe you tried to change something you didn’t have access to.
   home:
     accessibility_statement:
-      CCS_is_committed: Crown Commercial Service is committed to making its website accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.
+      CCS_is_committed: "%{org_name} is committed to making its website accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018."
       ability_net: AbilityNet
       ability_net_link: https://mcmw.abilitynet.org.uk/
       ability_net_text_html: "%{ability_link} has advice on making your device easier to use if you have a disability."
@@ -244,7 +244,7 @@ en:
       call: call 0345 410 2222
       core_tailspend: Core Tail Spend Solution product
       email: email
-      email_link: info@crowncommercial.gov.uk
+      email_link: info@%{org_domain}.gov.uk
       equality: The Equality and Human Rights Commission (EHRC) is responsible for enforcing the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018 (the ‘accessibility regulations’). If you’re not happy with how we respond to your complaint,
       equality_link: https://www.equalityadvisoryservice.com/
       equality_link_text: contact the Equality Advisory and Support Service (EASS)
@@ -264,15 +264,15 @@ en:
       list_1_navigate_keyboard: navigate most of the website using just a keyboard
       list_1_navigate_listen: listen to most of the website using a screen reader (including the most recent versions of JAWS, NVDA and VoiceOver)
       list_1_navigate_speach: navigate most of the website using speech recognition software
-      list_2_decorative: non-decorative content is used in the CCS sign-in pages, which may make it in accessible to users navigating the site with screen readers.
+      list_2_decorative: non-decorative content is used in the %{org_name_abbr} sign-in pages, which may make it in accessible to users navigating the site with screen readers.
       list_2_email: the email field on the homepage lacks an autocomplete attribute, so its purpose cannot be determined programmatically
       several_aspects: Several aspects of the Tail Spend Solution user journey do not meet the WCAG 2.1 AA success criteria. The accessibility statement on the core Tail Spend Solution product details these.
-      tailspend_link: https://tailspend.crowncommercial.gov.uk/
+      tailspend_link: https://tailspend.%{org_domain}.gov.uk/
       the_complete_journey: The complete Tail Spend Solution journey was tested, this included every page a buyer would progress through in-order to complete the sign up activity.
       the_content: The content listed below is non-accessible for the following reasons.
       this_statement: 'This accessibility statement applies to the sign in pages of the Tail Spend Solution digital service which can be found at the following URL:'
       this_statement_date: This statement was prepared on 25th November 2020. It will be reviewed and updated as required.
-      this_website: 'This website is run by Crown Commercial Service (CCS). We want as many people as possible to be able to use this website. For example, that means you should be able to:'
+      this_website: 'This website is run by %{org_name} (%{org_name_abbr}). We want as many people as possible to be able to use this website. For example, that means you should be able to:'
       this_website_partially_1: This website is partially compliant with the
       this_website_partially_2: due to the non-compliances listed below.
       we_are_always_looking_html: 'We’re always looking to improve the accessibility of this website. If you find any problems not listed on this page or think we’re not meeting accessibility requirements, contact: %{email}.'
@@ -380,7 +380,7 @@ en:
       your_org_will_need: Your organisation will need to have completed a call-off contract with a supplier before you can create an account.
   layouts:
     application:
-      title: Crown Commercial Services
+      title: "%{org_name}"
     cookie-banner:
       accept_cookies: Accept analytics cookies
       change_cookie_settings_html: You can %{cookie_settings_link} at any time.
@@ -398,7 +398,7 @@ en:
       accessibility_statement_link_aria_label: View our accessibility statement
       contact_us:
         contact_us: Contact us (opens in a new tab)
-        contact_us_link: https://www.crowncommercial.gov.uk/contact
+        contact_us_link: https://www.%{org_domain}.gov.uk/contact
         having_problems: 'Having problems with this service? '
         support: " for support."
       cookie_policy_link: Cookie policy

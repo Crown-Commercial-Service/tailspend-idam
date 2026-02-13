@@ -47,6 +47,7 @@ const removeUnwantedCookies = (): void => {
   }
 
   cookiesToRemove.forEach((cookieName) => { Cookies.remove(cookieName, { path: '/', domain: '.crowncommercial.gov.uk' }) })
+  cookiesToRemove.forEach((cookieName) => { Cookies.remove(cookieName, { path: '/', domain: '.gca.gov.uk' }) })
 }
 
 const removeGACookies = (cookieBannerFormData: CookieBannerFormData, successFunction: () => void, failureFunction: () => void): void => {

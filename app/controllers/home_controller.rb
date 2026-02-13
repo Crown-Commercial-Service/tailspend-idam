@@ -49,7 +49,10 @@ class HomeController < ApplicationController
     return unless cookie_prefixes.any?
 
     cookies.each do |cookie_name, _|
-      cookies.delete(cookie_name, path: '/', domain: '.crowncommercial.gov.uk') if cookie_prefixes.any? { |cookie_prefix| cookie_name.start_with? cookie_prefix }
+      if cookie_prefixes.any? { |cookie_prefix| cookie_name.start_with? cookie_prefix }
+        cookies.delete(cookie_name, path: '/', domain: '.crowncommercial.gov.uk')
+        cookies.delete(cookie_name, path: '/', domain: '.gca.gov.uk')
+      end
     end
   end
 

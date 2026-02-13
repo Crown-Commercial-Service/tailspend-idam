@@ -14,7 +14,7 @@ RSpec.describe ApplicationHelper do
   describe '.page_title' do
     context 'when there is no additional title' do
       it 'returns just CCS' do
-        expect(page_title).to eq 'Crown Commercial Services'
+        expect(page_title).to eq 'Crown Commercial Service'
       end
     end
 
@@ -22,7 +22,7 @@ RSpec.describe ApplicationHelper do
       before { content_for(:page_title, 'My Magical Title') }
 
       it 'returns CCS plus the additional title' do
-        expect(page_title).to eq 'My Magical Title: Crown Commercial Services'
+        expect(page_title).to eq 'My Magical Title: Crown Commercial Service'
       end
     end
   end
