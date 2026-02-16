@@ -7,6 +7,7 @@ CanonicalRails.setup do |config|
 
   # This is the main host, not just the TLD, omit slashes and protocol. If you have more than one, pick the one you want to rank in search results.
 
+  # TODO: This will need to updated after the URL change
   config.host = 'tailspend.crowncommercial.gov.uk'
   config.port = '443'
 

@@ -57,4 +57,26 @@ module ApplicationHelper
       classes: 'govuk-!-margin-left-2'
     )
   end
+
+  # Methods used for the CCS transition to GCA
+
+  def t(key, **options)
+    options[:org_name] ||= current_organisation_name
+    options[:org_name_abbr] ||= current_organisation_name_abbr
+    options[:org_domain] ||= current_organisation_domain
+
+    super
+  end
+
+  def current_organisation_name
+    TailspendIdam.use_gca_branding? ? 'Government Commercial Agency' : 'Crown Commercial Service'
+  end
+
+  def current_organisation_name_abbr
+    TailspendIdam.use_gca_branding? ? 'GCA' : 'CCS'
+  end
+
+  def current_organisation_domain
+    TailspendIdam.use_gca_branding? ? 'gca' : 'crowncommercial'
+  end
 end
