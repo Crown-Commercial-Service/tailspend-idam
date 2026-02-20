@@ -34,7 +34,7 @@ gem 'aws-sdk-s3', '~> 1'
 gem 'bootsnap', '~> 1.23.0', require: false
 
 # For background jobs
-gem 'solid_queue', '~> 1.3.1'
+gem 'solid_queue', '~> 1.3.2'
 
 # for postgresql
 gem 'activerecord-postgis-adapter', '~> 11.0.0'
