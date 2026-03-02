@@ -122,8 +122,8 @@ RSpec.describe Api::V1::OpenidConnectController do
     let(:access_token) { 'AccessToken' }
 
     before do
-      get_user_struct = Struct.new(:user_attributes, keyword_init: true)
-      user_attribute_struct = Struct.new(:name, :value, keyword_init: true)
+      get_user_struct = Struct.new(:user_attributes)
+      user_attribute_struct = Struct.new(:name, :value)
 
       allow(Aws::CognitoIdentityProvider::Client).to receive(:new).and_return(cognito_identity_provider_client)
       allow(cognito_identity_provider_client).to receive(:get_user).with({ access_token: }).and_return(
