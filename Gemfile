@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.4.7'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 8.0.4'
+gem 'rails', '~> 8.1.2', '>= 8.1.2.1'
 # Use Puma as the app server
 gem 'puma', '~> 7.2'
 
@@ -37,7 +37,7 @@ gem 'bootsnap', '~> 1.23.0', require: false
 gem 'solid_queue', '~> 1.4.0'
 
 # for postgresql
-gem 'activerecord-postgis-adapter', '~> 11.0.0'
+gem 'activerecord-postgis-adapter', '~> 11.1.0'
 gem 'pg', '~> 1.6.3'
 # remove if not option two taken in project
 gem 'jwt', '~> 3.1.2'
