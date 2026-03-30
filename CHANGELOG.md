@@ -18,6 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update GOV.UK Frontend and CCS Frontend ([PR 896](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/896))
 - Updated content that references CCS to now reference GCA ([PR 924](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/924))
 - Update GOV.UK Frontend to v6 and CCS Frontend v3 ([PR 962](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/962))
+- Upgrade Rails to v8.1.3 ([PR 986](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/986))
+- Upgrade Ruby to v4.0.2 ([PR 986](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/986))
 
 ## [3.2.1] - 2026-01-05
 
@@ -57,8 +59,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Use Bun to manage our assets ([PR 641](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/641))
 - Upgrade GOV.UK Frontend version to v5.10.0 ([PR 672](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/672))
 - Upgrade CCS Frontend version to v1.4.1 ([PR 672](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/672))
-- Upgrade Rails to v8.0.2.0 ([PR 670](https://github.com/Crown-Commercial-Service/pmp-idam/pull/670))
-- Replace Arask with Solid Queue ([PR 670](https://github.com/Crown-Commercial-Service/pmp-idam/pull/670))
+- Upgrade Rails to v8.0.2.0 ([PR 670](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/670))
+- Replace Arask with Solid Queue ([PR 670](https://github.com/Crown-Commercial-Service/tailspend-idam/pull/670))
 
 ## [2.2.1] - 2025-03-24
 

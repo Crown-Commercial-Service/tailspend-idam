@@ -10,39 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_06_124032) do
+ActiveRecord::Schema[8.1].define(version: 2025_06_06_124032) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
   enable_extension "postgis"
 
   create_table "allowed_email_domains", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "url"
     t.boolean "active", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "url"
   end
 
   create_table "client_calls", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "access_token"
-    t.string "refresh_token"
-    t.string "id_token"
-    t.string "token_type"
-    t.text "expires_in"
-    t.string "sub"
     t.string "client_id"
-    t.text "nonce"
     t.datetime "created_at", null: false
+    t.text "expires_in"
+    t.string "id_token"
+    t.text "nonce"
+    t.string "refresh_token"
+    t.string "sub"
+    t.string "token_type"
     t.datetime "updated_at", null: false
   end
 
   create_table "organisations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "organisation_name"
     t.boolean "active", default: false
     t.datetime "created_at", null: false
+    t.string "organisation_name"
+    t.text "summary_line"
     t.datetime "updated_at", null: false
     t.integer "urn"
-    t.text "summary_line"
     t.index ["summary_line"], name: "index_organisations_on_summary_line"
   end
 

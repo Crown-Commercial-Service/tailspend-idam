@@ -3,10 +3,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.4.7'
+ruby '4.0.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 8.0.5'
+gem 'rails', '~> 8.1.3'
 # Use Puma as the app server
 gem 'puma', '~> 7.2'
 
@@ -37,7 +37,7 @@ gem 'bootsnap', '~> 1.23.0', require: false
 gem 'solid_queue', '~> 1.4.0'
 
 # for postgresql
-gem 'activerecord-postgis-adapter', '~> 11.0.0'
+gem 'activerecord-postgis-adapter', '~> 11.1.1'
 gem 'pg', '~> 1.6.3'
 # remove if not option two taken in project
 gem 'jwt', '~> 3.1.2'
@@ -46,9 +46,6 @@ gem 'rollbar', '~> 3.7.0'
 gem 'roo', '~> 3.0.0'
 gem 'csv', '~> 3.3.5'
 # remove if not option two taken in project
-
-# For canonical urls
-gem 'canonical-rails', github: 'jumph4x/canonical-rails'
 
 # For environment variables
 gem 'aws-sdk-ssm', '~> 1.212.0'
@@ -61,7 +58,7 @@ gem 'ccs-frontend_helpers', '~> 4.0.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', '~> 13.0.0', platforms: %i[mri mingw x64_mingw]
+  gem 'byebug', '~> 13.0.0', platforms: %i[mri windows]
   gem 'dotenv-rails', '~> 3.2.0'
   gem 'i18n-tasks', '~> 1.1.2'
   gem 'rspec-rails', '~> 8.0.4'
