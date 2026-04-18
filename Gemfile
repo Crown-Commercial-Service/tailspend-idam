@@ -11,7 +11,7 @@ gem 'rails', '~> 8.1.3'
 gem 'puma', '~> 7.2'
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
-gem 'propshaft'
+gem 'propshaft', '>= 1.3.2'
 
 # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
 gem 'cssbundling-rails', '~> 1.4'
