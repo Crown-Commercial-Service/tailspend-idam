@@ -13,7 +13,7 @@ module Api
       end
 
       def token
-        result = ClientCall.find(params[:code].squish)
+        result = ClientCall.find(params.expect(:code).squish)
         data = build_authorize_response(result, result.nonce)
         render json: data
       end
