@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.15'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # for cognito
-gem 'aws-sdk-cognitoidentityprovider', '~> 1.140.0'
+gem 'aws-sdk-cognitoidentityprovider', '~> 1.141.0'
 # importing creds
 gem 'aws-sdk-s3', '~> 1'
 # Reduces boot times through caching; required in config/boot.rb
@@ -48,7 +48,7 @@ gem 'csv', '~> 3.3.5'
 # remove if not option two taken in project
 
 # For environment variables
-gem 'aws-sdk-ssm', '~> 1.212.0'
+gem 'aws-sdk-ssm', '~> 1.213.0'
 
 # Add rate limiting on the API
 gem 'rack-attack', '~> 6.8.0'
